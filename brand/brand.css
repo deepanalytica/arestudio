@@ -290,9 +290,9 @@ body{font-synthesis:none;font-kerning:normal}
 .sample.regular-specimen{font-size:clamp(31px,8vw,67px)}
 }
 @media(max-width:420px){
-.hero-copy h1{font-size:clamp(38px,10vw,46px)}
+.hero-copy h1{font-size:clamp(43px,10.8vw,49px)}
 .statement-title{font-size:clamp(39px,10.5vw,49px)}
 .identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(36px,9.3vw,44px)}
-.lab-hero h1{font-size:clamp(37px,9.8vw,44px)}
+.lab-hero h1{font-size:clamp(43px,10.8vw,49px)}
 .type-poster-main strong,.type-poster-main .type-poster-regular{font-size:clamp(31px,8.2vw,38px)}
 }
