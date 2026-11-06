@@ -15,10 +15,20 @@ try{
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
-    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
-    if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,12).map(el=>({tag:el.tagName,cls:typeof el.className==='string'?el.className:'',left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}))); console.log('Overflow offenders',JSON.stringify(offenders))}
-    assert.equal(overflow,false,`${label}: sin scroll horizontal`);
+    const geometry=await page.evaluate(()=>({
+      inner:innerWidth, root:document.documentElement.scrollWidth,
+      body:document.body.scrollWidth,
+      htmlOverflow:getComputedStyle(document.documentElement).overflowX,
+      bodyOverflow:getComputedStyle(document.body).overflowX,
+      offenders:[...document.querySelectorAll('body *')].filter(el=>{
+        const r=el.getBoundingClientRect();const c=getComputedStyle(el);
+        return (r.right>innerWidth+2||r.left< -2)&&c.position!=='fixed';
+      }).slice(0,20).map(el=>{let r=el.getBoundingClientRect();return {tag:el.tagName,class:typeof el.className==='string'?el.className.slice(0,90):'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};})
+    }));
+    console.log('VIEW_GEOMETRY',label,JSON.stringify(geometry));
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
+    const overflow=geometry.root>geometry.inner+1;
+    assert.equal(overflow,false,`${label}: sin scroll horizontal (${geometry.root}px > ${geometry.inner}px)`);
     if (label==='desktop'){
       await page.locator('.feature-card').nth(1).click();
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
