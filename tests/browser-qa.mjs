@@ -16,6 +16,7 @@ try{
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+    if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,12).map(el=>({tag:el.tagName,cls:typeof el.className==='string'?el.className:'',left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}))); console.log('Overflow offenders',JSON.stringify(offenders))}
     assert.equal(overflow,false,`${label}: sin scroll horizontal`);
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
