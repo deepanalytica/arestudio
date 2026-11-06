@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="990" viewBox="0 0 700 990" role="img" aria-label="Póster editorial AR Estudio">
+<defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#245BFF"/><stop offset=".48" stop-color="#6236FF"/><stop offset=".8" stop-color="#F12BBE"/><stop offset="1" stop-color="#FF652F"/></linearGradient></defs>
+<rect width="700" height="990" fill="#245BFF"/><path d="M-250 300c320-140 630 95 1010-265v310C453 505 310 470-210 720Z" fill="url(#g)"/><path d="M510-100h190v1190H510z" transform="rotate(22 605 490)" fill="#EFFF38"/>
+<text x="50" y="104" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#fff">AR/</text><text x="50" y="139" font-family="Arial,sans-serif" font-size="22" letter-spacing="9" fill="#fff">ESTUDIO</text>
+<text x="37" y="561" font-family="Arial,sans-serif" font-size="420" font-weight="900" letter-spacing="-55" fill="#fff">AR</text>
+<text x="50" y="760" font-family="Arial,sans-serif" font-size="69" font-weight="800" fill="#fff"><tspan x="50">Ideas.</tspan><tspan x="50" dy="75">Diseño.</tspan><tspan x="50" dy="75">Impacto.</tspan></text>
+<text x="54" y="946" font-family="Arial,sans-serif" font-size="15" letter-spacing="3" fill="#fff">ESTUDIO CREATIVO INDEPENDIENTE</text></svg>

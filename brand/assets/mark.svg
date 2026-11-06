@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Firma gráfica AR/">
+<defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#245BFF"/><stop offset=".48" stop-color="#6236FF"/><stop offset=".76" stop-color="#F12BBE"/><stop offset="1" stop-color="#FF652F"/></linearGradient></defs>
+<path fill="#245BFF" fill-rule="evenodd" d="M16 206 88 34h50l70 172h-50l-13-36H80l-13 36H16Zm78-78h37l-19-49-18 49Z"/>
+<path fill="url(#g)" fill-rule="evenodd" d="M190 34h80c51 0 79 24 79 64 0 29-14 48-38 57l43 51h-60l-36-46h-18v46h-50V34Zm50 43v43h27c19 0 31-8 31-22s-12-21-31-21h-27Z"/>
+<path d="m361 207 21-62" stroke="#EFFF38" stroke-width="17"/>
+</svg>
