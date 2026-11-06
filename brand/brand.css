@@ -79,3 +79,6 @@ footer{border-top:1px solid var(--ar-border);padding:45px 0}.foot{display:flex;f
   .table td,.table th{overflow-wrap:anywhere;word-break:normal}
 }
 @media(max-width:440px){.logo{font-size:27px}}
+
+/* Mantener alto de composición sin expandir anchura de viewport móvil. */
+@media(max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}.hero-art{width:100%;min-width:0;min-height:0;height:330px;aspect-ratio:auto}}
