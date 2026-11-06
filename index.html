@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es-CL">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f9f6">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf9f6">
   <meta name="description" content="AR/ — Portafolio de diseño, desarrollo, datos y comunicación. Explora proyectos, sistemas, investigación y dirección de arte.">
   <meta name="author" content="Alexis Reyes"><meta name="robots" content="index,follow">
   <meta property="og:type" content="website"><meta property="og:locale" content="es_CL"><meta property="og:site_name" content="AR/ Studio"><meta property="og:title" content="AR/ — Ideas que funcionan"><meta property="og:description" content="Diseño, datos, tecnología y comunicación para problemas reales."><meta property="og:image" content="https://deepanalytica.github.io/arestudio/assets/og.png">
@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <title>AR/ — Portafolio · Diseño, Datos y Tecnología</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="art-direction.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script type="module" src="app.js"></script>
 </head>
@@ -25,10 +26,11 @@
 
   <main>
     <section class="hero container" aria-labelledby="hero-title">
-      <div class="hero-copy"><span class="eyebrow"><span class="status-dot"></span> AR / DISEÑO · DATOS · TECNOLOGÍA</span>
+      <div class="hero-copy"><span class="eyebrow"><span class="status-dot"></span> ESTUDIO INDEPENDIENTE / CHILE · 2026</span>
         <h1 id="hero-title">Ideas que<br><em>funcionan</em><span class="period">.</span></h1>
-        <p>Diseño, software, análisis y comunicación, conectados para resolver problemas reales.</p>
+        <p>Dirección de arte, análisis de datos y desarrollo tecnológico para resolver problemas reales.</p>
         <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Explorar proyectos <span>↗</span></a><a class="btn btn-light" href="#metodo">Cómo trabajo <span>↗</span></a></div>
+        <div class="hero-index"><span>AR/ STUDIO</span><span class="hero-index-rule"></span><span>PORTAFOLIO EDITORIAL / 2026</span></div>
       </div>
       <div class="hero-art" aria-label="Composición abstracta de datos y territorio" role="img">
         <img class="hero-mesh" src="assets/hero-mesh.svg" width="960" height="600" alt="" fetchpriority="high">
@@ -38,18 +40,54 @@
     </section>
 
     <section id="proyectos" class="featured container" aria-labelledby="featured-title">
-      <div class="section-top"><div><span class="section-kicker">01 / TRABAJO SELECCIONADO</span><h2 id="featured-title">Proyectos para explorar<span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Ver el índice completo <span>↗</span></a></div>
+      <div class="section-top"><div><span class="section-kicker">01 / UNA SELECCIÓN DE TRABAJO</span><h2 id="featured-title">Explora el trabajo<span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Ver el índice completo <span>↗</span></a></div>
       <div class="feature-grid" id="featured-grid" aria-label="Proyectos destacados">
-        <a class="feature-card card-orange" href="#explorar"><div class="feature-visual"><img src="assets/archivo.svg" alt="Representación editorial conceptual de Archivo" width="800" height="600"><span class="card-type">DISEÑO / COMERCIO</span></div><div class="feature-info"><h3>ARCHIVO</h3><p>Dirección de arte y catálogo comercial.</p><span class="feature-foot">Proyecto publicado <b>↗</b></span></div></a>
-        <a class="feature-card card-teal" href="#explorar"><div class="feature-visual"><img src="assets/deep-geo.svg" alt="Representación conceptual de mapas y topografía Deep Geo" width="800" height="600"><span class="card-type">DATOS / TERRITORIO</span></div><div class="feature-info"><h3>Deep Geo</h3><p>Inteligencia y visualización territorial.</p><span class="feature-foot">Investigación y plataforma <b>↗</b></span></div></a>
-        <a class="feature-card card-purple" href="#explorar"><div class="feature-visual"><img src="assets/praxios.svg" alt="Representación abstracta de sistemas Praxios" width="800" height="600"><span class="card-type">TECNOLOGÍA / SISTEMAS</span></div><div class="feature-info"><h3>Praxios OS</h3><p>Arquitectura de agentes verificables.</p><span class="feature-foot">Demostración e I+D <b>↗</b></span></div></a>
-        <a class="feature-card card-pink" href="#explorar"><div class="feature-visual"><img src="assets/visual.svg" alt="Composición de comunicación visual para Visual Art AI" width="800" height="600"><span class="card-type">COMUNICACIÓN / GROWTH</span></div><div class="feature-info"><h3>Visual Art AI</h3><p>Diseño y visibilidad para negocios.</p><span class="feature-foot">Servicio publicado <b>↗</b></span></div></a>
+        <a class="feature-card feature-editorial" href="?proyecto=archivo" data-art="editorial" data-project="archivo">
+          <div class="feature-visual art-editorial">
+            <img class="art-fallback" src="assets/archivo.svg" alt="Composición editorial original para ARCHIVO" width="800" height="600" fetchpriority="high">
+            <img class="art-photo" src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+            <span class="art-topline"><span>AR/ — 001</span><span>EDITORIAL · COMERCIO</span></span>
+            <span class="art-title art-title-archivo" aria-hidden="true">ARCHIVO<span>.</span></span>
+            <span class="art-edition" aria-hidden="true">EDITORIAL<br>EDICIÓN Nº 01</span>
+            <span class="art-axis" aria-hidden="true">A / 01</span>
+          </div>
+          <div class="feature-info"><span class="feature-chapter">01 — DISEÑO & COMERCIO</span><h3>ARCHIVO</h3><p>Dirección de arte y una experiencia de catálogo con identidad propia.</p><span class="feature-foot">Tienda y proyecto publicados <b>↗</b></span></div>
+        </a>
+        <a class="feature-card feature-territory" href="?proyecto=deep-geo" data-art="territory" data-project="deep-geo">
+          <div class="feature-visual art-territory">
+            <img src="assets/deep-geo.svg" alt="Topografía digital conceptual Deep Geo" width="800" height="600" fetchpriority="high">
+            <span class="art-topline"><span>AR/ — 002</span><span>INTELIGENCIA TERRITORIAL</span></span>
+            <span class="art-geo-coordinates" aria-hidden="true">35° 11′ S<br>71° 26′ W</span>
+            <span class="art-title art-title-geo" aria-hidden="true">DEEP<br><em>GEO</em><span>↗</span></span>
+            <span class="art-crosshair" aria-hidden="true">＋</span>
+          </div>
+          <div class="feature-info"><span class="feature-chapter">02 — DATOS & TERRITORIO</span><h3>Deep Geo</h3><p>Inteligencia geoespacial para comprender y priorizar el territorio.</p><span class="feature-foot">Investigación y plataforma <b>↗</b></span></div>
+        </a>
+        <a class="feature-card feature-system" href="?proyecto=praxios-os" data-art="system" data-project="praxios-os">
+          <div class="feature-visual art-system">
+            <img src="assets/praxios.svg" alt="Arquitectura visual conceptual Praxios OS" width="800" height="600" fetchpriority="high">
+            <span class="art-topline"><span>AR/ — 003</span><span>AGENTES · GOVERNANCE</span></span>
+            <div class="art-system-ui" aria-hidden="true"><div class="art-system-ui-head"><span class="art-orb"></span> CONTROL / LIVE <span class="art-ellipses">•••</span></div><div class="art-system-ui-row"><span class="art-status-icon">✓</span><span>INTENCIÓN</span><b>OK</b></div><div class="art-system-ui-row"><span class="art-status-icon">✓</span><span>EVIDENCIA</span><b>OK</b></div><div class="art-system-ui-row"><span class="art-status-icon">↗</span><span>VALIDACIÓN</span><b>RUN</b></div></div>
+            <span class="art-title art-title-system" aria-hidden="true">PRAXIOS<span>/</span></span>
+          </div>
+          <div class="feature-info"><span class="feature-chapter">03 — SISTEMAS & IA</span><h3>Praxios OS</h3><p>Arquitectura de agentes, trazabilidad y revisión humana.</p><span class="feature-foot">Demostración e investigación <b>↗</b></span></div>
+        </a>
+        <a class="feature-card feature-communication" href="?proyecto=visual-art-ai" data-art="communication" data-project="visual-art-ai">
+          <div class="feature-visual art-communication">
+            <img src="assets/visual.svg" alt="Composición de formas y color de Visual Art AI" width="800" height="600" fetchpriority="high">
+            <span class="art-topline"><span>AR/ — 004</span><span>BRAND / DIGITAL</span></span>
+            <span class="art-visible-stamp" aria-hidden="true">HACER<br>VISIBLE<br><i>LO QUE</i><br>IMPORTA.</span>
+            <span class="art-visible-flower" aria-hidden="true">✳</span>
+            <span class="art-visible-bottom" aria-hidden="true">VISUAL ART AI · 2026</span>
+          </div>
+          <div class="feature-info"><span class="feature-chapter">04 — MARCA & COMUNICACIÓN</span><h3>Visual Art AI</h3><p>Marcas, contenido y experiencias digitales que conectan.</p><span class="feature-foot">Servicio publicado <b>↗</b></span></div>
+        </a>
       </div>
-      <div class="featured-note"><span>↳</span> Cada pieza tiene dirección de arte propia. Las portadas son representaciones editoriales y no capturas de aplicaciones.</div>
+      <div class="featured-note"><span>↳</span> Un lenguaje visual diferente por proyecto. Las composiciones son exploraciones editoriales; las evidencias se identifican en cada ficha.</div>
     </section>
 
     <section class="index-section" id="explorar" aria-labelledby="index-title"><div class="container">
-      <div class="section-top index-top"><div><span class="section-kicker">02 / ÍNDICE DE TRABAJO</span><h2 id="index-title">Todo el trabajo<span class="green-dot">.</span></h2><p>Proyectos publicados, prototipos y líneas de investigación. Cada uno identifica su estado real.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
+      <div class="section-top index-top"><div><span class="section-kicker">02 / EL ARCHIVO COMPLETO</span><h2 id="index-title">Un universo de proyectos<span class="green-dot">.</span></h2><p>Proyectos publicados, prototipos y líneas de investigación. Cada uno identifica su estado real.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
       <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por disciplina"></div><div class="toolbar-tools"><label class="search-box" for="search-projects"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" id="search-projects" placeholder="Buscar proyecto o tecnología…" aria-label="Buscar proyectos"><kbd>/</kbd></label><div class="view-controls" role="group" aria-label="Vista del índice"><button type="button" class="view-btn" id="view-grid" aria-pressed="true" title="Vista de tarjetas">▦</button><button type="button" class="view-btn" id="view-list" aria-pressed="false" title="Vista de lista">☰</button></div></div></div>
       <div class="result-line"><span id="result-count" aria-live="polite">Cargando proyectos…</span><button id="clear-filters" type="button" class="clear-btn" hidden>Restablecer filtros ↺</button></div>
       <div class="work-grid" id="work-grid" aria-label="Resultados de proyectos"></div><p class="no-results" id="no-results" hidden>No hay proyectos con esos filtros. <button type="button" id="reset-empty">Ver todo el trabajo</button></p>

@@ -14,6 +14,8 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
+    assert.equal(await page.locator('.feature-card .art-topline').count(),4,`${label}: cuatro universos de arte con metadata propia`);
+    assert.equal(await page.locator('.feature-card .art-title, .feature-card .art-visible-stamp').count(),4,`${label}: dirección tipográfica diferenciada`);
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
     const covers=await page.locator('.work-card img').evaluateAll(elements=>elements.map(el=>el.getAttribute('src')));
     assert.ok(new Set(covers).size>=20,`${label}: dirección de arte individual por proyecto`);

@@ -11,7 +11,10 @@ const byId=new Map(projects.map(p=>[p.id,p]));
 function updateFilters(){
   filters.innerHTML=categories.map(c=>`<button type="button" class="filter-btn" data-category="${esc(c)}" aria-pressed="${selected===c}">${esc(c)} <span class="filter-number">${c==='Todos'?projects.length:projects.filter(p=>p.area===c).length}</span></button>`).join('');
 }
-function card(p){return `<a class="work-card" href="?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" loading="lazy" decoding="async" alt="Visual editorial del proyecto ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">↗</span></div></div></a>`}
+function card(p){
+  const serial=String(projects.indexOf(p)+1).padStart(2,'0');
+  return `<a class="work-card" href="?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" data-area="${esc(p.area)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" loading="lazy" decoding="async" alt="Visual editorial conceptual de ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span><span class="work-card-serial" aria-hidden="true">AR/ ${serial}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">↗</span></div></div></a>`
+}
 function render(){
   const results=projects.filter(p=>(selected==='Todos'||p.area===selected)&&norm([p.name,p.area,p.type,p.summary,p.status,p.problem,p.solution,p.deliverables.join(' ')].join(' ')).includes(norm(query)));
   grid.innerHTML=results.map(card).join('');
@@ -22,6 +25,9 @@ function render(){
   $('#view-grid').setAttribute('aria-pressed',String(view==='grid'));
   $('#view-list').setAttribute('aria-pressed',String(view==='list'));
   updateFilters();
+  if (!reduced.matches&&window.gsap&&results.length){
+    window.gsap.fromTo($$('.work-card',grid),{autoAlpha:.86,y:9},{autoAlpha:1,y:0,duration:.36,stagger:.018,ease:'power2.out',clearProps:'all'});
+  }
 }
 filters.addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;selected=b.dataset.category;render()});
 search.addEventListener('input',e=>{query=e.target.value.trim();render()});
@@ -31,7 +37,11 @@ $('#view-grid').addEventListener('click',()=>{view='grid';render()});$('#view-li
 $('#total-count').textContent=projects.length;
 $$('.feature-card').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('aria-label',`Explorar ficha de ${p.name}`)});
 render();
-function modalMarkup(p){return `<div class="dialog-project-hero"><div class="dialog-project-cover"><img src="${esc(p.cover)}" alt="Dirección de arte para ${esc(p.name)}"><span>VISUAL EDITORIAL · NO CAPTURA DE PRODUCTO</span></div><div class="dialog-project-info"><span class="section-kicker">${esc(p.area.toUpperCase())} / ${esc(p.type.toUpperCase())}</span><h2 id="modal-title">${esc(p.name)}</h2><p id="modal-summary">${esc(p.summary)}</p><div class="dialog-chips"><span>${esc(p.status)}</span>${p.deliverables.slice(0,2).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div><div class="dialog-texts"><article><h3>01 / EL RETO</h3><p>${esc(p.problem)}</p></article><article><h3>02 / LA RESPUESTA</h3><p>${esc(p.solution)}</p></article></div><div class="dialog-texts"><article><h3>03 / QUÉ SE DESARROLLÓ</h3><div class="deliverables">${p.deliverables.map(x=>`<span>${esc(x)}</span>`).join('')}</div></article><article><h3>04 / ESTADO Y EVIDENCIA</h3><p>${esc(p.evidence||('Estado informado: '+p.status+'. La ficha enlaza a la documentación disponible del portafolio anterior.'))}</p></article></div><div class="dialog-bottom"><p>Este caso describe el alcance documentado; no implica resultados comerciales ni métricas sin respaldo.</p><div class="dialog-buttons"><button type="button" id="share-project">Compartir ficha ↗</button><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Ver evidencia / proyecto ↗</a></div></div>`}
+function mediaMarkup(p){
+  if(!Array.isArray(p.media)||!p.media.length)return '';
+  return `<section class="case-media"><h3 class="case-media-label">GALERÍA / MATERIALES DEL PROYECTO</h3><div class="case-media-strip">${p.media.slice(0,3).map((m,i)=>`<figure><img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>${esc(m.caption||'Material publicado')}</figcaption></figure>`).join('')}</div></section>`;
+}
+function modalMarkup(p){return `<div class="dialog-project-hero"><div class="dialog-project-cover"><img src="${esc(p.cover)}" alt="Composición editorial para ${esc(p.name)}"><span>COMPOSICIÓN EDITORIAL · NO CAPTURA DE PRODUCTO</span></div><div class="dialog-project-info"><span class="section-kicker">${esc(p.area.toUpperCase())} / ${esc(p.type.toUpperCase())}</span><h2 id="modal-title">${esc(p.name)}</h2><p id="modal-summary">${esc(p.summary)}</p><div class="dialog-chips"><span>${esc(p.status)}</span>${p.deliverables.slice(0,2).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div><div class="dialog-texts"><article><h3>01 / EL RETO</h3><p>${esc(p.problem)}</p></article><article><h3>02 / LA RESPUESTA</h3><p>${esc(p.solution)}</p></article></div>${mediaMarkup(p)}<div class="dialog-texts"><article><h3>03 / QUÉ SE DESARROLLÓ</h3><div class="deliverables">${p.deliverables.map(x=>`<span>${esc(x)}</span>`).join('')}</div></article><article><h3>04 / ESTADO Y EVIDENCIA</h3><p>${esc(p.evidence||('Estado informado: '+p.status+'. La ficha enlaza a la documentación disponible del portafolio anterior.'))}</p></article></div><div class="dialog-bottom"><p>Este caso describe el alcance documentado; no implica resultados comerciales ni métricas sin respaldo.</p><div class="dialog-buttons"><button type="button" id="share-project">Compartir ficha ↗</button><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Ver evidencia / proyecto ↗</a></div></div>`}
 function openProject(id,{push=true}={}){
   const p=byId.get(id);if(!p)return;
   if(!dialog.open)previousFocus=document.activeElement;
@@ -39,6 +49,7 @@ function openProject(id,{push=true}={}){
   $('#dialog-content').innerHTML=modalMarkup(p);
   if(push){const u=new URL(location.href);u.searchParams.set('proyecto',id);history.pushState({project:id},'',u)}
   if(!dialog.open)dialog.showModal();
+  if(!reduced.matches&&window.gsap){window.gsap.fromTo($('.dialog-project-info',dialog),{y:12,opacity:.7},{y:0,opacity:1,duration:.38,ease:'power3.out',clearProps:'all'});}
   $('#close-dialog').focus();
   $('#share-project').addEventListener('click',async()=>{
     const url=new URL(location.href);url.searchParams.set('proyecto',id);
