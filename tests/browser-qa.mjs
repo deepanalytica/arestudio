@@ -47,14 +47,46 @@ try{
     await page.close();
   }
 
-  // AR Estudio — diseño de marca reutilizable, interacciones y responsive.
+
+  // AR Estudio Brand Experience: portada editorial, archivos de marca y responsive.
   for(const [label,width,height] of [['brand-desktop',1440,900],['brand-tablet',768,950],['brand-mobile',390,844]]){
     const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
     page.on('pageerror',e=>errors.push(label+': '+e.message));
     await page.goto('http://127.0.0.1:8844/brand/',{waitUntil:'domcontentloaded',timeout:30000});
-    assert.equal(await page.locator('.swatch').count(),7,label+': siete colores de marca');
-    assert.equal(await page.locator('#spacing-demo .spacing-item').count(),10,label+': escala espacial operativa');
-    assert.equal(await page.locator('.mockup img').count(),3,label+': tres piezas vectoriales');
+    assert.equal(await page.locator('.palette-card').count(),4,label+': cuatro sistemas cromáticos');
+    assert.equal(await page.locator('.application-image img').count(),3,label+': tres piezas editoriales');
+    assert.equal(await page.locator('.showcase-main img').count(),1,label+': signo principal');
+    assert.ok(await page.locator('#hero-heading').isVisible(),label+': hero visible');
+    assert.ok(await page.locator('a[href="lab/"]').count()>=1,label+': acceso al laboratorio');
+    if(width<=900){
+      await page.locator('#brand-menu-toggle').click();
+      assert.equal(await page.locator('#brand-menu-toggle').getAttribute('aria-expanded'),'true');
+      assert.equal(await page.locator('#brand-nav').isVisible(),true);
+      await page.keyboard.press('Escape');
+      assert.equal(await page.locator('#brand-nav').isVisible(),false);
+    }
+    await page.locator('.palette-card').first().click();
+    await page.waitForTimeout(350);
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+    if(overflow)console.log(label+' overflow:',await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{let r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left<-2}).slice(0,12).map(x=>({tag:x.tagName,class:x.className}))));
+    assert.equal(overflow,false,label+': sin desplazamiento horizontal');
+    await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
+    await page.close();
+    console.log('✓ '+label+': identidad, aplicaciones y responsive');
+  }
+  // Design System Lab: escala real de tokens, contrastes y estados.
+  for(const [label,width,height] of [['lab-desktop',1440,900],['lab-tablet',768,950],['lab-mobile',390,844]]){
+    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+    page.on('pageerror',e=>errors.push(label+': '+e.message));
+    await page.goto('http://127.0.0.1:8844/brand/lab/',{waitUntil:'domcontentloaded',timeout:30000});
+    assert.equal(await page.locator('.swatch').count(),7,label+': siete colores');
+    await page.locator('#spacing-demo .spacing-item').first().waitFor({timeout:10000});
+    assert.equal(await page.locator('#spacing-demo .spacing-item').count(),10,label+': 10 espacios desde tokens.json');
+    assert.equal((await page.locator('#spacing-demo .spacing-item').first().innerText()).replace(/\s+/g,' ').trim(),'space-1 4px',label+': space-1 representa 4px');
+    assert.ok(await page.locator('#semantic-list .token-row').count()>=10,label+': tokens semánticos');
+    await page.locator('#contrast-fg').selectOption('#F12BBE');
+    await page.locator('#contrast-bg').selectOption('#FFFFFF');
+    assert.match(await page.locator('#contrast-result').innerText(),/AA normal ✕/);
     await page.locator('#demo-field').fill('correo-invalido');
     await page.locator('#validate-email').click();
     assert.equal(await page.locator('#demo-field').getAttribute('aria-invalid'),'true');
@@ -63,19 +95,20 @@ try{
     assert.equal(await page.locator('#demo-field').getAttribute('aria-invalid'),'false');
     await page.locator('.chip').nth(1).click();
     assert.equal(await page.locator('.chip').nth(1).getAttribute('aria-pressed'),'true');
-    await page.waitForTimeout(600);
+    await page.locator('#loading-demo').click();
+    assert.equal(await page.locator('#loading-demo').getAttribute('aria-busy'),'true');
+    if(width<=900){await page.locator('#brand-menu-toggle').click();assert.equal(await page.locator('#brand-nav').isVisible(),true);}
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
-    if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,15).map(el=>({tag:el.tagName,cls:typeof el.className==='string'?el.className:'svg',left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)})));console.log(label+' overflow offenders:',JSON.stringify(offenders));}
-    assert.equal(overflow,false,label+': sin scroll horizontal');
+    assert.equal(overflow,false,label+': sin desplazamiento horizontal');
     await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
     await page.close();
-    console.log('✓ '+label+': tokens, mockups, componentes y responsive');
+    console.log('✓ '+label+': tokens, contrastes, controles y responsive');
   }
   const reducedPage=await browser.newPage({viewport:{width:1200,height:800},reducedMotion:'reduce'});
-  await reducedPage.goto('http://127.0.0.1:8844/brand/',{waitUntil:'domcontentloaded'});
+  await reducedPage.goto('http://127.0.0.1:8844/brand/lab/',{waitUntil:'domcontentloaded'});
   await reducedPage.locator('#replay').click();
   assert.match(await reducedPage.locator('#toast').innerText(),/Movimiento reducido/);
   await reducedPage.close();
-  assert.equal(errors.length,0,`Sin errores JS: ${errors.join('; ')}`);
+  assert.equal(errors.length,0,'Sin errores JavaScript: '+errors.join('; '));
   console.log('✓ Sin errores JavaScript');
 }finally{await browser.close();server.kill('SIGTERM')}

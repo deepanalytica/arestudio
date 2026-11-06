@@ -1,12 +1,12 @@
 {
   "name": "ar-studio-portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "AR/ — Portafolio y sistema de diseño. Entrega estática con mejoras progresivas.",
+  "description": "AR Estudio: portafolio, Brand Experience y Design System Lab.",
   "scripts": {
     "dev": "python3 -m http.server 8000",
-    "check": "node --check app.js && node --check data.js && node --test tests/catalog.test.js && npm run brand:check",
+    "check": "node --check app.js && node --check data.js && node --test tests/catalog.test.js tests/brand-contract.test.js && npm run brand:check",
     "brand:tokens": "node brand/tools/build-tokens.mjs",
     "brand:check": "node brand/tools/build-tokens.mjs --check && node --check brand/lab.js"
   }

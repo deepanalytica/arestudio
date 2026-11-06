@@ -1,29 +1,35 @@
-# AR ESTUDIO · Arquitectura de marca y dirección de arte 2.0
+# AR ESTUDIO — Manual de identidad 2.1
 
-## Propósito
-Estudio independiente que integra dirección de arte, experiencias digitales, software y datos, y comunicación. El valor es hacer comprensibles y útiles problemas complejos sin prometer métricas no verificadas.
+## Idea rectora
+**Electric Editorial**: expresivo en portada y preciso en ejecución. La marca no se reduce a un degradado. La diagonal del signo AR/ es un elemento compositivo repetible para cortes, transiciones, folios y motion.
 
 ## Arquitectura
-Marca madre: AR ESTUDIO. Firma corta: AR/. Las áreas Dirección de Arte, Experiencias Digitales, Sistemas y Datos, Comunicación son prácticas descriptivas, NO submarcas. ARCHIVO, Deep Geo, Praxios OS y Visual Art AI conservan identidad original y estado de desarrollo real.
+- Marca madre: AR ESTUDIO.
+- Firma compacta: AR/.
+- Áreas descriptivas: Dirección de Arte · Experiencias Digitales · Sistemas y Datos · Comunicación.
+- Los proyectos conservan identidad y evidencia propias. No atribuirlos como productos comerciales finalizados sin respaldo.
 
-## Electric Editorial
-Identidad contemporánea, expresiva y cromática. 70% superficies glaciar y papel, 20% azul eléctrico y violeta, 10% magenta, naranja o lima. Usar el color para jerarquía, no decorar todas las superficies.
-Símbolo: AR/ usable en mono y a color; evitar redes neuronales, cerebro, circuitos, estética gamer y efectos decorativos. No declarar originalidad registral sin búsqueda formal.
+## Firma
+Maestros: `assets/mark.svg` y `assets/mark-mono.svg`. SVG para escalado; no rasterizar para impresión sin requerimiento. Mantener zona libre alrededor y evitar deformaciones. La barra slash es parte del sistema, no un recurso decorativo aislado. Para contraste adverso usar monocromo, fondo alternativo o combinación validada.
 
-## Tipografías
-Space Grotesk 600/700 para display y títulos; DM Sans 400/500/700 para lectura; IBM Plex Mono 400/500 para datos y folios. Display fluido de 60 a 124px, line height 0.92, tracking -0.07em. H2 de 40 a 88px. Cuerpo 16px y ancho máximo 72ch.
+## Color
+Primarios: eléctrico #245BFF, glaciar #F5FAFF, tinta #101729. Intensificadores: violeta #6236FF, magenta #F12BBE, naranja #FF652F, lima #EFFF38.
+Recomendación de distribución: fondos claros dominantes, azul como señal, acentos expresivos ocasionales. No aplicar los 7 colores a todos los componentes. Validar WCAG AA 4.5:1 para texto normal, 3:1 para texto grande y componentes donde corresponde; el laboratorio incluye calculadora interactiva.
 
-## Espaciado y retícula
-Base 4px: 4,8,12,16,20,24,32,48,64,96px. Máximo 1440px con márgenes fluidos 20-80px. Componentes con radios 8,16,28 y píldora. Evitar diseño monótono de tarjetas repetidas.
+## Tipografía
+Space Grotesk para titulares 600/700, DM Sans para lectura 400/500/700, IBM Plex Mono para metadata. Títulos condensados por tracking negativo, pero nunca comprometer legibilidad ni provocar scroll horizontal. Escalas fluidas en `tokens.json`.
 
-## Estados y contraste
-Texto principal #101729; acciones #245BFF; hover #173EC9; foco #6236FF. Contraste de texto normal al menos 4.5:1, texto grande y controles 3:1. No usar rosa/naranja/lima como texto pequeño en blanco. Estados focus visible, hover, active, disabled, loading, error y success; información no depende exclusivamente de color.
+## Espaciado
+Base 4 px. `space-1=4px`, `space-2=8px`, `space-3=12px`, `space-4=16px`, `space-6=24px`, `space-12=48px`. La vista del laboratorio deriva los espacios del mismo JSON.
+
+## Composición
+Alternar editorial de gran formato, fondo sólido, retícula técnica y aire visual. Evitar series largas de tarjetas idénticas. Bordes y sombras se reservan para superficies funcionales; la identidad debe sostenerse por la forma y la composición.
+
+## Componentes
+Acciones con hover, pressed, focus visible, disabled y loading. Formularios con error/success mediante texto explícito, sin depender solo del color. Controles táctiles con área adecuada. Accesibilidad y teclado son requisitos, no complementos.
 
 ## Motion
-120ms feedback, 220ms hover, 420ms transiciones, 740ms gesto hero. Easing cubic-bezier(.22,1,.36,1). Solo transform y opacity cuando sea posible. GSAP progresivo; Three.js opcional con SVG/CSS fallback, DPR limitado, limpieza de renderer y reduced-motion.
+120 ms feedback; 220 ms hover; 420 ms transiciones; 740 ms gesto editorial. Priorizar transform y opacity. GSAP progresivo y fallback nativo. Respetar preferencia de movimiento reducido. Three.js opcional en portada, render controlado por visibilidad, DPR limitado y cleanup.
 
-## Mockups y contenidos
-SVG editables en assets: mark, cover, poster, social. Son composiciones conceptuales, no fotografías de proyectos ni evidencia de clientes. Casos de portafolio deben separar real, demo, I+D, prototipo y concepto.
-
-## Reutilización
-Editar brand/tokens.json, ejecutar npm run brand:tokens, importar brand/tokens.css. Revisar con npm run check. No duplicar paletas por cada sección. Componentes y guía interactiva en /brand/.
+## Aplicaciones
+Portada, social y póster siguen composiciones distintas para mostrar amplitud. Son ejemplos conceptuales, no trabajos encargados ni resultados de clientes. Antes del registro o difusión comercial final, realizar búsqueda de similitud marcaria.

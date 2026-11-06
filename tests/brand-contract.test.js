@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const read=(f)=>fs.readFileSync(new URL('../'+f,import.meta.url),'utf8');
+test('marca y laboratorio son experiencias separadas y enlazadas',()=>{const a=read('brand/index.html'),b=read('brand/lab/index.html');assert.match(a,/href="lab\//);assert.match(b,/href="\.\.\//);assert.match(a,/id="identidad"/);assert.match(b,/id="spacing-demo"/);assert.match(b,/id="contrast-result"/)});
+test('tokens de espacio derivan de la escala 4px',()=>{const t=JSON.parse(read('brand/tokens.json')).tokens;for(const [k,v] of Object.entries(t)){if(/^space-\d+$/.test(k))assert.equal(v,Number(k.slice(6))*4+'px')}});
+test('identidad descargable y aplicaciones SVG',()=>{for(const p of ['mark.svg','mark-mono.svg','favicon.svg','cover.svg','social.svg','poster.svg']){const xml=read('brand/assets/'+p);assert.match(xml,/<svg/);assert.match(xml,/<\/svg>/);assert.doesNotMatch(xml,/<script/)}});
+test('documentación sin ejemplos de espaciado desvinculados',()=>{const js=read('brand/lab.js');assert.match(js,/Object\.entries\(data\.tokens\)/);assert.match(js,/function updateContrast/);assert.match(js,/prefers-reduced-motion/)});

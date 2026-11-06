@@ -1,26 +1,25 @@
-# AR ESTUDIO · Sistema de comunicación
+# AR Estudio — Dirección verbal y comunicación
 
-Posicionamiento: Ideas que funcionan. Audiencia: organizaciones que necesitan comunicación, desarrollo digital, visualización de datos o dirección creativa aplicada a problemas concretos.
+## Posicionamiento
+Dirección de arte, experiencias digitales y sistemas inteligentes para resolver problemas concretos. Marca expresiva, comunicación precisa.
 
 ## Voz
-Directa, precisa, curiosa, confiada, nada grandilocuente. Explicar decisiones y mostrar obra real. Evitar clichés como revolucionario, disruptivo, sin límites, resultados garantizados.
+Directa, visual, segura y natural. Evitar exageraciones, tecnicismos innecesarios, afirmaciones de resultados sin evidencia y frases intercambiables de agencias.
 
-## Arquitectura narrativa
-Problema → contexto → alternativas exploradas → criterio de decisión → artefacto → evidencia y límites → CTA.
+## Mensajes
+**Brand Experience**: “El diseño no pide permiso.” Es una declaración editorial, no una promesa de resultados.
+**Sistema**: “Diseñar. Reutilizar. Mejorar.” Comunicación funcional para equipos de implementación.
+**Portafolio**: comunicar primero el problema y la decisión, después herramientas y demostraciones.
+**Contacto**: “Cuéntame qué necesitas construir.”
 
-## Copy reutilizable
-Hero: Ideas que funcionan. / Dirección de arte, datos y desarrollo tecnológico para resolver problemas concretos.
-Servicios: No empezamos por la herramienta. Empezamos por lo que vale la pena resolver.
-Contacto: Cuéntame qué necesitas construir.
-Caso ARCHIVO: Una tienda también puede tener criterio editorial.
-Caso Deep Geo: El territorio cambia. La información también debería hacerlo.
+## Casos
+Secuencia: problema → contexto → alternativas → decisión → artefacto → evidencia/límites → siguiente paso. Identificar concepto, prototipo, I+D, piloto y producción con claridad.
 
-## Formatos
-Web: titular una idea, bajada 20-35 palabras, CTA específico.
-Instagram 4:5 o 1:1: primer panel con tesis clara, desarrollo en 3-5 paneles y evidencia en cierre.
-Reels y stories 9:16: zona segura, subtítulos y una idea por escena.
-LinkedIn: problema real y decisión antes que herramientas o capturas.
-Propuesta comercial: observación concreta, oportunidad, piloto posible y próximo paso sin fricción.
+## Adaptaciones
+- Social: una idea por pieza, tipografía con gran contraste, 4:5 o 1:1.
+- Presentación: portada de impacto y láminas de lectura calmada.
+- Video: microsecuencias de firma slash, subtítulos visibles, reduced motion cuando proceda.
+- Propuesta comercial: síntesis de problema, alcance y entregables, sin métricas inventadas.
 
 ## Control editorial
-No inventar resultados, premios, clientes, colaboraciones o conversiones. Cada pieza indica el estado real del proyecto.
+Ninguna prueba visual equivale a un cliente real o una conversión verificada. Distinguir aplicación conceptual y evidencia de ejecución.
