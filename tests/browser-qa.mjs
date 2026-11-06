@@ -57,6 +57,18 @@ try{
     assert.equal(await page.locator('.application-image img').count(),3,label+': tres piezas editoriales');
     assert.equal(await page.locator('.showcase-main img').count(),1,label+': signo principal');
     assert.ok(await page.locator('#hero-heading').isVisible(),label+': hero visible');
+    const cssState=await page.evaluate(()=>{
+      const loaded=getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim();
+      const hero=getComputedStyle(document.querySelector('.hero-copy h1'));
+      const visual=getComputedStyle(document.querySelector('.hero-visual'));
+      const grid=getComputedStyle(document.querySelector('.hero-shell'));
+      return {loaded,font:parseFloat(hero.fontSize),grid:grid.display,gradient:visual.backgroundImage};
+    });
+    assert.equal(cssState.loaded,'1',label+': CSS externo cargado');
+    assert.equal(cssState.grid,'grid',label+': hero con dos columnas en desktop y composición responsiva');
+    assert.ok(cssState.font>40,label+': tipografía display aplicada');
+    assert.match(cssState.gradient,/gradient/,label+': hero con identidad cromática');
+
     assert.ok(await page.locator('a[href="lab/"]').count()>=1,label+': acceso al laboratorio');
     if(width<=900){
       await page.locator('#brand-menu-toggle').click();
@@ -80,6 +92,15 @@ try{
     page.on('pageerror',e=>errors.push(label+': '+e.message));
     await page.goto('http://127.0.0.1:8844/brand/lab/',{waitUntil:'domcontentloaded',timeout:30000});
     assert.equal(await page.locator('.swatch').count(),7,label+': siete colores');
+    const labCSS=await page.evaluate(()=>({
+      loaded:getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim(),
+      layout:getComputedStyle(document.querySelector('.lab-hero-grid')).display,
+      titleSize:parseFloat(getComputedStyle(document.querySelector('.lab-hero h1')).fontSize)
+    }));
+    assert.equal(labCSS.loaded,'1',label+': CSS externo del laboratorio cargado');
+    assert.equal(labCSS.layout,'grid',label+': retícula del laboratorio aplicada');
+    assert.ok(labCSS.titleSize>40,label+': escala editorial aplicada');
+
     await page.locator('#spacing-demo .spacing-item').first().waitFor({timeout:10000});
     assert.equal(await page.locator('#spacing-demo .spacing-item').count(),10,label+': 10 espacios desde tokens.json');
     assert.equal((await page.locator('#spacing-demo .spacing-item').first().innerText()).replace(/\s+/g,' ').trim(),'space-1 4px',label+': space-1 representa 4px');
@@ -109,6 +130,22 @@ try{
   await reducedPage.locator('#replay').click();
   assert.match(await reducedPage.locator('#toast').innerText(),/Movimiento reducido/);
   await reducedPage.close();
+
+  // Falla controlada de CSS externo: el HTML debe mantener una composición editorial básica.
+  const fallbackPage=await browser.newPage({viewport:{width:1280,height:800},deviceScaleFactor:1});
+  await fallbackPage.route('**/brand.css?*',route=>route.abort());
+  await fallbackPage.goto('http://127.0.0.1:8844/brand/',{waitUntil:'load'});
+  await fallbackPage.locator('#brand-css-warning').waitFor({timeout:10000});
+  const fallback=await fallbackPage.evaluate(()=>({
+    titleSize:parseFloat(getComputedStyle(document.querySelector('#hero-heading')).fontSize),
+    heroDisplay:getComputedStyle(document.querySelector('.hero-shell')).display,
+    artBG:getComputedStyle(document.querySelector('.hero-visual')).backgroundImage
+  }));
+  assert.ok(fallback.titleSize>40,'CSS crítico mantiene jerarquía si falla el externo');
+  assert.equal(fallback.heroDisplay,'grid','CSS crítico mantiene retícula');
+  assert.match(fallback.artBG,/gradient/,'CSS crítico conserva base cromática');
+  await fallbackPage.screenshot({path:'artifacts/brand-css-fallback.png',fullPage:false});
+  await fallbackPage.close();
   assert.equal(errors.length,0,'Sin errores JavaScript: '+errors.join('; '));
   console.log('✓ Sin errores JavaScript');
 }finally{await browser.close();server.kill('SIGTERM')}

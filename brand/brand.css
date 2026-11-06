@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
-@import url('./tokens.css');
+/* AR Estudio 2.1.1: reglas principales independientes de redes externas. */
+:root{--ar-brand-css-loaded:1}
 :root{--outline:2px solid #101729;--ink:#101729;--blue:#245BFF;--acid:#EFFF38;--glacier:#F5FAFF}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}

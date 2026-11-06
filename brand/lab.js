@@ -1,6 +1,29 @@
 const $=(s)=>document.querySelector(s);
 const $$=(s)=>Array.from(document.querySelectorAll(s));
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+/* Detecta fallos de entrega de CSS que las pruebas de contenido no observaban. */
+function verifyBrandCSS(){
+ const loaded=getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim()==='1';
+ if(loaded)return;
+ const root=document.body.dataset.tokensUrl?.startsWith('../')?'../':'';
+ const link=document.createElement('link');link.rel='stylesheet';
+ link.href=root+'brand.css?v=2.1.1-retry';
+ link.addEventListener('load',()=>{if(getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim()!=='1')showStyleWarning()}, {once:true});
+ link.addEventListener('error',showStyleWarning,{once:true});
+ document.head.appendChild(link);
+}
+function showStyleWarning(){
+ if(document.getElementById('brand-css-warning'))return;
+ const notice=document.createElement('aside');notice.id='brand-css-warning';
+ notice.setAttribute('role','alert');
+ notice.style.cssText='position:relative;z-index:100;background:#EFFF38;color:#101729;padding:12px 20px;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
+ notice.textContent='No se pudieron cargar todos los estilos de AR Estudio. ';
+ const link=document.createElement('a');link.href=location.pathname+'?v=2.1.1';
+ link.textContent='Recargar la versión actual ↗';link.style.cssText='color:#101729;text-decoration:underline';
+ notice.append(link);document.body.prepend(notice);
+}
+window.addEventListener('load',()=>setTimeout(verifyBrandCSS,80),{once:true});
+
 let toastTimer;
 function notify(message){
  const el=$('#toast');if(!el)return;

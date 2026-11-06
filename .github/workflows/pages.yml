@@ -32,3 +32,21 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify live brand stylesheet
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://deepanalytica.github.io/arestudio/brand"
+          for attempt in $(seq 1 12); do
+            html=$(curl --fail --silent --show-error --location --max-time 15 "$base/?check=${GITHUB_SHA}" || true)
+            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/brand.css?v=2.1.1&check=${GITHUB_SHA}" || true)
+            lab=$(curl --fail --silent --show-error --location --max-time 15 "$base/lab/?check=${GITHUB_SHA}" || true)
+            if [[ "$html" == *'brand.css?v=2.1.1'* && "$css" == *'--ar-brand-css-loaded:1'* && "$lab" == *'../brand.css?v=2.1.1'* ]]; then
+              echo "Pages: HTML, Brand CSS and Design System Lab are serving version 2.1.1"
+              exit 0
+            fi
+            echo "Waiting for GitHub Pages CDN propagation ($attempt/12)"
+            sleep 5
+          done
+          echo 'ERROR: GitHub Pages is not serving matching HTML/CSS'
+          exit 1

@@ -1,4 +1,26 @@
-<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F5FAFF"><meta name="description" content="AR Estudio Design System Lab: variables, tipografía, espacios, componentes, estados y motion reutilizable."><title>AR Estudio — Design System Lab</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../brand.css"><script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script><script type="module" src="../lab.js"></script></head>
+<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F5FAFF"><meta name="description" content="AR Estudio Design System Lab: variables, tipografía, espacios, componentes, estados y motion reutilizable."><title>AR Estudio — Design System Lab</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+/* Critical CSS: el laboratorio sigue siendo legible si el CSS externo se retrasa. */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#F5FAFF;color:#101729;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.shell{width:min(1440px,calc(100% - 40px));margin-inline:auto}
+.site-header{position:sticky;top:0;background:#F5FAFF;border-bottom:1px solid #DCE5F7;z-index:30}
+.header-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand-word{font-size:30px;font-weight:900;color:#101729;text-decoration:none}.brand-word span{color:#245BFF}.brand-word small{font-size:10px;letter-spacing:.1em;margin-left:8px}
+.header-links{display:flex;gap:18px;font-size:13px}.header-links a{text-decoration:none;color:inherit}
+.menu-toggle{display:none}.lab-hero{padding:70px 0}.lab-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:end}
+.lab-hero h1{font-size:clamp(50px,8vw,110px);line-height:.9;letter-spacing:-.07em;margin:30px 0}
+.lab-hero h1 em{font-style:normal;color:#245BFF}
+.lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lab-panel{padding:26px;border:1px solid #DCE5F7;border-radius:16px;background:#fff}
+.lab-section{padding:70px 0;border-bottom:1px solid #DCE5F7}.lab-section h2{font-size:clamp(34px,5vw,72px);margin:15px 0}
+.swatches{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.swatch .color{display:block;aspect-ratio:1;border-radius:12px}
+@media(max-width:900px){.header-links{display:none}.menu-toggle{display:flex}.lab-hero-grid,.lab-grid{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+<link rel="stylesheet" href="../tokens.css?v=2.1.1">
+<link rel="stylesheet" href="../brand.css?v=2.1.1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"><script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script><script type="module" src="../lab.js"></script></head>
 <body class="design-lab" data-tokens-url="../tokens.json"><a class="skip" href="#main">Saltar al contenido</a>
 <header class="site-header"><div class="shell header-inner"><a class="brand-word" href="../" aria-label="AR Estudio, volver a identidad">AR<span>/</span><small>LAB</small></a><button class="menu-toggle" id="brand-menu-toggle" type="button" aria-expanded="false" aria-controls="brand-nav" aria-label="Abrir menú"><span></span><span></span></button><nav class="header-links" id="brand-nav" aria-label="Navegación laboratorio"><a href="#color">Color</a><a href="#tipografia">Tipo</a><a href="#spacing">Espacio</a><a href="#componentes">Componentes</a><a href="#movimiento">Motion</a><a href="../">Brand Experience ↗</a></nav></div></header>
 <main id="main"><section class="lab-hero"><div class="shell"><div class="lab-topline"><span>AR / DESIGN SYSTEM LAB</span><span>VERSIÓN 2.1 / FUENTE ÚNICA</span></div><div class="lab-hero-grid"><h1>DISEÑAR.<br><em>REUTILIZAR.</em><br>MEJORAR.</h1><div><div class="lab-icon">✳</div><p>Los recursos visuales necesitan reglas. Esta biblioteca conecta tokens, ejemplos funcionales, estados, accesibilidad y archivos de identidad.</p><div class="lab-actions"><a class="action action-dark" href="../tokens.json" download>Descargar tokens JSON ↓</a><a class="action action-outline" href="https://github.com/deepanalytica/arestudio/tree/main/brand" target="_blank" rel="noopener noreferrer">Ver código ↗</a></div></div></div></div></section>

@@ -4,7 +4,29 @@
 <meta name="theme-color" content="#F5FAFF"><meta name="description" content="AR Estudio — identidad visual, dirección de arte y sistemas digitales. Un lenguaje eléctrico para ideas que toman forma.">
 <meta property="og:title" content="AR Estudio — Electric Editorial"><meta property="og:description" content="Una identidad visual experimental, expresiva y construida para funcionar.">
 <title>AR Estudio — Identidad / Electric Editorial</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="brand.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+/* Critical CSS: composicion estable incluso cuando un recurso remoto falla. */
+html{scroll-behavior:smooth}body{margin:0;background:#F5FAFF;color:#101729;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+*,*::before,*::after{box-sizing:border-box}.shell{width:min(1440px,calc(100% - 40px));margin-inline:auto}
+.site-header{position:sticky;top:0;background:#F5FAFF;border-bottom:1px solid #DCE5F7;z-index:50}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.brand-word{font-weight:900;font-size:30px;text-decoration:none;color:#101729}.brand-word span{color:#245BFF}.brand-word small{font-size:10px;letter-spacing:.1em;margin-left:8px}
+.header-links{display:flex;gap:18px;align-items:center;font-size:13px}.header-links a{color:inherit;text-decoration:none}
+.hero-shell{display:grid;grid-template-columns:1fr 1fr;gap:4%;align-items:center;padding:70px 0}
+.hero-copy h1{font-size:clamp(54px,7.4vw,130px);line-height:.91;letter-spacing:-.075em;margin:28px 0}
+.hero-copy h1 em{color:#245BFF;font-style:normal}.hero-summary{max-width:50ch}
+.hero-visual{min-height:430px;position:relative;overflow:hidden;background:linear-gradient(140deg,#6236FF,#245BFF);color:white;border-radius:7px}
+.hero-visual-mark{position:absolute;top:29%;left:5%;font-weight:900;font-size:clamp(140px,20vw,310px);line-height:.9;letter-spacing:-.15em}
+.hero-visual-mark span{color:#EFFF38}.hero-visual-top,.hero-visual-bottom{position:absolute;left:6%;right:6%;font-size:11px;display:flex;justify-content:space-between}
+.hero-visual-top{top:7%}.hero-visual-bottom{bottom:7%}.action{display:inline-block;padding:12px 20px;border:1px solid #101729;border-radius:50px;margin:8px 8px 0 0;color:#101729;text-decoration:none}
+.hero-copy .action-dark{background:#101729;color:white}.menu-toggle{display:none}
+@media(max-width:900px){.header-links{display:none}.menu-toggle{display:flex}.hero-shell{grid-template-columns:1fr;padding:45px 0}.hero-visual{min-height:350px}.hero-copy h1{font-size:clamp(50px,10vw,95px)}}
+</style>
+<link rel="stylesheet" href="tokens.css?v=2.1.1">
+<link rel="stylesheet" href="brand.css?v=2.1.1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script><script type="module" src="lab.js"></script>
 </head><body class="brand-experience" data-tokens-url="tokens.json">
 <a class="skip" href="#principal">Saltar al contenido</a>
