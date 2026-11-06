@@ -18,6 +18,7 @@ try{
     const covers=await page.locator('.work-card img').evaluateAll(elements=>elements.map(el=>el.getAttribute('src')));
     assert.ok(new Set(covers).size>=20,`${label}: dirección de arte individual por proyecto`);
     if(label==='desktop')assert.ok((await page.locator('.feature-card').first().boundingBox()).y<655,'Los proyectos destacados son visibles sin desplazamiento');
+    if(label==='mobile')assert.ok((await page.locator('.feature-card').first().boundingBox()).y<700,'Los proyectos empiezan dentro de la primera pantalla móvil');
     await page.waitForTimeout(850);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,12).map(el=>({tag:el.tagName,cls:el.className?.baseVal||el.className,left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}))); console.log('Overflow offenders',JSON.stringify(offenders))}
