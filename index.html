@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f9f6">
+  <meta name="description" content="AR/ — Portafolio de diseño, desarrollo, datos y comunicación. Explora proyectos, sistemas, investigación y dirección de arte.">
+  <meta name="author" content="Alexis Reyes"><meta name="robots" content="index,follow">
+  <meta property="og:type" content="website"><meta property="og:locale" content="es_CL"><meta property="og:site_name" content="AR/ Studio"><meta property="og:title" content="AR/ — Ideas que funcionan"><meta property="og:description" content="Diseño, datos, tecnología y comunicación para problemas reales."><meta property="og:image" content="https://deepanalytica.github.io/arestudio/assets/og.png">
+  <link rel="canonical" href="https://deepanalytica.github.io/arestudio/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>AR/ — Portafolio · Diseño, Datos y Tecnología</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#proyectos">Saltar a los proyectos</a>
+  <div class="scroll-meter" id="scroll-meter" aria-hidden="true"></div>
+  <header class="header" id="inicio"><div class="header-inner">
+    <a class="wordmark" href="#inicio" aria-label="AR Studio, volver al inicio">AR<span>/</span></a>
+    <nav class="main-nav" aria-label="Navegación principal"><a class="nav-active" href="#proyectos">Proyectos</a><a href="#explorar">Índice</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="sistema/">Design system <span class="nav-diag">↗</span></a></nav>
+    <div class="header-actions"><a href="#explorar" class="icon-btn search-launch" aria-label="Buscar proyectos" title="Buscar proyectos, tecla /">⌕</a><a href="#contacto" class="header-cta">Conversemos <span>↗</span></a><button class="menu-toggle icon-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">☰</button></div>
+  </div><nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" hidden><a href="#proyectos">Proyectos</a><a href="#explorar">Índice completo</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="sistema/">Sistema de diseño ↗</a><a href="#contacto">Contacto</a></nav></header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy"><span class="eyebrow"><span class="status-dot"></span> AR / DISEÑO · DATOS · TECNOLOGÍA</span>
+        <h1 id="hero-title">Ideas que<br><em>funcionan</em><span class="period">.</span></h1>
+        <p>Diseño, software, análisis y comunicación, conectados para resolver problemas reales.</p>
+        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Explorar proyectos <span>↗</span></a><a class="btn btn-light" href="#metodo">Cómo trabajo <span>↗</span></a></div>
+      </div>
+      <div class="hero-art" aria-label="Composición abstracta de datos y territorio" role="img">
+        <img class="hero-mesh" src="assets/hero-mesh.svg" width="960" height="600" alt="" fetchpriority="high">
+        <div class="hero-art-note"><span>AR/</span><small>ANÁLISIS<br>DISEÑO<br>DESARROLLO<br>COMUNICACIÓN</small></div>
+        <div class="hero-cross" aria-hidden="true">＋</div><div class="hero-art-label" aria-hidden="true">CREATIVE SYSTEMS / 2026</div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="featured container" aria-labelledby="featured-title">
+      <div class="section-top"><div><span class="section-kicker">01 / TRABAJO SELECCIONADO</span><h2 id="featured-title">Proyectos para explorar<span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Ver el índice completo <span>↗</span></a></div>
+      <div class="feature-grid" id="featured-grid" aria-label="Proyectos destacados">
+        <a class="feature-card card-orange" href="#explorar"><div class="feature-visual"><img src="assets/archivo.svg" alt="Representación editorial conceptual de Archivo" width="800" height="600"><span class="card-type">DISEÑO / COMERCIO</span></div><div class="feature-info"><h3>ARCHIVO</h3><p>Dirección de arte y catálogo comercial.</p><span class="feature-foot">Proyecto publicado <b>↗</b></span></div></a>
+        <a class="feature-card card-teal" href="#explorar"><div class="feature-visual"><img src="assets/deep-geo.svg" alt="Representación conceptual de mapas y topografía Deep Geo" width="800" height="600"><span class="card-type">DATOS / TERRITORIO</span></div><div class="feature-info"><h3>Deep Geo</h3><p>Inteligencia y visualización territorial.</p><span class="feature-foot">Investigación y plataforma <b>↗</b></span></div></a>
+        <a class="feature-card card-purple" href="#explorar"><div class="feature-visual"><img src="assets/praxios.svg" alt="Representación abstracta de sistemas Praxios" width="800" height="600"><span class="card-type">TECNOLOGÍA / SISTEMAS</span></div><div class="feature-info"><h3>Praxios OS</h3><p>Arquitectura de agentes verificables.</p><span class="feature-foot">Demostración e I+D <b>↗</b></span></div></a>
+        <a class="feature-card card-pink" href="#explorar"><div class="feature-visual"><img src="assets/visual.svg" alt="Composición de comunicación visual para Visual Art AI" width="800" height="600"><span class="card-type">COMUNICACIÓN / GROWTH</span></div><div class="feature-info"><h3>Visual Art AI</h3><p>Diseño y visibilidad para negocios.</p><span class="feature-foot">Servicio publicado <b>↗</b></span></div></a>
+      </div>
+      <div class="featured-note"><span>↳</span> Cada pieza tiene dirección de arte propia. Las portadas son representaciones editoriales y no capturas de aplicaciones.</div>
+    </section>
+
+    <section class="index-section" id="explorar" aria-labelledby="index-title"><div class="container">
+      <div class="section-top index-top"><div><span class="section-kicker">02 / ÍNDICE DE TRABAJO</span><h2 id="index-title">Todo el trabajo<span class="green-dot">.</span></h2><p>Proyectos publicados, prototipos y líneas de investigación. Cada uno identifica su estado real.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
+      <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por disciplina"></div><div class="toolbar-tools"><label class="search-box" for="search-projects"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" id="search-projects" placeholder="Buscar proyecto o tecnología…" aria-label="Buscar proyectos"><kbd>/</kbd></label><div class="view-controls" role="group" aria-label="Vista del índice"><button type="button" class="view-btn" id="view-grid" aria-pressed="true" title="Vista de tarjetas">▦</button><button type="button" class="view-btn" id="view-list" aria-pressed="false" title="Vista de lista">☰</button></div></div></div>
+      <div class="result-line"><span id="result-count" aria-live="polite">Cargando proyectos…</span><button id="clear-filters" type="button" class="clear-btn" hidden>Restablecer filtros ↺</button></div>
+      <div class="work-grid" id="work-grid" aria-label="Resultados de proyectos"></div><p class="no-results" id="no-results" hidden>No hay proyectos con esos filtros. <button type="button" id="reset-empty">Ver todo el trabajo</button></p>
+    </div></section>
+
+    <section class="approach container" id="metodo" aria-labelledby="method-title"><div class="approach-head"><div><span class="section-kicker">03 / FORMA DE TRABAJO</span><h2 id="method-title">Una idea merece<br>un buen proceso<span class="green-dot">.</span></h2></div><p>No empiezo por la herramienta. Primero defino qué necesita resolverse, qué datos existen y qué puede comprobarse.</p></div>
+      <div class="steps"><article><span>01 — ENTENDER</span><h3>Contexto antes que soluciones</h3><p>Observar el problema, las restricciones y las personas involucradas.</p></article><article><span>02 — CRUZAR</span><h3>Encontrar relaciones útiles</h3><p>Explorar datos, referencias y alternativas que merezcan una prueba.</p></article><article><span>03 — CONSTRUIR</span><h3>Hacerlo tangible</h3><p>Desarrollar interfaces, prototipos, sistemas o contenido listo para evaluar.</p></article><article><span>04 — VALIDAR</span><h3>Mostrar evidencia y límites</h3><p>Separar lo demostrado de las hipótesis y documentar qué falta por verificar.</p></article></div>
+    </section>
+
+    <section class="about-band" id="perfil"><div class="container about-inner"><div><span class="section-kicker">04 / PERFIL</span><h2>Diseño, código y criterio.<br><em>En una misma práctica.</em></h2></div><div class="about-side"><p>Trabajo en la intersección de análisis de datos, arquitectura de software, comunicación digital y dirección de arte. Convierto problemas complejos en herramientas y experiencias más comprensibles.</p><a class="subtle-link" href="https://deepanalytica.github.io/archivo-tienda/portafolio/perfil/" target="_blank" rel="noopener noreferrer">Ver trayectoria y antecedentes ↗</a></div></div></section>
+
+    <section class="contact container" id="contacto"><div class="contact-box"><div><span class="section-kicker">05 / HABLEMOS</span><h2>¿Hay algo que<br>quieras construir<span class="green-dot">?</span></h2><p>Podemos empezar por el problema, el objetivo y lo que necesitas mostrar o resolver.</p></div><div class="contact-actions"><a class="btn btn-solid" href="mailto:asaave9@gmail.com?subject=Consulta%20desde%20AR%2F%20Studio">Escribir por correo ↗</a><a class="btn btn-light" href="https://wa.me/56958039450?text=Hola%2C%20vi%20tu%20portafolio%20AR%2F%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener noreferrer">Conversar por WhatsApp ↗</a></div></div></section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="wordmark" href="#inicio">AR<span>/</span></a><span>Diseño · Datos · Tecnología · Comunicación</span><div><a href="sistema/">Sistema de diseño ↗</a><a href="https://github.com/deepanalytica/arestudio" target="_blank" rel="noopener noreferrer">Código ↗</a><a href="#inicio">Volver arriba ↑</a></div><small>© <span id="year">2026</span> AR/</small></div></footer>
+
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="modal-title" aria-describedby="modal-summary"><div class="dialog-shell"><div class="dialog-head"><span class="section-kicker">AR/ · FICHA DE PROYECTO</span><button class="dialog-close" type="button" aria-label="Cerrar ficha" id="close-dialog">✕</button></div><div id="dialog-content"></div></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

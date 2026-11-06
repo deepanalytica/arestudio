@@ -1,0 +1,8 @@
+{
+  "name":"ar-studio-portfolio",
+  "version":"1.0.0",
+  "private":true,
+  "type":"module",
+  "description":"AR/ — Portafolio y sistema de diseño. Entrega estática con mejoras progresivas.",
+  "scripts":{"dev":"python3 -m http.server 8000","check":"node --check app.js && node --check data.js && node --test tests/catalog.test.js"}
+}
