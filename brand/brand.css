@@ -293,7 +293,7 @@ font-family:var(--ar-font-accent);font-weight:400;font-style:italic;letter-spaci
 .sample.editorial{font-size:clamp(36px,9vw,72px)}
 }
 @media(max-width:420px){
-.hero-copy h1{font-size:clamp(39px,10.2vw,47px);letter-spacing:-.065em}
+.hero-copy h1{font-size:clamp(43px,10.7vw,50px);letter-spacing:-.065em}
 .hero-copy h1 .hero-serif{font-size:clamp(57px,15.5vw,69px)}
 .statement-title{font-size:clamp(40px,11vw,54px)}
 .identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(39px,10.2vw,48px)}
