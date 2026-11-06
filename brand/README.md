@@ -1,9 +1,9 @@
-# AR Estudio — Electric Editorial / Brand Operating System 2.2
+# AR Estudio — Electric Editorial / Brand Operating System 2.3
 
 Dos experiencias complementarias:
 
 - **Brand Experience**: `/brand/` — manifiesto visual, identidad, paleta, motion y aplicaciones editoriales.
-- **Design System Lab**: `/brand/lab/` — tokens, casting tipográfico Syne + Instrument Serif, escalas, contraste WCAG, componentes, estados y descargas.
+- **Design System Lab**: `/brand/lab/` — tokens, casting Archivo Regular 400 + Archivo Black 900, escalas, contraste WCAG, componentes, estados y descargas.
 
 ## Arquitectura
 

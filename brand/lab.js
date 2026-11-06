@@ -7,7 +7,7 @@ function verifyBrandCSS(){
  if(loaded)return;
  const root=document.body.dataset.tokensUrl?.startsWith('../')?'../':'';
  const link=document.createElement('link');link.rel='stylesheet';
- link.href=root+'brand.css?v=2.2.2-retry';
+ link.href=root+'brand.css?v=2.3.0-retry';
  link.addEventListener('load',()=>{if(getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim()!=='1')showStyleWarning()}, {once:true});
  link.addEventListener('error',showStyleWarning,{once:true});
  document.head.appendChild(link);
@@ -18,7 +18,7 @@ function showStyleWarning(){
  notice.setAttribute('role','alert');
  notice.style.cssText='position:relative;z-index:100;background:#EFFF38;color:#101729;padding:12px 20px;font:700 14px/1.5 system-ui,sans-serif;text-align:center';
  notice.textContent='No se pudieron cargar todos los estilos de AR Estudio. ';
- const link=document.createElement('a');link.href=location.pathname+'?v=2.2.2';
+ const link=document.createElement('a');link.href=location.pathname+'?v=2.3.0';
  link.textContent='Recargar la versión actual ↗';link.style.cssText='color:#101729;text-decoration:underline';
  notice.append(link);document.body.prepend(notice);
 }

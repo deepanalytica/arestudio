@@ -232,77 +232,67 @@ button,a,input,select{touch-action:manipulation}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track{animation:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-/* ELECTRIC EDITORIAL 2.2 — casting tipográfico: estructura, interrupción, lectura, datos */
-:root{--ar-display-tracking:-.075em;--ar-serif-tracking:-.065em}
+
+/* AR ESTUDIO 2.3 — Archivo Regular / Bold / Black.
+   La personalidad viene de escala, peso, contraste y aire, no de serif ni cursivas. */
+:root{--ar-display-tracking:-.065em;--ar-normal-tracking:-.052em}
+html,body{max-width:100%;overflow-x:clip}
 body{font-synthesis:none;font-kerning:normal}
-.brand-word{font-family:var(--ar-font-display);font-weight:800;letter-spacing:-.085em}
-.hero-copy h1{font-family:var(--ar-font-display);font-weight:800;font-size:clamp(52px,5.85vw,101px);line-height:.89;letter-spacing:var(--ar-display-tracking);white-space:normal;margin:30px 0 28px}
-.hero-copy h1 .hero-strong,.hero-copy h1 .hero-last{display:block;white-space:nowrap}
-.hero-copy h1 .hero-strong{color:var(--ink)}
-.hero-copy h1 .hero-serif{display:block;width:max-content;max-width:100%;font-family:var(--ar-font-accent);font-style:italic;font-weight:400;font-size:clamp(73px,9vw,156px);line-height:.8;letter-spacing:var(--ar-serif-tracking);white-space:nowrap;color:var(--ar-color-magenta);margin:.12em 0 .14em .035em;transform:rotate(-2deg);transform-origin:left center}
-.hero-copy h1 .hero-last{color:var(--blue);font-size:.92em}
-.statement-title{font-family:var(--ar-font-display);font-weight:800;font-size:clamp(52px,7.2vw,114px);letter-spacing:-.075em;line-height:.93}
-.statement-title .serif-accent{display:inline-block;font-family:var(--ar-font-accent);font-style:italic;font-weight:400;font-size:1.35em;line-height:.75;letter-spacing:var(--ar-serif-tracking);color:var(--blue);padding:.07em 0 .1em .025em;transform:rotate(-2deg)}
-.disciplines h3{font-family:var(--ar-font-display);font-weight:700;letter-spacing:-.05em}
-.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-family:var(--ar-font-display);font-weight:800;font-size:clamp(52px,7.1vw,118px);letter-spacing:-.075em;line-height:.96}
-.identity-top h2 .serif-accent,.color-heading h2 .serif-accent,.applications-heading h2 .serif-accent,.motion-copy h2 .serif-accent,.end-chapter h2 .serif-accent{
-font-family:var(--ar-font-accent);font-weight:400;font-style:italic;letter-spacing:var(--ar-serif-tracking);line-height:.87;text-transform:none
-}
-.identity-top h2 .serif-accent{color:var(--acid);font-size:1.09em}
-.color-heading h2 .serif-accent,.applications-heading h2 .serif-accent{color:var(--blue);font-size:1.19em}
-.motion-copy h2 .serif-accent{color:var(--blue);font-size:1.5em}
-.end-chapter h2 .serif-accent{color:var(--acid);font-size:1.14em}
-.marquee-track span{font-family:var(--ar-font-display);font-weight:800}
-.palette-card>strong{font-family:var(--ar-font-display);font-weight:800;letter-spacing:-.065em}
-.application-ui-screen strong{font-family:var(--ar-font-display);font-weight:800;letter-spacing:-.07em}
-.lab-hero h1{font-family:var(--ar-font-display);font-weight:800;font-size:clamp(52px,7.2vw,111px);letter-spacing:-.074em;line-height:.94;white-space:normal}
-.lab-hero h1 .serif-accent{font:italic 400 1.23em/.88 var(--ar-font-accent);letter-spacing:var(--ar-serif-tracking);color:var(--blue);white-space:nowrap}
-.lab-section h2{font-family:var(--ar-font-display);font-weight:800;letter-spacing:-.058em}
-.lab-section h2 .serif-accent{display:inline-block;font:italic 400 1.12em/.95 var(--ar-font-accent);letter-spacing:var(--ar-serif-tracking);color:var(--blue)}
-.sample.display{font-family:var(--ar-font-display);font-weight:800;font-size:clamp(45px,5.6vw,89px);letter-spacing:-.074em;line-height:.98}
-.sample.editorial{font:italic 400 clamp(50px,7.4vw,110px)/.92 var(--ar-font-accent);letter-spacing:var(--ar-serif-tracking);color:var(--blue);overflow-wrap:anywhere}
-.sample.h3{font-family:var(--ar-font-display);font-weight:700;letter-spacing:-.04em}
+.brand-word{font:900 34px/.9 var(--ar-font-display);letter-spacing:-.075em}
+.hero-copy h1{font-family:var(--ar-font-display);font-weight:900;font-size:clamp(55px,6.3vw,106px);line-height:.91;letter-spacing:var(--ar-display-tracking);white-space:normal;margin:30px 0 30px}
+.hero-copy h1 .hero-strong,.hero-copy h1 .hero-regular,.hero-copy h1 .hero-last{display:block;white-space:nowrap}
+.hero-copy h1 .hero-strong{color:var(--ink);font-weight:900}
+.hero-copy h1 .hero-regular{font:400 1.13em/.98 var(--ar-font-display);letter-spacing:var(--ar-normal-tracking);color:var(--blue);margin:.025em 0 .075em 0}
+.hero-copy h1 .hero-last{color:var(--ink);font-weight:900}
+.hero-visual-mark{font-family:var(--ar-font-display);font-weight:900}
+.statement-title{font-family:var(--ar-font-display);font-weight:900;font-size:clamp(53px,7.6vw,118px);letter-spacing:var(--ar-display-tracking);line-height:.95}
+.statement-title .weight-regular{display:inline-block;font:400 1.08em/.98 var(--ar-font-display);letter-spacing:var(--ar-normal-tracking);color:var(--blue);padding:.035em 0}
+.disciplines h3{font-family:var(--ar-font-display);font-weight:700;letter-spacing:-.045em}
+.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-family:var(--ar-font-display);font-weight:900;font-size:clamp(51px,7vw,112px);letter-spacing:-.07em;line-height:1}
+.identity-top h2 .weight-regular,.color-heading h2 .weight-regular,.applications-heading h2 .weight-regular,.motion-copy h2 .weight-regular,.end-chapter h2 .weight-regular{font:400 1.02em/1.05 var(--ar-font-display);letter-spacing:var(--ar-normal-tracking);text-transform:uppercase;white-space:normal}
+.identity-top h2 .weight-regular{color:var(--acid)}
+.color-heading h2 .weight-regular,.applications-heading h2 .weight-regular,.motion-copy h2 .weight-regular{color:var(--blue)}
+.end-chapter h2 .weight-regular{color:var(--acid)}
+.marquee-track span{font-family:var(--ar-font-display);font-weight:900}
+.palette-card>strong{font-family:var(--ar-font-display);font-weight:900;letter-spacing:-.05em}
+.application-ui-screen strong{font-family:var(--ar-font-display);font-weight:900;letter-spacing:-.065em}
+.lab-hero h1{font-family:var(--ar-font-display);font-weight:900;font-size:clamp(50px,6.7vw,100px);letter-spacing:-.068em;line-height:.99;white-space:normal}
+.lab-hero h1 .weight-regular{display:inline-block;font:400 .91em/1.06 var(--ar-font-display);letter-spacing:var(--ar-normal-tracking);color:var(--blue)}
+.lab-section h2{font-family:var(--ar-font-display);font-weight:900;letter-spacing:-.06em}
+.lab-section h2 .weight-regular{display:inline-block;font:400 1.03em/1.05 var(--ar-font-display);letter-spacing:-.047em;color:var(--blue)}
+.sample.display{font-family:var(--ar-font-display);font-weight:900;font-size:clamp(43px,5.3vw,85px);letter-spacing:-.07em;line-height:.98}
+.sample.regular-specimen{font:400 clamp(38px,5.5vw,90px)/.99 var(--ar-font-display);letter-spacing:-.05em;color:var(--blue);overflow-wrap:anywhere}
+.sample.h3{font-family:var(--ar-font-display);font-weight:700;letter-spacing:-.045em}
 .typographic-poster{position:relative;overflow:hidden;background:var(--blue);color:#fff;padding:clamp(24px,4vw,56px);margin-top:36px;border-radius:5px;isolation:isolate}
-.typographic-poster:before{content:'';position:absolute;width:20%;height:160%;right:6%;top:-32%;background:var(--ar-color-orange);transform:rotate(23deg);z-index:-1}
-.typographic-poster:after{content:'✳';position:absolute;right:8%;top:20%;font:400 clamp(50px,9vw,146px)/1 var(--ar-font-display);color:var(--acid);transform:rotate(18deg)}
+.typographic-poster::before{content:'';position:absolute;width:19%;height:175%;right:5%;top:-37%;background:var(--acid);transform:rotate(22deg);z-index:-1}
+.typographic-poster::after{content:'AR/';position:absolute;right:7%;top:18%;font:900 clamp(44px,7vw,110px)/1 var(--ar-font-display);color:#FF652F;opacity:.8}
 .type-poster-kicker,.type-poster-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:600 11px/1.4 var(--ar-font-data);letter-spacing:.04em;position:relative;z-index:2}
-.type-poster-main{margin:clamp(30px,5vw,75px) 0;position:relative;z-index:2}
-.type-poster-main strong{display:block;width:fit-content;font:800 clamp(50px,8vw,131px)/.91 var(--ar-font-display);letter-spacing:-.078em;white-space:nowrap}
-.type-poster-main em{display:block;width:fit-content;max-width:100%;font:italic 400 clamp(44px,8.3vw,134px)/.92 var(--ar-font-accent);letter-spacing:-.06em;color:var(--acid);white-space:nowrap;margin:.1em 0 .1em 6%;transform:rotate(-3deg)}
+.type-poster-main{margin:clamp(30px,5vw,74px) 0;position:relative;z-index:2}
+.type-poster-main strong{display:block;width:fit-content;max-width:100%;font:900 clamp(46px,7.5vw,117px)/.95 var(--ar-font-display);letter-spacing:-.07em;white-space:nowrap}
+.type-poster-main .type-poster-regular{display:block;width:fit-content;max-width:100%;font:400 clamp(46px,7.5vw,117px)/.98 var(--ar-font-display);letter-spacing:-.06em;color:var(--acid);white-space:nowrap;margin:.08em 0}
 .typography-guideline{max-width:94ch;padding:20px 23px;margin-top:18px;background:#E7EEFF;border-left:4px solid var(--blue);color:var(--ink);font-size:15px;line-height:1.6}
-.typography-guideline strong{font-weight:800}
+.typography-guideline strong{font-weight:900}
 @media(max-width:900px){
-.hero-copy h1{font-size:clamp(52px,8.8vw,78px)}
-.hero-copy h1 .hero-serif{font-size:clamp(74px,12.5vw,112px)}
-.statement-title{font-size:clamp(52px,8.8vw,83px)}
-.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(48px,8vw,79px)}
-.lab-hero h1{font-size:clamp(46px,8vw,79px)}
+.hero-copy h1{font-size:clamp(52px,8.9vw,85px)}
+.statement-title{font-size:clamp(52px,9vw,88px)}
+.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(46px,7.8vw,82px)}
+.lab-hero h1{font-size:clamp(49px,7.8vw,79px)}
 }
 @media(max-width:700px){
-.hero-copy h1{font-size:clamp(43px,9vw,64px)}
-.hero-copy h1 .hero-serif{font-size:clamp(63px,15vw,90px);margin:.13em 0 .15em 0}
-.statement-title{font-size:clamp(45px,10vw,76px)}
-.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(42px,9.4vw,70px);overflow-wrap:normal}
-.lab-hero h1{font-size:clamp(43px,9vw,72px)}
-.lab-hero h1 .serif-accent{font-size:1.14em}
+.hero-copy h1{font-size:clamp(46px,9.7vw,66px)}
+.hero-copy h1 .hero-regular{font-size:1.07em}
+.statement-title{font-size:clamp(44px,10vw,75px)}
+.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(39px,8.8vw,70px)}
+.lab-hero h1{font-size:clamp(39px,8.2vw,67px)}
 .type-poster-kicker,.type-poster-footer{font-size:9px}
-.type-poster-main strong{font-size:clamp(37px,9vw,74px)}
-.type-poster-main em{font-size:clamp(38px,9vw,73px);margin-left:0}
-.typographic-poster:after{font-size:90px;top:21%;right:4%;opacity:.7}
-.sample.display{font-size:clamp(32px,8vw,65px)}
-.sample.editorial{font-size:clamp(36px,9vw,72px)}
+.type-poster-main strong,.type-poster-main .type-poster-regular{font-size:clamp(34px,8.7vw,73px)}
+.sample.display{font-size:clamp(30px,7.2vw,57px)}
+.sample.regular-specimen{font-size:clamp(31px,8vw,67px)}
 }
 @media(max-width:420px){
-.hero-copy h1{font-size:clamp(43px,10.7vw,50px);letter-spacing:-.065em}
-.hero-copy h1 .hero-serif{font-size:clamp(57px,15.5vw,69px)}
-.statement-title{font-size:clamp(40px,11vw,54px)}
-.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(39px,10.2vw,48px)}
-.lab-hero h1{font-size:clamp(43px,10vw,49px)}
-.type-poster-main strong{font-size:clamp(33px,9vw,41px)}
-.type-poster-main em{font-size:clamp(32px,8.4vw,42px)}
+.hero-copy h1{font-size:clamp(38px,10vw,46px)}
+.statement-title{font-size:clamp(39px,10.5vw,49px)}
+.identity-top h2,.color-heading h2,.applications-heading h2,.motion-copy h2,.end-chapter h2{font-size:clamp(36px,9.3vw,44px)}
+.lab-hero h1{font-size:clamp(37px,9.8vw,44px)}
+.type-poster-main strong,.type-poster-main .type-poster-regular{font-size:clamp(31px,8.2vw,38px)}
 }
-
-/* Los elementos editoriales desbordan intencionadamente sus contenedores.
-   Se recorta únicamente el eje horizontal del viewport, sin crear scroll-container
-   que desactive las cabeceras sticky. */
-html,body{max-width:100%;overflow-x:clip}

@@ -1,4 +1,4 @@
-# AR ESTUDIO — Manual de identidad 2.2
+# AR ESTUDIO — Manual de identidad 2.3
 
 ## Idea rectora
 **Electric Editorial**: expresivo en portada y preciso en ejecución. La marca no se reduce a un degradado. La diagonal del signo AR/ es un elemento compositivo repetible para cortes, transiciones, folios y motion.
@@ -17,9 +17,8 @@ Primarios: eléctrico #245BFF, glaciar #F5FAFF, tinta #101729. Intensificadores:
 Recomendación de distribución: fondos claros dominantes, azul como señal, acentos expresivos ocasionales. No aplicar los 7 colores a todos los componentes. Validar WCAG AA 4.5:1 para texto normal, 3:1 para texto grande y componentes donde corresponde; el laboratorio incluye calculadora interactiva.
 
 ## Tipografía
-**Casting tipográfico**: Syne ExtraBold 800 para grandes titulares de impacto; Instrument Serif Italic 400 para interjecciones, palabras expresivas o contrapuntos editoriales; Syne Bold 700 para encabezados de sección; DM Sans 400/500/700 para párrafos, botones y controles; IBM Plex Mono 400/500 para folios, datos y etiquetas.
+Archivo Regular 400 y Archivo Black 900 son los pesos protagonistas. Archivo Bold 700 para encabezados funcionales. Regular da respiración y Black crea impacto. Titulares grandes en caja alta, peso y tamaño como recursos de dirección de arte; no usar serif, cursiva ni inclinaciones decorativas. DM Sans 400 para lectura continua e IBM Plex Mono para folios. Comprobar ancho y contraste en móvil y escritorio.
 
-**Composición**: dos familias protagonistas como máximo por pieza (Syne + Instrument Serif); DM Sans e IBM Plex Mono son auxiliares. La serif nunca sustituye al cuerpo de lectura, y no se debe simular italic sobre Syne. El énfasis proviene del contraste entre forma, tamaño y ritmo, no de usar más efectos. Títulos grandes, tracking entre -0.04em y -0.08em según ancho de palabra. Antes de publicar se revisa desbordamiento a 320, 390, 768 y 1440 px. Tokens canónicos en `tokens.json`.
 
 ## Espaciado
 Base 4 px. `space-1=4px`, `space-2=8px`, `space-3=12px`, `space-4=16px`, `space-6=24px`, `space-12=48px`. La vista del laboratorio deriva los espacios del mismo JSON.

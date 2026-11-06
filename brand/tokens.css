@@ -1,4 +1,4 @@
-/* AR Estudio 2.2.0 · generado desde brand/tokens.json */
+/* AR Estudio 2.3.0 · generado desde brand/tokens.json */
 :root{
 --ar-color-blue:#245BFF;
 --ar-color-blue-dark:#173EC9;
@@ -15,7 +15,7 @@
 --ar-color-success:#146C52;
 --ar-color-danger:#B02B4D;
 --ar-color-warning:#805300;
---ar-font-display:'Syne',system-ui,sans-serif;
+--ar-font-display:'Archivo',Arial,sans-serif;
 --ar-font-body:'DM Sans',sans-serif;
 --ar-font-data:'IBM Plex Mono',monospace;
 --ar-text-xs:0.75rem;
@@ -24,7 +24,7 @@
 --ar-text-lg:1.25rem;
 --ar-text-h3:clamp(1.75rem,2.7vw,2.5rem);
 --ar-text-h2:clamp(2.5rem,5.2vw,5.5rem);
---ar-text-display:clamp(3.75rem,8.5vw,7.75rem);
+--ar-text-display:clamp(3.5rem,7.9vw,8.5rem);
 --ar-space-1:4px;
 --ar-space-2:8px;
 --ar-space-3:12px;
@@ -50,7 +50,10 @@
 --ar-layout-max:1440px;
 --ar-layout-reading:72ch;
 --ar-layout-gutter:clamp(20px,5vw,80px);
---ar-font-accent:'Instrument Serif',Georgia,serif;
+--ar-font-regular:'Archivo',Arial,sans-serif;
+--ar-weight-regular:400;
+--ar-weight-bold:700;
+--ar-weight-black:900;
 --ar-bg:var(--ar-color-glacier);
 --ar-surface:var(--ar-color-paper);
 --ar-surface-muted:var(--ar-color-ice);

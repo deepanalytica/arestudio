@@ -69,19 +69,17 @@ try{
     assert.ok(cssState.font>40,label+': tipografía display aplicada');
     assert.match(cssState.gradient,/gradient/,label+': hero con identidad cromática');
     const typeState=await page.evaluate(()=>{
-      const title=document.querySelector('#hero-heading');
-      const serif=document.querySelector('.hero-serif');
-      const bold=document.querySelector('.hero-strong');
-      const a=getComputedStyle(serif),b=getComputedStyle(bold);
-      const sr=serif.getBoundingClientRect(),tr=title.getBoundingClientRect();
-      return {serifFont:a.fontFamily,serifStyle:a.fontStyle,boldFont:b.fontFamily,boldWeight:b.fontWeight,serifWidth:sr.width,parentWidth:tr.width}
+      const title=document.querySelector('#hero-heading'),regular=document.querySelector('.hero-regular'),bold=document.querySelector('.hero-strong');
+      const a=getComputedStyle(regular),b=getComputedStyle(bold),rr=regular.getBoundingClientRect(),tr=title.getBoundingClientRect();
+      return {regularFont:a.fontFamily,regularStyle:a.fontStyle,regularWeight:a.fontWeight,boldFont:b.fontFamily,boldWeight:b.fontWeight,regularWidth:rr.width,parentWidth:tr.width};
     });
-    assert.match(typeState.serifFont,/Instrument Serif/,label+': serif editorial declarada');
-    assert.equal(typeState.serifStyle,'italic',label+': serif italiana real, no cursiva falsa');
-    assert.match(typeState.boldFont,/Syne/,label+': sans expresiva declarada');
-    assert.equal(typeState.boldWeight,'800',label+': titulares extra bold');
-    assert.ok(typeState.serifWidth<=typeState.parentWidth+3,label+': serif dentro de la columna');
-    assert.equal(await page.locator('.hero-serif').count(),1,label+': contrapunto editorial principal');
+    assert.match(typeState.regularFont,/Archivo/,label+': Archivo Regular');
+    assert.equal(typeState.regularWeight,'400',label+': peso regular 400');
+    assert.equal(typeState.regularStyle,'normal',label+': sin cursiva');
+    assert.match(typeState.boldFont,/Archivo/,label+': Archivo Black');
+    assert.equal(typeState.boldWeight,'900',label+': peso black 900');
+    assert.ok(typeState.regularWidth<=typeState.parentWidth+3,label+': regular dentro de la columna');
+    assert.equal(await page.locator('.hero-regular').count(),1,label+': acento tipográfico regular');
 
 
     assert.ok(await page.locator('a[href="lab/"]').count()>=1,label+': acceso al laboratorio');
@@ -127,10 +125,10 @@ try{
     }));
     assert.equal(labCSS.loaded,'1',label+': CSS externo del laboratorio cargado');
     assert.equal(labCSS.layout,'grid',label+': retícula del laboratorio aplicada');
-    assert.equal(await page.locator('.sample.editorial').count(),1,label+': specimen serif expresiva');
+    assert.equal(await page.locator('.sample.regular-specimen').count(),1,label+': muestra Archivo Regular');
     assert.equal(await page.locator('.typographic-poster').count(),1,label+': composición tipográfica de la marca');
-    const specimen=await page.locator('.sample.editorial').evaluate(el=>getComputedStyle(el).fontFamily);
-    assert.match(specimen,/Instrument Serif/,label+': fuente serif documentada');
+    const specimen=await page.locator('.sample.regular-specimen').evaluate(el=>getComputedStyle(el).fontFamily);
+    assert.match(specimen,/Archivo/,label+': familia Archivo documentada');
 
     assert.ok(labCSS.titleSize>40,label+': escala editorial aplicada');
 
