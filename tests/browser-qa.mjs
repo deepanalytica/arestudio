@@ -19,7 +19,7 @@ try{
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
     const covers=await page.locator('.work-card img').evaluateAll(elements=>elements.map(el=>el.getAttribute('src')));
     assert.ok(new Set(covers).size>=20,`${label}: dirección de arte individual por proyecto`);
-    if(label==='desktop')assert.ok((await page.locator('.feature-card').first().boundingBox()).y<655,'Los proyectos destacados son visibles sin desplazamiento');
+    if(label==='desktop'){const b=await page.locator('.feature-card').first().boundingBox();console.log('FIRST_FOLD_Y_DESKTOP',Math.round(b.y));await page.screenshot({path:'artifacts/desktop-first-fold.png',fullPage:false});assert.ok(b.y<655,'Los proyectos destacados son visibles sin desplazamiento');}
     if(label==='mobile')assert.ok((await page.locator('.feature-card').first().boundingBox()).y<700,'Los proyectos empiezan dentro de la primera pantalla móvil');
     await page.waitForTimeout(850);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);

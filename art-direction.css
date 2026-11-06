@@ -119,3 +119,13 @@ body{background:var(--pearl)}
 @media(max-width:390px){.hero-index{display:none}.art-topline{font-size:7px}.art-title-archivo{font-size:43px}.art-title-system{font-size:34px}.art-title-geo{font-size:43px}.art-visible-stamp{font-size:35px}}
 @media(hover:none){.feature-card:hover{transform:none}.feature-card .feature-visual:before{display:none}}
 @media(prefers-reduced-motion:reduce){.art-crosshair{animation:none}.feature-card .feature-visual img,.art-system-ui,.art-visible-flower{transition:none!important}}
+/* First-fold refinement: keep the project gallery in view on desktop. */
+@media(min-width:1001px){
+  .hero{min-height:278px;padding-block:12px 6px}
+  .hero h1{font-size:clamp(60px,5.9vw,89px);margin:17px 0 13px}
+  .hero-copy>p{font-size:clamp(16px,1.3vw,18px)}
+  .hero-actions{margin-top:18px}
+  .hero-index{margin-top:14px}
+  .hero-art{height:258px}
+  .featured .section-top{margin-bottom:17px}
+}
