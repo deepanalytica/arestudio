@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Atalaya — ilustración editorial AR/</title><desc id="d">Composición abstracta de observability; no es una captura de producto.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#242B4C"/><stop offset="1" stop-color="#F7CB66" stop-opacity=".22"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#F7CB66"/><stop offset="1" stop-color="#79C7FF"/></linearGradient></defs>
+<rect width="960" height="540" fill="#242B4C"/><rect width="960" height="540" fill="url(#bg)" opacity=".42"/>
+<path d="M44 38h45 M44 38v45 M916 38h-45 M916 38v45 M44 502h45 M44 502v-45 M916 502h-45 M916 502v-45" fill="none" stroke="#F7CB66" opacity=".27" stroke-width="2"/>
+<text x="56" y="76" fill="#F7CB66" font-family="ui-monospace,monospace" letter-spacing="4" font-size="17" opacity=".8">AR/ — OBSERVABILITY</text>
+<circle cx="600" cy="275" r="52" stroke="#F7CB66" fill="none" stroke-width="3" opacity="0.380"/>
+<circle cx="600" cy="275" r="94" stroke="#F7CB66" fill="none" stroke-width="1.5" opacity="0.447"/>
+<circle cx="600" cy="275" r="136" stroke="#F7CB66" fill="none" stroke-width="3" opacity="0.514"/>
+<circle cx="600" cy="275" r="178" stroke="#F7CB66" fill="none" stroke-width="1.5" opacity="0.581"/>
+<circle cx="600" cy="275" r="220" stroke="#F7CB66" fill="none" stroke-width="3" opacity="0.648"/>
+<circle cx="600" cy="275" r="262" stroke="#F7CB66" fill="none" stroke-width="1.5" opacity="0.715"/>
+<circle cx="600" cy="275" r="304" stroke="#F7CB66" fill="none" stroke-width="3" opacity="0.782"/>
+<circle cx="670.0" cy="275.0" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="525.5" cy="343.2" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="611.5" cy="143.5" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="699.2" cy="404.4" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="409.0" cy="241.2" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="789.9" cy="154.3" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="533.5" cy="522.2" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="467.8" cy="20.3" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="678.0" cy="303.5" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="494.6" cy="318.5" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="661.5" cy="143.7" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="652.6" cy="443.0" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="420.9" cy="171.1" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="832.5" cy="224.0" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="445.2" cy="495.0" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="561.6" cy="-22.5" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="673.4" cy="336.9" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="473.1" cy="280.2" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="712.1" cy="163.6" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="591.1" cy="463.8" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="459.2" cy="106.0" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="848.7" cy="308.7" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="368.4" cy="435.9" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="617.2" cy="198.9" r="6" fill="#79C7FF" opacity=".87"/>
+<circle cx="654.1" cy="369.6" r="2" fill="#79C7FF" opacity=".87"/>
+<circle cx="466.7" cy="232.3" r="4" fill="#79C7FF" opacity=".87"/>
+<circle cx="755.3" cy="203.4" r="6" fill="#79C7FF" opacity=".87"/>
+<path d="M600 275L815 120" stroke="#79C7FF" stroke-width="4"/>
+<circle cx="600" cy="275" r="10" fill="#79C7FF"/>
+<path d="M55 468H905" stroke="#F7CB66" opacity=".24"/>
+<text x="60" y="492" fill="#F7CB66" font-size="16" font-family="ui-monospace,monospace" letter-spacing="3">ATALAYA</text>
+<text x="899" y="492" text-anchor="end" fill="#F7CB66" opacity=".7" font-size="13" font-family="ui-monospace,monospace">AR / 2026</text>
+</svg>

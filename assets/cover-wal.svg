@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">WAL — ilustración editorial AR/</title><desc id="d">Composición abstracta de visual commerce; no es una captura de producto.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F9E6D0"/><stop offset="1" stop-color="#EB6538" stop-opacity=".22"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#EB6538"/><stop offset="1" stop-color="#123E35"/></linearGradient></defs>
+<rect width="960" height="540" fill="#F9E6D0"/><rect width="960" height="540" fill="url(#bg)" opacity=".42"/>
+<path d="M44 38h45 M44 38v45 M916 38h-45 M916 38v45 M44 502h45 M44 502v-45 M916 502h-45 M916 502v-45" fill="none" stroke="#EB6538" opacity=".27" stroke-width="2"/>
+<text x="56" y="76" fill="#EB6538" font-family="ui-monospace,monospace" letter-spacing="4" font-size="17" opacity=".8">AR/ — VISUAL COMMERCE</text>
+<g transform="rotate(-14 183 291)"><rect x="118" y="141" width="125" height="225" rx="7" fill="#EB6538"/>
+<rect x="133" y="163" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="180" cy="236" r="34" fill="#123E35" opacity=".7"/></g>
+<g transform="rotate(-10 258 331)"><rect x="193" y="181" width="125" height="225" rx="7" fill="#123E35"/>
+<rect x="208" y="203" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="255" cy="276" r="34" fill="#EB6538" opacity=".7"/></g>
+<g transform="rotate(-6 333 371)"><rect x="268" y="221" width="125" height="225" rx="7" fill="#EB6538"/>
+<rect x="283" y="243" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="330" cy="316" r="34" fill="#123E35" opacity=".7"/></g>
+<g transform="rotate(-2 408 291)"><rect x="343" y="141" width="125" height="225" rx="7" fill="#123E35"/>
+<rect x="358" y="163" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="405" cy="236" r="34" fill="#EB6538" opacity=".7"/></g>
+<g transform="rotate(2 483 331)"><rect x="418" y="181" width="125" height="225" rx="7" fill="#EB6538"/>
+<rect x="433" y="203" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="480" cy="276" r="34" fill="#123E35" opacity=".7"/></g>
+<g transform="rotate(6 558 371)"><rect x="493" y="221" width="125" height="225" rx="7" fill="#123E35"/>
+<rect x="508" y="243" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="555" cy="316" r="34" fill="#EB6538" opacity=".7"/></g>
+<g transform="rotate(10 633 291)"><rect x="568" y="141" width="125" height="225" rx="7" fill="#EB6538"/>
+<rect x="583" y="163" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="630" cy="236" r="34" fill="#123E35" opacity=".7"/></g>
+<g transform="rotate(14 708 331)"><rect x="643" y="181" width="125" height="225" rx="7" fill="#123E35"/>
+<rect x="658" y="203" width="95" height="130" rx="2" fill="#F9E6D0" opacity=".4"/><circle cx="705" cy="276" r="34" fill="#EB6538" opacity=".7"/></g>
+<path d="M55 468H905" stroke="#EB6538" opacity=".24"/>
+<text x="60" y="492" fill="#EB6538" font-size="16" font-family="ui-monospace,monospace" letter-spacing="3">WAL</text>
+<text x="899" y="492" text-anchor="end" fill="#EB6538" opacity=".7" font-size="13" font-family="ui-monospace,monospace">AR / 2026</text>
+</svg>

@@ -65,7 +65,7 @@ const menu=$('#mobile-menu'),menuBtn=$('#menu-toggle');menuBtn.addEventListener(
 $('#year').textContent=String(new Date().getFullYear());
 let scheduled=false;addEventListener('scroll',()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;$('#scroll-meter').style.transform=`scaleX(${max>0?scrollY/max:0})`;scheduled=false})},{passive:true});
 // GSAP progressive enhancement: no dependency on GSAP for content or navigation.
-function motion(){if(reduced.matches||!window.gsap)return;const gsap=window.gsap;gsap.from('.hero-copy > *',{y:18,opacity:0,duration:.78,stagger:.09,ease:'power3.out',clearProps:'all'});gsap.from('.hero-mesh',{opacity:0,y:17,duration:1.4,ease:'power3.out',clearProps:'all'});gsap.from('.feature-card',{y:23,opacity:0,stagger:.085,duration:.75,ease:'power3.out',delay:.12,clearProps:'all'});}
+function motion(){if(reduced.matches||!window.gsap)return;const gsap=window.gsap;gsap.from('.hero-copy > *',{y:12,opacity:.85,duration:.48,stagger:.045,ease:'power3.out',clearProps:'all'});gsap.from('.hero-mesh',{opacity:.75,y:9,duration:.65,ease:'power3.out',clearProps:'all'});gsap.from('.feature-card',{y:11,opacity:.94,stagger:.04,duration:.4,ease:'power3.out',clearProps:'all'});}
 setTimeout(motion,180);
 // Lightweight pointer interaction. Effect is purely decorative and disabled for reduced motion.
 if(!reduced.matches){$$('.feature-card').forEach(card=>{card.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--light-x',`${(x+.5)*100}%`);card.style.setProperty('--light-y',`${(y+.5)*100}%`)});});}

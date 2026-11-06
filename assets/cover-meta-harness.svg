@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Meta Harness — ilustración editorial AR/</title><desc id="d">Composición abstracta de orchestration; no es una captura de producto.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102F32"/><stop offset="1" stop-color="#82F1B3" stop-opacity=".22"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#82F1B3"/><stop offset="1" stop-color="#A8A2FF"/></linearGradient></defs>
+<rect width="960" height="540" fill="#102F32"/><rect width="960" height="540" fill="url(#bg)" opacity=".42"/>
+<path d="M44 38h45 M44 38v45 M916 38h-45 M916 38v45 M44 502h45 M44 502v-45 M916 502h-45 M916 502v-45" fill="none" stroke="#82F1B3" opacity=".27" stroke-width="2"/>
+<text x="56" y="76" fill="#82F1B3" font-family="ui-monospace,monospace" letter-spacing="4" font-size="17" opacity=".8">AR/ — ORCHESTRATION</text>
+<path d="M160 290L489 208" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M160 290L825 380" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M265 168L385 352" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M265 168L755 128" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M385 352L610 315" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M385 352L300 440" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M489 208L825 380" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M610 315L755 128" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<path d="M755 128L300 440" stroke="#82F1B3" stroke-width="2" opacity=".38"/>
+<circle cx="160" cy="290" r="25" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="160" cy="290" r="5" fill="#A8A2FF"/>
+<circle cx="265" cy="168" r="34" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="265" cy="168" r="9" fill="#A8A2FF"/>
+<circle cx="385" cy="352" r="43" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="385" cy="352" r="5" fill="#A8A2FF"/>
+<circle cx="489" cy="208" r="25" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="489" cy="208" r="9" fill="#A8A2FF"/>
+<circle cx="610" cy="315" r="34" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="610" cy="315" r="5" fill="#A8A2FF"/>
+<circle cx="755" cy="128" r="43" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="755" cy="128" r="9" fill="#A8A2FF"/>
+<circle cx="825" cy="380" r="25" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="825" cy="380" r="5" fill="#A8A2FF"/>
+<circle cx="300" cy="440" r="34" fill="#102F32" stroke="#82F1B3" stroke-width="3"/>
+<circle cx="300" cy="440" r="9" fill="#A8A2FF"/>
+<path d="M55 468H905" stroke="#82F1B3" opacity=".24"/>
+<text x="60" y="492" fill="#82F1B3" font-size="16" font-family="ui-monospace,monospace" letter-spacing="3">META / HARNESS</text>
+<text x="899" y="492" text-anchor="end" fill="#82F1B3" opacity=".7" font-size="13" font-family="ui-monospace,monospace">AR / 2026</text>
+</svg>

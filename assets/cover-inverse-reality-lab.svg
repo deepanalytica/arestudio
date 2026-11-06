@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Inverse Reality — ilustración editorial AR/</title><desc id="d">Composición abstracta de hypotheses; no es una captura de producto.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#242444"/><stop offset="1" stop-color="#B69EFF" stop-opacity=".22"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#B69EFF"/><stop offset="1" stop-color="#FCA899"/></linearGradient></defs>
+<rect width="960" height="540" fill="#242444"/><rect width="960" height="540" fill="url(#bg)" opacity=".42"/>
+<path d="M44 38h45 M44 38v45 M916 38h-45 M916 38v45 M44 502h45 M44 502v-45 M916 502h-45 M916 502v-45" fill="none" stroke="#B69EFF" opacity=".27" stroke-width="2"/>
+<text x="56" y="76" fill="#B69EFF" font-family="ui-monospace,monospace" letter-spacing="4" font-size="17" opacity=".8">AR/ — HYPOTHESES</text>
+<path d="M260 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#FCA899" opacity="0.12" stroke-width="2"/>
+<path d="M300 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#B69EFF" opacity="0.19" stroke-width="3"/>
+<path d="M340 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#FCA899" opacity="0.26" stroke-width="4"/>
+<path d="M380 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#B69EFF" opacity="0.33" stroke-width="2"/>
+<path d="M420 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#FCA899" opacity="0.40" stroke-width="3"/>
+<path d="M460 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#B69EFF" opacity="0.47" stroke-width="4"/>
+<path d="M500 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#FCA899" opacity="0.54" stroke-width="2"/>
+<path d="M540 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#B69EFF" opacity="0.61" stroke-width="3"/>
+<path d="M580 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#FCA899" opacity="0.68" stroke-width="4"/>
+<path d="M620 140l130 130l-130 130l-130 -130Z" fill="none" stroke="#B69EFF" opacity="0.75" stroke-width="2"/>
+<path d="M55 468H905" stroke="#B69EFF" opacity=".24"/>
+<text x="60" y="492" fill="#B69EFF" font-size="16" font-family="ui-monospace,monospace" letter-spacing="3">INVERSE / REALITY / LAB</text>
+<text x="899" y="492" text-anchor="end" fill="#B69EFF" opacity=".7" font-size="13" font-family="ui-monospace,monospace">AR / 2026</text>
+</svg>
