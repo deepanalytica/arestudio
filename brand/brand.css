@@ -301,3 +301,8 @@ font-family:var(--ar-font-accent);font-weight:400;font-style:italic;letter-spaci
 .type-poster-main strong{font-size:clamp(33px,9vw,41px)}
 .type-poster-main em{font-size:clamp(32px,8.4vw,42px)}
 }
+
+/* Los elementos editoriales desbordan intencionadamente sus contenedores.
+   Se recorta únicamente el eje horizontal del viewport, sin crear scroll-container
+   que desactive las cabeceras sticky. */
+html,body{max-width:100%;overflow-x:clip}

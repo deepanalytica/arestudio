@@ -96,6 +96,19 @@ try{
     await page.waitForTimeout(350);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     if(overflow)console.log(label+' overflow:',await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{let r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left<-2}).slice(0,12).map(x=>({tag:x.tagName,class:x.className}))));
+    // Los titulares importantes deben caber visualmente incluso con el recorte
+    // decorativo del viewport activado.
+    const headingClips=await page.evaluate(()=>{
+      const ids=['#hero-heading','#concepto-title','#identity-title','#color-title','#app-title','#motion-title'];
+      return ids.map(id=>{
+        const el=document.querySelector(id);
+        const rect=el.getBoundingClientRect(), range=document.createRange();
+        range.selectNodeContents(el);
+        const glyph=range.getBoundingClientRect();
+        return {id,left:Math.round(glyph.left),right:Math.round(glyph.right),width:Math.round(rect.width)};
+      }).filter(x=>x.left<-4||x.right>innerWidth+4)
+    });
+    assert.deepEqual(headingClips,[],label+': titulares sin cortes en el viewport');
     assert.equal(overflow,false,label+': sin desplazamiento horizontal');
     await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
     await page.close();
