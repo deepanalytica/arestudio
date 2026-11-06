@@ -1,4 +1,4 @@
-/* AR Estudio 2.0 · generado desde brand/tokens.json */
+/* AR Estudio 2.2.0 · generado desde brand/tokens.json */
 :root{
 --ar-color-blue:#245BFF;
 --ar-color-blue-dark:#173EC9;
@@ -15,7 +15,7 @@
 --ar-color-success:#146C52;
 --ar-color-danger:#B02B4D;
 --ar-color-warning:#805300;
---ar-font-display:'Space Grotesk',sans-serif;
+--ar-font-display:'Syne',system-ui,sans-serif;
 --ar-font-body:'DM Sans',sans-serif;
 --ar-font-data:'IBM Plex Mono',monospace;
 --ar-text-xs:0.75rem;
@@ -50,6 +50,7 @@
 --ar-layout-max:1440px;
 --ar-layout-reading:72ch;
 --ar-layout-gutter:clamp(20px,5vw,80px);
+--ar-font-accent:'Instrument Serif',Georgia,serif;
 --ar-bg:var(--ar-color-glacier);
 --ar-surface:var(--ar-color-paper);
 --ar-surface-muted:var(--ar-color-ice);
