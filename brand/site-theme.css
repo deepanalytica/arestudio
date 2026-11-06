@@ -1,0 +1,40 @@
+/* AR Estudio Electric Editorial — capa de identidad sobre el portafolio */
+@import url('./tokens.css');
+:root{
+--pearl:var(--ar-bg);--surface:var(--ar-surface);--mist:var(--ar-surface-muted);
+--forest:var(--ar-action);--pine:var(--ar-text);--ink:var(--ar-text);
+--muted:var(--ar-text-muted);--line:var(--ar-border);
+--lime:var(--ar-color-lime);--signal:var(--ar-action);
+--lavender:#DED2FF;--orange:var(--ar-color-orange);--pink:var(--ar-color-magenta);
+--shadow-1:var(--ar-shadow-soft);--shadow-2:var(--ar-shadow-raised);
+--ease:var(--ar-ease-out);
+}
+body{background:var(--ar-bg);color:var(--ar-text)}
+.header{background:rgba(245,250,255,.92);border-color:var(--ar-border);box-shadow:0 8px 30px #223C7010}
+.wordmark,.header .wordmark{font-family:'Space Grotesk','DM Sans',sans-serif;color:var(--ar-text)}
+.wordmark span{color:var(--ar-action)}
+.header-cta,.btn-solid{background:var(--ar-action);color:white;box-shadow:0 8px 25px #245BFF30}
+.header-cta:hover,.btn-solid:hover{background:var(--ar-action-hover)}
+.nav-active{color:var(--ar-action)!important}
+.hero .eyebrow{border-color:var(--ar-border);background:var(--ar-surface)}
+.eyebrow,.section-kicker{color:var(--ar-text-muted)}
+.hero-copy h1,.section-top h2,.approach h2,.contact h2{color:var(--ar-text);font-family:'Space Grotesk','DM Sans',sans-serif}
+.period,.green-dot{color:var(--ar-action)}
+.status-dot{background:var(--ar-color-magenta);box-shadow:0 0 0 4px #F12BBE20}
+.hero-copy>p,.feature-info p,.section-top p{color:var(--ar-text-muted)}
+.hero-art{background:radial-gradient(circle at 24% 80%,#FF652F,transparent 45%),radial-gradient(circle at 77% 29%,#F12BBE,transparent 55%),linear-gradient(150deg,#245BFF,#6236FF)}
+.hero-art .hero-mesh.brand-mark{position:absolute;inset:10% 10% 10% 8%;width:84%;height:80%;object-fit:contain;filter:drop-shadow(0 20px 25px #10172945)}
+.hero-art-note{background:#FFFFFFDC;border-color:#FFFFFF80}.hero-art-note span{color:var(--ar-action)}.hero-art-note small{color:var(--ar-text-muted)}
+.hero-cross,.hero-art-label{color:white}
+.scroll-meter{background:linear-gradient(90deg,#245BFF,#6236FF,#F12BBE,#FF652F)}
+.feature-card{border-color:var(--ar-border);box-shadow:var(--ar-shadow-soft)}
+.feature-card:hover{border-color:#245BFF65;box-shadow:var(--ar-shadow-raised)}
+.feature-card .feature-info{background:var(--ar-surface)}
+.feature-info p{color:var(--ar-text-muted)}
+.feature-foot{border-color:var(--ar-border)}.feature-foot b{color:var(--ar-action);border-color:var(--ar-border)}
+.feature-card:hover .feature-foot b{background:var(--ar-color-lime)}
+.btn-light{background:var(--ar-surface);color:var(--ar-text);border-color:var(--ar-border)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--ar-focus);outline-offset:4px}
+::selection{background:var(--ar-color-lime);color:var(--ar-color-ink)}
+.contact-box{background:var(--ar-color-ice)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es-CL">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf9f6">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F5FAFF">
   <meta name="description" content="AR/ — Portafolio de diseño, desarrollo, datos y comunicación. Explora proyectos, sistemas, investigación y dirección de arte.">
   <meta name="author" content="Alexis Reyes"><meta name="robots" content="index,follow">
   <meta property="og:type" content="website"><meta property="og:locale" content="es_CL"><meta property="og:site_name" content="AR/ Studio"><meta property="og:title" content="AR/ — Ideas que funcionan"><meta property="og:description" content="Diseño, datos, tecnología y comunicación para problemas reales."><meta property="og:image" content="https://deepanalytica.github.io/arestudio/assets/og.png">
@@ -12,6 +12,7 @@
   <title>AR/ — Portafolio · Diseño, Datos y Tecnología</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="art-direction.css">
+  <link rel="stylesheet" href="brand/site-theme.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script type="module" src="app.js"></script>
 </head>
@@ -20,9 +21,9 @@
   <div class="scroll-meter" id="scroll-meter" aria-hidden="true"></div>
   <header class="header" id="inicio"><div class="header-inner">
     <a class="wordmark" href="#inicio" aria-label="AR Studio, volver al inicio">AR<span>/</span></a>
-    <nav class="main-nav" aria-label="Navegación principal"><a class="nav-active" href="#proyectos">Proyectos</a><a href="#explorar">Índice</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="sistema/">Design system <span class="nav-diag">↗</span></a></nav>
+    <nav class="main-nav" aria-label="Navegación principal"><a class="nav-active" href="#proyectos">Proyectos</a><a href="#explorar">Índice</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="brand/">Brand system <span class="nav-diag">↗</span></a></nav>
     <div class="header-actions"><a href="#explorar" class="icon-btn search-launch" aria-label="Buscar proyectos" title="Buscar proyectos, tecla /">⌕</a><a href="#contacto" class="header-cta">Conversemos <span>↗</span></a><button class="menu-toggle icon-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">☰</button></div>
-  </div><nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" hidden><a href="#proyectos">Proyectos</a><a href="#explorar">Índice completo</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="sistema/">Sistema de diseño ↗</a><a href="#contacto">Contacto</a></nav></header>
+  </div><nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" hidden><a href="#proyectos">Proyectos</a><a href="#explorar">Índice completo</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="brand/">Brand system ↗</a><a href="#contacto">Contacto</a></nav></header>
 
   <main>
     <section class="hero container" aria-labelledby="hero-title">
@@ -33,7 +34,7 @@
         <div class="hero-index"><span>AR/ STUDIO</span><span class="hero-index-rule"></span><span>PORTAFOLIO EDITORIAL / 2026</span></div>
       </div>
       <div class="hero-art" aria-label="Composición abstracta de datos y territorio" role="img">
-        <img class="hero-mesh" src="assets/hero-mesh.svg" width="960" height="600" alt="" fetchpriority="high">
+        <img class="hero-mesh brand-mark" src="brand/assets/mark.svg" width="960" height="600" alt="" fetchpriority="high">
         <div class="hero-art-note"><span>AR/</span><small>ANÁLISIS<br>DISEÑO<br>DESARROLLO<br>COMUNICACIÓN</small></div>
         <div class="hero-cross" aria-hidden="true">＋</div><div class="hero-art-label" aria-hidden="true">CREATIVE SYSTEMS / 2026</div>
       </div>
@@ -102,7 +103,7 @@
     <section class="contact container" id="contacto"><div class="contact-box"><div><span class="section-kicker">05 / HABLEMOS</span><h2>¿Hay algo que<br>quieras construir<span class="green-dot">?</span></h2><p>Podemos empezar por el problema, el objetivo y lo que necesitas mostrar o resolver.</p></div><div class="contact-actions"><a class="btn btn-solid" href="mailto:asaave9@gmail.com?subject=Consulta%20desde%20AR%2F%20Studio">Escribir por correo ↗</a><a class="btn btn-light" href="https://wa.me/56958039450?text=Hola%2C%20vi%20tu%20portafolio%20AR%2F%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener noreferrer">Conversar por WhatsApp ↗</a></div></div></section>
   </main>
 
-  <footer><div class="container footer-inner"><a class="wordmark" href="#inicio">AR<span>/</span></a><span>Diseño · Datos · Tecnología · Comunicación</span><div><a href="sistema/">Sistema de diseño ↗</a><a href="https://github.com/deepanalytica/arestudio" target="_blank" rel="noopener noreferrer">Código ↗</a><a href="#inicio">Volver arriba ↑</a></div><small>© <span id="year">2026</span> AR/</small></div></footer>
+  <footer><div class="container footer-inner"><a class="wordmark" href="#inicio">AR<span>/</span></a><span>Diseño · Datos · Tecnología · Comunicación</span><div><a href="brand/">Brand system ↗</a><a href="https://github.com/deepanalytica/arestudio" target="_blank" rel="noopener noreferrer">Código ↗</a><a href="#inicio">Volver arriba ↑</a></div><small>© <span id="year">2026</span> AR/</small></div></footer>
 
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="modal-title" aria-describedby="modal-summary"><div class="dialog-shell"><div class="dialog-head"><span class="section-kicker">AR/ · FICHA DE PROYECTO</span><button class="dialog-close" type="button" aria-label="Cerrar ficha" id="close-dialog">✕</button></div><div id="dialog-content"></div></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
