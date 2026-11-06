@@ -65,6 +65,7 @@ try{
     assert.equal(await page.locator('.chip').nth(1).getAttribute('aria-pressed'),'true');
     await page.waitForTimeout(600);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+    if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,15).map(el=>({tag:el.tagName,cls:typeof el.className==='string'?el.className:'svg',left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)})));console.log(label+' overflow offenders:',JSON.stringify(offenders));}
     assert.equal(overflow,false,label+': sin scroll horizontal');
     await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
     await page.close();
