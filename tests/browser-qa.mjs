@@ -118,6 +118,12 @@ try{
     page.on('pageerror',e=>errors.push(label+': '+e.message));
     await page.goto('http://127.0.0.1:8844/brand/lab/',{waitUntil:'domcontentloaded',timeout:30000});
     assert.equal(await page.locator('.swatch').count(),7,label+': siete colores');
+    await page.locator('.logo-kit-card').first().waitFor({timeout:10000});
+    assert.equal(await page.locator('.logo-kit-card').count(),26,label+': 26 variantes disponibles');
+    await page.locator('#logo-kit-category').selectOption('Horizontal');
+    assert.equal(await page.locator('.logo-kit-card').count(),4,label+': filtro horizontal');
+    await page.locator('#logo-kit-category').selectOption('Todas');
+
     const labCSS=await page.evaluate(()=>({
       loaded:getComputedStyle(document.documentElement).getPropertyValue('--ar-brand-css-loaded').trim(),
       layout:getComputedStyle(document.querySelector('.lab-hero-grid')).display,
