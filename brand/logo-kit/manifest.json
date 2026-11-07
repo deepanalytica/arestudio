@@ -1,0 +1,258 @@
+{
+  "version": "3.0.0",
+  "brand": "AR Estudio",
+  "symbol": "AR/",
+  "colors": {
+    "navy": "#06122E",
+    "ink": "#101729",
+    "blue": "#245BFF",
+    "glacier": "#F5FAFF",
+    "white": "#FFFFFF",
+    "violet": "#6236FF",
+    "magenta": "#F12BBE",
+    "orange": "#FF652F",
+    "lime": "#EFFF38"
+  },
+  "variants": [
+    {
+      "id": "simbolo-azul-transparente",
+      "label": "simbolo azul transparente",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-azul-transparente.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-tinta-transparente",
+      "label": "simbolo tinta transparente",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-tinta-transparente.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-blanco-transparente",
+      "label": "simbolo blanco transparente",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-blanco-transparente.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-monocromo-tinta",
+      "label": "simbolo monocromo tinta",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-monocromo-tinta.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-monocromo-blanco",
+      "label": "simbolo monocromo blanco",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-monocromo-blanco.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-monocromo-azul",
+      "label": "simbolo monocromo azul",
+      "category": "Transparente",
+      "layout": "symbol",
+      "background": "transparent",
+      "svg": "svg/simbolo-monocromo-azul.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-azul-profundo",
+      "label": "simbolo sobre azul profundo",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "navy",
+      "svg": "svg/simbolo-sobre-azul-profundo.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-glaciar",
+      "label": "simbolo sobre glaciar",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "glacier",
+      "svg": "svg/simbolo-sobre-glaciar.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-azul-electrico",
+      "label": "simbolo sobre azul electrico",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "blue",
+      "svg": "svg/simbolo-sobre-azul-electrico.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-magenta",
+      "label": "simbolo sobre magenta",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "magenta",
+      "svg": "svg/simbolo-sobre-magenta.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-lima",
+      "label": "simbolo sobre lima",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "lime",
+      "svg": "svg/simbolo-sobre-lima.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "simbolo-sobre-violeta",
+      "label": "simbolo sobre violeta",
+      "category": "Colorway",
+      "layout": "symbol",
+      "background": "violet",
+      "svg": "svg/simbolo-sobre-violeta.svg",
+      "usage": "Firma AR/"
+    },
+    {
+      "id": "horizontal-transparente-tinta",
+      "label": "horizontal transparente tinta",
+      "category": "Horizontal",
+      "layout": "horizontal",
+      "background": "transparent",
+      "svg": "svg/horizontal-transparente-tinta.svg",
+      "usage": "Firma completa de cabecera"
+    },
+    {
+      "id": "horizontal-transparente-blanco",
+      "label": "horizontal transparente blanco",
+      "category": "Horizontal",
+      "layout": "horizontal",
+      "background": "transparent",
+      "svg": "svg/horizontal-transparente-blanco.svg",
+      "usage": "Firma completa de cabecera"
+    },
+    {
+      "id": "horizontal-sobre-glaciar",
+      "label": "horizontal sobre glaciar",
+      "category": "Horizontal",
+      "layout": "horizontal",
+      "background": "glacier",
+      "svg": "svg/horizontal-sobre-glaciar.svg",
+      "usage": "Firma completa de cabecera"
+    },
+    {
+      "id": "horizontal-sobre-azul-profundo",
+      "label": "horizontal sobre azul profundo",
+      "category": "Horizontal",
+      "layout": "horizontal",
+      "background": "navy",
+      "svg": "svg/horizontal-sobre-azul-profundo.svg",
+      "usage": "Firma completa de cabecera"
+    },
+    {
+      "id": "vertical-sobre-azul-profundo",
+      "label": "vertical sobre azul profundo",
+      "category": "Vertical",
+      "layout": "vertical",
+      "background": "navy",
+      "svg": "svg/vertical-sobre-azul-profundo.svg",
+      "usage": "Firma apilada"
+    },
+    {
+      "id": "vertical-sobre-glaciar",
+      "label": "vertical sobre glaciar",
+      "category": "Vertical",
+      "layout": "vertical",
+      "background": "glacier",
+      "svg": "svg/vertical-sobre-glaciar.svg",
+      "usage": "Firma apilada"
+    },
+    {
+      "id": "vertical-transparente-tinta",
+      "label": "vertical transparente tinta",
+      "category": "Vertical",
+      "layout": "vertical",
+      "background": "transparent",
+      "svg": "svg/vertical-transparente-tinta.svg",
+      "usage": "Firma apilada"
+    },
+    {
+      "id": "vertical-transparente-blanco",
+      "label": "vertical transparente blanco",
+      "category": "Vertical",
+      "layout": "vertical",
+      "background": "transparent",
+      "svg": "svg/vertical-transparente-blanco.svg",
+      "usage": "Firma apilada"
+    },
+    {
+      "id": "icono-azul-profundo",
+      "label": "icono azul profundo",
+      "category": "Ícono",
+      "layout": "icon",
+      "background": "navy",
+      "svg": "svg/icono-azul-profundo.svg",
+      "usage": "App o perfil"
+    },
+    {
+      "id": "icono-azul-electrico",
+      "label": "icono azul electrico",
+      "category": "Ícono",
+      "layout": "icon",
+      "background": "blue",
+      "svg": "svg/icono-azul-electrico.svg",
+      "usage": "App o perfil"
+    },
+    {
+      "id": "icono-glaciar",
+      "label": "icono glaciar",
+      "category": "Ícono",
+      "layout": "icon",
+      "background": "glacier",
+      "svg": "svg/icono-glaciar.svg",
+      "usage": "App o perfil"
+    },
+    {
+      "id": "icono-transparente",
+      "label": "icono transparente",
+      "category": "Ícono",
+      "layout": "icon",
+      "background": "transparent",
+      "svg": "svg/icono-transparente.svg",
+      "usage": "App o perfil"
+    },
+    {
+      "id": "slash-azul",
+      "label": "slash azul",
+      "category": "Slash",
+      "layout": "slash",
+      "background": "transparent",
+      "svg": "svg/slash-azul.svg",
+      "usage": "Gesto gráfico; no sustituye a AR/"
+    },
+    {
+      "id": "slash-degradado",
+      "label": "slash degradado",
+      "category": "Slash",
+      "layout": "slash",
+      "background": "transparent",
+      "svg": "svg/slash-degradado.svg",
+      "usage": "Gesto gráfico; no sustituye a AR/"
+    }
+  ],
+  "rules": {
+    "minimumWidthPx": 64,
+    "clearSpace": "8% del ancho del símbolo",
+    "slash": "Gesto de sistema; no reemplaza a la marca",
+    "oneSourceOfTruth": "Todas las variantes usan tres formas A, R y slash sin alterar los trazados"
+  }
+}
