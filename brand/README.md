@@ -25,3 +25,7 @@ La fuente canónica es `brand/tokens.json`. Ejecutar `npm run brand:tokens` para
 Evaluar originalidad del logotipo frente a marcas existentes y realizar pruebas de legibilidad del isotipo en tamaños reales antes de registro. Reemplazar SVG de ejemplo por capturas o aplicaciones validadas cuando existan.
 
 La UI es estática: GitHub Pages y CDN de las fuentes; no depende de React para funcionar.
+
+## Skill de dirección de arte — Brandkit
+
+El skill MIT de Leonxlnx está incluido en .agents/skills/brandkit/SKILL.md, con licencia y atribución. Las reglas particulares de AR Estudio están en BRANDKIT_WORKFLOW.md. Instalación opcional para Codex local: npx skills add https://github.com/Leonxlnx/imagegen-skills --skill brandkit -a codex -y. Este skill no ejecuta tareas ni crea imágenes por sí solo.
