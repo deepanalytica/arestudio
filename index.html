@@ -8,11 +8,12 @@
   <link rel="canonical" href="https://deepanalytica.github.io/arestudio/">
   <link rel="icon" type="image/svg+xml" href="brand/assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750;800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <title>AR/ — Portafolio · Diseño, Datos y Tecnología</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="art-direction.css">
   <link rel="stylesheet" href="brand/site-theme.css">
+  <link rel="stylesheet" href="brand/portfolio-v3.css?v=3.0.0">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script type="module" src="app.js"></script>
 </head>
@@ -20,7 +21,7 @@
   <a class="skip" href="#proyectos">Saltar a los proyectos</a>
   <div class="scroll-meter" id="scroll-meter" aria-hidden="true"></div>
   <header class="header" id="inicio"><div class="header-inner">
-    <a class="wordmark" href="#inicio" aria-label="AR Studio, volver al inicio">AR<span>/</span></a>
+    <a class="wordmark brand-lockup" href="#inicio" aria-label="AR Estudio, volver al inicio"><img src="brand/logo-kit/svg/horizontal-transparente-tinta.svg" alt="AR Estudio" width="186" height="40"></a>
     <nav class="main-nav" aria-label="Navegación principal"><a class="nav-active" href="#proyectos">Proyectos</a><a href="#explorar">Índice</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="brand/">Brand system <span class="nav-diag">↗</span></a></nav>
     <div class="header-actions"><a href="#explorar" class="icon-btn search-launch" aria-label="Buscar proyectos" title="Buscar proyectos, tecla /">⌕</a><a href="#contacto" class="header-cta">Conversemos <span>↗</span></a><button class="menu-toggle icon-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">☰</button></div>
   </div><nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" hidden><a href="#proyectos">Proyectos</a><a href="#explorar">Índice completo</a><a href="#metodo">Método</a><a href="#perfil">Perfil</a><a href="brand/">Brand system ↗</a><a href="#contacto">Contacto</a></nav></header>
@@ -28,20 +29,20 @@
   <main>
     <section class="hero container" aria-labelledby="hero-title">
       <div class="hero-copy"><span class="eyebrow"><span class="status-dot"></span> ESTUDIO INDEPENDIENTE / CHILE · 2026</span>
-        <h1 id="hero-title">Ideas que<br><em>funcionan</em><span class="period">.</span></h1>
+        <h1 id="hero-title"><span class="hero-head-bold">IDEAS QUE</span><span class="hero-head-regular">funcionan<span class="period">.</span></span></h1>
         <p>Dirección de arte, análisis de datos y desarrollo tecnológico para resolver problemas reales.</p>
         <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Explorar proyectos <span>↗</span></a><a class="btn btn-light" href="#metodo">Cómo trabajo <span>↗</span></a></div>
         <div class="hero-index"><span>AR/ STUDIO</span><span class="hero-index-rule"></span><span>PORTAFOLIO EDITORIAL / 2026</span></div>
       </div>
-      <div class="hero-art" aria-label="Composición abstracta de datos y territorio" role="img">
-        <img class="hero-mesh brand-mark" src="brand/assets/mark.svg" width="960" height="600" alt="" fetchpriority="high">
-        <div class="hero-art-note"><span>AR/</span><small>ANÁLISIS<br>DISEÑO<br>DESARROLLO<br>COMUNICACIÓN</small></div>
+      <div class="hero-art" aria-label="Monograma original AR/ sobre composición eléctrica de marca" role="img">
+        <img class="hero-mesh brand-mark" src="brand/logo-kit/svg/simbolo-blanco-transparente.svg" width="960" height="600" alt="" fetchpriority="high">
+        <div class="hero-art-note" aria-hidden="true"><span>AR/</span><small>DIRECCIÓN DE ARTE<br>DATOS · SISTEMAS<br>COMUNICACIÓN</small></div>
         <div class="hero-cross" aria-hidden="true">＋</div><div class="hero-art-label" aria-hidden="true">CREATIVE SYSTEMS / 2026</div>
       </div>
     </section>
 
     <section id="proyectos" class="featured container" aria-labelledby="featured-title">
-      <div class="section-top"><div><span class="section-kicker">01 / UNA SELECCIÓN DE TRABAJO</span><h2 id="featured-title">Explora el trabajo<span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Ver el índice completo <span>↗</span></a></div>
+      <div class="section-top"><div><span class="section-kicker">01 / UNA SELECCIÓN DE TRABAJO</span><h2 id="featured-title">Proyectos <span class="type-light">en foco</span><span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Ver el índice completo <span>↗</span></a></div>
       <div class="feature-grid" id="featured-grid" aria-label="Proyectos destacados">
         <a class="feature-card feature-editorial" href="?proyecto=archivo" data-art="editorial" data-project="archivo">
           <div class="feature-visual art-editorial">
@@ -87,23 +88,25 @@
       <div class="featured-note"><span>↳</span> Un lenguaje visual diferente por proyecto. Las composiciones son exploraciones editoriales; las evidencias se identifican en cada ficha.</div>
     </section>
 
+<section class="editorial-interlude" aria-label="Enfoque de trabajo de AR Estudio"><div class="container editorial-inner"><div class="editorial-meta"><span>AR/ PRINCIPIO DE TRABAJO</span><span>ANÁLISIS → DISEÑO → EJECUCIÓN</span></div><p>CRUZAR DATOS.<br><span>ENCONTRAR SENTIDO.</span></p><div class="editorial-bottom"><span>No se trata de producir más. Se trata de decidir mejor.</span><img loading="lazy" src="brand/logo-kit/svg/simbolo-blanco-transparente.svg" alt="" width="115" height="52"></div></div></section>
+
     <section class="index-section" id="explorar" aria-labelledby="index-title"><div class="container">
-      <div class="section-top index-top"><div><span class="section-kicker">02 / EL ARCHIVO COMPLETO</span><h2 id="index-title">Un universo de proyectos<span class="green-dot">.</span></h2><p>Proyectos publicados, prototipos y líneas de investigación. Cada uno identifica su estado real.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
+      <div class="section-top index-top"><div><span class="section-kicker">02 / EL ARCHIVO COMPLETO</span><h2 id="index-title">El archivo <span class="type-light">completo</span><span class="green-dot">.</span></h2><p>Proyectos publicados, prototipos y líneas de investigación. Cada uno identifica su estado real.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
       <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por disciplina"></div><div class="toolbar-tools"><label class="search-box" for="search-projects"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" id="search-projects" placeholder="Buscar proyecto o tecnología…" aria-label="Buscar proyectos"><kbd>/</kbd></label><div class="view-controls" role="group" aria-label="Vista del índice"><button type="button" class="view-btn" id="view-grid" aria-pressed="true" title="Vista de tarjetas">▦</button><button type="button" class="view-btn" id="view-list" aria-pressed="false" title="Vista de lista">☰</button></div></div></div>
       <div class="result-line"><span id="result-count" aria-live="polite">Cargando proyectos…</span><button id="clear-filters" type="button" class="clear-btn" hidden>Restablecer filtros ↺</button></div>
       <div class="work-grid" id="work-grid" aria-label="Resultados de proyectos"></div><p class="no-results" id="no-results" hidden>No hay proyectos con esos filtros. <button type="button" id="reset-empty">Ver todo el trabajo</button></p>
     </div></section>
 
-    <section class="approach container" id="metodo" aria-labelledby="method-title"><div class="approach-head"><div><span class="section-kicker">03 / FORMA DE TRABAJO</span><h2 id="method-title">Una idea merece<br>un buen proceso<span class="green-dot">.</span></h2></div><p>No empiezo por la herramienta. Primero defino qué necesita resolverse, qué datos existen y qué puede comprobarse.</p></div>
+    <section class="approach container" id="metodo" aria-labelledby="method-title"><div class="approach-head"><div><span class="section-kicker">03 / FORMA DE TRABAJO</span><h2 id="method-title">Del análisis<br><span class="type-light">a la forma</span><span class="green-dot">.</span></h2></div><p>No empiezo por la herramienta. Primero defino qué necesita resolverse, qué datos existen y qué puede comprobarse.</p></div>
       <div class="steps"><article><span>01 — ENTENDER</span><h3>Contexto antes que soluciones</h3><p>Observar el problema, las restricciones y las personas involucradas.</p></article><article><span>02 — CRUZAR</span><h3>Encontrar relaciones útiles</h3><p>Explorar datos, referencias y alternativas que merezcan una prueba.</p></article><article><span>03 — CONSTRUIR</span><h3>Hacerlo tangible</h3><p>Desarrollar interfaces, prototipos, sistemas o contenido listo para evaluar.</p></article><article><span>04 — VALIDAR</span><h3>Mostrar evidencia y límites</h3><p>Separar lo demostrado de las hipótesis y documentar qué falta por verificar.</p></article></div>
     </section>
 
     <section class="about-band" id="perfil"><div class="container about-inner"><div><span class="section-kicker">04 / PERFIL</span><h2>Diseño, código y criterio.<br><em>En una misma práctica.</em></h2></div><div class="about-side"><p>Trabajo en la intersección de análisis de datos, arquitectura de software, comunicación digital y dirección de arte. Convierto problemas complejos en herramientas y experiencias más comprensibles.</p><a class="subtle-link" href="https://deepanalytica.github.io/archivo-tienda/portafolio/perfil/" target="_blank" rel="noopener noreferrer">Ver trayectoria y antecedentes ↗</a></div></div></section>
 
-    <section class="contact container" id="contacto"><div class="contact-box"><div><span class="section-kicker">05 / HABLEMOS</span><h2>¿Hay algo que<br>quieras construir<span class="green-dot">?</span></h2><p>Podemos empezar por el problema, el objetivo y lo que necesitas mostrar o resolver.</p></div><div class="contact-actions"><a class="btn btn-solid" href="mailto:asaave9@gmail.com?subject=Consulta%20desde%20AR%2F%20Studio">Escribir por correo ↗</a><a class="btn btn-light" href="https://wa.me/56958039450?text=Hola%2C%20vi%20tu%20portafolio%20AR%2F%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener noreferrer">Conversar por WhatsApp ↗</a></div></div></section>
+    <section class="contact container" id="contacto"><div class="contact-box"><div><span class="section-kicker">05 / HABLEMOS</span><h2>¿Qué necesitas<br><span class="type-light">resolver</span><span class="green-dot">?</span></h2><p>Podemos empezar por el problema, el objetivo y lo que necesitas mostrar o resolver.</p></div><div class="contact-actions"><a class="btn btn-solid" href="mailto:asaave9@gmail.com?subject=Consulta%20desde%20AR%2F%20Studio">Escribir por correo ↗</a><a class="btn btn-light" href="https://wa.me/56958039450?text=Hola%2C%20vi%20tu%20portafolio%20AR%2F%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener noreferrer">Conversar por WhatsApp ↗</a></div></div></section>
   </main>
 
-  <footer><div class="container footer-inner"><a class="wordmark" href="#inicio">AR<span>/</span></a><span>Diseño · Datos · Tecnología · Comunicación</span><div><a href="brand/">Brand system ↗</a><a href="https://github.com/deepanalytica/arestudio" target="_blank" rel="noopener noreferrer">Código ↗</a><a href="#inicio">Volver arriba ↑</a></div><small>© <span id="year">2026</span> AR/</small></div></footer>
+  <footer><div class="container footer-inner"><a class="wordmark brand-lockup" href="#inicio" aria-label="AR Estudio, volver arriba"><img src="brand/logo-kit/svg/horizontal-transparente-tinta.svg" alt="AR Estudio" width="170" height="36"></a><span>Diseño · Datos · Tecnología · Comunicación</span><div><a href="brand/">Brand system ↗</a><a href="https://github.com/deepanalytica/arestudio" target="_blank" rel="noopener noreferrer">Código ↗</a><a href="#inicio">Volver arriba ↑</a></div><small>© <span id="year">2026</span> AR/</small></div></footer>
 
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="modal-title" aria-describedby="modal-summary"><div class="dialog-shell"><div class="dialog-head"><span class="section-kicker">AR/ · FICHA DE PROYECTO</span><button class="dialog-close" type="button" aria-label="Cerrar ficha" id="close-dialog">✕</button></div><div id="dialog-content"></div></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

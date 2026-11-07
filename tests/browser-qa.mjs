@@ -14,6 +14,20 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
+    assert.equal(await page.locator('.brand-lockup img').count(),2,`${label}: logos vectoriales en header y footer`);
+    assert.equal(await page.locator('.editorial-interlude').count(),1,`${label}: pieza editorial de marca`);
+    const identity=await page.evaluate(()=>({
+      display:getComputedStyle(document.querySelector('#hero-title')).fontFamily,
+      art:getComputedStyle(document.querySelector('.hero-art')).backgroundImage,
+      blue:getComputedStyle(document.querySelector('.btn-solid')).backgroundColor,
+      cover:document.querySelector('.hero-mesh').getAttribute('src'),
+      typeWeight:getComputedStyle(document.querySelector('.hero-head-bold')).fontWeight
+    }));
+    assert.match(identity.display,/Archivo/,`${label}: tipografía Archivo aplicada`);
+    assert.match(identity.art,/gradient/,`${label}: ambiente cromático aplicado`);
+    assert.equal(identity.blue,'rgb(36, 91, 255)',`${label}: botón usa azul de marca`);
+    assert.match(identity.cover,/simbolo-blanco-transparente\.svg/,`${label}: marca maestra en portada`);
+    assert.equal(identity.typeWeight,'900',`${label}: jerarquía tipográfica black`);
     assert.equal(await page.locator('.feature-card .art-topline').count(),4,`${label}: cuatro universos de arte con metadata propia`);
     assert.equal(await page.locator('.feature-card .art-title, .feature-card .art-visible-stamp').count(),4,`${label}: dirección tipográfica diferenciada`);
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
