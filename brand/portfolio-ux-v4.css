@@ -6,6 +6,8 @@
 .main-nav a.nav-active::after{background:var(--ux-blue)}
 .main-nav a[aria-current="location"]{color:var(--ux-blue)!important}
 .main-nav a:active,.mobile-menu a:active{color:#173EC9}
+.mobile-menu a[aria-current="location"]{background:#EAF0FF;color:var(--ux-blue);font-weight:800;border-left:3px solid var(--ux-blue)}
+
 .header-cta:active,.btn:active{transform:translateY(1px);box-shadow:none}
 .menu-toggle[aria-expanded="true"]{background:var(--ux-blue);color:#fff;border-color:var(--ux-blue)}
 .menu-toggle:active,.icon-btn:active{transform:scale(.96)}
