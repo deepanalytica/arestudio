@@ -1,4 +1,4 @@
-import {projects,featured,categories} from './data.js';
+import {projects,featured,categories,caseStudies} from './data.js';
 const $=(s,root=document)=>root.querySelector(s);
 const $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const esc=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -41,7 +41,32 @@ function mediaMarkup(p){
   if(!Array.isArray(p.media)||!p.media.length)return '';
   return `<section class="case-media"><h3 class="case-media-label">GALERÍA / MATERIALES DEL PROYECTO</h3><div class="case-media-strip">${p.media.slice(0,3).map((m,i)=>`<figure><img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>${esc(m.caption||'Material publicado')}</figcaption></figure>`).join('')}</div></section>`;
 }
-function modalMarkup(p){return `<div class="dialog-project-hero"><div class="dialog-project-cover"><img src="${esc(p.cover)}" alt="Composición editorial para ${esc(p.name)}"><span>COMPOSICIÓN EDITORIAL · NO CAPTURA DE PRODUCTO</span></div><div class="dialog-project-info"><span class="section-kicker">${esc(p.area.toUpperCase())} / ${esc(p.type.toUpperCase())}</span><h2 id="modal-title">${esc(p.name)}</h2><p id="modal-summary">${esc(p.summary)}</p><div class="dialog-chips"><span>${esc(p.status)}</span>${p.deliverables.slice(0,2).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div><div class="dialog-texts"><article><h3>01 / EL RETO</h3><p>${esc(p.problem)}</p></article><article><h3>02 / LA RESPUESTA</h3><p>${esc(p.solution)}</p></article></div>${mediaMarkup(p)}<div class="dialog-texts"><article><h3>03 / QUÉ SE DESARROLLÓ</h3><div class="deliverables">${p.deliverables.map(x=>`<span>${esc(x)}</span>`).join('')}</div></article><article><h3>04 / ESTADO Y EVIDENCIA</h3><p>${esc(p.evidence||('Estado informado: '+p.status+'. La ficha enlaza a la documentación disponible del portafolio anterior.'))}</p></article></div><div class="dialog-bottom"><p>Este caso describe el alcance documentado; no implica resultados comerciales ni métricas sin respaldo.</p><div class="dialog-buttons"><button type="button" id="share-project">Compartir ficha ↗</button><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Ver evidencia / proyecto ↗</a></div></div>`}
+function modalMarkup(p){
+  const c=caseStudies[p.id]||null;
+  const preview=p.media?.[0]?.src||p.cover;
+  const genuine=!!p.media?.[0]?.src;
+  const links=c?.links?.length?c.links:[{label:'Consultar ficha o evidencia disponible',url:p.url,kind:'source'}];
+  const actions=links.map(x=>'<a class="case-link '+(x.kind==='demo'?'case-link-primary':'case-link-secondary')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' <span aria-hidden="true">↗</span></a>').join('');
+  const decisions=c?.decisions?.length?'<section class="case-section case-decisions" aria-labelledby="case-decisions-title"><span class="case-kicker">03 / CRITERIO</span><h3 id="case-decisions-title">Decisiones de diseño y producto</h3><div class="case-decision-grid">'+c.decisions.map((d,i)=>'<article class="case-decision"><span class="case-number">0'+(i+1)+'</span><h4>'+esc(d.title)+'</h4><p>'+esc(d.detail)+'</p></article>').join('')+'</div></section>':'';
+  const built=c?.built?.length?c.built:p.deliverables;
+  const proof=c?.proofNote||p.evidence||'Esta ficha resume el estado documentado del proyecto; no se declaran métricas ni resultados no verificados.';
+  return '<div class="case-study">'+
+    '<div class="case-overview">'+
+      '<div class="case-visual"><img src="'+esc(preview)+'" alt="'+esc(genuine?(p.media[0].alt||'Material publicado de '+p.name):'Composición editorial conceptual para '+p.name)+'" loading="eager" decoding="async"><span class="case-visual-label">'+(genuine?'MATERIAL DEL PROYECTO':'ARTE EDITORIAL · NO ES CAPTURA DEL PRODUCTO')+'</span></div>'+
+      '<div class="case-intro"><span class="case-kicker">'+esc(p.area.toUpperCase())+' / '+esc(p.status.toUpperCase())+'</span><h2 id="modal-title">'+esc(p.name)+'</h2><p class="case-summary" id="modal-summary">'+esc(p.summary)+'</p>'+
+        '<div class="case-keypoint"><span>EL PROBLEMA</span><p>'+esc(p.problem)+'</p></div>'+
+        '<div class="case-keypoint"><span>MI CONTRIBUCIÓN</span><p>'+esc(c?.contribution||p.solution)+'</p></div>'+
+        '<div class="case-top-actions">'+actions+'</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="case-story-header"><span class="case-kicker">CASO / '+esc(p.type.toUpperCase())+'</span><span>'+esc(c?.role||p.status)+'</span></div>'+
+    '<section class="case-section" aria-labelledby="case-built-title"><span class="case-kicker">02 / DESARROLLO</span><h3 id="case-built-title">Qué construí</h3><ul class="case-built">'+built.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>'+
+    decisions+
+    mediaMarkup(p)+
+    '<section class="case-section case-evidence" aria-labelledby="case-evidence-title"><span class="case-kicker">04 / EVIDENCIA Y LÍMITES</span><h3 id="case-evidence-title">Qué puedes comprobar</h3><p>'+esc(proof)+'</p><div class="case-evidence-actions">'+actions+'</div></section>'+
+    '<div class="case-end"><button type="button" id="share-project">Compartir este caso ↗</button><span>Las hipótesis, materiales conceptuales y demos se distinguen de los productos publicados.</span></div>'+
+  '</div>';
+}
 function openProject(id,{push=true}={}){
   const p=byId.get(id);if(!p)return;
   if(!dialog.open)previousFocus=document.activeElement;
