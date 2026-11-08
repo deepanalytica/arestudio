@@ -8,6 +8,26 @@ let selected='Todos',query='',view='grid',openedId=null,previousFocus=null;
 const filters=$('#filters'),grid=$('#work-grid'),count=$('#result-count'),search=$('#search-projects'),dialog=$('#project-dialog');
 const byId=new Map(projects.map(p=>[p.id,p]));
 
+
+// Mejoras progresivas: las capturas reales solo sustituyen el arte si están disponibles.
+// Si una captura externa falló en el despliegue, no aparece una imagen rota ni una atribución falsa.
+function hydrateProofImages(root=document){
+  $$('img[data-proof-image]',root).forEach(img=>{
+    const src=img.dataset.proofImage;
+    if(!src)return;
+    const proof=new Image();
+    proof.onload=()=>{
+      if(!img.isConnected)return;
+      img.src=src;
+      img.alt=img.dataset.proofAlt||img.alt;
+      img.classList.add('proof-loaded');
+      const badge=img.closest('.case-visual')?.querySelector('.case-visual-label');
+      if(badge)badge.textContent=img.dataset.proofLabel||'CAPTURA DE SITIO PUBLICADO';
+    };
+    proof.onerror=()=>{img.dataset.proofUnavailable='true'};
+    proof.src=src;
+  });
+}
 function updateFilters(){
   // Conservar el foco al actualizar los botones: sin esto se pierde al filtrar con teclado.
   const focusedCategory=filters.contains(document.activeElement)?document.activeElement.dataset.category:null;
@@ -16,7 +36,7 @@ function updateFilters(){
 }
 function card(p){
   const serial=String(projects.indexOf(p)+1).padStart(2,'0');
-  return `<a class="work-card" href="?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" data-area="${esc(p.area)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" loading="lazy" decoding="async" alt="Visual editorial conceptual de ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span><span class="work-card-serial" aria-hidden="true">AR/ ${serial}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">Ver caso ↗</span></div></div></a>`
+  return `<a class="work-card" href="?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" data-area="${esc(p.area)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" data-proof-image="${esc(p.preview||'')}" data-proof-label="${esc(p.previewLabel||'')}" data-proof-alt="Captura real de ${esc(p.name)}" loading="lazy" decoding="async" alt="Composición editorial conceptual de ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span><span class="work-card-serial" aria-hidden="true">AR/ ${serial}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">Ver caso ↗</span></div></div></a>`
 }
 function render(){
   const results=projects.filter(p=>(selected==='Todos'||p.area===selected)&&norm([p.name,p.area,p.type,p.summary,p.status,p.problem,p.solution,p.deliverables.join(' ')].join(' ')).includes(norm(query)));
@@ -28,6 +48,7 @@ function render(){
   $('#view-grid').setAttribute('aria-pressed',String(view==='grid'));
   $('#view-list').setAttribute('aria-pressed',String(view==='list'));
   updateFilters();
+  hydrateProofImages(grid);
   if (!reduced.matches&&window.gsap&&results.length){
     window.gsap.fromTo($$('.work-card',grid),{autoAlpha:.86,y:9},{autoAlpha:1,y:0,duration:.36,stagger:.018,ease:'power2.out',clearProps:'all'});
   }
@@ -40,6 +61,7 @@ $('#view-grid').addEventListener('click',()=>{view='grid';render()});$('#view-li
 $('#total-count').textContent=projects.length;
 $$('.feature-case-link').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('aria-label',`Ver caso de ${p.name}: qué problema resuelve, qué hice y qué decisiones tomé`)});
 render();
+hydrateProofImages($('#featured-grid'));
 function mediaMarkup(p){
   if(!Array.isArray(p.media)||!p.media.length)return '';
   return `<section class="case-media"><h3 class="case-media-label">GALERÍA / MATERIALES DEL PROYECTO</h3><div class="case-media-strip">${p.media.slice(0,3).map((m,i)=>`<figure><img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>${esc(m.caption||'Material publicado')}</figcaption></figure>`).join('')}</div></section>`;
@@ -48,18 +70,19 @@ function modalMarkup(p){
   const c=caseStudies[p.id]||null;
   const preview=p.media?.[0]?.src||p.cover;
   const genuine=!!p.media?.[0]?.src;
-  const links=c?.links?.length?c.links:[{label:'Consultar ficha o evidencia disponible',url:p.url,kind:'source'}];
+  const links=c?.links??[];
   const actions=links.map(x=>'<a class="case-link '+(x.kind==='demo'?'case-link-primary':'case-link-secondary')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' <span aria-hidden="true">↗</span></a>').join('');
+  const actionNote=actions||'<p class="case-no-demo">Sin demostración pública verificada. La ficha documenta el problema y el enfoque, pero no representa un sistema abierto al público.</p>';
   const decisions=c?.decisions?.length?'<section class="case-section case-decisions" aria-labelledby="case-decisions-title"><span class="case-kicker">03 / CRITERIO</span><h3 id="case-decisions-title">Decisiones de diseño y producto</h3><div class="case-decision-grid">'+c.decisions.map((d,i)=>'<article class="case-decision"><span class="case-number">0'+(i+1)+'</span><h4>'+esc(d.title)+'</h4><p>'+esc(d.detail)+'</p></article>').join('')+'</div></section>':'';
   const built=c?.built?.length?c.built:p.deliverables;
   const proof=c?.proofNote||p.evidence||'Esta ficha resume el estado documentado del proyecto; no se declaran métricas ni resultados no verificados.';
   return '<div class="case-study">'+
     '<div class="case-overview">'+
-      '<div class="case-visual"><img src="'+esc(preview)+'" alt="'+esc(genuine?(p.media[0].alt||'Material publicado de '+p.name):'Composición editorial conceptual para '+p.name)+'" loading="eager" decoding="async"><span class="case-visual-label">'+(genuine?'MATERIAL DEL PROYECTO':'ARTE EDITORIAL · NO ES CAPTURA DEL PRODUCTO')+'</span></div>'+
+      '<div class="case-visual"><img src="'+esc(preview)+'" data-proof-image="'+esc(p.preview||'')+'" data-proof-label="'+esc(p.previewLabel||'')+'" data-proof-alt="Captura real de '+esc(p.name)+'" alt="'+esc(genuine?(p.media[0].alt||'Material publicado de '+p.name):'Composición editorial conceptual para '+p.name)+'" loading="eager" decoding="async"><span class="case-visual-label">'+(genuine?'MATERIAL DEL PROYECTO':'ARTE EDITORIAL · NO ES CAPTURA DEL PRODUCTO')+'</span></div>'+
       '<div class="case-intro"><span class="case-kicker">'+esc(p.area.toUpperCase())+' / '+esc(p.status.toUpperCase())+'</span><h2 id="modal-title">'+esc(p.name)+'</h2><p class="case-summary" id="modal-summary">'+esc(p.summary)+'</p>'+
         '<div class="case-keypoint"><span>EL PROBLEMA</span><p>'+esc(p.problem)+'</p></div>'+
         '<div class="case-keypoint"><span>'+(c?'MI CONTRIBUCIÓN':'ENFOQUE DOCUMENTADO')+'</span><p>'+esc(c?.contribution||p.solution)+'</p></div>'+
-        '<div class="case-top-actions">'+actions+'</div>'+
+        '<div class="case-top-actions">'+actionNote+'</div>'+
       '</div>'+
     '</div>'+
     '<div class="case-story-header"><span class="case-kicker">CASO / '+esc(p.type.toUpperCase())+'</span><span>'+esc(c?.role||p.status)+'</span></div>'+
@@ -75,6 +98,7 @@ function openProject(id,{push=true}={}){
   if(!dialog.open)previousFocus=document.activeElement;
   openedId=id;
   $('#dialog-content').innerHTML=modalMarkup(p);
+  hydrateProofImages($('#dialog-content'));
   if(push){const u=new URL(location.href);u.searchParams.set('proyecto',id);history.pushState({project:id},'',u)}
   if(!dialog.open)dialog.showModal();
   if(!reduced.matches&&window.gsap){window.gsap.fromTo($('.dialog-project-info',dialog),{y:12,opacity:.7},{y:0,opacity:1,duration:.38,ease:'power3.out',clearProps:'all'});}
