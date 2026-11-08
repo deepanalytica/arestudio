@@ -10,22 +10,22 @@
 .menu-toggle[aria-expanded="true"]{background:var(--ux-blue);color:#fff;border-color:var(--ux-blue)}
 .menu-toggle:active,.icon-btn:active{transform:scale(.96)}
 /* La propuesta de valor antecede visualmente a la decoración. */
-.hero{grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);gap:clamp(24px,3vw,48px);padding-block:22px 13px;align-items:center}
+.hero{grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);gap:clamp(24px,3vw,48px);padding-block:15px 7px;align-items:center}
 .hero-copy{padding-block:0}
-.hero h1{font:900 clamp(40px,5.25vw,80px)/.99 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.072em;margin:15px 0 13px;max-width:850px}
+.hero h1{font:900 clamp(39px,4.8vw,70px)/.99 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.072em;margin:11px 0 9px;max-width:850px}
 .hero .hero-head-bold{font-weight:900;letter-spacing:-.075em;white-space:normal}
-.hero .hero-head-regular{margin-top:6px;font-size:.64em;line-height:1.08;letter-spacing:-.058em;font-weight:400;white-space:normal;color:var(--ux-blue);max-width:20ch}
+.hero .hero-head-regular{margin-top:4px;font-size:.64em;line-height:1.08;letter-spacing:-.058em;font-weight:400;white-space:normal;color:var(--ux-blue);max-width:20ch}
 .hero .period{color:var(--ar-color-magenta,#F12BBE)}
 .hero-copy>.hero-lead{max-width:64ch;color:var(--ux-ink);font-size:clamp(14px,1.23vw,18px);line-height:1.42;font-weight:600;letter-spacing:-.012em}
-.hero-copy>.hero-problem{max-width:67ch;color:var(--ux-muted);font-size:clamp(12px,1.05vw,14px);line-height:1.5;margin-top:9px;letter-spacing:0}
+.hero-copy>.hero-problem{max-width:67ch;color:var(--ux-muted);font-size:clamp(12px,1.05vw,14px);line-height:1.5;margin-top:7px;letter-spacing:0}
 .hero-problem strong{font-weight:750;color:var(--ux-ink)}
-.hero-actions{margin-top:18px;gap:9px}
+.hero-actions{margin-top:13px;gap:9px}
 .hero-actions .btn{min-height:46px;gap:12px;padding:10px 16px;font-size:12px}
 .hero-art{height:255px;box-shadow:0 14px 33px #06122E11}
 .hero-art .hero-mesh.brand-mark{width:82%;height:78%}
 .hero .eyebrow{font-size:10px;color:var(--ux-muted)}
 /* Cuatro áreas concisas: tarjetas informativas, sin botones falsos. */
-.offer-strip{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,3.2fr);gap:clamp(16px,2.2vw,32px);padding-block:18px 18px;border-block:1px solid var(--ux-line);align-items:start;scroll-margin-top:95px}
+.offer-strip{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,3.2fr);gap:clamp(16px,2.2vw,32px);padding-block:12px 12px;border-block:1px solid var(--ux-line);align-items:start;scroll-margin-top:95px}
 .offer-intro{display:flex;flex-direction:column;gap:6px}
 .offer-intro .section-kicker{font-size:9px}
 .offer-intro h2{font:900 clamp(17px,1.55vw,24px)/1.09 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.05em;color:var(--ux-ink);max-width:17ch}
@@ -36,8 +36,8 @@
 .offer-grid h3{font:800 13px/1.15 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.025em;margin:4px 0 5px;color:var(--ux-ink)}
 .offer-grid p{font:400 11px/1.42 var(--ar-font-body,'DM Sans',sans-serif);margin:0;color:var(--ux-muted)}
 /* El área clicable es toda la tarjeta de caso; la acción al producto es independiente. */
-.featured{padding-block:18px 58px}
-.featured .section-top{margin-bottom:16px}
+.featured{padding-block:13px 58px}
+.featured .section-top{margin-bottom:12px}
 .featured .section-top h2{margin-top:5px}
 .feature-grid{gap:12px}
 .feature-card{border-radius:15px;border-color:var(--ux-line);box-shadow:0 5px 20px #10234B0B}
