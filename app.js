@@ -38,7 +38,7 @@ $('#clear-filters').addEventListener('click',reset);$('#reset-empty').addEventLi
 function reset(){selected='Todos';query='';search.value='';render()}
 $('#view-grid').addEventListener('click',()=>{view='grid';render()});$('#view-list').addEventListener('click',()=>{view='list';render()});
 $('#total-count').textContent=projects.length;
-$('.feature-case-link').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('aria-label',`Ver caso de ${p.name}: qué problema resuelve, qué hice y qué decisiones tomé`)});
+$$('.feature-case-link').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('aria-label',`Ver caso de ${p.name}: qué problema resuelve, qué hice y qué decisiones tomé`)});
 render();
 function mediaMarkup(p){
   if(!Array.isArray(p.media)||!p.media.length)return '';
