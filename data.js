@@ -114,7 +114,405 @@ export const caseStudies = {
       {title:'Economía unitaria antes de invertir',detail:'Cruzar precio, costos y supuestos en un simulador para comparar escenarios.'}
     ],
     built:['Criterios de ranking y penalización','Simulación de economía unitaria','Interfaz de exploración de oportunidades'],
-    links:[{label:'Consultar código del ecosistema',url:'https://github.com/deepanalytica/conv-os',kind:'source'}],
+    links:[{label:'Abrir radar demostrativo',url:'https://deepanalytica.github.io/conv-os/radar/',kind:'demo'},{label:'Consultar código del ecosistema',url:'https://github.com/deepanalytica/conv-os',kind:'source'}],
     proofNote:'Evaluación experimental; los resultados de la demo no constituyen ventas verificadas.'
   }
+  "msj": {
+    "role": "Investigación, criterio y desarrollo — Conversaciones / canales",
+    "contribution": "La arquitectura separa la entrada de eventos de Meta, el motor de conversación y las herramientas del negocio. Incluye estados para atender con IA, derivar a una persona o pausar el flujo.",
+    "decisions": [
+      {
+        "title": "Separar motor y negocio",
+        "detail": "La arquitectura permite pensar la atención multicanal sin rehacer todo el sistema para cada negocio. Aún requiere validación operativa."
+      },
+      {
+        "title": "Adaptación por industria",
+        "detail": "Decidí mantener el motor independiente del rubro. Cada negocio incorpora sus propias herramientas y permisos mediante conectores, sin alterar la base de conversaciones."
+      }
+    ],
+    "built": [
+      "Arquitectura multicanal",
+      "Enrutamiento y derivación humana",
+      "Contratos para herramientas y conectores"
+    ],
+    "links": [
+      {
+        "label": "Examinar repositorio MSJ",
+        "url": "https://github.com/deepanalytica/msj",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Repositorio público con arquitectura documentada."
+  },
+  "deep-living": {
+    "role": "Investigación, criterio y desarrollo — Segmentación / ciclo de vida",
+    "contribution": "He desarrollado un marco de escenarios y cambios de estado para estudiar alternativas y restricciones. No hay una aplicación pública funcional que permita evaluar todavía ese planteamiento.",
+    "decisions": [
+      {
+        "title": "Respetar el contexto",
+        "detail": "Investigar experiencias que se ajusten al contexto declarado por el usuario, sin reemplazar su autonomía."
+      },
+      {
+        "title": "No automatizar decisiones personales",
+        "detail": "El sistema puede organizar opciones y preguntas, pero la decisión sigue perteneciendo a la persona."
+      }
+    ],
+    "built": [
+      "Marco de investigación por escenarios",
+      "Modelos de contexto y etapas",
+      "Exploraciones de producto"
+    ],
+    "links": [],
+    "proofNote": "Investigación; no hay demo pública verificada."
+  },
+  "meta-harness": {
+    "role": "Investigación, criterio y desarrollo — Verificación / arquitectura",
+    "contribution": "La arquitectura contempla comprobar el tipo de afirmación, su fuente, la evidencia, las contradicciones y la incertidumbre. También define cuándo interviene una revisión independiente o una autorización humana.",
+    "decisions": [
+      {
+        "title": "Separar generación y verificación",
+        "detail": "Busco detectar afirmaciones sin respaldo y decisiones que requieren revisión. Ninguna de estas reglas garantiza eliminar todos los errores."
+      },
+      {
+        "title": "Detener afirmaciones sin respaldo",
+        "detail": "La comprobación no debe depender únicamente del agente que produjo la respuesta. Si una afirmación queda bloqueada, no puede alimentar una acción automática como si fuera un dato confirmado."
+      }
+    ],
+    "built": [
+      "Modelo de verificación de afirmaciones",
+      "Diseño de revisión y autorización",
+      "Arquitectura de trazabilidad"
+    ],
+    "links": [
+      {
+        "label": "Leer arquitectura pública",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Arquitectura documentada; módulos internos."
+  },
+  "atalaya": {
+    "role": "Investigación, criterio y desarrollo — Observabilidad",
+    "contribution": "La documentación describe una capa de estado y vigilancia con FastAPI, reglas de seguimiento y señales operativas. Su cobertura todavía no está demostrada por una interfaz pública completa.",
+    "decisions": [
+      {
+        "title": "Observar antes de cerrar",
+        "detail": "El objetivo es detectar problemas a tiempo y entender qué ocurrió antes de declarar que un proceso terminó correctamente."
+      },
+      {
+        "title": "Separar ejecución de resultado",
+        "detail": "Separé el registro de ejecución de la evaluación del resultado: completar pasos no demuestra que el trabajo sea correcto."
+      }
+    ],
+    "built": [
+      "Prototipos de estado y vigilancia",
+      "Modelo de alertas y registros",
+      "Diseño de seguimiento operativo"
+    ],
+    "links": [
+      {
+        "label": "Ver arquitectura relacionada",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Sin dashboard público verificado."
+  },
+  "eureka": {
+    "role": "Investigación, criterio y desarrollo — Aprendizaje / memoria",
+    "contribution": "El diseño contempla candidatos de hallazgo, referencias, revisión y conexión con la memoria del proyecto. No supone que cada candidato haya sido validado.",
+    "decisions": [
+      {
+        "title": "Guardar la hipótesis con fuente",
+        "detail": "Conservar hipótesis y referencias para poder retomarlas, contrastarlas y decidir si merecen investigarse más."
+      },
+      {
+        "title": "No confundir registro con validación",
+        "detail": "Guardar una idea no la convierte en conocimiento confirmado. Debe conservar su estado y procedencia."
+      }
+    ],
+    "built": [
+      "Estructura de hallazgos y procedencia",
+      "Estados para hipótesis y revisión",
+      "Integración conceptual de memoria"
+    ],
+    "links": [
+      {
+        "label": "Ver meta-sistema documentado",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Una hipótesis no equivale a conocimiento confirmado."
+  },
+  "el-tiburon": {
+    "role": "Investigación, criterio y desarrollo — Revisión adversarial",
+    "contribution": "Planteé una revisión enfocada en contradicciones, pruebas faltantes y ejemplos que podrían demostrar que una conclusión no se sostiene.",
+    "decisions": [
+      {
+        "title": "Revisión independiente",
+        "detail": "Permite discutir y corregir informes, mensajes y propuestas antes de presentarlos como definitivos."
+      },
+      {
+        "title": "Objeciones accionables",
+        "detail": "Una objeción sirve cuando indica qué revisar, con qué evidencia y cómo comprobar la corrección."
+      }
+    ],
+    "built": [
+      "Protocolo de crítica adversarial",
+      "Preguntas para revisar evidencia",
+      "Guía de contradicciones y corrección"
+    ],
+    "links": [
+      {
+        "label": "Ver método relacionado",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Método adversarial sin garantía de ausencia de errores."
+  },
+  "la-escalera": {
+    "role": "Investigación, criterio y desarrollo — Continuidad / relevo",
+    "contribution": "Diseñé un relevo que conserva el objetivo, el estado de las tareas, las evidencias, los riesgos y lo que falta aprobar.",
+    "decisions": [
+      {
+        "title": "Transferir el estado, no solo el chat",
+        "detail": "Retomar un proyecto con objetivos, decisiones y pendientes claros, y con menos pasos que reconstruir."
+      },
+      {
+        "title": "Preservar decisiones y riesgos",
+        "detail": "Una transcripción larga no reemplaza un estado de trabajo claro. El relevo tiene que explicar qué cambió y por qué."
+      }
+    ],
+    "built": [
+      "Protocolo de relevo entre sesiones",
+      "Estructura de pendientes y evidencia",
+      "Formato para continuidad de trabajo"
+    ],
+    "links": [
+      {
+        "label": "Ver arquitectura relacionada",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "La continuidad estructural no garantiza comprensión completa."
+  },
+  "super-prompt-euler": {
+    "role": "Investigación, criterio y desarrollo — Especificación / método",
+    "contribution": "El método ordena contexto, objetivo, restricciones, entregables y pruebas de aceptación. Sus detalles completos siguen siendo internos.",
+    "decisions": [
+      {
+        "title": "Especificar condiciones verificables",
+        "detail": "Requisitos más claros para quien solicita, construye y revisa el resultado."
+      },
+      {
+        "title": "Preferir aceptación comprobable",
+        "detail": "Prefiero instrucciones que permitan comprobar la entrega frente a textos extensos que dejan las decisiones abiertas."
+      }
+    ],
+    "built": [
+      "Plantillas de requisitos y límites",
+      "Contratos de entregables",
+      "Criterios de aceptación"
+    ],
+    "links": [
+      {
+        "label": "Ver principios de arquitectura",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/meta-harness/",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "No presentado como estándar externo."
+  },
+  "geoanalytica": {
+    "role": "Investigación, criterio y desarrollo — Antecedentes GIS",
+    "contribution": "Es un antecedente de experimentación. La documentación pública disponible es limitada y no demuestra una plataforma terminada.",
+    "decisions": [
+      {
+        "title": "Exploración documentada",
+        "detail": "Documentar una línea de exploración técnica sin presentar el repositorio como un producto finalizado."
+      },
+      {
+        "title": "No confundir antecedente con producto",
+        "detail": "Prefiero conservarlo como antecedente y no atribuirle capacidades que el código público no permite comprobar."
+      }
+    ],
+    "built": [
+      "Repositorio de exploración GIS",
+      "Antecedentes técnicos",
+      "Representaciones espaciales experimentales"
+    ],
+    "links": [
+      {
+        "label": "Abrir repositorio histórico",
+        "url": "https://github.com/deepanalytica/GeoAnalytica",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Código público sin métricas comerciales."
+  },
+  "inverse-reality-lab": {
+    "role": "Investigación, criterio y desarrollo — Hipótesis / escenarios",
+    "contribution": "Organicé un laboratorio web con modelos, referencias y documentos de trabajo para revisar escenarios y las condiciones de cada hipótesis.",
+    "decisions": [
+      {
+        "title": "Explicitar supuestos",
+        "detail": "Exponer las alternativas y sus supuestos para discutirlas, contrastarlas y corregirlas."
+      },
+      {
+        "title": "Diseñar contrastes y contraejemplos",
+        "detail": "Cada hipótesis debe indicar qué se sabe, qué se supone y qué evidencia podría refutarla."
+      }
+    ],
+    "built": [
+      "Laboratorio web público",
+      "Modelos y escenarios documentados",
+      "Diseño de contrastes de hipótesis"
+    ],
+    "links": [
+      {
+        "label": "Visitar laboratorio público",
+        "url": "https://deepanalytica.github.io/inverse-reality-lab/lab.html",
+        "kind": "demo"
+      },
+      {
+        "label": "Código del laboratorio",
+        "url": "https://github.com/deepanalytica/inverse-reality-lab",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "No equivale a validación científica externa."
+  },
+  "deep-licita": {
+    "role": "Investigación, criterio y desarrollo — Inteligencia de oportunidades",
+    "contribution": "Planteé una clasificación por requisitos, fuentes, alertas y prioridades. No hay un sistema público funcional que permita comprobar todavía su operación.",
+    "decisions": [
+      {
+        "title": "Filtrar antes de recomendar",
+        "detail": "Organizar una primera revisión sin reemplazar la lectura de las bases ni prometer elegibilidad automática."
+      },
+      {
+        "title": "Revisar bases oficiales",
+        "detail": "Una recomendación de postular necesita contrastarse con los requisitos oficiales, no solo con una clasificación de IA."
+      }
+    ],
+    "built": [
+      "Modelo de clasificación de requisitos",
+      "Criterios de priorización",
+      "Diseño de revisión humana"
+    ],
+    "links": [],
+    "proofNote": "Sin conexión pública operativa verificada."
+  },
+  "sin-humo": {
+    "role": "Investigación, criterio y desarrollo — Libro / investigación",
+    "contribution": "Trabajé la estructura del libro, sus argumentos y ejemplos, y preparé un lector web para recorrer su contenido.",
+    "decisions": [
+      {
+        "title": "Distinguir evidencia de opinión",
+        "detail": "Una obra de lectura que documenta preguntas, límites y argumentos; no debe confundirse con una validación científica externa."
+      },
+      {
+        "title": "Navegación y estructura editorial",
+        "detail": "El texto debe permitir distinguir qué afirmo, en qué me baso y qué queda abierto a revisión."
+      }
+    ],
+    "built": [
+      "Libro de investigación",
+      "Lector web navegable",
+      "Estructura de argumentos y procedencia"
+    ],
+    "links": [
+      {
+        "label": "Leer el libro",
+        "url": "https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/sin-humo/",
+        "kind": "demo"
+      }
+    ],
+    "proofNote": "Edición octubre 2026 publicada con 300 páginas."
+  },
+  "el-puente": {
+    "role": "Investigación, criterio y desarrollo — Publicación navegable",
+    "contribution": "Organicé la experiencia en capítulos navegables, jerarquías de lectura y recursos explicativos accesibles desde el navegador.",
+    "decisions": [
+      {
+        "title": "Organizar la lectura",
+        "detail": "Facilitar la lectura, la navegación y la revisión de ideas complejas, sin esconder sus límites."
+      },
+      {
+        "title": "Conservar rigor técnico",
+        "detail": "Busqué una lectura clara que no obligue a simplificar tanto como para perder el sentido técnico."
+      }
+    ],
+    "built": [
+      "Publicación web navegable",
+      "Jerarquía editorial y capítulos",
+      "Recursos explicativos"
+    ],
+    "links": [
+      {
+        "label": "Abrir publicación",
+        "url": "https://deepanalytica.github.io/inverse-reality-lab/el-puente/",
+        "kind": "demo"
+      }
+    ],
+    "proofNote": "Lector público, sin revisión por pares."
+  },
+  "deep-audio": {
+    "role": "Investigación, criterio y desarrollo — Experiencia / producción",
+    "contribution": "El desarrollo de escritorio utiliza JUCE e incluye decisiones sobre dispositivos, monitorización, grabación y estados de trabajo. Mantengo separada una utilidad Android anterior.",
+    "decisions": [
+      {
+        "title": "Mantener audio en tiempo real",
+        "detail": "Una experiencia de grabación más clara, con decisiones reversibles y prioridades de rendimiento explícitas."
+      },
+      {
+        "title": "Separar procesamiento y monitorización",
+        "detail": "Separé la señal de grabación de la monitorización procesada y dejé el procesamiento de IA fuera de la ruta de audio en tiempo real. La operación básica no debe depender de la nube."
+      }
+    ],
+    "built": [
+      "Estudio de escritorio en desarrollo",
+      "Diseño de monitoreo y grabación",
+      "Documentación de decisiones técnicas"
+    ],
+    "links": [
+      {
+        "label": "Ver código y documentación",
+        "url": "https://github.com/deepanalytica/deep-audio",
+        "kind": "source"
+      }
+    ],
+    "proofNote": "Artefactos de producción públicos; producto en validación."
+  },
+  "wal": {
+    "role": "Dirección de arte, copy y campaña comercial",
+    "contribution": "Desarrollé piezas de comunicación comercial para ocasiones de compra distintas, adaptando mensajes, formatos y presentación de productos a cada público.",
+    "decisions": [
+      {
+        "title": "Diseñar para la ocasión",
+        "detail": "Una campaña de regalo familiar no necesita el mismo mensaje que una propuesta corporativa; cada pieza debe comunicar a su público."
+      },
+      {
+        "title": "Mensaje y producto juntos",
+        "detail": "Cada campaña conecta una necesidad concreta con una oferta visible y un llamado a la acción reconocible."
+      }
+    ],
+    "built": [
+      "Campañas comerciales por ocasión",
+      "Piezas originales y ofertas",
+      "Presentación digital de productos"
+    ],
+    "links": [
+      {
+        "label": "Ver sitio WAL",
+        "url": "https://wal.cl/",
+        "kind": "demo"
+      }
+    ],
+    "proofNote": "Las piezas originales y el sitio WAL están publicados. No se atribuyen ventas, resultados de pauta ni conversiones no verificadas."
+  },
 };
