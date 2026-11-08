@@ -14,8 +14,11 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
-    assert.match(await page.locator('#hero-title').innerText(),/Alexis Reyes/i,`${label}: identidad del autor visible`);
-    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*(?:IA|inteligencia artificial)/i,`${label}: oferta y áreas explícitas`);
+    assert.match(await page.locator('#hero-title').innerText(),/datos.*software/i,`${label}: trabajo visible por encima de autodescripción`);
+    assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
+    assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
+    assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
+    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*comunicación digital/i,`${label}: propuesta profesional basada en perfil documentado`);
     assert.equal(await page.locator('#que-hago .offer-grid article').count(),4,`${label}: cuatro áreas con problemas concretos`);
     assert.equal(await page.locator('.feature-case-link').count(),4,`${label}: cuatro enlaces a casos completos`);
     assert.equal(await page.locator('.feature-live-link').count(),3,`${label}: sitios y dossier distinguibles`);
@@ -41,7 +44,7 @@ try{
     const covers=await page.locator('.work-card img').evaluateAll(elements=>elements.map(el=>el.getAttribute('src')));
     assert.ok(new Set(covers).size>=20,`${label}: dirección de arte individual por proyecto`);
     if(label==='desktop'){const b=await page.locator('.feature-card').first().boundingBox();console.log('FIRST_FOLD_Y_DESKTOP',Math.round(b.y));await page.screenshot({path:'artifacts/desktop-first-fold.png',fullPage:false});assert.ok(b.y<655,'Los proyectos destacados son visibles sin desplazamiento');}
-    if(label==='mobile')assert.ok((await page.locator('.feature-card').first().boundingBox()).y<700,'Los proyectos empiezan dentro de la primera pantalla móvil');
+    if(label==='mobile'){const b=await page.locator('.feature-card').first().boundingBox();console.log('FIRST_FOLD_Y_MOBILE',Math.round(b.y));assert.ok(b.y<700,'Los proyectos empiezan dentro de la primera pantalla móvil');}
     await page.waitForTimeout(850);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,12).map(el=>({tag:el.tagName,cls:el.className?.baseVal||el.className,left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}))); console.log('Overflow offenders',JSON.stringify(offenders))}
@@ -93,6 +96,29 @@ try{
     await page.close();
   }
 
+
+
+  // El perfil es un artefacto de primera clase, no un enlace a un sitio legado.
+  for(const [label,width,height] of [['profile-desktop',1440,900],['profile-mobile',390,844]]){
+    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+    page.on('pageerror',e=>errors.push(label+': '+e.message));
+    const response=await page.goto('http://127.0.0.1:8844/perfil/',{waitUntil:'domcontentloaded',timeout:30000});
+    assert.equal(response.status(),200,label+': perfil local disponible');
+    assert.match(await page.locator('#page-title').innerText(),/Alexis Reyes/i,label+': identidad completa en perfil');
+    assert.equal(await page.locator('.career-grid article').count(),3,label+': tres etapas de experiencia documentadas');
+    assert.equal(await page.locator('.skills-grid article').count(),8,label+': ocho áreas de intervención');
+    assert.equal(await page.locator('.proof-grid a').count(),4,label+': casos enlazados desde perfil');
+    assert.match(await page.locator('.profile-facts').innerText(),/en curso/i,label+': formación sin atribuir título');
+    assert.ok(await page.locator('.profile-actions a').count()>=2,label+': acciones del perfil');
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+    assert.equal(overflow,false,label+': sin scroll horizontal');
+    await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
+    await page.locator('.proof-grid a').first().click();
+    assert.match(page.url(),/proyecto=archivo/,label+': perfil lleva directamente a caso');
+    assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO');
+    await page.close();
+    console.log('✓ '+label+': trayectoria, formación, áreas, evidencias y navegación');
+  }
 
   // AR Estudio Brand Experience: portada editorial, archivos de marca y responsive.
   for(const [label,width,height] of [['brand-desktop',1440,900],['brand-tablet',768,950],['brand-mobile',390,844]]){

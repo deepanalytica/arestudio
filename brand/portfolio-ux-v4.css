@@ -152,3 +152,24 @@
 @media(prefers-reduced-motion:reduce){
  .feature-card,.feature-case-link,.feature-live-link,.work-card,.filter-btn,.header-cta,.view-btn,.btn{transition:none!important;transform:none!important}
 }
+
+
+/* Se conserva la explicación de capacidades sin desplazar las tarjetas fuera
+   del primer viewport de un móvil pequeño. */
+@media(max-width:720px){
+ .hero{padding-block:10px 5px}
+ .hero h1{font-size:clamp(35px,8.8vw,49px);margin:8px 0 7px}
+ .hero .hero-head-regular{font-size:.62em;line-height:1.04;margin-top:3px}
+ .hero-copy>.hero-lead{font-size:13px;line-height:1.37}
+ .hero-copy>.hero-problem{font-size:11px;line-height:1.38;margin-top:6px}
+ .hero-actions{margin-top:10px;gap:7px}
+ .hero-actions .btn{min-height:41px;padding:9px 12px}
+ .offer-strip{padding-block:9px;gap:7px}
+ .offer-intro h2{font-size:18px}
+ .offer-grid{gap:6px 10px}
+ .offer-grid article{padding:0 8px}
+ .offer-grid p{font-size:10px;line-height:1.28}
+ .featured{padding-block:10px 40px}
+ .featured .section-top{margin-bottom:11px}
+ .featured .section-top h2{font-size:28px}
+}

@@ -1,0 +1,16 @@
+/* Portafolio AR/ — trayectoria condensada. Detalle en /perfil/ */
+.profile-spotlight{background:#06122E;color:#fff}
+.profile-spotlight .container{max-width:1440px}
+.profile-spotlight .section-kicker{color:#C8DBFF}
+.profile-spotlight h2,.profile-spotlight .about-inner h2{font:900 clamp(38px,4.8vw,65px)/1 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.065em;color:#fff}
+.profile-spotlight h2 em{font-weight:400;font-style:normal;color:#A9C4FF}
+.profile-spotlight .profile-spotlight-sub{margin-top:16px;font-size:13px;line-height:1.5;color:#C8D4E8;max-width:45ch}
+.profile-spotlight .about-side p{font-size:15px;line-height:1.6;color:#E0E9FA}
+.profile-spotlight-tags{display:flex;gap:7px;flex-wrap:wrap;margin:19px 0}
+.profile-spotlight-tags span{border:1px solid #FFFFFF50;color:white;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:650}
+.profile-spotlight-action{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;background:#EFFF38;color:#101729;border-radius:40px;font-weight:800;font-size:12px;padding:13px 18px;min-height:46px;transition:background .18s,transform .18s}
+.profile-spotlight-action:hover{background:#fff;color:#173EC9;transform:translateY(-2px)}
+.profile-spotlight-action:focus-visible{outline:3px solid #EFFF38;outline-offset:4px}
+.profile-spotlight-action:active{transform:translateY(1px);background:#D9EE28}
+@media(max-width:720px){.profile-spotlight h2{font-size:clamp(36px,8vw,48px)}.profile-spotlight .profile-spotlight-sub{font-size:12px}.profile-spotlight .about-side p{font-size:13px}.profile-spotlight-action{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.profile-spotlight-action{transition:none}.profile-spotlight-action:hover{transform:none}}

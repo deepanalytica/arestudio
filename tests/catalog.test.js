@@ -27,3 +27,27 @@ test('accesos públicos de casos usan destinos explícitos y no se inventan demo
   for(const id of ['deep-geo','praxios-os'])assert.equal(caseStudies[id].links.some(x=>x.kind==='demo'),false);
   assert.ok(caseStudies['conv-os'].proofNote.includes('datos ficticios'));
 });
+
+
+test('cada uno de los 21 proyectos cuenta con expediente propio',()=>{
+  assert.equal(Object.keys(caseStudies).length,projects.length);
+  for(const p of projects){
+    const c=caseStudies[p.id];
+    assert.ok(c,p.id+' carece de ficha ampliada');
+    assert.ok(c.role&&c.contribution&&c.proofNote,p.id+' necesita rol, contribución y límites');
+    assert.ok(c.decisions.length>=2,p.id+' necesita criterios explícitos');
+    assert.ok(c.built.length>=2,p.id+' requiere materiales definidos');
+  }
+});
+test('capturas de pantalla solo para sitios o demos públicos identificados',()=>{
+  const declared=projects.filter(p=>p.preview);
+  assert.equal(declared.length,9);
+  for(const p of declared){
+    assert.match(p.preview,/^assets\/proof\/[a-z0-9-]+\.jpg$/);
+    assert.ok(p.previewLabel);
+    assert.ok(caseStudies[p.id].links.some(l=>l.kind==='demo'||l.kind==='source'),p.id+' debe mostrar procedencia pública');
+  }
+  for(const id of ['deep-geo','atalaya','meta-harness','deep-living']){
+    assert.ok(!projects.find(p=>p.id===id).preview,id+' no debe simular una captura operativa');
+  }
+});
