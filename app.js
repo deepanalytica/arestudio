@@ -119,7 +119,7 @@ menuBtn.addEventListener('click',()=>setMenu(menu.hidden));
 $$('a',menu).forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setMenu(false,{restoreFocus:true})}});
 document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!menuBtn.contains(e.target))setMenu(false)});
-const navLinks=$$('.main-nav a[href^="#"]');
+const navLinks=$('.main-nav a[href^="#"], #mobile-menu a[href^="#"]');
 function updateActiveNav(){
   const threshold=scrollY+$('.header').offsetHeight+90;
   let active='';
