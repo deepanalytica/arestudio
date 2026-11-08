@@ -43,6 +43,11 @@ try{
     if (label==='desktop'){
       await page.locator('.feature-card').nth(1).click();
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
+      assert.equal(await page.locator('.case-keypoint').count(),2,'Caso describe problema y contribución sin otro clic');
+      assert.equal(await page.locator('.case-decision').count(),3,'Caso muestra decisiones concretas');
+      assert.equal(await page.locator('.case-link-primary').count(),0,'Deep Geo sin demo pública no anuncia demo');
+      assert.equal(await page.locator('.featured-direct a').count(),4,'Cuatro destinos públicos directos');
+      await page.screenshot({path:'artifacts/case-deep-geo.png',fullPage:false});
       assert.equal(await page.locator('dialog').evaluate(d=>d.open),true);
       assert.match(page.url(),/proyecto=deep-geo/);
       await page.keyboard.press('Escape');

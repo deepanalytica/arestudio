@@ -32,3 +32,89 @@ export const projects = [
 ];
 export const featured = projects.filter(p=>p.featured);
 export const categories = ['Todos','Diseño','Datos','Tecnología','Comunicación','Investigación'];
+
+// Casos con decisiones trazables y acceso a evidencia. No implica métricas ni demos no acreditadas.
+export const caseStudies = {
+  'archivo': {
+    role: 'Dirección de arte, sistema de marcas y experiencia ecommerce',
+    contribution: 'Diseñé la estructura editorial del catálogo, la identidad visual de las colecciones y su presentación en una tienda navegable.',
+    decisions: [
+      {title:'Marcas reconocibles, tienda coherente',detail:'Mantener un universo gráfico por marca y reunirlos bajo una arquitectura comercial compartida.'},
+      {title:'Exploración antes que listado infinito',detail:'Usar navegación por marcas, colecciones y filtros para ayudar a encontrar productos sin perder el relato visual.'},
+      {title:'Campaña conectada al producto',detail:'Vincular las piezas editoriales y la fotografía a sus colecciones y fichas, en lugar de utilizarlas como decoración aislada.'}
+    ],
+    built:['Tienda y explorador de catálogo','Identidades y campañas por colección','Diseño de fichas, navegación y bolsa'],
+    links:[
+      {label:'Abrir tienda publicada',url:'https://deepanalytica.github.io/archivo-tienda/',kind:'demo'},
+      {label:'Examinar código público',url:'https://github.com/deepanalytica/archivo-tienda',kind:'source'}
+    ],
+    proofNote:'El proyecto publicado permite recorrer las colecciones y la tienda. Las portadas del portafolio son piezas editoriales; los materiales fotográficos identificados aparecen más abajo.'
+  },
+  'deep-geo': {
+    role:'Investigación geoespacial, visualización y arquitectura de análisis',
+    contribution:'Diseñé flujos para explorar información territorial, cruzar capas y distinguir observaciones verificables de hipótesis.',
+    decisions:[
+      {title:'Explorar antes de concluir',detail:'Separar capas, hallazgos e hipótesis para no presentar una interpretación como hecho medido.'},
+      {title:'2D y 3D con objetivos distintos',detail:'Utilizar cartografía 2D para comparar información y visualización 3D para examinar contexto espacial y relieve.'},
+      {title:'Evidencia útil para decidir',detail:'Vincular la lectura de mapas con registros y fichas que apoyen la priorización de inspecciones y análisis.'}
+    ],
+    built:['Diseño de flujos de exploración territorial','Visualización de capas y escenarios 2D/3D','Estructura de hallazgos y evidencias'],
+    links:[
+      {label:'Ver ficha de investigación',url:'https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/detalle/?id=deep-geo',kind:'source'}
+    ],
+    proofNote:'Investigación y plataforma en desarrollo. El proyecto no cuenta aquí con una demo pública operativa verificada; no se presenta la ilustración como captura del GIS.'
+  },
+  'praxios-os': {
+    role:'Arquitectura de agentes, trazabilidad y diseño de producto',
+    contribution:'Trabajé en la representación de decisiones, tareas, estados y evidencias de procesos asistidos por IA.',
+    decisions:[
+      {title:'Trazabilidad sobre automatización opaca',detail:'Hacer explícitos estados y evidencias para que cada ejecución pueda revisarse.'},
+      {title:'Revisión humana en los puntos críticos',detail:'Diferenciar lo solicitado, lo ejecutado y lo verificado antes de describir una tarea como completada.'},
+      {title:'Interfaz para inspeccionar el sistema',detail:'Usar componentes de observabilidad para exponer actividad y relaciones entre procesos, no solo resultados finales.'}
+    ],
+    built:['Diseño de contratos y estados','Prototipos de paneles de observabilidad','Dossier público de la visión del producto'],
+    links:[
+      {label:'Ver dossier público',url:'https://deepanalytica.github.io/praxios/',kind:'source'},
+      {label:'Examinar repositorio público',url:'https://github.com/deepanalytica/praxios',kind:'source'}
+    ],
+    proofNote:'El enlace público muestra un dossier del proyecto, no una consola de agentes en producción. Componentes operativos internos no se exponen como demo pública.'
+  },
+  'visual-art-ai': {
+    role:'Estrategia digital, identidad, diseño web y comunicación',
+    contribution:'Desarrollé la presentación digital del servicio, su estructura de información y el recorrido desde el diagnóstico hasta el contacto.',
+    decisions:[
+      {title:'Explicar la oferta antes que la tecnología',detail:'Organizar el sitio alrededor de necesidades de negocio y resultados esperados, no de un catálogo de herramientas.'},
+      {title:'Diagnóstico como primera interacción',detail:'Dar al visitante una forma de iniciar una conversación concreta antes de pedirle una contratación.'},
+      {title:'Una ruta de contacto visible',detail:'Conservar llamados a la acción claros entre mensaje, servicios y contacto.'}
+    ],
+    built:['Sitio de servicio publicado','Arquitectura de contenido y oferta','Identidad visual y recorrido de conversión'],
+    links:[{label:'Abrir sitio publicado',url:'https://visualartai.cl/',kind:'demo'}],
+    proofNote:'El sitio permite verificar el diseño y la comunicación del servicio. No se atribuyen cifras de captación ni conversiones sin medición pública.'
+  },
+  'conv-os': {
+    role:'Arquitectura de producto, experiencia operativa y prototipado',
+    contribution:'Desarrollé un MVP experimental con interfaz de conversaciones, estados operativos y una demostración de flujos con datos simulados.',
+    decisions:[
+      {title:'Demostración segura y honesta',detail:'Separar la UI pública con datos ficticios del backend y de las integraciones que todavía requieren controles de producción.'},
+      {title:'Estados explícitos',detail:'Modelar operaciones, pedidos y cambios de estado, sin permitir afirmar pagos reales desde un texto arbitrario.'},
+      {title:'Producto transversal',detail:'Diseñar un flujo configurable para distintos servicios y comercios, evitando acoplarlo a un solo tipo de negocio.'}
+    ],
+    built:['Panel de demostración e inbox simulado','Máquina de estados y catálogo de operaciones','API experimental Node y SQLite'],
+    links:[
+      {label:'Abrir demo interactiva',url:'https://deepanalytica.github.io/conv-os/',kind:'demo'},
+      {label:'Ver repositorio y límites',url:'https://github.com/deepanalytica/conv-os',kind:'source'}
+    ],
+    proofNote:'MVP experimental. La demo usa datos ficticios y no procesa conversaciones reales, pagos ni integraciones activas de WhatsApp.'
+  },
+  'radar-conv-os': {
+    role:'Análisis comparativo y diseño de herramientas de decisión',
+    contribution:'Construí un enfoque de evaluación de oportunidades que combina señales observables, penalización por falta de evidencia y simulación de costos.',
+    decisions:[
+      {title:'Penalizar evidencia insuficiente',detail:'Evitar que una señal atractiva por sí sola se interprete como oportunidad comercial comprobada.'},
+      {title:'Economía unitaria antes de invertir',detail:'Cruzar precio, costos y supuestos en un simulador para comparar escenarios.'}
+    ],
+    built:['Criterios de ranking y penalización','Simulación de economía unitaria','Interfaz de exploración de oportunidades'],
+    links:[{label:'Consultar código del ecosistema',url:'https://github.com/deepanalytica/conv-os',kind:'source'}],
+    proofNote:'Evaluación experimental; los resultados de la demo no constituyen ventas verificadas.'
+  }
+};
