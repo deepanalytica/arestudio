@@ -14,6 +14,13 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
+    assert.match(await page.locator('#hero-title').innerText(),/Alexis Reyes/i,`${label}: identidad del autor visible`);
+    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*(?:IA|inteligencia artificial)/i,`${label}: oferta y áreas explícitas`);
+    assert.equal(await page.locator('#que-hago .offer-grid article').count(),4,`${label}: cuatro áreas con problemas concretos`);
+    assert.equal(await page.locator('.feature-case-link').count(),4,`${label}: cuatro enlaces a casos completos`);
+    assert.equal(await page.locator('.feature-live-link').count(),3,`${label}: sitios y dossier distinguibles`);
+    assert.equal(await page.locator('.feature-public-note').count(),1,`${label}: la investigación sin demo no se anuncia como demo`);
+    assert.equal(await page.locator('button').evaluateAll(btns=>btns.filter(b=>!b.getAttribute('aria-label')&&!b.textContent.trim()&&!b.getAttribute('title')).length),0,`${label}: todos los botones tienen nombre accesible`);
     assert.equal(await page.locator('.brand-lockup img').count(),2,`${label}: logos vectoriales en header y footer`);
     assert.equal(await page.locator('.editorial-interlude').count(),1,`${label}: pieza editorial de marca`);
     const identity=await page.evaluate(()=>({
@@ -41,7 +48,7 @@ try{
     assert.equal(overflow,false,`${label}: sin scroll horizontal`);
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
-      await page.locator('.feature-card').nth(1).click();
+      await page.locator('.feature-case-link').nth(1).click();
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
       assert.equal(await page.locator('.case-keypoint').count(),2,'Caso describe problema y contribución sin otro clic');
       assert.equal(await page.locator('.case-decision').count(),3,'Caso muestra decisiones concretas');
@@ -52,15 +59,35 @@ try{
       assert.match(page.url(),/proyecto=deep-geo/);
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('dialog').evaluate(d=>d.open),false);
-      await page.getByRole('button',{name:/Datos/}).first().click();
+      await page.getByRole('button',{name:'Filtrar por Datos'}).click();
+      assert.equal(await page.getByRole('button',{name:'Filtrar por Datos'}).getAttribute('aria-pressed'),'true','Datos queda seleccionado');
+      assert.equal(await page.getByRole('button',{name:'Filtrar por Datos'}).evaluate(el=>el===document.activeElement),true,'El filtro mantiene el foco tras actualizar');
       assert.ok(await page.locator('.work-card').count()>=3);
       await page.locator('#search-projects').fill('Radar');
       assert.equal(await page.locator('.work-card').count(),1);
+      await page.locator('#view-list').click();
+      assert.equal(await page.locator('#view-list').getAttribute('aria-pressed'),'true','Vista lista activada');
+      assert.equal(await page.locator('#view-grid').getAttribute('aria-pressed'),'false','Vista tarjetas desactivada');
+      assert.equal(await page.locator('.work-grid').evaluate(el=>el.classList.contains('list-view')),true,'Lista aplicada al catálogo');
+      await page.locator('#view-grid').click();
+      assert.equal(await page.locator('#view-grid').getAttribute('aria-pressed'),'true','Vista tarjetas reactivada');
+      await page.locator('#clear-filters').click();
+      assert.equal(await page.getByRole('button',{name:'Filtrar por Todos'}).getAttribute('aria-pressed'),'true','Filtros restablecidos');
+      assert.equal(await page.locator('.work-card').count(),21,'Volver a todos muestra todo el trabajo');
+      await page.evaluate(()=>scrollTo({top:document.querySelector('#que-hago').offsetTop-100,behavior:'instant'}));
+      await page.waitForTimeout(200);
+      assert.equal(await page.locator('.main-nav a[href="#que-hago"]').getAttribute('aria-current'),'location','El menú refleja la sección visible');
     }
     if (label==='mobile'){
+      assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Menú móvil inicialmente oculto');
       await page.locator('#menu-toggle').click();
-      assert.equal(await page.locator('#mobile-menu').isVisible(),true);
-      await page.locator('#menu-toggle').click();
+      assert.equal(await page.locator('#mobile-menu').isVisible(),true,'Menú móvil expandido');
+      assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'),'true','Menú anuncia estado abierto');
+      assert.equal(await page.locator('#menu-toggle').getAttribute('aria-label'),'Cerrar menú');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Escape cierra menú');
+      assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'),'false','Menú anuncia estado cerrado');
+      assert.equal(await page.locator('#menu-toggle').evaluate(el=>el===document.activeElement),true,'Foco vuelve al disparador');
     }
     console.log(`✓ ${label}: contenidos, responsive, interacciones básicas`);
     await page.close();
