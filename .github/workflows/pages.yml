@@ -23,6 +23,14 @@ jobs:
           node-version: '22'
       - name: Validate catalog and scripts
         run: npm run check
+      - name: Install browser capture tools
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture live evidence from public products
+        run: node scripts/capture-public-evidence.mjs
+      - name: Remove build-only dependencies
+        run: rm -rf node_modules
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site
@@ -41,8 +49,10 @@ jobs:
             html=$(curl --fail --silent --show-error --location --max-time 15 "$base/?check=${GITHUB_SHA}" || true)
             css=$(curl --fail --silent --show-error --location --max-time 15 "$base/brand.css?v=2.3.1&check=${GITHUB_SHA}" || true)
             lab=$(curl --fail --silent --show-error --location --max-time 15 "$base/lab/?check=${GITHUB_SHA}" || true)
-            if [[ "$html" == *'brand.css?v=2.3.1'* && "$css" == *'--ar-brand-css-loaded:1'* && "$lab" == *'../brand.css?v=2.3.1'* ]]; then
-              echo "Pages: HTML, Brand CSS and Design System Lab are serving version 2.3.1"
+            profile=$(curl --fail --silent --show-error --location --max-time 15 "https://deepanalytica.github.io/arestudio/perfil/?check=${GITHUB_SHA}" || true)
+            proof=$(curl --fail --silent --show-error --location --max-time 15 "https://deepanalytica.github.io/arestudio/assets/proof/manifest.json?check=${GITHUB_SHA}" || true)
+            if [[ "$html" == *'brand.css?v=2.3.1'* && "$css" == *'--ar-brand-css-loaded:1'* && "$lab" == *'../brand.css?v=2.3.1'* && "$profile" == *'id="areas-title"'* && "$proof" == *'"results"'* ]]; then
+              echo "Pages: brand, profile and public evidence manifest are published"
               exit 0
             fi
             echo "Waiting for GitHub Pages CDN propagation ($attempt/12)"
