@@ -15,7 +15,7 @@ try{
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
     assert.match(await page.locator('#hero-title').innerText(),/Alexis Reyes/i,`${label}: identidad del autor visible`);
-    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*inteligencia artificial/i,`${label}: oferta y áreas explícitas`);
+    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*(?:IA|inteligencia artificial)/i,`${label}: oferta y áreas explícitas`);
     assert.equal(await page.locator('#que-hago .offer-grid article').count(),4,`${label}: cuatro áreas con problemas concretos`);
     assert.equal(await page.locator('.feature-case-link').count(),4,`${label}: cuatro enlaces a casos completos`);
     assert.equal(await page.locator('.feature-live-link').count(),3,`${label}: sitios y dossier distinguibles`);
