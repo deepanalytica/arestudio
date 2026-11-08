@@ -116,7 +116,7 @@ export const caseStudies = {
     built:['Criterios de ranking y penalización','Simulación de economía unitaria','Interfaz de exploración de oportunidades'],
     links:[{label:'Abrir radar demostrativo',url:'https://deepanalytica.github.io/conv-os/radar/',kind:'demo'},{label:'Consultar código del ecosistema',url:'https://github.com/deepanalytica/conv-os',kind:'source'}],
     proofNote:'Evaluación experimental; los resultados de la demo no constituyen ventas verificadas.'
-  }
+  },
   "msj": {
     "role": "Investigación, criterio y desarrollo — Conversaciones / canales",
     "contribution": "La arquitectura separa la entrada de eventos de Meta, el motor de conversación y las herramientas del negocio. Incluye estados para atender con IA, derivar a una persona o pausar el flujo.",
