@@ -14,7 +14,7 @@ const readyProjects=featured.map(p=>p.id);
 const artDirection={
   'archivo':{
     edition:'01 / DISEÑO Y COMERCIO',
-    headline:'Doce marcas. Una tienda. Cada una con su propia voz.',
+    headline:'Doce marcas. Una tienda.',
     intro:'La pregunta no era cómo poner más productos en pantalla. Era cómo dejar que doce marcas distintas convivieran sin volverse iguales.',
     storyTitle:'Una tienda podía ser mucho más que un catálogo.',
     story:'Había colecciones, nombres, estilos y fotografías que tenían que encontrarse en un mismo lugar. Decidí diseñar un sistema de navegación común, pero conservar el carácter editorial de cada marca.',
@@ -25,7 +25,7 @@ const artDirection={
   },
   'deep-geo':{
     edition:'02 / INTELIGENCIA TERRITORIAL',
-    headline:'A veces el mapa tiene los datos. Pero no tiene la respuesta.',
+    headline:'Un mapa no basta.',
     intro:'Una capa muestra una cosa. Otra puede cambiar por completo la interpretación. Me interesaba cruzarlas y dejar claro qué está observado y qué todavía es una hipótesis.',
     storyTitle:'Mirar el territorio desde más de una fuente.',
     story:'Los datos dispersos pueden ocultar relaciones importantes. El diseño propone conectar mapas, información y evidencia para explorar riesgos sin vender una hipótesis como una certeza.',
@@ -36,7 +36,7 @@ const artDirection={
   },
   'praxios-os':{
     edition:'03 / ARQUITECTURA Y DIRECCIÓN DE IA',
-    headline:'Que una IA diga «listo» no significa que el trabajo esté comprobado.',
+    headline:'¿Quién comprueba a la IA?',
     intro:'Cuando una tarea pasa entre agentes y herramientas, quise poder responder algo sencillo: qué pasó, quién lo revisó y qué evidencia queda.',
     storyTitle:'El control es parte del diseño.',
     story:'No se trata de poner agentes a trabajar sin supervisión. Se trata de definir objetivos, condiciones, estados y una revisión humana que permita distinguir las salidas útiles de las afirmaciones sin sustento.',
@@ -47,7 +47,7 @@ const artDirection={
   },
   'visual-art-ai':{
     edition:'04 / COMUNICACIÓN Y MARKETING DIGITAL',
-    headline:'A veces el problema no es lo que vendes. Es cómo lo cuentas.',
+    headline:'Lo importante es cómo lo cuentas.',
     intro:'Una persona llega a una web y necesita entender, sin adivinar, qué le ofrecen y qué puede hacer después. Ahí empieza el trabajo de comunicación.',
     storyTitle:'Un mensaje claro abre la conversación.',
     story:'Trabajé la arquitectura de la página, el lenguaje visual y las rutas de contacto. La idea era presentar una oferta comprensible sin abrumar con tecnicismos ni afirmaciones que no pudieran comprobarse.',
