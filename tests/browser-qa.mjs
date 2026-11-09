@@ -14,7 +14,7 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
-    assert.match(await page.locator('#hero-title').innerText(),/investigo.*exploro.*dirijo.*construyo/i,`${label}: titular integra criterio, exploración, dirección y ejecución`);
+    assert.match(await page.locator('#hero-title').innerText(),/investigo[\s\S]*exploro[\s\S]*dirijo[\s\S]*construyo/i,`${label}: titular integra criterio, exploración, dirección y ejecución`);
     assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
     assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
     assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
