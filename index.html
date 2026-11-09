@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="brand/portfolio-strategy-v5.css?v=5.0.0">
   <link rel="stylesheet" href="brand/portfolio-story-v6.css?v=6.0.0">
   <link rel="stylesheet" href="brand/portfolio-entry-v7.css?v=7.0.0">
+  <link rel="stylesheet" href="brand/work-first-v8.css?v=8.0.0">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script type="module" src="app.js"></script>
@@ -35,44 +36,24 @@
 
   <main>
 
-    <section class="hero container hero-v6 hero-v7" aria-labelledby="hero-title">
+    <section class="hero container hero-v6 hero-v7 hero-v8" aria-labelledby="hero-title">
       <div class="hero-copy">
         <span class="eyebrow"><span class="status-dot"></span> AR ESTUDIO / ALEXIS REYES</span>
-        <h1 id="hero-title"><span class="hero-head-bold">Las buenas ideas</span><span class="hero-head-regular">se trabajan<span class="period">.</span></span></h1>
-        <p class="hero-lead">Diseño marcas, analizo datos y construyo software. Aquí puedes ver los proyectos y las decisiones que hay detrás.</p>
-        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Ver mis proyectos <span aria-hidden="true">↓</span></a></div>
-        <nav class="entry-paths" aria-label="Entrar por tipo de proyecto">
-          <span class="entry-paths-label">O entra directo a un trabajo</span>
-          <a href="?proyecto=archivo" data-project="archivo"><span class="path-dot path-art" aria-hidden="true"></span>Arte <span aria-hidden="true">↗</span></a>
-          <a href="?proyecto=deep-geo" data-project="deep-geo"><span class="path-dot path-data" aria-hidden="true"></span>Datos <span aria-hidden="true">↗</span></a>
-          <a href="?proyecto=praxios-os" data-project="praxios-os"><span class="path-dot path-systems" aria-hidden="true"></span>Sistemas <span aria-hidden="true">↗</span></a>
-        </nav>
+        <h1 id="hero-title"><span class="hero-head-bold">Mira lo que</span><span class="hero-head-regular">construí<span class="period">.</span></span></h1>
+        <p class="hero-lead">Cuatro proyectos distintos. Abre cualquiera y te cuento qué problema había y cómo lo abordé.</p>
       </div>
-      <nav class="hero-art hero-project-stage" aria-label="Tres proyectos para empezar">
-        <span class="stage-overline">AR/ EXPLORA EL TRABAJO</span>
-        <a class="stage-card stage-card-art" href="?proyecto=archivo" data-project="archivo" aria-label="Explorar ARCHIVO, dirección de arte y diseño">
-          <img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" onerror="this.hidden=true" alt="" loading="eager" decoding="async">
-          <span class="stage-card-meta">01 / ARTE</span><strong>ARCHIVO <span aria-hidden="true">↗</span></strong>
-        </a>
-        <a class="stage-card stage-card-data" href="?proyecto=deep-geo" data-project="deep-geo" aria-label="Explorar Deep Geo, datos e investigación">
-          <img src="assets/deep-geo.svg" alt="" loading="lazy" decoding="async">
-          <span class="stage-card-meta">02 / DATOS</span><strong>Deep Geo <span aria-hidden="true">↗</span></strong>
-        </a>
-        <a class="stage-card stage-card-systems" href="?proyecto=praxios-os" data-project="praxios-os" aria-label="Explorar Praxios OS, sistemas y dirección de IA">
-          <img src="assets/praxios.svg" alt="" loading="lazy" decoding="async">
-          <span class="stage-card-meta">03 / SISTEMAS</span><strong>Praxios OS <span aria-hidden="true">↗</span></strong>
-        </a>
-      </nav>
+      <a class="hero-archive-link" href="#explorar">Archivo completo <span aria-hidden="true">↗</span> <small>21 proyectos</small></a>
     </section>
 
     <section id="proyectos" class="featured container featured-v6" aria-labelledby="featured-title">
-      <div class="section-top"><div><span class="section-kicker">UNA SELECCIÓN DE MI TRABAJO</span><h2 id="featured-title">Te cuento <span class="type-light">cuatro historias</span><span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Los 21 proyectos <span aria-hidden="true">↗</span></a></div>
+      <div class="section-top"><div><span class="section-kicker">TRABAJO DESTACADO / 01—04</span><h2 id="featured-title">Proyectos seleccionados</h2></div><a class="subtle-link" href="#explorar">Ver todos los casos <span aria-hidden="true">↗</span></a></div>
       <div class="feature-grid" id="featured-grid" aria-label="Proyectos destacados">
         <article class="feature-card feature-editorial" data-art="editorial">
           <a class="feature-case-link" href="?proyecto=archivo" data-project="archivo" aria-label="Leer la historia de ARCHIVO">
             <div class="feature-visual art-editorial">
               <img class="art-fallback" src="assets/archivo.svg" alt="Composición editorial de ARCHIVO" width="800" height="600" loading="eager" decoding="async">
               <img class="art-photo" src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="project-browser-preview" aria-hidden="true"><span class="browser-chrome"><i></i><i></i><i></i><span>archivo / catálogo</span></span><img src="assets/proof/archivo.jpg" alt="" loading="lazy" decoding="async" onerror="this.closest('.project-browser-preview').hidden=true"></span>
               <span class="art-topline"><span>01 / DIRECCIÓN DE ARTE</span><span>TIENDA PUBLICADA</span></span>
               <span class="feature-visual-signet" aria-hidden="true">A/</span>
             </div>
@@ -119,6 +100,14 @@
       </div>
       <div class="featured-direct" aria-label="Más casos para seguir explorando"><span>¿QUIERES VER MÁS?</span><a href="?proyecto=conv-os" data-project="conv-os">Conv OS ↗</a><a href="?proyecto=radar-conv-os" data-project="radar-conv-os">Radar ↗</a><a href="?proyecto=meta-harness" data-project="meta-harness">Meta Harness ↗</a><a href="#explorar">Los 21 casos ↗</a></div>
     </section>
+
+    <section class="index-section" id="explorar" aria-labelledby="index-title"><div class="container">
+      <div class="section-top index-top"><div><span class="section-kicker">02 / EL ARCHIVO COMPLETO</span><h2 id="index-title">Todos mis <span class="type-light">proyectos</span><span class="green-dot">.</span></h2><p>Busca por nombre o área. Abre cualquier tarjeta para ver qué hace, qué problema aborda y la evidencia disponible.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
+      <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por disciplina"></div><div class="toolbar-tools"><label class="search-box" for="search-projects"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" id="search-projects" placeholder="Buscar proyecto o tecnología…" aria-label="Buscar proyectos"><kbd>/</kbd></label><div class="view-controls" role="group" aria-label="Vista del índice"><button type="button" class="view-btn" id="view-grid" aria-pressed="true" aria-label="Mostrar proyectos como tarjetas" title="Vista de tarjetas">▦</button><button type="button" class="view-btn" id="view-list" aria-pressed="false" aria-label="Mostrar proyectos como lista" title="Vista de lista">☰</button></div></div></div>
+      <div class="result-line"><span id="result-count" role="status" aria-live="polite">Cargando proyectos…</span><button id="clear-filters" type="button" class="clear-btn" hidden>Restablecer filtros ↺</button></div>
+      <div class="work-grid" id="work-grid" aria-label="Resultados de proyectos"></div><p class="no-results" id="no-results" hidden>No hay proyectos con esos filtros. <button type="button" id="reset-empty">Ver todo el trabajo</button></p>
+    </div></section>
+
 
     <section class="problem-section problem-v6" id="que-hago" aria-labelledby="problem-title"><div class="container">
       <div class="chapter-row"><span>ANTES DE ELEGIR UNA HERRAMIENTA</span><span>HAY QUE ENTENDER EL PROBLEMA</span></div>
@@ -186,13 +175,6 @@
         <div class="ai-node ai-node-final"><span>04 / REVISIÓN HUMANA</span><strong>Decidir qué es válido.</strong><b aria-hidden="true">↗</b></div>
         <div class="ai-diagram-foot">DIAGRAMA EXPLICATIVO · NO CAPTURA DE UN SISTEMA EN PRODUCCIÓN</div>
       </div>
-    </div></section>
-
-    <section class="index-section" id="explorar" aria-labelledby="index-title"><div class="container">
-      <div class="section-top index-top"><div><span class="section-kicker">02 / EL ARCHIVO COMPLETO</span><h2 id="index-title">Todos mis <span class="type-light">proyectos</span><span class="green-dot">.</span></h2><p>Busca por nombre o área. Abre cualquier tarjeta para ver qué hace, qué problema aborda y la evidencia disponible.</p></div><span class="work-count"><strong id="total-count">21</strong><small>ENTRADAS<br>DOCUMENTADAS</small></span></div>
-      <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por disciplina"></div><div class="toolbar-tools"><label class="search-box" for="search-projects"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" id="search-projects" placeholder="Buscar proyecto o tecnología…" aria-label="Buscar proyectos"><kbd>/</kbd></label><div class="view-controls" role="group" aria-label="Vista del índice"><button type="button" class="view-btn" id="view-grid" aria-pressed="true" aria-label="Mostrar proyectos como tarjetas" title="Vista de tarjetas">▦</button><button type="button" class="view-btn" id="view-list" aria-pressed="false" aria-label="Mostrar proyectos como lista" title="Vista de lista">☰</button></div></div></div>
-      <div class="result-line"><span id="result-count" role="status" aria-live="polite">Cargando proyectos…</span><button id="clear-filters" type="button" class="clear-btn" hidden>Restablecer filtros ↺</button></div>
-      <div class="work-grid" id="work-grid" aria-label="Resultados de proyectos"></div><p class="no-results" id="no-results" hidden>No hay proyectos con esos filtros. <button type="button" id="reset-empty">Ver todo el trabajo</button></p>
     </div></section>
 
     <section class="about-band profile-spotlight" id="perfil" aria-labelledby="profile-spotlight-title"><div class="container about-inner">
