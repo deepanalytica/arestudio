@@ -14,8 +14,8 @@ const readyProjects=featured.map(p=>p.id);
 const artDirection={
   'archivo':{
     edition:'01 / DISEÑO Y COMERCIO',
-    headline:'Doce marcas. Una tienda.',
-    intro:'La pregunta no era cómo poner más productos en pantalla. Era cómo dejar que doce marcas distintas convivieran sin volverse iguales.',
+    headline:'ARCHIVO',
+    intro:'Un sistema editorial que reúne doce marcas sin borrar sus diferencias.',
     storyTitle:'Una tienda podía ser mucho más que un catálogo.',
     story:'Había colecciones, nombres, estilos y fotografías que tenían que encontrarse en un mismo lugar. Decidí diseñar un sistema de navegación común, pero conservar el carácter editorial de cada marca.',
     mediaTitle:'Cada colección necesitaba su propio escenario.',
@@ -25,8 +25,8 @@ const artDirection={
   },
   'deep-geo':{
     edition:'02 / INTELIGENCIA TERRITORIAL',
-    headline:'Un mapa no basta.',
-    intro:'Una capa muestra una cosa. Otra puede cambiar por completo la interpretación. Me interesaba cruzarlas y dejar claro qué está observado y qué todavía es una hipótesis.',
+    headline:'Deep Geo',
+    intro:'Cruce de datos territoriales para investigar riesgos y poner los hallazgos en contexto.',
     storyTitle:'Mirar el territorio desde más de una fuente.',
     story:'Los datos dispersos pueden ocultar relaciones importantes. El diseño propone conectar mapas, información y evidencia para explorar riesgos sin vender una hipótesis como una certeza.',
     mediaTitle:'No basta con encender una capa.',
@@ -36,8 +36,8 @@ const artDirection={
   },
   'praxios-os':{
     edition:'03 / ARQUITECTURA Y DIRECCIÓN DE IA',
-    headline:'¿Quién comprueba a la IA?',
-    intro:'Cuando una tarea pasa entre agentes y herramientas, quise poder responder algo sencillo: qué pasó, quién lo revisó y qué evidencia queda.',
+    headline:'Praxios OS',
+    intro:'Arquitectura para coordinar agentes, verificar su trabajo y conservar evidencia.',
     storyTitle:'El control es parte del diseño.',
     story:'No se trata de poner agentes a trabajar sin supervisión. Se trata de definir objetivos, condiciones, estados y una revisión humana que permita distinguir las salidas útiles de las afirmaciones sin sustento.',
     mediaTitle:'El sistema se explica con estados, no con promesas.',
@@ -47,8 +47,8 @@ const artDirection={
   },
   'visual-art-ai':{
     edition:'04 / COMUNICACIÓN Y MARKETING DIGITAL',
-    headline:'Lo importante es cómo lo cuentas.',
-    intro:'Una persona llega a una web y necesita entender, sin adivinar, qué le ofrecen y qué puede hacer después. Ahí empieza el trabajo de comunicación.',
+    headline:'Visual Art AI',
+    intro:'Dirección visual y comunicación digital para hacer comprensible una oferta de servicios.',
     storyTitle:'Un mensaje claro abre la conversación.',
     story:'Trabajé la arquitectura de la página, el lenguaje visual y las rutas de contacto. La idea era presentar una oferta comprensible sin abrumar con tecnicismos ni afirmaciones que no pudieran comprobarse.',
     mediaTitle:'Una propuesta que se puede abrir y recorrer.',
@@ -90,6 +90,7 @@ function scene(p,direction){
   if(stage==='archivo'){
     const media=p.media||[];
     inner='<div class="scene-archive-art">'+
+      image(media[0]?.src||p.cover,'Pieza editorial publicada de Ownform, ARCHIVO','case-archive-hero',true)+
       '<div class="archive-image archive-image-one">'+image(media[0]?.src||p.cover,'Fotografía editorial Ownform')+'</div>'+
       '<div class="archive-image archive-image-two">'+image(media[1]?.src||p.cover,'Pieza de campaña ALTO')+'</div>'+
       '<div class="archive-browser archive-shop-concept" role="img" aria-label="Montaje editorial conceptual del catálogo ARCHIVO construido con fotografías publicadas; no es una captura exacta de la tienda">'+
@@ -177,13 +178,14 @@ function build(p){
       '<div><span>REPRESENTACIÓN CONCEPTUAL</span><p>No hay captura pública de interfaz verificada para este proyecto.</p></div></div>';
   }
   return '<div class="case-layout" data-case="'+e(p.id)+'">'+
+    '<div class="case-opening">'+
+    scene(p,direction)+
     '<section class="case-intro container" aria-labelledby="case-title">'+
-      '<div class="intro-meta"><span>'+e(edition)+'</span><span>CASO / AR ESTUDIO</span></div>'+
+      '<div class="intro-meta"><span>'+e(edition)+'</span></div>'+
       '<div class="intro-grid"><div><p class="intro-status">'+e(p.status)+'</p>'+
         '<h1 id="case-title">'+e(title)+'</h1></div>'+
-        '<div class="intro-side"><p>'+e(lead)+'</p><a href="#escena">Ver el proyecto <span aria-hidden="true">↓</span></a></div></div>'+
-    '</section>'+
-    scene(p,direction)+
+        '<div class="intro-side"><p>'+e(lead)+'</p><a href="#historia">Conocer las decisiones <span aria-hidden="true">↓</span></a></div></div>'+
+    '</section></div>'+
     '<section class="story-section container" id="historia" aria-labelledby="story-title">'+
       '<div class="story-kicker"><span>01 / EL CONTEXTO</span><span>'+e(p.area.toUpperCase())+'</span></div>'+
       '<div class="story-grid"><div><span class="story-watermark" aria-hidden="true">01</span><h2 id="story-title">'+e(direction?.storyTitle||'Esto es lo que había que resolver.')+'</h2></div>'+
@@ -232,7 +234,9 @@ document.querySelectorAll('img').forEach(img=>{
   img.addEventListener('error',()=>{
     if(img.closest('.art-frame'))img.closest('.art-frame').hidden=true;
     else if(img.closest('.browser-frame'))img.closest('.browser-frame').hidden=true;
-    else if(img.classList.contains('visual-device-screen')){
+    else if(img.classList.contains('case-archive-hero')){
+      img.src=A(project.cover);img.classList.remove('case-archive-hero');
+    }else if(img.classList.contains('visual-device-screen')){
       img.src=A(project.cover);img.classList.remove('visual-device-screen');
     } else if(img.closest('.evidence-shot'))img.closest('.evidence-shot').hidden=true;
     else img.hidden=true;
