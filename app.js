@@ -199,14 +199,14 @@ function motion(){
   gsap.from('.hero-copy > *',{y:10,opacity:.72,duration:.62,stagger:.085,ease:'power3.out',clearProps:'all'});
   if(window.ScrollTrigger){
     gsap.registerPlugin(window.ScrollTrigger);
-    $('.feature-card').forEach((card)=>{
+    $$('.feature-card').forEach((card)=>{
       gsap.fromTo(card,{y:22,opacity:.91},{y:0,opacity:1,duration:.8,ease:'power3.out',clearProps:'all',
         scrollTrigger:{trigger:card,start:'top 92%',once:true}});
     });
     gsap.fromTo('.creative-stamp',{rotate:-12,y:26,opacity:.5},{
       rotate:-9,y:0,opacity:1,duration:.9,ease:'power3.out',clearProps:'transform,opacity',
       scrollTrigger:{trigger:'.creative-work',start:'top 80%',once:true}});
-    $('.problem-card').forEach(card=>{
+    $$('.problem-card').forEach(card=>{
       gsap.fromTo(card,{y:14,opacity:.8},{y:0,opacity:1,duration:.55,ease:'power2.out',clearProps:'all',
         scrollTrigger:{trigger:card,start:'top 96%',once:true}});
     });
