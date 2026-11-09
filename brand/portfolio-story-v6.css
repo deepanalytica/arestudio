@@ -226,3 +226,14 @@ main{overflow:clip}
  .featured-v6 .feature-card,.featured-v6 .feature-visual img,.featured-v6 .feature-heading>span{transition:none!important;transform:none!important}
  .hero-v6,.feature-card,.problem-card,.creative-section{animation:none!important}
 }
+
+/* QA pass 2: la frase se mantiene en dos líneas en escritorio; el primer caso
+ * debe verse antes del borde inferior del primer viewport de 900 px. */
+@media(min-width:901px){
+ .hero-v6 h1{font-size:clamp(55px,5.05vw,75px);line-height:1;letter-spacing:-.062em}
+ .hero-v6{padding-block:20px 16px}
+ .hero-v6 .hero-art{height:300px}
+ .featured-v6 .section-top{margin-top:0;margin-bottom:15px}
+}
+.featured-v6 .feature-territory .art-topline,
+.featured-v6 .feature-territory .feature-visual-signet{display:none}
