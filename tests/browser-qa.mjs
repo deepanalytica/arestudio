@@ -67,7 +67,7 @@ try{
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
       assert.equal(await page.locator('.case-keypoint').count(),2,'El caso conserva problema y contribución dentro del detalle expandible');
       assert.equal(await page.locator('.case-more').getAttribute('open'),null,'Los detalles técnicos empiezan cerrados');
-      assert.match(await page.locator('.case-story-lede').innerText(),/mapa.*información/i,'La historia habla del problema real');
+      assert.match(await page.locator('.case-story-lede').innerText(),/mapa.*preguntas/i,'La historia habla del problema real');
       await page.locator('.case-more summary').click();
       assert.notEqual(await page.locator('.case-more').getAttribute('open'),null,'Se pueden revelar decisiones y evidencia');
       assert.equal(await page.locator('.case-decision').count(),3,'Caso muestra decisiones concretas');
