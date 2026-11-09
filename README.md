@@ -78,3 +78,7 @@ Nunca atribuir ventas, clientes, conversiones, testimonios, estados comerciales,
 ## Motion lab y exportaciones
 
 La web usa GSAP/ScrollTrigger solo como mejora progresiva. Remotion se ejecuta **fuera** de la web: `cd react-lab && npm install && npm run render:showreel` genera una pieza de 4 segundos, 1280 × 720, con la paleta real. El workflow `Motion Lab · Remotion Showreel` permite verificar el resultado y obtener el MP4 desde sus artefactos. No existe autoplay ni descarga automática de vídeo en la portada.
+
+## Presentaciones inmersivas de casos (V9 · 2026-11-09)
+
+Los **cuatro proyectos destacados** y las **21 obras del archivo** abren páginas completas en `casos/?proyecto=<id>`: contexto, decisiones verificadas, escenario visual propio, material publicado o conceptual etiquetado y evidencias. Cada presentación usa los datos canónicos de `data.js`; los modales siguen disponibles para enlaces antiguos `?proyecto=<id>` y accesos rápidos desde otras secciones. La documentación está en [docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md](docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md). Estilos y código en `casos/case.css` y `casos/case.js`. QA en `tests/browser-qa.mjs`. No alterar la paleta ni inventar demos o métricas.
