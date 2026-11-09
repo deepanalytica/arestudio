@@ -85,21 +85,29 @@ try{
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
       await page.locator('.feature-case-link').first().click();
-      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','La entrada creativa de escritorio abre un proyecto real');
-      await page.keyboard.press('Escape');
+      await page.waitForURL(/\/casos\/\?proyecto=archivo/);
+      assert.match(await page.locator('#case-title').innerText(),/doce marcas/i,'ARCHIVO abre una experiencia editorial completa');
+      assert.equal(await page.locator('.stage-archivo').count(),1,'ARCHIVO tiene escena original');
+      assert.equal(await page.locator('.archive-browser').count(),1,'ARCHIVO usa captura acreditada');
+      await page.screenshot({path:'artifacts/case-archivo-first.png',fullPage:false});
+      await page.goBack({waitUntil:'domcontentloaded'});
       await page.locator('.feature-case-link').nth(1).click();
-      assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
-      assert.equal(await page.locator('.case-keypoint').count(),2,'El caso conserva problema y contribución dentro del detalle expandible');
-      assert.equal(await page.locator('.case-more').getAttribute('open'),null,'Los detalles técnicos empiezan cerrados');
-      assert.match(await page.locator('.case-story-lede').innerText(),/mapa.*preguntas/i,'La historia habla del problema real');
-      await page.locator('.case-more summary').click();
-      assert.notEqual(await page.locator('.case-more').getAttribute('open'),null,'Se pueden revelar decisiones y evidencia');
-      assert.equal(await page.locator('.case-decision').count(),3,'Caso muestra decisiones concretas');
-      assert.equal(await page.locator('.case-link-primary').count(),0,'Deep Geo sin demo pública no anuncia demo');
-      assert.equal(await page.locator('.featured-direct a').count(),4,'Cuatro rutas adicionales a casos o archivo');
+      await page.waitForURL(/\/casos\/\?proyecto=deep-geo/);
+      assert.equal(await page.locator('.stage-geo').count(),1,'Deep Geo tiene composición territorial propia');
+      assert.match(await page.locator('.scene-caption').innerText(),/conceptual/i,'Mapa no se anuncia como vista operativa');
+      assert.equal(await page.locator('.decision').count(),3,'Deep Geo explica decisiones verificadas');
       await page.screenshot({path:'artifacts/case-deep-geo.png',fullPage:false});
-      assert.equal(await page.locator('dialog').evaluate(d=>d.open),true);
-      assert.match(page.url(),/proyecto=deep-geo/);
+      await page.goBack({waitUntil:'domcontentloaded'});
+      await page.locator('.problem-card a[data-project="deep-geo"]').click();
+      assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo','La vista rápida histórica sigue disponible');
+      assert.equal(await page.locator('.case-keypoint').count(),2,'Vista rápida conserva problema y contribución');
+      assert.equal(await page.locator('.case-more').getAttribute('open'),null,'Los detalles técnicos empiezan cerrados');
+      await page.locator('.case-more summary').click();
+      assert.notEqual(await page.locator('.case-more').getAttribute('open'),null,'El detalle se puede expandir');
+      assert.equal(await page.locator('.case-decision').count(),3,'Vista rápida conserva decisiones');
+      assert.equal(await page.locator('.case-link-primary').count(),0,'Deep Geo no anuncia demo operativa');
+      assert.equal(await page.locator('.case-link-page').count(),1,'La vista rápida ofrece presentación extensa');
+      assert.equal(await page.locator('.featured-direct a').count(),4,'Cuatro rutas adicionales a casos o archivo');
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('dialog').evaluate(d=>d.open),false);
       await page.getByRole('button',{name:'Filtrar por Datos'}).click();
@@ -123,8 +131,10 @@ try{
     }
     if (label==='mobile'){
       await page.locator('.feature-case-link').first().click();
-      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','Acceso móvil abre caso real');
-      await page.keyboard.press('Escape');
+      await page.waitForURL(/\/casos\/\?proyecto=archivo/);
+      assert.equal(await page.locator('.stage-archivo').count(),1,'Acceso móvil abre experiencia visual de ARCHIVO');
+      await page.screenshot({path:'artifacts/case-archivo-mobile-first.png',fullPage:false});
+      await page.goBack({waitUntil:'domcontentloaded'});
       assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Menú móvil inicialmente oculto');
       await page.locator('#menu-toggle').click();
       assert.equal(await page.locator('#mobile-menu').isVisible(),true,'Menú móvil expandido');
@@ -163,9 +173,55 @@ try{
     await page.screenshot({path:'artifacts/'+label+'.png',fullPage:true});
     await page.locator('.proof-grid a').first().click();
     assert.match(page.url(),/proyecto=archivo/,label+': perfil lleva directamente a caso');
-    assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO');
+    assert.match(await page.locator('#case-title').innerText(),/doce marcas/i,'El perfil conecta con la experiencia de caso');
     await page.close();
     console.log('✓ '+label+': trayectoria, formación, áreas, evidencias y navegación');
+  }
+
+  // Estándar de las presentaciones inmersivas: cuatro direcciones visuales y
+  // una ficha editorial para los otros diecisiete proyectos.
+  for (const [id,sceneClass] of [
+    ['archivo','stage-archivo'],
+    ['deep-geo','stage-geo'],
+    ['praxios-os','stage-praxios'],
+    ['visual-art-ai','stage-visual'],
+    ['conv-os','stage-tech']
+  ]){
+    for (const [label,width,height] of [['desktop',1440,900],['mobile',390,844]]){
+      const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+      page.on('pageerror',err=>errors.push('case-'+id+'-'+label+': '+err.message));
+      const response=await page.goto('http://127.0.0.1:8844/casos/?proyecto='+id,{waitUntil:'domcontentloaded',timeout:30000});
+      assert.equal(response.status(),200,id+' '+label+': URL propia disponible');
+      await page.locator('#case-title').waitFor({timeout:15000});
+      assert.equal(await page.locator('.'+sceneClass).count(),1,id+' '+label+': arte específico de su caso');
+      assert.equal(await page.locator('.case-stage').count(),1,id+' '+label+': la obra visual es protagonista');
+      assert.equal(await page.locator('.story-section').count(),1,id+' '+label+': relato');
+      assert.equal(await page.locator('.decision').count()>=2,true,id+' '+label+': decisiones del proyecto');
+      assert.equal(await page.locator('.evidence-section').count(),1,id+' '+label+': evidencia y límites visibles');
+      assert.equal(await page.locator('.case-header a.case-back').getAttribute('href'),'../#proyectos',id+' '+label+': vuelta a portafolio');
+      const stageBox=await page.locator('.case-stage').boundingBox();
+      assert.ok(stageBox.width>=width-60,id+' '+label+': escena ocupa casi todo el ancho');
+      const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
+      assert.equal(overflow,false,id+' '+label+': sin desbordamiento horizontal');
+      if(id==='deep-geo'){
+        assert.match(await page.locator('.scene-caption').innerText(),/conceptual/i,'No se confunde ilustración con mapa activo');
+        assert.equal(await page.locator('.evidence-links a').count()>=0,true,'No se inventan demos');
+      }
+      if(id==='praxios-os')assert.match(await page.locator('.flow-label').innerText(),/NO CONSOLA/i,'Diagrama IA rotulado');
+      if(id==='archivo')assert.equal(await page.locator('.material-1').count(),1,'Galería con material editorial real');
+      if(id==='visual-art-ai')assert.equal(await page.locator('.visual-device').count(),1,'Visual Art AI tiene presentación de dispositivo');
+      await page.screenshot({path:'artifacts/case-'+id+'-'+label+'.png',fullPage:true});
+      await page.close();
+    }
+    console.log('✓ historia inmersiva:',id);
+  }
+  // Enlace no reconocido: sin error JS, selección clara de proyectos.
+  {
+    const page=await browser.newPage({viewport:{width:390,height:844}});
+    page.on('pageerror',err=>errors.push('case-index: '+err.message));
+    await page.goto('http://127.0.0.1:8844/casos/?proyecto=inexistente',{waitUntil:'domcontentloaded'});
+    assert.equal(await page.locator('.case-not-found .related-card').count(),4,'Ruta desconocida propone cuatro proyectos documentados');
+    await page.close();
   }
 
   // AR Estudio Brand Experience: portada editorial, archivos de marca y responsive.
