@@ -175,10 +175,16 @@ document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&
 const navLinks=$$('.main-nav a[href^="#"], #mobile-menu a[href^="#"]');
 function updateActiveNav(){
   const threshold=scrollY+$('.header').offsetHeight+90;
-  let active='';
+  // Las secciones pueden cambiar de orden en el documento mientras el menú
+  // conserva una jerarquía editorial distinta. Elegir la más próxima arriba,
+  // no el último enlace de la lista, evita estados activos incorrectos.
+  let active='',nearest=-Infinity;
   for(const link of navLinks){
     const section=$(link.getAttribute('href'));
-    if(section&&section.offsetTop<=threshold)active=link.getAttribute('href');
+    if(section&&section.offsetTop<=threshold&&section.offsetTop>=nearest){
+      nearest=section.offsetTop;
+      active=link.getAttribute('href');
+    }
   }
   // El estado activo corresponde a la sección visible, nunca queda fijo.
   for(const link of navLinks){
