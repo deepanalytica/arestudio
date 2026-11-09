@@ -14,18 +14,25 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
-    assert.match(await page.locator('#hero-title').innerText(),/datos.*software/i,`${label}: trabajo visible por encima de autodescripción`);
+    assert.match(await page.locator('#hero-title').innerText(),/investigo[\s\S]*exploro[\s\S]*dirijo[\s\S]*construyo/i,`${label}: titular integra criterio, exploración, dirección y ejecución`);
     assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
     assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
     assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
-    assert.match(await page.locator('.hero-lead').innerText(),/datos.*software.*comunicación digital/i,`${label}: propuesta profesional basada en perfil documentado`);
-    assert.equal(await page.locator('#que-hago .offer-grid article').count(),4,`${label}: cuatro áreas con problemas concretos`);
+    assert.match(await page.locator('.hero-lead').innerText(),/dirección de arte.*marketing digital.*datos.*software.*dirección de IA/i,`${label}: identidad conecta arte, marketing, tecnología y dirección de IA`);
+    assert.equal(await page.locator('#que-hago .problem-card').count(),3,`${label}: tres rutas por problemas con casos reales`);
+    assert.equal(await page.locator('#capacidades .capability').count(),6,`${label}: seis capacidades profesionales conservadas`);
+    assert.equal(await page.locator('#metodo .direction-steps li').count(),6,`${label}: método de seis decisiones y etapas`);
+    assert.equal(await page.locator('#exploracion .creative-shot').count(),2,`${label}: dirección de arte con dos materiales originales declarados`);
+    assert.equal(await page.locator('#direccion-ia .ai-diagram').count(),1,`${label}: dirección de IA explicada y rotulada como diagrama`);
+    assert.ok(await page.locator('.hero-actions a[href="#contacto"]').count(),`${label}: CTA secundaria lleva a contacto y no a sección equivocada`);
+    const portfolioOrder=await page.evaluate(()=>document.querySelector('#proyectos').compareDocumentPosition(document.querySelector('#que-hago'))&Node.DOCUMENT_POSITION_FOLLOWING);
+    assert.ok(portfolioOrder,`${label}: los casos aparecen antes de rutas extensas`);
     assert.equal(await page.locator('.feature-case-link').count(),4,`${label}: cuatro enlaces a casos completos`);
     assert.equal(await page.locator('.feature-live-link').count(),3,`${label}: sitios y dossier distinguibles`);
     assert.equal(await page.locator('.feature-public-note').count(),1,`${label}: la investigación sin demo no se anuncia como demo`);
     assert.equal(await page.locator('button').evaluateAll(btns=>btns.filter(b=>!b.getAttribute('aria-label')&&!b.textContent.trim()&&!b.getAttribute('title')).length),0,`${label}: todos los botones tienen nombre accesible`);
     assert.equal(await page.locator('.brand-lockup img').count(),2,`${label}: logos vectoriales en header y footer`);
-    assert.equal(await page.locator('.editorial-interlude').count(),1,`${label}: pieza editorial de marca`);
+    assert.equal(await page.locator('.creative-section').count(),1,`${label}: caso editorial de exploración y dirección de arte`);
     const identity=await page.evaluate(()=>({
       display:getComputedStyle(document.querySelector('#hero-title')).fontFamily,
       art:getComputedStyle(document.querySelector('.hero-art')).backgroundImage,
@@ -36,6 +43,8 @@ try{
     assert.match(identity.display,/Archivo/,`${label}: tipografía Archivo aplicada`);
     assert.match(identity.art,/gradient/,`${label}: ambiente cromático aplicado`);
     assert.equal(identity.blue,'rgb(36, 91, 255)',`${label}: botón usa azul de marca`);
+    const palette=await page.evaluate(()=>['--ar-color-blue','--ar-color-violet','--ar-color-magenta','--ar-color-orange','--ar-color-lime','--ar-color-glacier','--ar-color-ink'].map(t=>getComputedStyle(document.documentElement).getPropertyValue(t).trim().toUpperCase()));
+    assert.deepEqual(palette,['#245BFF','#6236FF','#F12BBE','#FF652F','#EFFF38','#F5FAFF','#101729'],`${label}: los siete colores oficiales siguen intactos`);
     assert.match(identity.cover,/simbolo-blanco-transparente\.svg/,`${label}: marca maestra en portada`);
     assert.equal(identity.typeWeight,'900',`${label}: jerarquía tipográfica black`);
     assert.equal(await page.locator('.feature-card .art-topline').count(),4,`${label}: cuatro universos de arte con metadata propia`);

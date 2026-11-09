@@ -73,7 +73,7 @@ function modalMarkup(p){
   const links=c?.links??[];
   const actions=links.map(x=>'<a class="case-link '+(x.kind==='demo'?'case-link-primary':'case-link-secondary')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' <span aria-hidden="true">↗</span></a>').join('');
   const actionNote=actions||'<p class="case-no-demo">Sin demostración pública verificada. La ficha documenta el problema y el enfoque, pero no representa un sistema abierto al público.</p>';
-  const decisions=c?.decisions?.length?'<section class="case-section case-decisions" aria-labelledby="case-decisions-title"><span class="case-kicker">03 / CRITERIO</span><h3 id="case-decisions-title">Decisiones de diseño y producto</h3><div class="case-decision-grid">'+c.decisions.map((d,i)=>'<article class="case-decision"><span class="case-number">0'+(i+1)+'</span><h4>'+esc(d.title)+'</h4><p>'+esc(d.detail)+'</p></article>').join('')+'</div></section>':'';
+  const decisions=c?.decisions?.length?'<section class="case-section case-decisions" aria-labelledby="case-decisions-title"><span class="case-kicker">02 / CRITERIO</span><h3 id="case-decisions-title">Decisiones creativas y técnicas</h3><div class="case-decision-grid">'+c.decisions.map((d,i)=>'<article class="case-decision"><span class="case-number">0'+(i+1)+'</span><h4>'+esc(d.title)+'</h4><p>'+esc(d.detail)+'</p></article>').join('')+'</div></section>':'';
   const built=c?.built?.length?c.built:p.deliverables;
   const proof=c?.proofNote||p.evidence||'Esta ficha resume el estado documentado del proyecto; no se declaran métricas ni resultados no verificados.';
   return '<div class="case-study">'+
@@ -86,8 +86,8 @@ function modalMarkup(p){
       '</div>'+
     '</div>'+
     '<div class="case-story-header"><span class="case-kicker">CASO / '+esc(p.type.toUpperCase())+'</span><span>'+esc(c?.role||p.status)+'</span></div>'+
-    '<section class="case-section" aria-labelledby="case-built-title"><span class="case-kicker">02 / DESARROLLO</span><h3 id="case-built-title">'+(c?'Qué construí':'Trabajo y materiales documentados')+'</h3><ul class="case-built">'+built.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>'+
     decisions+
+    '<section class="case-section" aria-labelledby="case-built-title"><span class="case-kicker">03 / EJECUCIÓN</span><h3 id="case-built-title">'+(c?'Qué construí':'Trabajo y materiales documentados')+'</h3><ul class="case-built">'+built.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>'+
     mediaMarkup(p)+
     '<section class="case-section case-evidence" aria-labelledby="case-evidence-title"><span class="case-kicker">04 / EVIDENCIA Y LÍMITES</span><h3 id="case-evidence-title">Qué puedes comprobar</h3><p>'+esc(proof)+'</p><div class="case-evidence-actions">'+actions+'</div></section>'+
     '<div class="case-end"><button type="button" id="share-project">Compartir este caso ↗</button><span>Las hipótesis, materiales conceptuales y demos se distinguen de los productos publicados.</span></div>'+
@@ -180,7 +180,7 @@ async function threeAccent(){
     renderer.domElement.className='terrain-canvas';renderer.domElement.setAttribute('aria-hidden','true');renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.13;mix-blend-mode:multiply';host.insertBefore(renderer.domElement,host.firstChild);
     const geom=new THREE.PlaneGeometry(12,7,46,26);const pos=geom.attributes.position;
     for(let i=0;i<pos.count;i++){let x=pos.getX(i),y=pos.getY(i);let h=1.5*Math.exp(-((x-2)**2/12+(y-1)**2/6))+.4*Math.sin(x*1.5)*Math.cos(y*2)+.2*Math.cos(y*3);pos.setZ(i,h)}geom.computeVertexNormals();
-    const mat=new THREE.MeshBasicMaterial({color:0x155b46,wireframe:true,transparent:true,opacity:.68,depthWrite:false});
+    const mat=new THREE.MeshBasicMaterial({color:0x245BFF,wireframe:true,transparent:true,opacity:.68,depthWrite:false});
     const plane=new THREE.Mesh(geom,mat);plane.rotation.x=-.93;plane.rotation.z=-.14;scene.add(plane);camera.position.set(0,-4.7,16);camera.lookAt(0,0,0);
     const onResize=()=>{const w=host.clientWidth,h=host.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)};addEventListener('resize',onResize,{passive:true});
     let clock=0,raf=0;const animate=()=>{if(document.hidden)return;plane.rotation.z=-.14+Math.sin(clock*.2)*.025;renderer.render(scene,camera);clock+=.016;raf=requestAnimationFrame(animate)};animate();

@@ -3,7 +3,7 @@
 
 **Fecha:** 2026-11-08  
 **Versión:** 1.1 — auditoría de paleta real y corrección de roles cromáticos  
-**Estado:** DOCUMENTADO / IMPLEMENTACIÓN NO INICIADA  
+**Estado:** REDISEÑO V5 IMPLEMENTADO EN PR #6 / VERIFICACIÓN Y PUBLICACIÓN EN PROCESO  
 **Repositorio:** https://github.com/deepanalytica/arestudio  
 **Sitio existente:** https://deepanalytica.github.io/arestudio/  
 **Perfil existente:** https://deepanalytica.github.io/arestudio/perfil/  
