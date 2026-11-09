@@ -82,3 +82,11 @@ La web usa GSAP/ScrollTrigger solo como mejora progresiva. Remotion se ejecuta *
 ## Presentaciones inmersivas de casos (V9 · 2026-11-09)
 
 Los **cuatro proyectos destacados** y las **21 obras del archivo** abren páginas completas en `casos/?proyecto=<id>`: contexto, decisiones verificadas, escenario visual propio, material publicado o conceptual etiquetado y evidencias. Cada presentación usa los datos canónicos de `data.js`; los modales siguen disponibles para enlaces antiguos `?proyecto=<id>` y accesos rápidos desde otras secciones. La documentación está en [docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md](docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md). Estilos y código en `casos/case.css` y `casos/case.js`. QA en `tests/browser-qa.mjs`. No alterar la paleta ni inventar demos o métricas.
+
+## Portafolio fullscreen V10 (2026-11-09)
+
+La portada presenta **cuatro proyectos a pantalla completa desde el primer pixel** (ARCHIVO, Deep Geo, Praxios OS, Visual Art AI), no un hero autorreferencial o una retícula de tarjetas. Un índice con filtros permite abrir los **21 proyectos**. El diseño se basa en fotografías y capturas acreditadas, con fallback conceptual identificado, y se comprende sin animación ni JavaScript en la primera pantalla. Las fichas profundas también abren con imagen fullscreen; debajo permanecen decisiones, entregables y evidencia. Rutas `/casos/?proyecto=<id>` y `/perfil/` conservadas.
+
+**Archivos:** `index.html`, `home.js`, `brand/gallery-fullscreen-v10.css`, `casos/case.js`, `casos/fullscreen-openings-v10.css` y `tests/browser-qa.mjs`.
+
+**Documento central:** [V10 — Obra primero](docs/2026-11-09_REDISENO_PORTAFOLIO_FULLSCREEN_OBRA_PRIMERO_V10.md). No añadir secciones de autopromoción o credenciales extensas antes de las imágenes. Los archivos V8 y V9 se conservan en Git para revertir; ya no deben cargarse en `index.html`.
