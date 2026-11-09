@@ -254,3 +254,21 @@ html{scroll-padding-top:85px}
  .problem-card,.capability,.creative-cta,.feature-card{transition:none!important}
  .featured .feature-card:hover{transform:none}
 }
+
+/* V5.1 · Corrección editorial posterior a revisar capturas 1440/768/390:
+   palabras con aire real en títulos Archivo Black, sin tocar los tokens. */
+.hero h1{letter-spacing:-.052em}
+.hero .hero-head-bold{letter-spacing:-.058em;word-spacing:.11em}
+.hero .hero-head-regular{letter-spacing:-.05em;word-spacing:.035em}
+.featured .section-top h2{letter-spacing:-.045em;word-spacing:.055em}
+.problem-intro h2,.creative-head h2,.capabilities-top h2,
+.direction-section .approach-head h2,.ai-copy h2{
+  letter-spacing:-.045em;word-spacing:.055em;
+}
+.problem-card h3,.creative-decisions h3,.capability h3,.direction-steps li h3,
+.ai-node strong{letter-spacing:-.035em;word-spacing:.045em}
+@media(max-width:720px){
+ .hero h1{letter-spacing:-.052em}
+ .hero .hero-head-bold{letter-spacing:-.063em;word-spacing:.09em}
+ .featured .section-top h2{font-size:clamp(29px,7.1vw,39px)}
+}
