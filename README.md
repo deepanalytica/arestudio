@@ -1,50 +1,73 @@
-# AR/ — Ideas que funcionan.
+# AR Estudio · Dirección creativa, inteligencia y tecnología
 
-**Portafolio profesional de Alexis Reyes: diseño, datos, tecnología y comunicación.**
+**Portafolio profesional de Alexis Reyes Saavedra.** Investigación, criterio, exploración de soluciones, dirección de arte, comunicación, marketing digital, datos, software y dirección de IA.
 
-> Producción: https://deepanalytica.github.io/arestudio/ (disponible una vez habilitado GitHub Pages en Settings → Pages → Source: GitHub Actions y completado el workflow).
+**Producción:** https://deepanalytica.github.io/arestudio/  
+**Perfil:** https://deepanalytica.github.io/arestudio/perfil/  
+**Identidad y sistema:** https://deepanalytica.github.io/arestudio/brand/ · https://deepanalytica.github.io/arestudio/brand/lab/
 
-## Qué contiene
+## Arquitectura editorial V5
 
-- `index.html`: portada, cuatro proyectos destacados, catálogo, método, perfil y contacto.
-- `styles.css`: tokens, tipografía, retícula, sombras, componentes y layouts responsive.
-- `data.js`: catálogo versionado, 21 entradas y sus estados.
-- `app.js`: filtros, búsqueda, vistas de cuadrícula/lista, ficha modal, enlaces compartibles (`?proyecto=deep-geo`), accesos por teclado y animación progresiva.
-- `assets/*.svg`: ilustraciones originales creadas para esta interfaz, no capturas reales de productos. `assets/og.png`: imagen social.
-- `sistema/index.html`: biblioteca visual interactiva del sistema de diseño.
-- `docs`: superprompt, documentación visual, estrategia de contenido y despliegue.
-- `.github/workflows/pages.yml`: pruebas + publicación de GitHub Pages al hacer push a `main`.
-- `tests/catalog.test.js`: pruebas de integridad del catálogo.
+1. **Portada**: propuesta de valor y obra visible desde el primer viewport.
+2. **Cuatro casos destacados**: ARCHIVO, Deep Geo, Praxios OS y Visual Art AI.
+3. **Tres problemas**: inteligencia, sistemas y comunicación; enlaces directos a proyectos pertinentes.
+4. **Exploración y dirección de arte**: ejemplo editorial de ARCHIVO con materiales publicados.
+5. **Seis capacidades**: arte, investigación/criterio, marketing/comunicación, datos, producto y dirección de IA.
+6. **Método**: investigar, explorar, decidir, dirigir, construir, verificar.
+7. **Dirección de IA**: diagrama conceptual de ejecución y revisión humana, claramente identificado.
+8. **Archivo completo de 21 proyectos**: filtros, búsqueda, lista/cuadrícula y fichas profundas con URL compartible.
+9. **Perfil y contacto**: trayectoria profesional, canales directos y alcance con evidencia.
 
-## Desarrollo
+## Identidad: NO reinterpretar la paleta
 
-No requiere build ni Node para visualizarse. Para desarrollar en local:
+El Design System Lab presenta **siete swatches oficiales**:
 
-```bash
-python3 -m http.server 8000
-# http://localhost:8000
-```
+| Electric | Violet | Magenta | Orange | Acid (verde lima) | Glacier | Ink |
+|---|---|---|---|---|---|---|
+| #245BFF | #6236FF | #F12BBE | #FF652F | #EFFF38 | #F5FAFF | #101729 |
 
-Para ejecutar pruebas:
+Fuentes canónicas: brand/lab/index.html, brand/MANUAL_DE_MARCA.md y brand/tokens.json.
+Los otros tokens de color son **funcionales** (hover, éxito, error, superficie), no colores editoriales adicionales. Los colores propios de cada obra se preservan dentro de su caso. No redibujar el símbolo AR/ de brand/assets/mark.svg ni el kit oficial.
 
-```bash
-npm run check
-```
+## Archivos de código y contenido
 
-## Diseño y rendimiento
+- index.html: portada y nueva narrativa V5.
+- brand/portfolio-strategy-v5.css: capa editorial final. Depende de brand/tokens.css sin alterar sus valores.
+- styles.css, art-direction.css, brand/site-theme.css, brand/portfolio-v3.css, brand/portfolio-ux-v4.css: capas anteriores; verificar precedencia si se modifican.
+- data.js: 21 proyectos, detalles y estados acreditados.
+- app.js: tarjetas, filtros, diálogo, enlaces de caso, focus/teclado, movimiento progresivo.
+- perfil/: trayectoria, competencias y evidencias.
+- assets/proof/: capturas verificadas generadas desde sitios públicos durante workflows; fallback conceptual si no hay evidencia.
+- brand/: identidad y Design System Lab; 26 variantes SVG.
+- tests/: integridad del catálogo, marca, QA Playwright 390/768/1440.
+- .github/workflows/visual-qa.yml: QA por PR.
+- .github/workflows/pages.yml: publicación en Pages tras cambios a main.
 
-Sistema basado en DM Sans, DM Mono, fondo perla, blanco, verde bosque, acento lima y portadas cromáticas. GSAP y Three.js se cargan como **mejoras progresivas**; el sitio funciona sin ellos y respeta `prefers-reduced-motion`. La librería React Bits y Remotion se reservan para ampliaciones de producción y vídeos, no se presentan como dependencias activas de la versión estática. GStack es una disciplina de desarrollo, no una dependencia del navegador.
+## Documentos para cualquier agente
 
-## No inventar evidencia
+**Leer antes de modificar el sitio:**
 
-Las ilustraciones de proyectos son conceptuales, rotuladas como tales. Los estados son conservadores y no se publican métricas de conversión, ventas, clientes, testimonios o resultados no documentados. Para actualizar un proyecto edita `data.js`, enlaza evidencia real y revisa su estado. Para contenidos específicos, solicita permiso antes de publicar información de clientes no autorizada.
+1. AGENTS.md
+2. docs/2026-11-08_PLAN_REDISENO_AR_ESTUDIO.md — alcance, restricciones, conocimiento aplicado de marketing, fases y gates.
+3. docs/2026-11-08_DECISION_DISENO_AR_ESTUDIO_V5.md — alternativas exploradas y elección editorial.
+4. brand/BRANDKIT_WORKFLOW.md, .agents/skills/brandkit/SKILL.md, brand/COMUNICACION.md, brand/MANUAL_DE_MARCA.md.
 
-## Enlaces principales
+## Desarrollo y pruebas
 
-- Código: https://github.com/deepanalytica/arestudio
-- Portafolio anterior / fuentes: https://deepanalytica.github.io/archivo-tienda/portafolio/
-- Sistema de diseño: https://deepanalytica.github.io/arestudio/sistema/
+La portada se sirve sin build framework: HTML/CSS/JS; GSAP y Three.js son mejoras progresivas.
 
-## Publicación
+Para servir en local:
 
-**Importante:** crear el workflow no activa automáticamente Pages en un repositorio nuevo. Se debe ir a `Settings → Pages` y seleccionar **GitHub Actions** como fuente, una única vez. En Actions se puede ejecutar manualmente "Deploy AR Studio to GitHub Pages". Verifica que la URL devuelva el sitio real antes de compartirla con clientes.
+    python3 -m http.server 8000
+
+Pruebas estructurales:
+
+    npm run check
+
+La verificación completa ocurre en GitHub Actions: dependencia Playwright, capturas de evidencia, auditoría de destinos y test de navegador con capturas. Ver .github/workflows/visual-qa.yml.
+
+## Política editorial y de evidencia
+
+Nunca atribuir ventas, clientes, conversiones, testimonios, estados comerciales, capacidades operativas ni credenciales sin soporte. Separar publicación, dossier, demo ficticia, I+D y herramienta privada; no representar estas últimas con capturas inventadas. Las exploraciones nuevas se rotulan como tales, no se convierten en una supuesta historia del proyecto.
+
+**Estado del rediseño V5:** implementación iniciada en PR #6; el estado de publicación debe verificarse en GitHub Actions y en la URL pública.
