@@ -191,3 +191,11 @@ a,button{-webkit-tap-highlight-color:transparent}
  .scene-cta,.index-row,.scene-next,.contact-links a,.filter,.site-nav a::after{transition:none!important}
  .scene-cta:hover,.contact-links a:hover{transform:none!important}
 }
+
+/* Post-screenshot correction: Deep Geo artwork contains a baked-in edge label.
+   Fade the cropped text, retain the actual terrain artwork and grid. */
+.scene-geo .scene-media::after{
+ content:"";position:absolute;z-index:1;top:0;left:0;right:0;height:29%;
+ background:linear-gradient(180deg,#0A4043 0%,#0A4043 20%,rgba(10,64,67,0) 100%);
+ pointer-events:none;
+}
