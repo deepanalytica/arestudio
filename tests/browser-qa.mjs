@@ -88,7 +88,8 @@ try{
       await page.waitForURL(/\/casos\/\?proyecto=archivo/);
       assert.match(await page.locator('#case-title').innerText(),/doce marcas/i,'ARCHIVO abre una experiencia editorial completa');
       assert.equal(await page.locator('.stage-archivo').count(),1,'ARCHIVO tiene escena original');
-      assert.equal(await page.locator('.archive-browser').count(),1,'ARCHIVO usa captura acreditada');
+      assert.equal(await page.locator('.archive-browser').count(),1,'ARCHIVO incluye composición editorial del catálogo');
+      assert.match(await page.locator('.shop-concept-disclosure').innerText(),/NO CAPTURA DE INTERFAZ/i,'El montaje no se hace pasar por una captura exacta');
       await page.screenshot({path:'artifacts/case-archivo-first.png',fullPage:false});
       await page.goBack({waitUntil:'domcontentloaded'});
       await page.locator('.feature-case-link').nth(1).click();
@@ -208,7 +209,7 @@ try{
         assert.equal(await page.locator('.evidence-links a').count()>=0,true,'No se inventan demos');
       }
       if(id==='praxios-os')assert.match(await page.locator('.flow-label').innerText(),/NO CONSOLA/i,'Diagrama IA rotulado');
-      if(id==='archivo')assert.equal(await page.locator('.material-1').count(),1,'Galería con material editorial real');
+      if(id==='archivo'){assert.equal(await page.locator('.material-1').count(),1,'Galería con material editorial real');assert.match(await page.locator('.shop-concept-disclosure').innerText(),/MONTAJE EDITORIAL/i,'Visual conceptual etiquetado');}
       if(id==='visual-art-ai')assert.equal(await page.locator('.visual-device').count(),1,'Visual Art AI tiene presentación de dispositivo');
       await page.screenshot({path:'artifacts/case-'+id+'-'+label+'.png',fullPage:true});
       await page.close();
