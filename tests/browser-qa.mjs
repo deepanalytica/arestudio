@@ -30,7 +30,7 @@ try{
     assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
     assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
     assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
-    assert.match(await page.locator('.hero-lead').innerText(),/campaña.*mapa.*sistema/i,`${label}: narrativa en lenguaje cotidiano con tres ejemplos`);
+    assert.match(await page.locator('.hero-lead').innerText(),/marcas.*datos.*software/i,`${label}: presentación breve y concreta de las tres áreas`);
     assert.ok((await page.locator('.hero-lead').innerText()).split(/\s+/).length<=34,`${label}: portada sin párrafo excesivo`);
     assert.equal(await page.locator('#que-hago .problem-card').count(),3,`${label}: tres rutas por problemas con casos reales`);
     assert.equal(await page.locator('#capacidades .capability').count(),6,`${label}: seis capacidades profesionales conservadas`);
@@ -78,6 +78,9 @@ try{
     assert.equal(overflow,false,`${label}: sin scroll horizontal`);
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
+      await page.locator('.stage-card-art').click();
+      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','La entrada creativa de escritorio abre un proyecto real');
+      await page.keyboard.press('Escape');
       await page.locator('.feature-case-link').nth(1).click();
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
       assert.equal(await page.locator('.case-keypoint').count(),2,'El caso conserva problema y contribución dentro del detalle expandible');
@@ -113,6 +116,9 @@ try{
       assert.equal(await page.locator('.main-nav a[href="#que-hago"]').getAttribute('aria-current'),'location','El menú refleja la sección visible');
     }
     if (label==='mobile'){
+      await page.locator('.entry-paths a[data-project="archivo"]').click();
+      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','Acceso móvil abre caso real');
+      await page.keyboard.press('Escape');
       assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Menú móvil inicialmente oculto');
       await page.locator('#menu-toggle').click();
       assert.equal(await page.locator('#mobile-menu').isVisible(),true,'Menú móvil expandido');
