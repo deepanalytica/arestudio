@@ -26,21 +26,27 @@ try{
     await page.goto('http://127.0.0.1:8844/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.locator('.work-card').first().waitFor({timeout:25000});
     assert.equal(await page.locator('.feature-card').count(),4,`${label}: cuatro destacados`);
-    assert.match(await page.locator('#hero-title').innerText(),/las buenas ideas[\s\S]*se trabajan/i,`${label}: titular editorial breve`);
+    assert.match(await page.locator('#hero-title').innerText(),/mira lo que[\s\S]*construí/i,`${label}: el trabajo se presenta antes del discurso`);
     assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
     assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
     assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
-    assert.match(await page.locator('.hero-lead').innerText(),/marcas.*datos.*software/i,`${label}: presentación breve y concreta de las tres áreas`);
+    assert.match(await page.locator('.hero-lead').innerText(),/cuatro proyectos.*problema.*abordé/i,`${label}: invitación breve a explorar cuatro casos`);
     assert.ok((await page.locator('.hero-lead').innerText()).split(/\s+/).length<=34,`${label}: portada sin párrafo excesivo`);
     assert.equal(await page.locator('#que-hago .problem-card').count(),3,`${label}: tres rutas por problemas con casos reales`);
     assert.equal(await page.locator('#capacidades .capability').count(),6,`${label}: seis capacidades profesionales conservadas`);
     assert.equal(await page.locator('#metodo .direction-steps li').count(),6,`${label}: método de seis decisiones y etapas`);
     assert.equal(await page.locator('#exploracion .creative-shot').count(),2,`${label}: dirección de arte con dos materiales originales declarados`);
     assert.equal(await page.locator('#direccion-ia .ai-diagram').count(),1,`${label}: dirección de IA explicada y rotulada como diagrama`);
-    assert.equal(await page.locator('.hero-actions a').count(),1,`${label}: un solo CTA en portada`);
-    assert.equal(await page.locator('.hero-actions a[href="#proyectos"]').count(),1,`${label}: CTA abre trabajos`);
+    assert.equal(await page.locator('.hero-actions a').count(),0,`${label}: los proyectos, no un botón intermedio, son la primera acción`);
+    assert.equal(await page.locator('.hero-archive-link[href="#explorar"]').count(),1,`${label}: acceso directo al archivo completo`);
     const portfolioOrder=await page.evaluate(()=>document.querySelector('#proyectos').compareDocumentPosition(document.querySelector('#que-hago'))&Node.DOCUMENT_POSITION_FOLLOWING);
     assert.ok(portfolioOrder,`${label}: los casos aparecen antes de rutas extensas`);
+    assert.ok(await page.locator('.featured').evaluate(el=>el.previousElementSibling?.classList.contains('hero-v8')),`${label}: la galería sigue de inmediato a una presentación mínima`);
+    const order2=await page.evaluate(()=>document.querySelector('#proyectos').compareDocumentPosition(document.querySelector('#explorar'))&Node.DOCUMENT_POSITION_FOLLOWING);
+    assert.ok(order2,`${label}: archivo íntegro llega después de la selección visual`);
+    const order3=await page.evaluate(()=>document.querySelector('#explorar').compareDocumentPosition(document.querySelector('#que-hago'))&Node.DOCUMENT_POSITION_FOLLOWING);
+    assert.ok(order3,`${label}: los 21 proyectos anteceden a las explicaciones largas`);
+
     assert.equal(await page.locator('.feature-case-link').count(),4,`${label}: cuatro enlaces a casos completos`);
     assert.equal(await page.locator('.feature-live-link').count(),3,`${label}: sitios y dossier distinguibles`);
     assert.equal(await page.locator('.feature-public-note').count(),1,`${label}: la investigación sin demo no se anuncia como demo`);
@@ -49,17 +55,17 @@ try{
     assert.equal(await page.locator('.creative-section').count(),1,`${label}: caso editorial de exploración y dirección de arte`);
     const identity=await page.evaluate(()=>({
       display:getComputedStyle(document.querySelector('#hero-title')).fontFamily,
-      art:getComputedStyle(document.querySelector('.hero-art')).backgroundImage,
-      blue:getComputedStyle(document.querySelector('.btn-solid')).backgroundColor,
+      art:getComputedStyle(document.querySelector('.feature-visual')).backgroundColor,
+      blue:getComputedStyle(document.documentElement).getPropertyValue('--ar-color-blue').trim()==='#245BFF'?'rgb(36, 91, 255)':'missing',
       cover:document.querySelector('.brand-lockup img').getAttribute('src'),
       typeWeight:getComputedStyle(document.querySelector('.hero-head-bold')).fontWeight
     }));
     assert.match(identity.display,/Archivo/,`${label}: tipografía Archivo aplicada`);
-    assert.match(identity.art,/gradient/,`${label}: galería introductoria usa colores oficiales`);
-    assert.equal(await page.locator('.hero-project-stage .stage-card').count(),3,`${label}: entrada visual a arte, datos y sistemas`);
-    assert.equal(await page.locator('.entry-paths a[data-project]').count(),3,`${label}: rutas móviles accesibles hacia los mismos casos`);
-    assert.ok(await page.locator('.entry-paths a[data-project="archivo"]').count(),`${label}: acceso directo a ARCHIVO`);
-    assert.equal(identity.blue,'rgb(36, 91, 255)',`${label}: botón usa azul de marca`);
+    assert.match(identity.art,/rgb\(/,`${label}: tarjeta usa superficie cromática definida`);
+    assert.equal(await page.locator('.hero-project-stage .stage-card').count(),0,`${label}: no se duplica una galería decorativa antes de las obras`);
+    assert.equal(await page.locator('.project-browser-preview img').count(),1,`${label}: material público usado como vista de interfaz dentro del arte`);
+    assert.ok(await page.locator('.feature-card [data-project="archivo"]').count(),`${label}: ARCHIVO abre desde su pieza protagonista`);
+    assert.equal(identity.blue,'rgb(36, 91, 255)',`${label}: azul de marca disponible sin añadir botones al hero`);
     const palette=await page.evaluate(()=>['--ar-color-blue','--ar-color-violet','--ar-color-magenta','--ar-color-orange','--ar-color-lime','--ar-color-glacier','--ar-color-ink'].map(t=>getComputedStyle(document.documentElement).getPropertyValue(t).trim().toUpperCase()));
     assert.deepEqual(palette,['#245BFF','#6236FF','#F12BBE','#FF652F','#EFFF38','#F5FAFF','#101729'],`${label}: los siete colores oficiales siguen intactos`);
     assert.match(identity.cover,/horizontal-transparente-tinta\.svg/,`${label}: logo maestro original en cabecera`);
@@ -70,15 +76,15 @@ try{
     assert.equal(await page.locator('.work-card').count(),21,`${label}: catálogo completo`);
     const covers=await page.locator('.work-card img').evaluateAll(elements=>elements.map(el=>el.getAttribute('src')));
     assert.ok(new Set(covers).size>=20,`${label}: dirección de arte individual por proyecto`);
-    if(label==='desktop'){const b=await page.locator('.feature-card').first().boundingBox();console.log('FIRST_FOLD_Y_DESKTOP',Math.round(b.y));await page.screenshot({path:'artifacts/desktop-first-fold.png',fullPage:false});assert.ok(b.y<655,'Los proyectos destacados son visibles sin desplazamiento');}
-    if(label==='mobile'){const b=await page.locator('.feature-card').first().boundingBox();console.log('FIRST_FOLD_Y_MOBILE',Math.round(b.y));assert.ok(b.y<700,'Los proyectos empiezan dentro de la primera pantalla móvil');}
+    if(label==='desktop'){const b=await page.locator('.feature-card').first().boundingBox();const visual=await page.locator('.feature-card .feature-visual').first().boundingBox();console.log('FIRST_FOLD_Y_DESKTOP',Math.round(b.y),'ART_HEIGHT',Math.round(visual.height));await page.screenshot({path:'artifacts/desktop-first-fold.png',fullPage:false});assert.ok(b.y<430,'La primera obra ocupa la mitad superior del primer viewport');assert.ok(visual.height>=300,'La obra tiene espacio visual real, no aspecto de thumbnail');}
+    if(label==='mobile'){const b=await page.locator('.feature-card').first().boundingBox();const visual=await page.locator('.feature-card .feature-visual').first().boundingBox();console.log('FIRST_FOLD_Y_MOBILE',Math.round(b.y),'ART_HEIGHT',Math.round(visual.height));assert.ok(b.y<390,'El primer proyecto es protagonista desde la mitad superior de la pantalla móvil');assert.ok(visual.height>=270,'La imagen principal en móvil debe tener altura editorial, no 140px');}
     await page.waitForTimeout(850);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     if(overflow){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+2||r.left< -2}).slice(0,12).map(el=>({tag:el.tagName,cls:el.className?.baseVal||el.className,left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}))); console.log('Overflow offenders',JSON.stringify(offenders))}
     assert.equal(overflow,false,`${label}: sin scroll horizontal`);
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
-      await page.locator('.stage-card-art').click();
+      await page.locator('.feature-case-link').first().click();
       assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','La entrada creativa de escritorio abre un proyecto real');
       await page.keyboard.press('Escape');
       await page.locator('.feature-case-link').nth(1).click();
@@ -116,7 +122,7 @@ try{
       assert.equal(await page.locator('.main-nav a[href="#que-hago"]').getAttribute('aria-current'),'location','El menú refleja la sección visible');
     }
     if (label==='mobile'){
-      await page.locator('.entry-paths a[data-project="archivo"]').click();
+      await page.locator('.feature-case-link').first().click();
       assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','Acceso móvil abre caso real');
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Menú móvil inicialmente oculto');
