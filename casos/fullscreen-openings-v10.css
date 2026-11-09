@@ -136,3 +136,43 @@
 @media(prefers-reduced-motion:reduce){
  .case-opening *{animation:none!important;transition:none!important}
 }
+
+/* Post-screenshot art-direction review: preserve screenshot typography rather
+   than overscale a desktop document into a portrait crop. No synthetic UI. */
+.case-opening .geo-artwork::after{
+ content:"";position:absolute;z-index:5;top:0;left:0;right:0;height:29%;
+ background:linear-gradient(180deg,#0A4043 0%,#0A4043 18%,rgba(10,64,67,0) 100%);
+ pointer-events:none;
+}
+.case-opening .praxios-browser{
+ left:10%;right:auto;top:8%;width:80%;height:56%;transform:none;
+}
+.case-opening .praxios-browser .browser-screenshot{
+ object-fit:cover;object-position:top left;
+}
+.case-opening .visual-device{
+ left:39%;top:9%;width:55%;height:54%;
+ transform:none;border:5px solid white;padding:0;
+ border-radius:9px;background:white;
+}
+.case-opening .visual-device-camera{display:none}
+.case-opening .visual-device-screen{
+ height:100%;width:100%;border-radius:4px;
+ object-fit:cover;object-position:top left;
+}
+@media(max-width:760px){
+ .case-opening .geo-artwork::after{height:31%}
+ .case-opening .praxios-browser{
+   left:5%;right:auto;top:16%;width:90%;height:38%;transform:none;
+ }
+ .case-opening .praxios-browser .browser-screenshot{
+   object-fit:contain;object-position:top center;background:#101729;
+ }
+ .case-opening .visual-device{
+   left:4%;top:16%;width:92%;height:38%;
+   transform:none;border-width:3px;border-radius:8px;padding:0;
+ }
+ .case-opening .visual-device-screen{
+   object-fit:contain;object-position:top center;border-radius:4px;
+ }
+}
