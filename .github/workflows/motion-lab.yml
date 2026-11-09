@@ -1,0 +1,36 @@
+name: Motion Lab · Remotion Showreel
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "react-lab/**"
+      - ".github/workflows/motion-lab.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-and-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: react-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install lab dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify Remotion and React composition types
+        run: npm run typecheck
+      - name: Install Remotion browser
+        run: npx remotion browser ensure
+      - name: Render offline brand storyboard
+        run: npm run render:showreel
+      - name: Upload motion artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ar-estudio-remotion-showreel
+          path: react-lab/out/ar-estudio-showreel.mp4
+          if-no-files-found: error

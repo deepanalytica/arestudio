@@ -2,7 +2,7 @@
 <html lang="es-CL">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F5FAFF">
-  <meta name="description" content="AR Estudio · Alexis Reyes. Investigación, dirección de arte, creatividad, marketing digital, análisis de datos, software y dirección de IA. Explora proyectos, decisiones y evidencia real.">
+  <meta name="description" content="AR Estudio · Alexis Reyes. Dirección de arte, comunicación, datos, software y dirección de IA. Proyectos reales y las historias que explican cómo se construyeron.">
   <meta name="author" content="Alexis Reyes"><meta name="robots" content="index,follow">
   <meta property="og:type" content="website"><meta property="og:locale" content="es_CL"><meta property="og:site_name" content="AR/ Studio"><meta property="og:title" content="AR Estudio | Dirección creativa, inteligencia y tecnología"><meta property="og:description" content="Investigo, exploro alternativas, dirijo procesos creativos y tecnológicos y construyo experiencias y sistemas. Proyectos y evidencia a un clic."><meta property="og:image" content="https://deepanalytica.github.io/arestudio/assets/og.png">
   <link rel="canonical" href="https://deepanalytica.github.io/arestudio/">
@@ -18,7 +18,9 @@
   <link rel="stylesheet" href="brand/portfolio-ux-v4.css?v=4.0.0">
   <link rel="stylesheet" href="brand/profile-spotlight.css?v=1.0.0">
   <link rel="stylesheet" href="brand/portfolio-strategy-v5.css?v=5.0.0">
+  <link rel="stylesheet" href="brand/portfolio-story-v6.css?v=6.0.0">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script type="module" src="app.js"></script>
 </head>
 <body>
@@ -32,96 +34,99 @@
 
   <main>
 
-    <section class="hero container" aria-labelledby="hero-title">
+    <section class="hero container hero-v6" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <span class="eyebrow"><span class="status-dot"></span> ALEXIS REYES / AR ESTUDIO · DIRECCIÓN CREATIVA Y TECNOLÓGICA</span>
-        <h1 id="hero-title"><span class="hero-head-bold">Investigo. Exploro<span class="period">.</span></span><span class="hero-head-regular">Dirijo y construyo.</span></h1>
-        <p class="hero-lead">Conecto <strong>dirección de arte, comunicación y marketing digital</strong> con investigación, datos, software y dirección de IA. Exploro alternativas, tomo decisiones y construyo soluciones que se pueden ver y evaluar.</p>
-        <p class="hero-problem"><strong>Mi trabajo:</strong> entender el problema, encontrar posibilidades, definir un criterio y hacerlas realidad.</p>
-        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Explorar proyectos <span aria-hidden="true">↘</span></a><a class="btn btn-light" href="#contacto">Conversemos <span aria-hidden="true">↗</span></a></div>
+        <span class="eyebrow"><span class="status-dot"></span> AR ESTUDIO / ALEXIS REYES</span>
+        <h1 id="hero-title"><span class="hero-head-bold">Las buenas ideas</span><span class="hero-head-regular">se trabajan<span class="period">.</span></span></h1>
+        <p class="hero-lead">A veces una idea termina siendo una campaña. Otras, un mapa o un sistema. Lo interesante es entender qué hace falta y hacerlo bien.</p>
+        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Mira lo que hice <span aria-hidden="true">↓</span></a></div>
       </div>
-      <div class="hero-art" aria-label="Monograma original de AR Estudio, con composición Electric Editorial en azul, violeta, magenta, naranja y verde lima" role="img">
+      <div class="hero-art" aria-label="Monograma original AR Estudio sobre la paleta Electric Editorial" role="img">
         <img class="hero-mesh brand-mark" src="brand/logo-kit/svg/simbolo-blanco-transparente.svg" width="960" height="600" alt="" fetchpriority="high">
-        <div class="hero-art-note" aria-hidden="true"><span>AR/</span><small>CRITERIO · ARTE<br>COMUNICACIÓN · DATOS<br>SOFTWARE · IA</small></div>
-        <div class="hero-cross" aria-hidden="true">＋</div><div class="hero-art-label" aria-hidden="true">EXPLORAR → DECIDIR → CONSTRUIR</div>
-        <span class="hero-art-signal" aria-hidden="true">CREATIVE / SYSTEMS</span>
+        <span class="hero-art-annotation" aria-hidden="true">IDEAS / DIRECCIÓN / EJECUCIÓN</span>
       </div>
     </section>
-    <section id="proyectos" class="featured container" aria-labelledby="featured-title">
-      <div class="section-top"><div><span class="section-kicker">TRABAJO REAL / DECISIONES Y EVIDENCIA</span><h2 id="featured-title">Del criterio <span class="type-light">a la obra</span><span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Explorar el archivo completo <span aria-hidden="true">↗</span></a></div>
+
+    <section id="proyectos" class="featured container featured-v6" aria-labelledby="featured-title">
+      <div class="section-top"><div><span class="section-kicker">UNA SELECCIÓN DE MI TRABAJO</span><h2 id="featured-title">Te cuento <span class="type-light">cuatro historias</span><span class="green-dot">.</span></h2></div><a class="subtle-link" href="#explorar">Los 21 proyectos <span aria-hidden="true">↗</span></a></div>
       <div class="feature-grid" id="featured-grid" aria-label="Proyectos destacados">
-        <article class="feature-card feature-editorial" data-art="editorial"><a class="feature-case-link" href="?proyecto=archivo" data-project="archivo" aria-label="Ver caso de archivo y las decisiones de diseño">
-          <div class="feature-visual art-editorial">
-            <img class="art-fallback" src="assets/archivo.svg" alt="Composición editorial original para ARCHIVO" width="800" height="600" fetchpriority="high">
-            <img class="art-photo" src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
-            <span class="art-topline"><span>AR/ — 001</span><span>EDITORIAL · COMERCIO</span></span>
-            <span class="art-title art-title-archivo" aria-hidden="true">ARCHIVO<span>.</span></span>
-            <span class="art-edition" aria-hidden="true">EDITORIAL<br>EDICIÓN Nº 01</span>
-            <span class="art-axis" aria-hidden="true">A / 01</span>
-          </div>
-          <div class="feature-info"><span class="feature-chapter">01 — DISEÑO & COMERCIO</span><h3>ARCHIVO</h3><p>Diseñé una tienda y un catálogo para 12 marcas y sus colecciones.</p><span class="feature-foot">Ver qué hice, qué decidí y por qué <b aria-hidden="true">↗</b></span></div>
-        </a><a class="feature-live-link" href="https://deepanalytica.github.io/archivo-tienda/" target="_blank" rel="noopener noreferrer" aria-label="Abrir tienda publicada de archivo, se abre en una nueva pestaña">Abrir tienda publicada <span aria-hidden="true">↗</span></a></article>
-        <article class="feature-card feature-territory" data-art="territory"><a class="feature-case-link" href="?proyecto=deep-geo" data-project="deep-geo" aria-label="Ver caso de deep geo y las decisiones de diseño">
-          <div class="feature-visual art-territory">
-            <img src="assets/deep-geo.svg" alt="Topografía digital conceptual Deep Geo" width="800" height="600" fetchpriority="high">
-            <span class="art-topline"><span>AR/ — 002</span><span>INTELIGENCIA TERRITORIAL</span></span>
-            <span class="art-geo-coordinates" aria-hidden="true">35° 11′ S<br>71° 26′ W</span>
-            <span class="art-title art-title-geo" aria-hidden="true">DEEP<br><em>GEO</em><span>↗</span></span>
-            <span class="art-crosshair" aria-hidden="true">＋</span>
-          </div>
-          <div class="feature-info"><span class="feature-chapter">02 — DATOS & TERRITORIO</span><h3>Deep Geo</h3><p>Cruzo mapas y datos para investigar riesgos y apoyar decisiones.</p><span class="feature-foot">Ver qué hice, qué decidí y por qué <b aria-hidden="true">↗</b></span></div>
-        </a><span class="feature-public-note">Investigación en desarrollo · sin demo pública</span></article>
-        <article class="feature-card feature-system" data-art="system"><a class="feature-case-link" href="?proyecto=praxios-os" data-project="praxios-os" aria-label="Ver caso de praxios os y las decisiones de diseño">
-          <div class="feature-visual art-system">
-            <img src="assets/praxios.svg" alt="Arquitectura visual conceptual Praxios OS" data-proof-image="assets/proof/praxios-os.jpg" data-proof-label="Captura del dossier público (no consola operativa)" data-proof-alt="Captura de la web pública de praxios-os" width="800" height="600" fetchpriority="high">
-            <span class="art-topline"><span>AR/ — 003</span><span>AGENTES · GOVERNANCE</span></span>
-            <div class="art-system-ui" aria-hidden="true"><div class="art-system-ui-head"><span class="art-orb"></span> CONTROL / LIVE <span class="art-ellipses">•••</span></div><div class="art-system-ui-row"><span class="art-status-icon">✓</span><span>INTENCIÓN</span><b>OK</b></div><div class="art-system-ui-row"><span class="art-status-icon">✓</span><span>EVIDENCIA</span><b>OK</b></div><div class="art-system-ui-row"><span class="art-status-icon">↗</span><span>VALIDACIÓN</span><b>RUN</b></div></div>
-            <span class="art-title art-title-system" aria-hidden="true">PRAXIOS<span>/</span></span>
-          </div>
-          <div class="feature-info"><span class="feature-chapter">03 — SISTEMAS & IA</span><h3>Praxios OS</h3><p>Diseñé cómo revisar tareas y evidencias de agentes de IA.</p><span class="feature-foot">Ver qué hice, qué decidí y por qué <b aria-hidden="true">↗</b></span></div>
-        </a><a class="feature-live-link" href="https://deepanalytica.github.io/praxios/" target="_blank" rel="noopener noreferrer" aria-label="Leer dossier público de praxios os, se abre en una nueva pestaña">Leer dossier público <span aria-hidden="true">↗</span></a></article>
-        <article class="feature-card feature-communication" data-art="communication"><a class="feature-case-link" href="?proyecto=visual-art-ai" data-project="visual-art-ai" aria-label="Ver caso de visual art ai y las decisiones de diseño">
-          <div class="feature-visual art-communication">
-            <img src="assets/visual.svg" alt="Composición de formas y color de Visual Art AI" data-proof-image="assets/proof/visual-art-ai.jpg" data-proof-label="Captura del sitio publicado" data-proof-alt="Captura de la web pública de visual-art-ai" width="800" height="600" fetchpriority="high">
-            <span class="art-topline"><span>AR/ — 004</span><span>BRAND / DIGITAL</span></span>
-            <span class="art-visible-stamp" aria-hidden="true">HACER<br>VISIBLE<br><i>LO QUE</i><br>IMPORTA.</span>
-            <span class="art-visible-flower" aria-hidden="true">✳</span>
-            <span class="art-visible-bottom" aria-hidden="true">VISUAL ART AI · 2026</span>
-          </div>
-          <div class="feature-info"><span class="feature-chapter">04 — MARCA & COMUNICACIÓN</span><h3>Visual Art AI</h3><p>Construí un sitio que explica servicios y facilita el contacto.</p><span class="feature-foot">Ver qué hice, qué decidí y por qué <b aria-hidden="true">↗</b></span></div>
-        </a><a class="feature-live-link" href="https://visualartai.cl/" target="_blank" rel="noopener noreferrer" aria-label="Abrir sitio publicado de visual art ai, se abre en una nueva pestaña">Abrir sitio publicado <span aria-hidden="true">↗</span></a></article>
+        <article class="feature-card feature-editorial" data-art="editorial">
+          <a class="feature-case-link" href="?proyecto=archivo" data-project="archivo" aria-label="Leer la historia de ARCHIVO">
+            <div class="feature-visual art-editorial">
+              <img class="art-fallback" src="assets/archivo.svg" alt="Composición editorial de ARCHIVO" width="800" height="600" loading="eager" decoding="async">
+              <img class="art-photo" src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="art-topline"><span>01 / DIRECCIÓN DE ARTE</span><span>TIENDA PUBLICADA</span></span>
+              <span class="feature-visual-signet" aria-hidden="true">A/</span>
+            </div>
+            <div class="feature-info"><div class="feature-heading"><h3>ARCHIVO</h3><span aria-hidden="true">↗</span></div><p>Doce marcas tenían que compartir una tienda. Pero ninguna debía perder su personalidad.</p><span class="feature-foot">Cómo lo resolví <b aria-hidden="true">↗</b></span></div>
+          </a>
+          <a class="feature-live-link" href="https://deepanalytica.github.io/archivo-tienda/" target="_blank" rel="noopener noreferrer">Visitar la tienda <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="feature-card feature-territory" data-art="territory">
+          <a class="feature-case-link" href="?proyecto=deep-geo" data-project="deep-geo" aria-label="Leer la historia de Deep Geo">
+            <div class="feature-visual art-territory">
+              <img class="art-fallback" src="assets/deep-geo.svg" alt="Representación conceptual de Deep Geo" width="800" height="600" loading="lazy" decoding="async">
+              
+              <span class="art-topline"><span>02 / INVESTIGACIÓN</span><span>ARTE CONCEPTUAL</span></span>
+              <span class="feature-visual-signet" aria-hidden="true">⌁</span>
+            </div>
+            <div class="feature-info"><div class="feature-heading"><h3>Deep Geo</h3><span aria-hidden="true">↗</span></div><p>Un mapa puede estar lleno de información y aun así no ayudarte a entender qué está pasando.</p><span class="feature-foot">Lo que fui descubriendo <b aria-hidden="true">↗</b></span></div>
+          </a>
+          <span class="feature-public-note">Investigación en desarrollo · sin demo pública</span>
+        </article>
+        <article class="feature-card feature-system" data-art="system">
+          <a class="feature-case-link" href="?proyecto=praxios-os" data-project="praxios-os" aria-label="Leer la historia de Praxios OS">
+            <div class="feature-visual art-system">
+              <img class="art-fallback" src="assets/praxios.svg" alt="Ilustración conceptual de Praxios OS" width="800" height="600" data-proof-image="assets/proof/praxios-os.jpg" data-proof-label="Captura de dossier público, no consola operativa" data-proof-alt="Captura pública de Praxios OS" loading="lazy" decoding="async">
+              
+              <span class="art-topline"><span>03 / DIRECCIÓN DE IA</span><span>DOSSIER PÚBLICO</span></span>
+              <span class="feature-visual-signet" aria-hidden="true">P/</span>
+            </div>
+            <div class="feature-info"><div class="feature-heading"><h3>Praxios OS</h3><span aria-hidden="true">↗</span></div><p>Si varios agentes de IA trabajan juntos, ¿cómo sabes qué hicieron y qué puedes dar por válido?</p><span class="feature-foot">Por qué diseñé este control <b aria-hidden="true">↗</b></span></div>
+          </a>
+          <a class="feature-live-link" href="https://deepanalytica.github.io/praxios/" target="_blank" rel="noopener noreferrer">Leer el dossier, no una demo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="feature-card feature-communication" data-art="communication">
+          <a class="feature-case-link" href="?proyecto=visual-art-ai" data-project="visual-art-ai" aria-label="Leer la historia de Visual Art AI">
+            <div class="feature-visual art-communication">
+              <img class="art-fallback" src="assets/visual.svg" alt="Arte conceptual para Visual Art AI" width="800" height="600" data-proof-image="assets/proof/visual-art-ai.jpg" data-proof-label="Captura de sitio publicado" data-proof-alt="Captura pública de Visual Art AI" loading="lazy" decoding="async">
+              
+              <span class="art-topline"><span>04 / COMUNICACIÓN</span><span>SITIO PUBLICADO</span></span>
+              <span class="feature-visual-signet" aria-hidden="true">V/</span>
+            </div>
+            <div class="feature-info"><div class="feature-heading"><h3>Visual Art AI</h3><span aria-hidden="true">↗</span></div><p>De poco sirve ofrecer algo valioso si las personas no entienden en qué puedes ayudarlas.</p><span class="feature-foot">Cómo ordené el mensaje <b aria-hidden="true">↗</b></span></div>
+          </a>
+          <a class="feature-live-link" href="https://visualartai.cl/" target="_blank" rel="noopener noreferrer">Abrir el sitio <span aria-hidden="true">↗</span></a>
+        </article>
       </div>
-      <div class="featured-note"><span>↳</span> Selecciona «Ver caso» para entender el problema y las decisiones, o «Abrir sitio» para explorar un producto publicado.</div>
-      <div class="featured-direct" aria-label="Accesos rápidos a otros casos"><span>OTROS CASOS PARA EXPLORAR</span><a href="?proyecto=conv-os" data-project="conv-os">CONV OS · VER CASO <b aria-hidden="true">↗</b></a><a href="https://deepanalytica.github.io/conv-os/" target="_blank" rel="noopener noreferrer">PROBAR CONV OS <small>demo ficticia</small> <b aria-hidden="true">↗</b></a><a href="?proyecto=radar-conv-os" data-project="radar-conv-os">RADAR CONV OS <b aria-hidden="true">↗</b></a><a href="?proyecto=meta-harness" data-project="meta-harness">META HARNESS <b aria-hidden="true">↗</b></a></div>
+      <div class="featured-direct" aria-label="Más casos para seguir explorando"><span>¿QUIERES VER MÁS?</span><a href="?proyecto=conv-os" data-project="conv-os">Conv OS ↗</a><a href="?proyecto=radar-conv-os" data-project="radar-conv-os">Radar ↗</a><a href="?proyecto=meta-harness" data-project="meta-harness">Meta Harness ↗</a><a href="#explorar">Los 21 casos ↗</a></div>
     </section>
 
-
-    <section class="problem-section" id="que-hago" aria-labelledby="problem-title"><div class="container">
-      <div class="chapter-row"><span>01 / QUÉ RESUELVO</span><span>ENCUENTRA EL CASO MÁS CERCANO A TU PROBLEMA</span></div>
-      <div class="problem-intro"><h2 id="problem-title">El problema primero.<br><span>Después, las herramientas.</span></h2><p>No todos necesitan lo mismo. Investigo el contexto, comparo alternativas y reúno las disciplinas adecuadas para cada situación.</p></div>
+    <section class="problem-section problem-v6" id="que-hago" aria-labelledby="problem-title"><div class="container">
+      <div class="chapter-row"><span>ANTES DE ELEGIR UNA HERRAMIENTA</span><span>HAY QUE ENTENDER EL PROBLEMA</span></div>
+      <div class="problem-intro"><h2 id="problem-title">¿Qué necesitas <span>resolver?</span></h2><p>No siempre hace falta una app. A veces necesitas entender los datos. Otras, encontrar una forma mejor de contar lo que haces.</p></div>
       <div class="problem-grid">
-        <article class="problem-card problem-data"><a href="?proyecto=deep-geo" data-project="deep-geo" class="problem-main"><span class="problem-index">01 / INTELIGENCIA Y DECISIÓN</span><span class="problem-symbol" aria-hidden="true">◎</span><h3>Tengo información. <em>Necesito entenderla.</em></h3><p>Cruces de fuentes, análisis territorial, investigación y visualizaciones para interpretar mejor un escenario.</p><strong>Explorar Deep Geo <span aria-hidden="true">↗</span></strong></a><a class="problem-other" href="?proyecto=radar-conv-os" data-project="radar-conv-os">También: Radar Conv OS ↗</a></article>
-        <article class="problem-card problem-systems"><a href="?proyecto=praxios-os" data-project="praxios-os" class="problem-main"><span class="problem-index">02 / PRODUCTO Y SISTEMAS</span><span class="problem-symbol" aria-hidden="true">⌘</span><h3>Hay procesos complejos. <em>Necesito ordenarlos.</em></h3><p>Interfaces, automatización, arquitectura y agentes de IA dirigidos con objetivos, controles y verificación.</p><strong>Explorar Praxios OS <span aria-hidden="true">↗</span></strong></a><a class="problem-other" href="?proyecto=conv-os" data-project="conv-os">También: Conv OS ↗</a></article>
-        <article class="problem-card problem-brand"><a href="?proyecto=archivo" data-project="archivo" class="problem-main"><span class="problem-index">03 / ARTE Y COMUNICACIÓN</span><span class="problem-symbol" aria-hidden="true">✳</span><h3>Tengo algo que ofrecer. <em>Necesito comunicarlo mejor.</em></h3><p>Dirección de arte, narrativa, identidad, contenidos y estrategia digital para presentar una oferta con claridad.</p><strong>Explorar ARCHIVO <span aria-hidden="true">↗</span></strong></a><a class="problem-other" href="?proyecto=visual-art-ai" data-project="visual-art-ai">También: Visual Art AI ↗</a></article>
+        <article class="problem-card problem-data"><a class="problem-main" href="?proyecto=deep-geo" data-project="deep-geo"><span class="problem-index">01 / DATOS</span><h3>Tengo información.<em>Me falta claridad.</em></h3><strong>Ver Deep Geo ↗</strong></a></article>
+        <article class="problem-card problem-systems"><a class="problem-main" href="?proyecto=conv-os" data-project="conv-os"><span class="problem-index">02 / SOFTWARE</span><h3>Mi equipo pierde tiempo.<em>Quiero ordenarlo.</em></h3><strong>Ver Conv OS ↗</strong></a></article>
+        <article class="problem-card problem-brand"><a class="problem-main" href="?proyecto=visual-art-ai" data-project="visual-art-ai"><span class="problem-index">03 / COMUNICACIÓN</span><h3>Tengo algo bueno.<em>Quiero contarlo mejor.</em></h3><strong>Ver Visual Art AI ↗</strong></a></article>
       </div>
     </div></section>
 
-    <section class="creative-section container" id="exploracion" aria-labelledby="creative-title">
-      <div class="chapter-row"><span>02 / DIRECCIÓN DE ARTE Y CRITERIO</span><span>EXPLORACIÓN · DECISIÓN · RESULTADO</span></div>
-      <div class="creative-head"><h2 id="creative-title">No se trata solo<br>de llegar a una forma.<br><em>Importa cómo se decide.</em></h2><p>Una pieza visual, una campaña o una interfaz nace de comparar posibilidades. La dirección creativa consiste en escoger qué expresa mejor una idea, cómo se usa y por qué merece existir.</p></div>
+    <section class="creative-section creative-v6 container" id="exploracion" aria-labelledby="creative-title">
+      <div class="chapter-row"><span>DIRECCIÓN DE ARTE EN LA PRÁCTICA</span><span>UNA DECISIÓN PUEDE CAMBIAR TODA UNA EXPERIENCIA</span></div>
+      <div class="creative-head"><h2 id="creative-title">Te cuento <em>por qué elegí ese camino.</em></h2><p>ARCHIVO me planteó una pregunta sencilla: ¿cómo reúnes doce marcas sin que todas terminen pareciéndose?</p></div>
       <div class="creative-work">
-        <div class="creative-visuals" aria-label="Material original de ARCHIVO, ejemplo de dirección editorial">
-          <figure class="creative-shot creative-shot-main"><img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" onerror="this.hidden=true;this.closest('figure').querySelector('figcaption').textContent='Material editorial temporalmente no disponible'" loading="lazy" alt="Pieza editorial original de la colección Ownform en ARCHIVO"><figcaption>ARCHIVO / DIRECCIÓN EDITORIAL</figcaption></figure>
-          <figure class="creative-shot creative-shot-side"><img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/alto-campaign.webp" onerror="this.hidden=true;this.closest('figure').querySelector('figcaption').textContent='Material editorial temporalmente no disponible'" loading="lazy" alt="Pieza de campaña ALTO publicada en el catálogo ARCHIVO"><figcaption>ALTO / CAMPAÑA</figcaption></figure>
+        <div class="creative-visuals" aria-label="Materiales editoriales publicados de ARCHIVO">
+          <figure class="creative-shot creative-shot-main"><img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" loading="lazy" alt="Fotografía editorial Ownform publicada en ARCHIVO" onerror="this.hidden=true"><figcaption>OWNFORM / EDITORIAL</figcaption></figure>
+          <figure class="creative-shot creative-shot-side"><img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/imago-editorial.webp" loading="lazy" alt="Pieza editorial Imago publicada en ARCHIVO" onerror="this.hidden=true"><figcaption>IMAGO / EDITORIAL</figcaption></figure>
           <span class="creative-stamp" aria-hidden="true">AR/<br>ART<br>DIR.</span>
         </div>
         <div class="creative-decisions">
-          <span class="creative-eyebrow">CASO DE ESTUDIO / ARCHIVO</span>
-          <h3>Una tienda.<br>Doce marcas.<br><span>Muchas voces visuales.</span></h3>
-          <p>El reto era conectar colecciones y lenguajes distintos en una experiencia coherente, sin convertir todas las marcas en la misma imagen.</p>
-          <ol><li><strong>Investigar el contexto.</strong><span>Entender catálogo, categorías y recorridos de compra.</span></li><li><strong>Dirigir la expresión.</strong><span>Dar a las colecciones una presentación editorial reconocible.</span></li><li><strong>Diseñar el sistema.</strong><span>Organizar navegación, piezas y publicaciones en una misma tienda.</span></li></ol>
-          <a class="creative-cta" href="?proyecto=archivo" data-project="archivo">Ver el caso, las decisiones y la tienda <span aria-hidden="true">↗</span></a>
-          <small>Materiales publicados. No se atribuyen conversiones ni resultados publicitarios sin evidencia.</small>
+          <span class="creative-eyebrow">ARCHIVO / LA DECISIÓN</span>
+          <h3>Una tienda.<br><span>Muchas personalidades.</span></h3>
+          <p>En lugar de hacer que todas las marcas hablaran igual, diseñé una estructura común donde cada colección pudiera conservar su propio lenguaje visual.</p>
+          <a class="creative-cta" href="?proyecto=archivo" data-project="archivo">Te muestro el trabajo <span aria-hidden="true">↗</span></a>
+          <small>Piezas y tienda publicadas. Sin cifras comerciales atribuidas.</small>
         </div>
       </div>
     </section>

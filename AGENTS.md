@@ -11,3 +11,6 @@ El brief exige visibilidad de dirección de arte, criterio creativo, exploració
 
 ## Implementación V5 (2026-11-08)
 Para trabajo posterior a la ejecución del plan, consultar también [docs/2026-11-08_DECISION_DISENO_AR_ESTUDIO_V5.md](docs/2026-11-08_DECISION_DISENO_AR_ESTUDIO_V5.md) y README.md. La implementación V5 está desarrollada en PR #6. Mantener las siete muestras editoriales de marca; no confundir estados semánticos o colores propios de casos con paleta principal. Revisar capturas y ejecutar QA antes de fusionar cambios de interfaz.
+
+## Storytelling y diseño V6 (2026-11-08)
+Antes de editar la UI, leer [.agents/skills/portfolio-taste/SKILL.md](.agents/skills/portfolio-taste/SKILL.md) y [docs/2026-11-08_AUDITORIA_VISUAL_Y_STORYTELLING_V6.md](docs/2026-11-08_AUDITORIA_VISUAL_Y_STORYTELLING_V6.md). Priorizar primera pantalla breve, una CTA, cuatro casos visuales, 21 historias con evidencia accesible, navegación y foco. GSAP/ScrollTrigger es opcional; Remotion solo exportación offline del laboratorio. Ejecutar `npm run check` y Playwright y revisar screenshots reales antes de fusionar. Los siete swatches de marca no se alteran.
