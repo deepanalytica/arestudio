@@ -18,7 +18,7 @@ Cada caso es una pequeña experiencia publicada, no un modal de metadatos. La p�
 
 | Proyecto | Concepto visual | Material | Advertencia de procedencia |
 |---|---|---|---|
-| **ARCHIVO** | Universo editorial con fotos de colecciones y ventana de catálogo sobrepuesta | Fotos públicas Ownform, Imago, captura de tienda que genera el CI | La tienda existe; no atribuir métricas de ventas |
+| **ARCHIVO** | Universo editorial con fotos de colecciones y ventana de catálogo sobrepuesta | Fotos públicas Ownform, Imago y ALTO, con información de catálogo; el CI conserva capturas públicas aparte | La tienda existe, pero el montaje no es una captura literal de su interfaz; no atribuir ventas |
 | **Deep Geo** | Composición territorial con diagrama de capas, observación y contraste | SVG conceptual del proyecto | No representa un mapa operativo ni datos en vivo |
 | **Praxios OS** | Un flujo de intención, ejecución, evidencia y revisión, junto a captura de dossier público | Diagrama original + captura del dossier | No presentar el dossier como una consola comercial desplegada |
 | **Visual Art AI** | Captura de web en composición tipo dispositivo con acentos suaves | Screenshot publicado del sitio y portada de fallback | No inferir rendimiento publicitario o clientes |
