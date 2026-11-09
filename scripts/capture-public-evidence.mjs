@@ -32,6 +32,22 @@ try{
       if(!record.http||record.http>=400)throw Error('HTTP '+record.http);
       await page.waitForTimeout(1300);
       await page.evaluate(()=>document.fonts?.ready).catch(()=>{});
+      // ARCHIVO tiene un hero fotográfico: comprobar que sus bytes estén
+      // descargados antes de fotografiar el sitio. Una portada blanca por
+      // carga tardía no es evidencia visual útil, aunque el HTML responda 200.
+      if(t.id==='archivo'){
+        await page.locator('#hero-image').waitFor({state:'visible',timeout:7500});
+        const loaded=await page.evaluate(async()=>{
+          const image=document.querySelector('#hero-image');
+          if(!image)return false;
+          try{await Promise.race([image.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('Image decode timeout')),7000))]);}catch{return false}
+          return image.naturalWidth>=600&&image.naturalHeight>=300;
+        });
+        if(!loaded)throw Error('ARCHIVO hero photo not decoded; keep editorial fallback');
+        await page.locator('#hero-image').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(320);
+        record.captureFocus='Hero fotográfico público cargado y visible';
+      }
       const details=await page.evaluate(()=>({title:document.title,bodyLength:document.body?.innerText?.trim().length||0,hasVisibleContent:!!document.querySelector('main,h1,[role="main"],.app,#app')}));
       record.title=details.title;record.bodyLength=details.bodyLength;
       if(details.bodyLength<65||!/./.test(details.title||''))throw Error('Insufficient public page content');
