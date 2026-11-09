@@ -199,3 +199,15 @@ a,button{-webkit-tap-highlight-color:transparent}
  background:linear-gradient(180deg,#0A4043 0%,#0A4043 20%,rgba(10,64,67,0) 100%);
  pointer-events:none;
 }
+
+/* Audit: explicit editorial grid in the archive heading. The old flex layout
+   unexpectedly placed the eyebrow on the far left and the title in the middle. */
+@media(min-width:641px){
+ .catalog-head{
+   display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+   column-gap:clamp(35px,6vw,100px);row-gap:23px;align-items:end;
+ }
+ .catalog-head .eyebrow{grid-column:1/-1}
+ .catalog-head h2{grid-column:1;margin:0;max-width:none}
+ .catalog-head p{grid-column:2;margin:0 0 5px}
+}
