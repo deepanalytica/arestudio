@@ -71,3 +71,7 @@
  .hero-v7 .stage-card,.hero-v7 .stage-card img,.hero-v7 .entry-paths a{transition:none!important}
  .hero-v7 .stage-card:hover,.hero-v7 .stage-card:hover img,.hero-v7 .entry-paths a:active{transform:none!important}
 }
+
+/* La captura real del dossier lleva tipografía propia: no superponer etiquetas de portada. */
+.featured-v6 .feature-system .art-topline,
+.featured-v6 .feature-communication .art-topline{display:none}
