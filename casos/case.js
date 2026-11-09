@@ -19,7 +19,7 @@ const artDirection={
     storyTitle:'Una tienda podía ser mucho más que un catálogo.',
     story:'Había colecciones, nombres, estilos y fotografías que tenían que encontrarse en un mismo lugar. Decidí diseñar un sistema de navegación común, pero conservar el carácter editorial de cada marca.',
     mediaTitle:'Cada colección necesitaba su propio escenario.',
-    mediaIntro:'Estos son materiales editoriales del catálogo publicado. La ventana de tienda utiliza una captura verificable del sitio, no una interfaz inventada.',
+    mediaIntro:'Las fotografías pertenecen a colecciones publicadas. La composición de portada es un montaje editorial con datos reales del catálogo; no reproduce literalmente la interfaz de la tienda.',
     statusNote:'Tienda y materiales editoriales publicados',
     stage:'archivo'
   },
@@ -92,7 +92,12 @@ function scene(p,direction){
     inner='<div class="scene-archive-art">'+
       '<div class="archive-image archive-image-one">'+image(media[0]?.src||p.cover,'Fotografía editorial Ownform')+'</div>'+
       '<div class="archive-image archive-image-two">'+image(media[2]?.src||p.cover,'Fotografía editorial Imago')+'</div>'+
-      browserFrame(p,'archive-browser')+
+      '<div class="archive-browser archive-shop-concept" role="img" aria-label="Montaje editorial conceptual del catálogo ARCHIVO construido con fotografías publicadas; no es una captura exacta de la tienda">'+
+        '<div class="browser-top"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser-origin">AR/ · ARCHIVO</span></div>'+
+        '<div class="shop-concept-head"><strong>ARCHIVO</strong><span>MARCAS · COLECCIONES · PRENDAS</span></div>'+
+        image(media[1]?.src||p.cover,'Pieza ALTO publicada en el catálogo ARCHIVO','shop-concept-photo')+
+        '<div class="shop-concept-footer"><span>IDENTIDADES EN UNA MISMA TIENDA</span><strong>12 marcas / 16 colecciones</strong></div>'+
+        '<span class="shop-concept-disclosure">MONTAJE EDITORIAL · NO CAPTURA DE INTERFAZ</span></div>'+
       '<span class="archive-graphic" aria-hidden="true">ARCHIVO<span>®</span></span>'+
     '</div>';
   } else if(stage==='geo'){
