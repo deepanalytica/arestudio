@@ -1,0 +1,77 @@
+/* AR Estudio · Entrada directa V7 · 2026-11-08
+   Tres puertas a proyectos REALES. Sin overlay ni pantalla de espera.
+   Paleta y marca originales, sin crear un segundo sistema visual. */
+.hero-v7{grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(25px,4vw,67px);padding-block:22px 24px;align-items:center}
+.hero-v7 .hero-copy{min-width:0}
+.hero-v7 .hero-lead{max-width:47ch}
+.hero-v7 .hero-actions{margin-top:20px}
+.hero-v7 .entry-paths{display:none}
+.hero-v7 .hero-project-stage{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  grid-template-rows:1fr 1fr;
+  gap:9px;padding:27px 9px 9px;
+  height:clamp(264px,26vw,355px);min-height:0;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--ar-color-ice,#EAF0FF),var(--ar-color-glacier,#F5FAFF));
+  border:1px solid var(--ar-color-border,#DCE5F7);
+  border-radius:12px;box-shadow:none;isolation:isolate;
+}
+.hero-v7 .hero-project-stage::before,.hero-v7 .hero-project-stage::after{display:none!important}
+.hero-v7 .stage-overline{position:absolute;top:8px;left:12px;font:700 9px/1.4 var(--ar-font-data,'IBM Plex Mono',monospace);letter-spacing:.08em;color:var(--ar-color-ink,#101729)}
+.hero-v7 .stage-card{display:flex;flex-direction:column;justify-content:space-between;min-width:0;min-height:0;overflow:hidden;position:relative;isolation:isolate;border-radius:6px;text-decoration:none;padding:14px;background:var(--ar-color-ink,#101729);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);transition:transform .26s cubic-bezier(.22,1,.36,1),box-shadow .26s}
+.hero-v7 .stage-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,23,41,.46),rgba(16,23,41,.02) 36%,rgba(16,23,41,.62));pointer-events:none}
+.hero-v7 .stage-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;z-index:0;transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.hero-v7 .stage-card:hover img,.hero-v7 .stage-card:focus-visible img{transform:scale(1.055)}
+.hero-v7 .stage-card:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(16,23,41,.13)}
+.hero-v7 .stage-card:focus-visible{outline:3px solid var(--ar-color-violet,#6236FF);outline-offset:2px}
+.hero-v7 .stage-card .stage-card-meta{z-index:2;display:block;font:750 9px/1.25 var(--ar-font-data,'IBM Plex Mono',monospace);letter-spacing:.06em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.hero-v7 .stage-card strong{z-index:2;display:flex;align-items:end;justify-content:space-between;gap:5px;font:900 clamp(16px,2.5vw,35px)/1.05 var(--ar-font-display,'Archivo',sans-serif);letter-spacing:-.04em;white-space:normal;text-shadow:0 2px 13px rgba(16,23,41,.48)}
+.hero-v7 .stage-card strong span{font-size:.7em;line-height:1.1;color:var(--ar-color-lime,#EFFF38)}
+.hero-v7 .stage-card-art{grid-column:1;grid-row:1/span 2;background:var(--ar-color-orange,#FF652F)}
+.hero-v7 .stage-card-art strong{font-size:clamp(24px,3.2vw,44px)}
+.hero-v7 .stage-card-data{grid-column:2;grid-row:1;background:var(--ar-color-violet,#6236FF)}
+.hero-v7 .stage-card-systems{grid-column:2;grid-row:2;background:var(--ar-color-blue,#245BFF)}
+.hero-v7 .stage-card-data img,.hero-v7 .stage-card-systems img{object-fit:cover}
+.hero-v7 .stage-card-data strong,.hero-v7 .stage-card-systems strong{font-size:clamp(16px,2vw,25px)}
+@media(max-width:1100px){
+ .hero-v7{grid-template-columns:minmax(0,1.01fr) minmax(0,.99fr);gap:22px}
+ .hero-v7 .hero-project-stage{height:285px}
+ .hero-v7 .stage-card{padding:11px}
+ .hero-v7 .stage-card-art strong{font-size:30px}
+}
+@media(max-width:900px){
+ .hero-v7{gap:16px}
+ .hero-v7 .hero-project-stage{height:235px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .hero-v7 .stage-card strong{font-size:17px}
+ .hero-v7 .stage-card-art strong{font-size:24px}
+ .hero-v7 .stage-card .stage-card-meta{font-size:8px}
+}
+@media(max-width:720px){
+ .hero-v7{display:block;padding-block:19px 16px}
+ .hero-v7 .hero-project-stage{display:none}
+ .hero-v7 .hero-lead{max-width:40ch;font-size:14px;line-height:1.51}
+ .hero-v7 .hero-actions{margin-top:17px}
+ .hero-v7 .entry-paths{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:17px;padding-top:13px;border-top:1px solid var(--ar-color-border,#DCE5F7)}
+ .hero-v7 .entry-paths-label{display:block;width:100%;font:600 9px/1.4 var(--ar-font-data,'IBM Plex Mono',monospace);letter-spacing:.045em;color:var(--ar-color-muted,#43516C)}
+ .hero-v7 .entry-paths a{min-height:40px;display:flex;align-items:center;justify-content:center;gap:8px;flex:1 1 0;min-width:0;padding:8px 10px;border:1px solid var(--ar-color-border,#DCE5F7);border-radius:6px;background:#fff;color:var(--ar-color-ink,#101729);font:800 12px/1.25 var(--ar-font-body,'DM Sans',sans-serif);text-decoration:none;transition:background .17s,transform .17s}
+ .hero-v7 .entry-paths a span:last-child{color:var(--ar-color-blue,#245BFF);font-weight:600;margin-left:auto}
+ .hero-v7 .entry-paths a:active{transform:scale(.985)}
+ .hero-v7 .entry-paths a:hover{background:var(--ar-color-ice,#EAF0FF)}
+ .hero-v7 .entry-paths a:focus-visible{outline:3px solid var(--ar-color-violet,#6236FF);outline-offset:2px}
+ .hero-v7 .path-dot{width:8px;height:8px;border-radius:2px;flex:0 0 8px}
+ .hero-v7 .path-art{background:var(--ar-color-magenta,#F12BBE)}
+ .hero-v7 .path-data{background:var(--ar-color-orange,#FF652F)}
+ .hero-v7 .path-systems{background:var(--ar-color-lime,#EFFF38);border:1px solid var(--ar-color-ink,#101729)}
+}
+@media(max-width:390px){
+ .hero-v7 .entry-paths a{font-size:11px;padding:8px;gap:6px}
+ .hero-v7 .hero-lead{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-v7 .stage-card,.hero-v7 .stage-card img,.hero-v7 .entry-paths a{transition:none!important}
+ .hero-v7 .stage-card:hover,.hero-v7 .stage-card:hover img,.hero-v7 .entry-paths a:active{transform:none!important}
+}
+
+/* La captura real del dossier lleva tipografía propia: no superponer etiquetas de portada. */
+.featured-v6 .feature-system .art-topline,
+.featured-v6 .feature-communication .art-topline{display:none}

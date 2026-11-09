@@ -14,12 +14,20 @@ assert.deepEqual(labSwatches,official,'Los siete colores oficiales no coinciden 
 for(const hex of official)assert.ok(Object.values(tokens).includes(hex),'Token oficial ausente: '+hex);
 
 const between=(a,b)=>{const i=html.indexOf(a),j=html.indexOf(b,i+1);assert.ok(i>=0&&j>i,'Falta sección: '+a);return html.slice(i,j)};
-const hero=between('class="hero container hero-v6"','id="proyectos"');
+const hero=between('class="hero container hero-v6','id="proyectos"');
 const strip=hero.match(/<p class="hero-lead">([^<]+)<\/p>/);
 assert.ok(strip,'Hero debe tener una sola explicación visible');
 assert.ok(strip[1].trim().split(/\s+/).length<=36,'Hero demasiado denso: máximo 36 palabras');
 assert.equal((hero.match(/class="btn btn-solid"/g)||[]).length,1,'Hero debe tener una sola CTA');
 assert.equal((hero.match(/class="hero-actions"/g)||[]).length,1,'Hero sin acciones redundantes');
+assert.equal((hero.match(/class="stage-card /g)||[]).length,3,'Tres accesos visuales a trabajos reales');
+assert.equal((hero.match(/class="path-dot /g)||[]).length,3,'Las rutas rápidas funcionan como navegación móvil');
+assert.ok(hero.includes('data-project="archivo"')&&hero.includes('data-project="deep-geo"')&&hero.includes('data-project="praxios-os"'),'El acceso directo reutiliza casos documentados');
+const profile=readFileSync('perfil/index.html','utf8');
+assert.match(profile,/Ingeniería en Data Science<\/strong><small>En curso<\/small>/,'Formación académica positiva y exacta');
+assert.ok(!/no título obtenido|no certificación del producto|estudios en desarrollo/i.test(profile),'Evitar negaciones en credenciales');
+assert.ok(profile.indexOf('id="evidencia"')<profile.indexOf('id="trayectoria"'),'Perfil muestra trabajo antes de CV');
+
 
 const firstFold=between('id="proyectos"','class="problem-section');
 assert.equal((firstFold.match(/class="feature-card /g)||[]).length,4,'Deben existir cuatro proyectos destacados');

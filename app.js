@@ -218,7 +218,7 @@ if(!reduced.matches){$$('.feature-card').forEach(card=>{card.addEventListener('p
 // Optional Three.js wireframe, sampled on capable devices. SVG is always the static fallback.
 async function threeAccent(){
   if(reduced.matches||!window.WebGLRenderingContext||innerWidth<1000)return;
-  const host=$('.hero-art');if(!host)return;
+  const host=$('.hero-art:not(.hero-project-stage)');if(!host)return;
   try{
     const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js');
     const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(33,host.clientWidth/host.clientHeight,.1,100);

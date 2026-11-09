@@ -30,7 +30,7 @@ try{
     assert.match(await page.locator('.hero .eyebrow').innerText(),/Alexis Reyes/i,`${label}: identidad profesional presente`);
     assert.doesNotMatch(await page.locator('#hero-title').innerText(),/Soy Alexis Reyes/i,`${label}: sin presentación genérica`);
     assert.ok(await page.locator('.profile-spotlight-action[href="perfil/"]').count(),`${label}: enlace a trayectoria detallada`);
-    assert.match(await page.locator('.hero-lead').innerText(),/campaña.*mapa.*sistema/i,`${label}: narrativa en lenguaje cotidiano con tres ejemplos`);
+    assert.match(await page.locator('.hero-lead').innerText(),/marcas.*datos.*software/i,`${label}: presentación breve y concreta de las tres áreas`);
     assert.ok((await page.locator('.hero-lead').innerText()).split(/\s+/).length<=34,`${label}: portada sin párrafo excesivo`);
     assert.equal(await page.locator('#que-hago .problem-card').count(),3,`${label}: tres rutas por problemas con casos reales`);
     assert.equal(await page.locator('#capacidades .capability').count(),6,`${label}: seis capacidades profesionales conservadas`);
@@ -51,15 +51,18 @@ try{
       display:getComputedStyle(document.querySelector('#hero-title')).fontFamily,
       art:getComputedStyle(document.querySelector('.hero-art')).backgroundImage,
       blue:getComputedStyle(document.querySelector('.btn-solid')).backgroundColor,
-      cover:document.querySelector('.hero-mesh').getAttribute('src'),
+      cover:document.querySelector('.brand-lockup img').getAttribute('src'),
       typeWeight:getComputedStyle(document.querySelector('.hero-head-bold')).fontWeight
     }));
     assert.match(identity.display,/Archivo/,`${label}: tipografía Archivo aplicada`);
-    assert.match(identity.art,/gradient/,`${label}: ambiente cromático aplicado`);
+    assert.match(identity.art,/gradient/,`${label}: galería introductoria usa colores oficiales`);
+    assert.equal(await page.locator('.hero-project-stage .stage-card').count(),3,`${label}: entrada visual a arte, datos y sistemas`);
+    assert.equal(await page.locator('.entry-paths a[data-project]').count(),3,`${label}: rutas móviles accesibles hacia los mismos casos`);
+    assert.ok(await page.locator('.entry-paths a[data-project="archivo"]').count(),`${label}: acceso directo a ARCHIVO`);
     assert.equal(identity.blue,'rgb(36, 91, 255)',`${label}: botón usa azul de marca`);
     const palette=await page.evaluate(()=>['--ar-color-blue','--ar-color-violet','--ar-color-magenta','--ar-color-orange','--ar-color-lime','--ar-color-glacier','--ar-color-ink'].map(t=>getComputedStyle(document.documentElement).getPropertyValue(t).trim().toUpperCase()));
     assert.deepEqual(palette,['#245BFF','#6236FF','#F12BBE','#FF652F','#EFFF38','#F5FAFF','#101729'],`${label}: los siete colores oficiales siguen intactos`);
-    assert.match(identity.cover,/simbolo-blanco-transparente\.svg/,`${label}: marca maestra en portada`);
+    assert.match(identity.cover,/horizontal-transparente-tinta\.svg/,`${label}: logo maestro original en cabecera`);
     assert.equal(identity.typeWeight,'900',`${label}: jerarquía tipográfica black`);
     assert.equal(await page.locator('.feature-card .art-topline').count(),4,`${label}: cuatro universos de arte con metadata propia`);
     assert.equal(await page.locator('.feature-card .feature-visual-signet').count(),4,`${label}: firma editorial distinta en cuatro casos`);
@@ -75,6 +78,9 @@ try{
     assert.equal(overflow,false,`${label}: sin scroll horizontal`);
     await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
     if (label==='desktop'){
+      await page.locator('.stage-card-art').click();
+      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','La entrada creativa de escritorio abre un proyecto real');
+      await page.keyboard.press('Escape');
       await page.locator('.feature-case-link').nth(1).click();
       assert.equal(await page.locator('#modal-title').innerText(),'Deep Geo');
       assert.equal(await page.locator('.case-keypoint').count(),2,'El caso conserva problema y contribución dentro del detalle expandible');
@@ -110,6 +116,9 @@ try{
       assert.equal(await page.locator('.main-nav a[href="#que-hago"]').getAttribute('aria-current'),'location','El menú refleja la sección visible');
     }
     if (label==='mobile'){
+      await page.locator('.entry-paths a[data-project="archivo"]').click();
+      assert.equal(await page.locator('#modal-title').innerText(),'ARCHIVO','Acceso móvil abre caso real');
+      await page.keyboard.press('Escape');
       assert.equal(await page.locator('#mobile-menu').isVisible(),false,'Menú móvil inicialmente oculto');
       await page.locator('#menu-toggle').click();
       assert.equal(await page.locator('#mobile-menu').isVisible(),true,'Menú móvil expandido');
@@ -136,7 +145,12 @@ try{
     assert.equal(await page.locator('.career-grid article').count(),3,label+': tres etapas de experiencia documentadas');
     assert.equal(await page.locator('.skills-grid article').count(),8,label+': ocho áreas de intervención');
     assert.equal(await page.locator('.proof-grid a').count(),4,label+': casos enlazados desde perfil');
-    assert.match(await page.locator('.profile-facts').innerText(),/en curso/i,label+': formación sin atribuir título');
+    assert.match(await page.locator('.profile-facts').innerText(),/ingeniería en data science[\s\S]*en curso/i,label+': formación indicada claramente en curso');
+    assert.doesNotMatch(await page.locator('.profile-facts').innerText(),/no título obtenido|no certificación del producto|estudios en desarrollo/i,label+': no presentar credenciales como una lista de negaciones');
+    assert.equal(await page.locator('.profile-facts .profile-fact').count(),3,label+': tres credenciales bien diferenciadas');
+    assert.equal(await page.locator('.proof-grid .proof-image img').count(),4,label+': cuatro obras con imagen etiquetada');
+    const order=await page.evaluate(()=>document.querySelector('#evidencia').compareDocumentPosition(document.querySelector('#trayectoria'))&Node.DOCUMENT_POSITION_FOLLOWING);
+    assert.ok(order,label+': los proyectos se muestran antes de la trayectoria extensa');
     assert.ok(await page.locator('.profile-actions a').count()>=2,label+': acciones del perfil');
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     assert.equal(overflow,false,label+': sin scroll horizontal');

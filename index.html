@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="brand/profile-spotlight.css?v=1.0.0">
   <link rel="stylesheet" href="brand/portfolio-strategy-v5.css?v=5.0.0">
   <link rel="stylesheet" href="brand/portfolio-story-v6.css?v=6.0.0">
+  <link rel="stylesheet" href="brand/portfolio-entry-v7.css?v=7.0.0">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script type="module" src="app.js"></script>
@@ -34,17 +35,34 @@
 
   <main>
 
-    <section class="hero container hero-v6" aria-labelledby="hero-title">
+    <section class="hero container hero-v6 hero-v7" aria-labelledby="hero-title">
       <div class="hero-copy">
         <span class="eyebrow"><span class="status-dot"></span> AR ESTUDIO / ALEXIS REYES</span>
         <h1 id="hero-title"><span class="hero-head-bold">Las buenas ideas</span><span class="hero-head-regular">se trabajan<span class="period">.</span></span></h1>
-        <p class="hero-lead">A veces una idea termina siendo una campaña. Otras, un mapa o un sistema. Lo interesante es entender qué hace falta y hacerlo bien.</p>
-        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Mira lo que hice <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-lead">Diseño marcas, analizo datos y construyo software. Aquí puedes ver los proyectos y las decisiones que hay detrás.</p>
+        <div class="hero-actions"><a class="btn btn-solid" href="#proyectos">Ver mis proyectos <span aria-hidden="true">↓</span></a></div>
+        <nav class="entry-paths" aria-label="Entrar por tipo de proyecto">
+          <span class="entry-paths-label">O entra directo a un trabajo</span>
+          <a href="?proyecto=archivo" data-project="archivo"><span class="path-dot path-art" aria-hidden="true"></span>Arte <span aria-hidden="true">↗</span></a>
+          <a href="?proyecto=deep-geo" data-project="deep-geo"><span class="path-dot path-data" aria-hidden="true"></span>Datos <span aria-hidden="true">↗</span></a>
+          <a href="?proyecto=praxios-os" data-project="praxios-os"><span class="path-dot path-systems" aria-hidden="true"></span>Sistemas <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
-      <div class="hero-art" aria-label="Monograma original AR Estudio sobre la paleta Electric Editorial" role="img">
-        <img class="hero-mesh brand-mark" src="brand/logo-kit/svg/simbolo-blanco-transparente.svg" width="960" height="600" alt="" fetchpriority="high">
-        <span class="hero-art-annotation" aria-hidden="true">IDEAS / DIRECCIÓN / EJECUCIÓN</span>
-      </div>
+      <nav class="hero-art hero-project-stage" aria-label="Tres proyectos para empezar">
+        <span class="stage-overline">AR/ EXPLORA EL TRABAJO</span>
+        <a class="stage-card stage-card-art" href="?proyecto=archivo" data-project="archivo" aria-label="Explorar ARCHIVO, dirección de arte y diseño">
+          <img src="https://deepanalytica.github.io/archivo-tienda/assets/brands/ownform-editorial.webp" onerror="this.hidden=true" alt="" loading="eager" decoding="async">
+          <span class="stage-card-meta">01 / ARTE</span><strong>ARCHIVO <span aria-hidden="true">↗</span></strong>
+        </a>
+        <a class="stage-card stage-card-data" href="?proyecto=deep-geo" data-project="deep-geo" aria-label="Explorar Deep Geo, datos e investigación">
+          <img src="assets/deep-geo.svg" alt="" loading="lazy" decoding="async">
+          <span class="stage-card-meta">02 / DATOS</span><strong>Deep Geo <span aria-hidden="true">↗</span></strong>
+        </a>
+        <a class="stage-card stage-card-systems" href="?proyecto=praxios-os" data-project="praxios-os" aria-label="Explorar Praxios OS, sistemas y dirección de IA">
+          <img src="assets/praxios.svg" alt="" loading="lazy" decoding="async">
+          <span class="stage-card-meta">03 / SISTEMAS</span><strong>Praxios OS <span aria-hidden="true">↗</span></strong>
+        </a>
+      </nav>
     </section>
 
     <section id="proyectos" class="featured container featured-v6" aria-labelledby="featured-title">
