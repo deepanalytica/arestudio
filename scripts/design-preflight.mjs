@@ -38,6 +38,9 @@ for(const project of projects)assert.ok(storyIds.includes(project.id),'Sin relat
 
 assert.ok(js.includes('<details class="case-more">'),'Detalles técnicos deben ser accesibles y progresivos');
 assert.ok(js.includes('window.ScrollTrigger'),'GSAP ScrollTrigger debe integrarse progresivamente');
+const motionCode=js.slice(js.indexOf('function motion()'),js.indexOf('setTimeout(motion'));
+assert.ok(motionCode.includes("$$('.feature-card').forEach"),'GSAP debe recorrer todas las tarjetas, no llamar forEach sobre un elemento');
+assert.ok(motionCode.includes("$$('.problem-card').forEach"),'GSAP debe recorrer las tres rutas, no un solo elemento');
 assert.ok(html.includes('ScrollTrigger.min.js'),'No se carga ScrollTrigger');
 assert.ok(styles.includes('prefers-reduced-motion:reduce'),'Falta reducción de movimiento');
 assert.ok(html.includes('brand/logo-kit/svg/horizontal-transparente-tinta.svg'),'Logo maestro ausente');
