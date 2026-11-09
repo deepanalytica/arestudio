@@ -2,7 +2,7 @@
 ## Estrategia comercial, dirección de arte, criterio creativo, comunicación, marketing digital, ingeniería y dirección de IA
 
 **Fecha:** 2026-11-08  
-**Versión:** 1.0 — brief de implementación para agentes  
+**Versión:** 1.1 — auditoría de paleta real y corrección de roles cromáticos  
 **Estado:** DOCUMENTADO / IMPLEMENTACIÓN NO INICIADA  
 **Repositorio:** https://github.com/deepanalytica/arestudio  
 **Sitio existente:** https://deepanalytica.github.io/arestudio/  
@@ -10,14 +10,14 @@
 **Responsable del contenido y decisiones:** titular de AR Estudio  
 **Propósito de este archivo:** permitir que otro agente comprenda el porqué, el qué, el orden, los límites y las pruebas de aceptación del rediseño sin repetir la investigación inicial.
 
-> **INSTRUCCIÓN PRIORITARIA Y EXPLÍCITA DEL TITULAR — PRESERVAR TODA LA PALETA ACTUAL, INCLUIDO EL VERDE.**
-> No eliminar, sustituir, desaturar ni rediseñar el verde lima, los otros verdes existentes ni los restantes colores de marca. No proponer una marca nueva ni cambiar el logo AR/. Este proyecto es un rediseño de narrativa, UX, dirección de arte aplicada y arquitectura de información **dentro de la identidad existente**. Cualquier cambio en los tokens cromáticos requiere una solicitud y aprobación explícitas posteriores.
+> **INSTRUCCIÓN PRIORITARIA DEL TITULAR — CONSERVAR EL SISTEMA DE DISEÑO REAL DEL PORTAFOLIO.**
+> El **Design System Lab** muestra exactamente **siete colores editoriales de identidad**: Electric `#245BFF`, Violet `#6236FF`, Magenta `#F12BBE`, Orange `#FF652F`, Acid (verde lima) `#EFFF38`, Glacier `#F5FAFF` e Ink `#101729`. No retirar, sustituir ni inventar tonos como si fueran colores de identidad. Los tokens funcionales y los colores particulares de cada proyecto se conservan en sus funciones, **pero no se suman a la paleta editorial**. No rediseñar logo AR/ ni alterar variables cromáticas sin autorización explícita.
 
 ---
 
 ## 0. Instrucciones de arranque para el siguiente agente
 
-1. Leer **AGENTS.md**, **este documento**, **.agents/skills/brandkit/SKILL.md**, **brand/BRANDKIT_WORKFLOW.md**, **brand/PORTFOLIO_ART_DIRECTION.md**, **brand/COMUNICACION.md**, **brand/MANUAL_DE_MARCA.md** y **brand/tokens.json**.
+1. Leer **AGENTS.md**, **este documento**, **.agents/skills/brandkit/SKILL.md**, **brand/BRANDKIT_WORKFLOW.md**, **brand/PORTFOLIO_ART_DIRECTION.md**, **brand/COMUNICACION.md**, **brand/MANUAL_DE_MARCA.md**, **brand/tokens.json** y **brand/lab/index.html** (las siete muestras oficiales de la paleta).
 2. Confirmar el estado actual de **main**. Este plan describe la versión observada el **2026-11-08**; los archivos pueden haber evolucionado. No asumir que los selectores ni la estructura siguen iguales.
 3. Revisar visualmente la versión publicada y la de trabajo a **1440 × 900**, **768 × 950** y **390 × 844**. No inferir el diseño únicamente del HTML.
 4. Mantener este documento como especificación de trabajo. Crear una rama de implementación independiente, producir una propuesta visual/UX verificable y **no fusionar a producción antes de pasar los gates** descritos aquí.
@@ -32,7 +32,7 @@
 4. Este plan como especificación del rediseño.
 5. Documentos antiguos de exploración; no reemplazan los tokens actuales si describen paletas pasadas.
 
-**Atención:** Algunos documentos históricos mencionan verde bosque como base, otros dicen no utilizar verde como acento principal. Son estados editoriales anteriores o instrucciones no vigentes. **No eliminar ningún verde por ese motivo**. Resolver las diferencias consultando el sistema de diseño actual y respetando la solicitud explícita del titular.
+**Atención sobre la deuda de CSS:** `styles.css` y `art-direction.css` conservan antiguas variables `--forest` y `--pine` con verdes oscuros. La portada actual las sobrescribe en `brand/site-theme.css` y capas posteriores con roles de la identidad Electric Editorial. **Esos hexadecimales antiguos no constituyen colores oficiales adicionales** ni justifican un regreso a la antigua paleta bosque. Deep Geo y otros casos también usan verdes propios de su dirección de arte: deben preservarse **dentro de cada proyecto**, no incorporarse como primarios de AR Estudio.
 
 ---
 
@@ -200,32 +200,60 @@ No introducir «Soy Alexis Reyes» como H1 de la portada; el nombre pertenece a 
 
 ## 6. Dirección de arte: identidad existente, exploración nueva
 
-### Restricción innegociable de paleta
+### Restricción innegociable: sistema cromático vigente
 
-**Conservar exactamente el sistema cromático actual de brand/tokens.json y sus tokens semánticos.** A fecha de este documento incluye:
+**Corrección de auditoría (2026-11-08):** La versión 1.0 cometía un error al presentar colores funcionales (`color-blue-dark`, `color-success`, etc.) en la misma tabla que los colores de la identidad, dando a entender que todos formaban la paleta de marca. **No es correcto.**
 
-| Token | Color | Función existente / posible uso |
+**Tres fuentes de verdad, verificadas en `main`:**
+
+1. **Paleta editorial visible en `brand/lab/index.html`**: lista de siete botones `.swatch[data-color]`, etiquetados Electric, Violet, Magenta, Orange, Acid, Glacier e Ink.
+2. **`brand/MANUAL_DE_MARCA.md`, sección Color:** primarios Electric/Glacier/Ink y cuatro intensificadores (Violet/Magenta/Orange/Acid). Establece que *no deben aparecer los siete al mismo tiempo en todos los componentes*.
+3. **`brand/tokens.json`**: contiene los siete colores **más** variantes de interacción, colores utilitarios y tokens semánticos. **Un token existente no equivale a un color editorial principal.**
+
+#### A. Los siete colores **oficiales de la paleta editorial**
+
+| Nombre oficial en el Lab | Token canónico | Hexadecimal | Rol de marca |
+|---|---|---|---|
+| **Electric** | `color-blue` | **`#245BFF`** | Azul eléctrico; señal/acción dominante |
+| **Violet** | `color-violet` | **`#6236FF`** | Intensificador; profundidad y contraste |
+| **Magenta** | `color-magenta` | **`#F12BBE`** | Intensificador; energía editorial |
+| **Orange** | `color-orange` | **`#FF652F`** | Intensificador; campañas y contraste |
+| **Acid** | `color-lime` | **`#EFFF38`** | **Verde lima que exige conservar el titular**; acento expresivo |
+| **Glacier** | `color-glacier` | **`#F5FAFF`** | Fondo claro principal |
+| **Ink** | `color-ink` | **`#101729`** | Texto, contraste y fondos oscuros |
+
+**Esta es la paleta de marca, no ocho colores ni una colección de todos los hexadecimales del CSS.** Los siete se conservan tal cual, sin inventar variantes de marca ni adoptar paletas anteriores.
+
+#### B. Otros tokens existentes que **no son muestras principales de identidad**
+
+| Token | Valor actual | Uso correcto |
 |---|---|---|
-| color-blue | **#245BFF** | Azul eléctrico, marca y acciones |
-| color-blue-dark | **#173EC9** | Interacción y contraste |
-| color-violet | **#6236FF** | Acento, profundidad y foco |
-| color-magenta | **#F12BBE** | Creatividad, acento y gradientes |
-| color-orange | **#FF652F** | Energía y expresividad |
-| color-lime | **#EFFF38** | **Verde lima actual: conservar**; destacados y acentos puntuales |
-| color-success | **#146C52** | **Verde de estado actual: conservar**; éxito semántico |
-| color-glacier | **#F5FAFF** | Fondo blanco glaciar |
-| color-paper | **#FFFFFF** | Superficies |
-| color-ice | **#EAF0FF** | Superficies secundarias |
-| color-ink | **#101729** | Texto / tinta |
-| color-muted | **#43516C** | Texto secundario |
-| color-border | **#DCE5F7** | Divisiones y bordes |
-| color-danger / color-warning | **#B02B4D / #805300** | Estados de error y advertencia |
+| `color-blue-dark` | `#173EC9` | Hover/estado de interacción del azul, **no octavo color de marca** |
+| `color-success` | `#146C52` | **Verde semántico para éxito**, **no verde principal de la identidad** |
+| `color-danger` | `#B02B4D` | Estados de error |
+| `color-warning` | `#805300` | Estados de advertencia |
+| `color-paper` | `#FFFFFF` | Superficies blancas |
+| `color-ice` | `#EAF0FF` | Superficies secundarias |
+| `color-muted` | `#43516C` | Texto secundario |
+| `color-border` | `#DCE5F7` | Bordes y divisiones |
 
-**Regla:** no eliminar el verde, no eliminar ninguno de los demás colores, no reemplazar la paleta por azul/blanco solamente, no reescribir tokens maestros para adaptarlos a un mockup. Si existen matices verdes adicionales en piezas originales, verificar sus fuentes y **respetarlos**.
+**Conservar** todos los tokens técnicos en el CSS/JSON vigente; **no** usarlos indiscriminadamente como colores de decoración ni añadirlos a los siete swatches oficiales.
 
-Se puede **redistribuir el uso** de los colores para mejorar ritmo y legibilidad, sin retirar ningún color de marca ni cambiar su valor. Mantener azul eléctrico, verde lima, magenta, violeta y naranja como familia cromática expresiva; usar fondos glaciar/tinta y secciones intensas donde mejor funcionen.
+#### C. Colores de las obras y capas CSS heredadas
 
-**Nota sobre el verde:** el verde lima es una parte expresiva de la marca, no un error a corregir. El verde semántico indica éxito. No confundir ambos ni utilizar verde de éxito para hacer promesas de resultados comerciales.
+La página carga, en este orden, `styles.css`, `art-direction.css`, `brand/site-theme.css`, `brand/portfolio-v3.css`, `brand/case-studies.css`, `brand/portfolio-ux-v4.css` y `brand/profile-spotlight.css`. Los primeros contienen parte de la antigua paleta bosque, mientras que las capas posteriores implementan la identidad eléctrica actual. **No elegir colores por encontrar una declaración antigua sin comprobar su precedencia y si afecta realmente a un elemento.**
+
+Las portadas de **Deep Geo, ARCHIVO, Praxios y Visual Art AI** poseen cromáticas propias; por ejemplo, Deep Geo usa verdes oscuros y verde claro en su composición. Son **colores de proyecto**, no nuevas muestras de AR Estudio. Respetar cada universo.
+
+#### D. Regla de aplicación
+
+- Mantener los **siete** tonos editoriales y la misma jerarquía visual, con **Acid/verde lima visible en aplicaciones justificadas**.
+- No convertir el sitio en un monocromo azul y glaciar ni saturarlo con los siete colores a la vez.
+- Mantener las funciones de los tokens semánticos y la identidad de cada caso.
+- Mantener marca, logo y barra slash del kit oficial.
+- Antes de cambiar estilos, comprobar **computed styles** de los elementos clave con navegador real y contrastar con capturas actuales, porque el CSS está estratificado.
+- No actualizar `brand/tokens.json`, `brand/tokens.css` ni la galería de swatches sin una solicitud explícita de rebranding.
+- No interpretar `#146C52` como «el verde de la marca»: el verde editorial oficial es **`#EFFF38`**.
 
 ### Lenguaje visual
 
@@ -464,8 +492,10 @@ No instalar píxeles de anuncios, cookies analíticas, automatizaciones, formula
 
 ### Identidad y arte
 
-- [ ] **Paleta actual íntegra conservada**: valores en brand/tokens.json idénticos a la versión base salvo aprobación explícita.
-- [ ] **Verde lima #EFFF38 conservado y visible donde corresponde**; verde semántico #146C52 conservado; restantes colores originales intactos.
+- [ ] **Siete swatches reales del Design System Lab** intactos y correctamente clasificados: `#245BFF`, `#6236FF`, `#F12BBE`, `#FF652F`, `#EFFF38`, `#F5FAFF`, `#101729`.
+- [ ] `brand/tokens.json` y variables derivadas sin cambios de valores salvo aprobación explícita.
+- [ ] **Acid/verde lima #EFFF38** conservado como acento visual de marca; **#146C52** conservado solo como token semántico de éxito, no incorporado a la paleta editorial.
+- [ ] Los colores particulares de casos (p. ej. verdes de Deep Geo) permanecen en cada universo visual; ningún color legado de `styles.css` se confunde con paleta activa.
 - [ ] No se redibuja el logo ni se deforma el slash; se usan SVG oficiales.
 - [ ] Mínimo dos direcciones creativas exploradas y comparadas antes de escoger una.
 - [ ] Cada caso destacado posee imagen, composición y narrativa reconocibles, no un mockup genérico.
@@ -514,7 +544,7 @@ No instalar píxeles de anuncios, cookies analíticas, automatizaciones, formula
 | Exceso de contenido en la portada | Proyectos invisibles, abandono temprano | Hero corto, casos visibles y contenido por expansión |
 | Simplificación excesiva a «datos/software» | Se pierde diferenciación creativa y de marketing | Seis capacidades + dirección de arte integrada |
 | Convertir el portafolio en una carta de venta | Pérdida de credibilidad profesional | Persuasión basada en casos y evidencia, sin presión artificial |
-| Eliminar el verde o imponer nueva paleta | Se destruye una decisión de identidad vigente | Congelar tokens y ejecutar tests de invariancia |
+| Confundir color de marca, color de estado o CSS heredado | Dirección de arte incoherente y swatches falsos | Partir de los siete swatches del Lab, conservar tokens semánticos en su función y revisar cascada CSS |
 | Mostrar exploraciones inventadas como trabajo realizado | Riesgo reputacional | Proveniencia, fechas y etiquetas explícitas |
 | Atribuir a IA trabajo que fue dirección humana, o viceversa | Confusión de responsabilidades | Explicar roles, dirección y validación sin sobreprometer |
 | Demasiadas animaciones | UX lenta o inaccesible | Motion con causa, reduced motion y fallback |
@@ -537,7 +567,7 @@ El rediseño estará terminado **solo cuando** alguien sin conocimientos técnic
 
 Y cuando, adicionalmente, un evaluador técnico o creativo encuentre **las decisiones, las alternativas y las fuentes** necesarias para juzgar el trabajo.
 
-**Mandato para el próximo agente:** no empezar por cambiar colores, añadir efectos ni rehacer el logo. Empezar por investigar la necesidad del visitante, auditar la experiencia actual, explorar varias direcciones creativas, justificar una propuesta y construirla dentro del sistema de marca existente. **Conservar expresamente toda la paleta actual, incluido el verde y los demás colores.** Ningún cambio de frontend se ha autorizado ni ejecutado mediante este documento.
+**Mandato para el próximo agente:** no empezar por cambiar colores, añadir efectos ni rehacer el logo. Empezar por investigar la necesidad del visitante, auditar la experiencia actual, explorar varias direcciones creativas, justificar una propuesta y construirla dentro del sistema de marca existente. **Conservar exactamente los siete colores oficiales del Design System Lab, incluido Acid/verde lima #EFFF38; no confundir variantes, colores de estados ni colores propios de cada proyecto con la paleta de identidad.** Ningún cambio de frontend se ha autorizado ni ejecutado mediante este documento.
 
 ---
 
@@ -545,7 +575,7 @@ Y cuando, adicionalmente, un evaluador técnico o creativo encuentre **las decis
 
 - Carta de Halbert examinada: https://www.thegaryhalbertletter.com/newsletters/zfkj_hands_on_experience.htm
 - Principios de respuesta directa sintetizados del análisis previo; no se reproducen obras protegidas.
-- Fuente de verdad de identidad: brand/tokens.json, brand/assets/mark.svg, brand/logo-kit/manifest.json.
+- Fuentes de verdad cromática: **brand/lab/index.html (siete swatches)**, brand/MANUAL_DE_MARCA.md (jerarquía) y brand/tokens.json (primitivos y semánticos). Fuente de verdad de logo: brand/assets/mark.svg y brand/logo-kit/manifest.json.
 - Dirección: brand/PORTFOLIO_ART_DIRECTION.md, brand/COMUNICACION.md, brand/BRANDKIT_WORKFLOW.md.
 - Contenido: index.html, data.js, app.js, perfil/index.html.
 - Evidencias y QA: assets/proof/, scripts/capture-public-evidence.mjs, scripts/audit-public-links.mjs, tests/browser-qa.mjs, tests/catalog.test.js.
