@@ -8,6 +8,18 @@ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 await mkdir('artifacts',{recursive:true});
 const errors=[];
 try{
+  // El servidor local arranca de forma asíncrona. Antes la primera navegación
+  // podía adelantarse y producir ERR_CONNECTION_REFUSED en CI cargados.
+  let ready=false;
+  for(let attempt=0;attempt<40;attempt++){
+    if(server.exitCode!==null)throw new Error('Servidor de QA terminó antes de responder');
+    try{
+      const response=await fetch('http://127.0.0.1:8844/');
+      if(response.ok){ready=true;break}
+    }catch{/* aún arrancando */}
+    await new Promise(resolve=>setTimeout(resolve,125));
+  }
+  assert.ok(ready,'Servidor HTTP listo antes de abrir Chromium');
   for (const [label,width,height] of [['desktop',1440,900],['tablet',768,950],['mobile',390,844]]){
     const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
     page.on('pageerror',e=>errors.push(`${label}: ${e.message}`));
