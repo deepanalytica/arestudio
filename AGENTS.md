@@ -14,3 +14,7 @@ Para trabajo posterior a la ejecución del plan, consultar también [docs/2026-1
 
 ## Storytelling y diseño V6 (2026-11-08)
 Antes de editar la UI, leer [.agents/skills/portfolio-taste/SKILL.md](.agents/skills/portfolio-taste/SKILL.md) y [docs/2026-11-08_AUDITORIA_VISUAL_Y_STORYTELLING_V6.md](docs/2026-11-08_AUDITORIA_VISUAL_Y_STORYTELLING_V6.md). Priorizar primera pantalla breve, una CTA, cuatro casos visuales, 21 historias con evidencia accesible, navegación y foco. GSAP/ScrollTrigger es opcional; Remotion solo exportación offline del laboratorio. Ejecutar `npm run check` y Playwright y revisar screenshots reales antes de fusionar. Los siete swatches de marca no se alteran.
+
+## V9 · Casos inmersivos (2026-11-09)
+
+Consultar [docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md](docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md) antes de editar las páginas `casos/`. Mantener cuatro mundos visuales diferenciados y rutas propias para 21 proyectos sin duplicar datos; conservar modal legado, escenas conceptuales etiquetadas, capturas públicas auténticas, logo y colores oficiales. No representar Deep Geo como mapa en tiempo real ni Praxios como consola operativa. Validar las cinco páginas de prueba en 1440 y 390 px antes de publicación.
