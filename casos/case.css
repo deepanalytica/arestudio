@@ -77,6 +77,30 @@ button,a{-webkit-tap-highlight-color:transparent}
 .browser-screenshot{width:100%;height:100%;min-height:0;object-fit:cover;object-position:top center;flex:1}
 .browser-caption{padding:8px 10px;background:white;color:var(--muted);font:600 9px/1.35 var(--mono)}
 .archive-browser{position:absolute;z-index:8;right:5%;top:16%;width:43%;height:71%;transform:rotate(5deg)}
+/* ARCHIVO conceptual mini-store: assembled from real campaign photographs,
+   intentionally labelled; does not claim to reproduce the actual website. */
+.archive-shop-concept{z-index:8;display:flex;flex-direction:column;background:#fff;color:var(--ink);border:6px solid #fff;border-radius:11px;overflow:hidden;box-shadow:0 25px 60px rgba(16,23,41,.3)}
+.archive-shop-concept .browser-top{height:27px;flex:0 0 27px}
+.shop-concept-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 15px;min-height:63px;background:#fff}
+.shop-concept-head strong{font:900 clamp(21px,2.5vw,37px)/1 var(--display);letter-spacing:-.065em}
+.shop-concept-head span{font:700 9px/1.5 var(--mono);max-width:16ch;color:var(--muted);text-align:right}
+.shop-concept-photo{flex:1;min-height:0;width:100%;object-fit:cover;object-position:center;background:var(--orange)}
+.shop-concept-footer{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:13px 15px;background:var(--ice)}
+.shop-concept-footer span{color:var(--muted);font:700 9px/1.2 var(--mono);max-width:18ch}
+.shop-concept-footer strong{font:900 clamp(12px,1.2vw,18px)/1.2 var(--display);color:var(--ink);text-align:right}
+.shop-concept-disclosure{display:block;color:#fff;background:var(--ink);font:650 8px/1.4 var(--mono);letter-spacing:.03em;padding:6px 11px}
+@media(max-width:760px){
+ .archive-shop-concept{border-width:3px;border-radius:8px}
+ .archive-shop-concept .browser-top{height:17px;flex-basis:17px}
+ .shop-concept-head{min-height:41px;padding:6px 8px;gap:5px}
+ .shop-concept-head strong{font-size:18px}
+ .shop-concept-head span{font-size:6px}
+ .shop-concept-footer{padding:6px 8px}
+ .shop-concept-footer span{font-size:6px}
+ .shop-concept-footer strong{font-size:10px}
+ .shop-concept-disclosure{font-size:6px;padding:4px 5px}
+}
+
 /* DEEP GEO — conceptual map, with explicit research layers, never a live-map fiction */
 .stage-geo{background:linear-gradient(130deg,#0C343A 0%,#103C43 42%,var(--ink) 100%)}
 .geo-base{position:absolute;width:85%;height:95%;right:0;top:2%;object-fit:contain;filter:drop-shadow(0 28px 60px rgba(0,0,0,.22))}
