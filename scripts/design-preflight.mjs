@@ -40,6 +40,21 @@ assert.ok(html.indexOf('id="proyectos"')<html.indexOf('id="explorar"')&&html.ind
 assert.equal((firstFold.match(/class="project-browser-preview"/g)||[]).length,1,'ARCHIVO incorpora captura publicada como interfaz en la composición');
 
 assert.equal(projects.length,21,'No reducir el archivo');
+const caseHtml=readFileSync('casos/index.html','utf8');
+const caseJs=readFileSync('casos/case.js','utf8');
+const caseCss=readFileSync('casos/case.css','utf8');
+assert.ok(caseHtml.includes('id="case-content"')&&caseHtml.includes('case.css'),'Páginas propias con navegación accesible');
+assert.ok(caseJs.includes("import {projects,featured,caseStudies}"),'Casos consumen catálogo verificado en vez de duplicar datos');
+assert.ok(caseJs.includes('caseData.proofNote')&&caseJs.includes('caseData.decisions'),'Las presentaciones incluyen evidencia y decisiones reales');
+for(const id of ['archivo','deep-geo','praxios-os','visual-art-ai']){
+  assert.ok(caseJs.includes("'"+id+"':{"),'Falta dirección de arte específica de '+id);
+  assert.ok(html.includes('href="casos/?proyecto='+id+'"'),'El destacado '+id+' debe abrir página completa');
+}
+assert.ok(caseCss.includes('prefers-reduced-motion:reduce'),'Los casos deben respetar reducción de movimiento');
+assert.ok(js.includes("data-case-page"),'El modal no puede interceptar los enlaces a las historias');
+assert.ok(js.includes("case-link-page"),'Los enlaces históricos de modal ofrecen la presentación completa');
+assert.ok(html.includes('data-case-page'),'Enlaces de obra deben funcionar incluso sin Javascript de la portada');
+
 const storyChunk=js.split('const caseOpeners={')[1]?.split('};')[0];
 assert.ok(storyChunk,'Falta el mapa de aperturas narrativas');
 const storyIds=[...storyChunk.matchAll(/^\s*'([^']+)':/gm)].map(x=>x[1]);
@@ -57,4 +72,4 @@ assert.ok(stageStyles.includes('prefers-reduced-motion:reduce'),'La nueva portad
 assert.ok(html.includes('brand/work-first-v8.css'),'La portada carga la capa V8');
 assert.ok(html.includes('brand/logo-kit/svg/horizontal-transparente-tinta.svg'),'Logo maestro ausente');
 
-console.log('DESIGN PREFLIGHT OK: 7 colores, primera pantalla de obra visual, 4 destacados, 21 casos antes del contenido explicativo, disclosure, GSAP y reduced-motion');
+console.log('DESIGN PREFLIGHT OK: 7 colores, 4 experiencias visuales propias, 21 casos con evidencia, página inmersiva, modal compatible y reduced-motion');

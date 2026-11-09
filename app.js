@@ -62,7 +62,7 @@ function updateFilters(){
 }
 function card(p){
   const serial=String(projects.indexOf(p)+1).padStart(2,'0');
-  return `<a class="work-card" href="?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" data-area="${esc(p.area)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" data-proof-image="${esc(p.preview||'')}" data-proof-label="${esc(p.previewLabel||'')}" data-proof-alt="Captura real de ${esc(p.name)}" loading="lazy" decoding="async" alt="Composición editorial conceptual de ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span><span class="work-card-serial" aria-hidden="true">AR/ ${serial}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">Ver caso ↗</span></div></div></a>`
+  return `<a class="work-card" href="casos/?proyecto=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" data-case-page data-area="${esc(p.area)}" aria-label="Ver proyecto ${esc(p.name)}, ${esc(p.status)}"><div class="work-card-visual"><img src="${esc(p.cover)}" data-proof-image="${esc(p.preview||'')}" data-proof-label="${esc(p.previewLabel||'')}" data-proof-alt="Captura real de ${esc(p.name)}" loading="lazy" decoding="async" alt="Composición editorial conceptual de ${esc(p.name)}" onerror="this.style.opacity='.15'"><span class="mini-area">${esc(p.area)}</span><span class="work-card-serial" aria-hidden="true">AR/ ${serial}</span></div><div class="work-card-body"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><div class="work-meta"><span class="work-status">${esc(p.status)}</span><span class="work-open" aria-hidden="true">Ver caso ↗</span></div></div></a>`
 }
 function render(){
   const results=projects.filter(p=>(selected==='Todos'||p.area===selected)&&norm([p.name,p.area,p.type,p.summary,p.status,p.problem,p.solution,p.deliverables.join(' ')].join(' ')).includes(norm(query)));
@@ -85,7 +85,7 @@ $('#clear-filters').addEventListener('click',reset);$('#reset-empty').addEventLi
 function reset(){selected='Todos';query='';search.value='';render()}
 $('#view-grid').addEventListener('click',()=>{view='grid';render()});$('#view-list').addEventListener('click',()=>{view='list';render()});
 $('#total-count').textContent=projects.length;
-$$('.feature-case-link').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('aria-label',`Ver caso de ${p.name}: qué problema resuelve, qué hice y qué decisiones tomé`)});
+$$('.feature-case-link').forEach((node,i)=>{const p=featured[i];if(!p)return;node.href=`casos/?proyecto=${encodeURIComponent(p.id)}`;node.dataset.project=p.id;node.setAttribute('data-case-page','');node.setAttribute('aria-label',`Entrar al caso completo de ${p.name}: historia, dirección de arte y evidencia`)});
 render();
 hydrateProofImages($('#featured-grid'));
 function mediaMarkup(p){
@@ -98,7 +98,8 @@ function modalMarkup(p){
   const genuine=!!p.media?.[0]?.src;
   const links=c?.links??[];
   const actions=links.map(x=>'<a class="case-link '+(x.kind==='demo'?'case-link-primary':'case-link-secondary')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' <span aria-hidden="true">↗</span></a>').join('');
-  const actionNote=actions||'<p class="case-no-demo">Este trabajo no tiene una demostración pública verificada. Puedes revisar aquí su alcance y sus límites.</p>';
+  const casePage='<a class="case-link case-link-page" href="casos/?proyecto='+encodeURIComponent(p.id)+'">Ver presentación completa <span aria-hidden="true">↗</span></a>';
+  const actionNote=casePage+(actions||'<p class="case-no-demo">Este trabajo no tiene una demostración pública verificada. Puedes revisar aquí su alcance y sus límites.</p>');
   const decisions=c?.decisions?.length?'<section class="case-section case-decisions" aria-labelledby="case-decisions-title"><span class="case-kicker">02 / CRITERIO</span><h3 id="case-decisions-title">Por qué tomé estas decisiones</h3><div class="case-decision-grid">'+c.decisions.map((d,i)=>'<article class="case-decision"><span class="case-number">0'+(i+1)+'</span><h4>'+esc(d.title)+'</h4><p>'+esc(d.detail)+'</p></article>').join('')+'</div></section>':'';
   const built=c?.built?.length?c.built:p.deliverables;
   const proof=c?.proofNote||p.evidence||'Esta ficha describe lo que está documentado; no se presentan resultados no verificados.';
@@ -153,7 +154,7 @@ function closeProject({replace=true}={}){
 $('#close-dialog').addEventListener('click',()=>closeProject());
 dialog.addEventListener('click',e=>{if(e.target===dialog)closeProject()});
 dialog.addEventListener('cancel',e=>{e.preventDefault();closeProject()});
-document.addEventListener('click',e=>{const a=e.target.closest('a[data-project]');if(!a)return;e.preventDefault();openProject(a.dataset.project)});
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-project]');if(!a||a.hasAttribute('data-case-page'))return;e.preventDefault();openProject(a.dataset.project)});
 window.addEventListener('popstate',()=>{const id=new URLSearchParams(location.search).get('proyecto');if(id&&byId.has(id))openProject(id,{push:false});else if(dialog.open)closeProject({replace:false})});
 const initialId=new URLSearchParams(location.search).get('proyecto');if(initialId&&byId.has(initialId))openProject(initialId,{push:false});
 function toast(message){const el=$('#toast');el.textContent=message;el.hidden=false;clearTimeout(toast.timeout);toast.timeout=setTimeout(()=>el.hidden=true,3000)}
