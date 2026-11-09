@@ -226,3 +226,20 @@
  transform:none!important
  }
 }
+
+/* Visual QA correction: legacy CSS has .featured .feature-card .feature-visual
+   (three classes). This explicit override prevents mobile cards shrinking to
+   38vw/140px despite the V8 two-class rule. */
+.featured-v6 .feature-card .feature-visual{height:clamp(270px,30vw,440px)}
+.featured-v6 .feature-card:nth-child(n+3) .feature-visual{height:clamp(260px,26vw,380px)}
+@media(max-width:970px){
+ .featured-v6 .feature-card .feature-visual{height:clamp(235px,33vw,320px)}
+}
+@media(max-width:720px){
+ .featured-v6 .feature-card .feature-visual{height:clamp(285px,79vw,420px)}
+ .featured-v6 .feature-card:nth-child(n+2) .feature-visual{height:clamp(225px,61vw,340px)}
+}
+@media(max-width:390px){
+ .featured-v6 .feature-card .feature-visual{height:285px}
+ .featured-v6 .feature-card:nth-child(n+2) .feature-visual{height:230px}
+}
