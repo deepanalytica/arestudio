@@ -18,3 +18,7 @@ Antes de editar la UI, leer [.agents/skills/portfolio-taste/SKILL.md](.agents/sk
 ## V9 · Casos inmersivos (2026-11-09)
 
 Consultar [docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md](docs/2026-11-09_CASOS_INMERSIVOS_AR_ESTUDIO_V9.md) antes de editar las páginas `casos/`. Mantener cuatro mundos visuales diferenciados y rutas propias para 21 proyectos sin duplicar datos; conservar modal legado, escenas conceptuales etiquetadas, capturas públicas auténticas, logo y colores oficiales. No representar Deep Geo como mapa en tiempo real ni Praxios como consola operativa. Validar las cinco páginas de prueba en 1440 y 390 px antes de publicación.
+
+## V10 · Portafolio fullscreen, primera pantalla de proyecto (2026-11-09)
+
+**Leer antes de editar:** [docs/2026-11-09_REDISENO_PORTAFOLIO_FULLSCREEN_OBRA_PRIMERO_V10.md](docs/2026-11-09_REDISENO_PORTAFOLIO_FULLSCREEN_OBRA_PRIMERO_V10.md). La navegación actual está en `index.html` + `home.js` y su única capa `brand/gallery-fullscreen-v10.css`; no reinstalar el hero textual, mosaicos duplicados, carouseles automáticos ni las capas históricas V5–V8. Conservar 4 escenas de imagen `100svh`, 21 proyectos, 7 colores oficiales, logo AR/, índice filtrable y casos inmersivos en `casos/`. El contenido es superior al espectáculo: cada screenshot debe tener procedencia real, y mapas/demos requieren identificación conceptual. Pruebas `npm run check`, `tests/browser-qa.mjs` y capturas 1440/768/390 obligatorias antes de fusionar. 
