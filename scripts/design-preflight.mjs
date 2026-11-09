@@ -14,7 +14,7 @@ assert.deepEqual(labSwatches,official,'Los siete colores oficiales no coinciden 
 for(const hex of official)assert.ok(Object.values(tokens).includes(hex),'Token oficial ausente: '+hex);
 
 const between=(a,b)=>{const i=html.indexOf(a),j=html.indexOf(b,i+1);assert.ok(i>=0&&j>i,'Falta sección: '+a);return html.slice(i,j)};
-const hero=between('class="hero container hero-v6"','id="proyectos"');
+const hero=between('class="hero container hero-v6','id="proyectos"');
 const strip=hero.match(/<p class="hero-lead">([^<]+)<\/p>/);
 assert.ok(strip,'Hero debe tener una sola explicación visible');
 assert.ok(strip[1].trim().split(/\s+/).length<=36,'Hero demasiado denso: máximo 36 palabras');
