@@ -60,3 +60,21 @@ jobs:
           done
           echo 'ERROR: GitHub Pages is not serving matching HTML/CSS'
           exit 1
+      - name: Verify commercial landing route
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://deepanalytica.github.io/arestudio/comercial"
+          for attempt in $(seq 1 12); do
+            html=$(curl --fail --silent --show-error --location --max-time 15 "$base/?qa=${GITHUB_SHA}" || true)
+            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/premium.css?qa=${GITHUB_SHA}" || true)
+            motion=$(curl --fail --silent --show-error --location --max-time 15 "$base/motion.js?qa=${GITHUB_SHA}" || true)
+            if [[ "$html" == *'id="hero-title"'* && "$html" == *'id="lead-form"'* && "$html" == *'id="formatos"'* && "$css" == *'--shadow-float:'* && "$motion" == *'ScrollTrigger'* ]]; then
+              echo "AR Estudio Comercial verified online: HTML, design tokens and animation layer"
+              exit 0
+            fi
+            echo "Waiting for commercial site CDN propagation ($attempt/12)"
+            sleep 5
+          done
+          echo 'ERROR: Commercial landing assets missing or stale'
+          exit 1
