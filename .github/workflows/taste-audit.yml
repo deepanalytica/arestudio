@@ -1,0 +1,46 @@
+name: Taste Skill · Auditoría AR Estudio
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Chromium disponible
+        shell: bash
+        run: |
+          set -euo pipefail
+          if command -v google-chrome >/dev/null; then
+            echo "CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null; then
+            echo "CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            npx --yes playwright install --with-deps chromium
+            chrome=$(find "$HOME/.cache/ms-playwright" -type f -path '*/chrome-linux64/chrome' | head -n 1)
+            test -x "$chrome"
+            echo "CHROME_PATH=$chrome" >> "$GITHUB_ENV"
+          fi
+      - name: Instalar Taste Skill para Codex en el workspace
+        run: bash scripts/install-taste-skill.sh
+      - name: Preparar capturas públicas antes de auditar
+        run: |
+          npm install --no-save playwright
+          node scripts/capture-public-evidence.mjs
+      - name: Ejecución real de Taste Skill sobre AR Estudio
+        run: node scripts/taste-audit-runner.mjs
+      - name: Guardar reportes y evidencia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: taste-audit-${{ github.run_number }}
+          path: |
+            artifacts/taste-audit/**
+            .taste-skill/*.json
+          if-no-files-found: warn
+          retention-days: 14
