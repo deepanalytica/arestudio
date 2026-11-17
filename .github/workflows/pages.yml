@@ -27,8 +27,20 @@ jobs:
         run: npm install --no-save playwright
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: QA AR Estudio Comercial
+        run: node scripts/qa-commercial.mjs
+      - name: Save commercial screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-comercial-${{ github.run_number }}
+          path: qa-output/comercial/*.png
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Capture live evidence from public products
         run: node scripts/capture-public-evidence.mjs
+      - name: Remove QA capture files from published site
+        run: rm -rf qa-output
       - name: Remove build-only dependencies
         run: rm -rf node_modules
       - name: Configure GitHub Pages
@@ -67,14 +79,14 @@ jobs:
           base="https://deepanalytica.github.io/arestudio/comercial"
           for attempt in $(seq 1 12); do
             html=$(curl --fail --silent --show-error --location --max-time 15 "$base/?qa=${GITHUB_SHA}" || true)
-            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/premium.css?qa=${GITHUB_SHA}" || true)
-            motion=$(curl --fail --silent --show-error --location --max-time 15 "$base/motion.js?qa=${GITHUB_SHA}" || true)
-            if [[ "$html" == *'id="hero-title"'* && "$html" == *'id="lead-form"'* && "$html" == *'id="formatos"'* && "$css" == *'--shadow-float:'* && "$motion" == *'ScrollTrigger'* ]]; then
-              echo "AR Estudio Comercial verified online: HTML, design tokens and animation layer"
+            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/experience.css?qa=${GITHUB_SHA}" || true)
+            script=$(curl --fail --silent --show-error --location --max-time 15 "$base/experience.js?qa=${GITHUB_SHA}" || true)
+            if [[ "$html" == *'class="solution-tile'* && "$html" == *'id="journey-canvas"'* && "$html" == *'id="lead-form"'* && "$css" == *'.solution-grid'* && "$script" == *'function selectService'* ]]; then
+              echo "Commercial landing live: service selector, journey, form, design system and JavaScript"
               exit 0
             fi
-            echo "Waiting for commercial site CDN propagation ($attempt/12)"
+            echo "Waiting for commercial Pages propagation ($attempt/12)"
             sleep 5
           done
-          echo 'ERROR: Commercial landing assets missing or stale'
+          echo "ERROR: Commercial page or assets not available at latest revision"
           exit 1

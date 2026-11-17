@@ -1,67 +1,39 @@
-# AR Estudio · Web comercial para pymes (2026)
+# AR Estudio · Experiencia comercial 2.0
 
-**Sitio publicado:** https://deepanalytica.github.io/arestudio/comercial/  
-**Repositorio:** https://github.com/deepanalytica/arestudio/tree/main/comercial  
-**Portafolio técnico preservado:** https://deepanalytica.github.io/arestudio/
+**Destino público:** https://deepanalytica.github.io/arestudio/comercial/
 
-## Objetivo y promesa
+## Propósito
 
-Explicar en segundos qué puede contratar una pyme, demostrar capacidad mediante trabajos públicos, ayudar a elegir una solución ajustada al problema y facilitar una conversación comercial por WhatsApp. No se atribuyen cifras de ventas ni testimonios no respaldados. El laboratorio de formatos usa números ficticios identificados expresamente como DEMO.
+Permitir a pymes y emprendedores identificar en un solo vistazo qué soluciones puede desarrollar AR Estudio, explorar ejemplos visuales clicables, comprender un recorrido completo de captación y ver proyectos realmente publicados. No se representan como resultados comprobados los esquemas, maquetas ni demostraciones.
 
-## Sistema de diseño
+## Arquitectura de la interfaz
 
-| Token | Valor | Uso |
-|---|---|---|
-| `--paper` | `#F5F7FE` | superficies glaciar |
-| `--ink` | `#101729` | texto y contraste |
-| `--blue` | `#245BFF` | foco, enlaces y CTA |
-| `--lime` | `#DCF86B` | acento limitado |
-| `--glacier` | `#EEF4FF` | fondos secundarios |
-| `--glass` | `rgba(255,255,255,.74)` | tarjetas translúcidas |
-| `--shadow-soft` | `0 12px 40px rgba(42,60,111,.085)` | elevación regular |
-| `--shadow-lg` | `0 28px 90px rgba(24,41,105,.14)` | elementos destacados |
-| `--r-md` | `24px` | radios de tarjetas |
+1. Portada interactiva de una sola pantalla en escritorio: mensaje comercial, ocho servicios con íconos SVG propios y panel dinámico de resultado/entregables. Las vistas del panel son ilustrativas; no son testimonios ni métricas de clientes.
+2. Historia en cuatro pasos: atraer → presentar → contactar/comprar → medir y mejorar.
+3. Casos verificables: ARCHIVO, WAL y Visual Art AI, con enlaces a sus proyectos públicos. El arte de WAL es una ilustración, no una captura de pantalla.
+4. Contacto: formulario de datos mínimos que compone un mensaje por WhatsApp y mantiene los parámetros UTM; no persiste información ni simula CRM.
 
-Tipografía: **Manrope** en titulares y **DM Sans** en UI / texto. Escala responsive con `clamp()`, bordes de 1 px, luces radiales y ruido casi imperceptible. El sistema visual prioriza contraste y legibilidad sobre efecto decorativo.
+## Diseño y tecnologías
 
-## Arquitectura
+- Tokens de marca compartidos desde `../brand/tokens.css` (azul eléctrico #245BFF, violeta #6236FF, blanco glaciar #F5FAFF, tinta #101729).
+- `experience.css`: diseño responsive, tarjetas translúcidas, luces difusas, tipografía Archivo/DM Sans, estados de foco y breakpoints hasta 320 px.
+- `experience.js`: selector accesible de ocho soluciones, visualizaciones CSS/HTML, narración interactiva, envío a WhatsApp y menú.
+- GSAP + ScrollTrigger: introducción y revelación de secciones como mejora progresiva, sin ocultar contenido si la librería falla.
+- Three.js: órbitas 3D decorativas, cargadas solo en escritorio compatible cuando el navegador está inactivo. Sin dependencia funcional de WebGL.
+- No se monta React ni se carga Remotion en la web pública: componentes similares a React Bits se realizan con JavaScript/CSS ligero; Remotion corresponde a la edición y exportación de videos, no al runtime de la página.
+- SVG sprite local para íconos, sin dependencias externas de icon fonts.
 
-- `index.html`: contenido, SEO, enlaces a pruebas verificables, datos estructurados y formulario.
-- `styles.css`: estilos base y layout responsivo.
-- `premium.css`: tokens y capa visual premium, degradados, superficies, sombras, laboratorio de formatos y breakpoints.
-- `app.js`: navegación móvil, filtros, selector de necesidades, preselección de servicios y formulario WhatsApp. Incluye atributos UTM en el mensaje si el tráfico llega desde una campaña.
-- `motion.js`: progresivo. GSAP/ScrollTrigger si carga la CDN; Three.js como efecto decorativo solo en equipos compatibles. Evita WebGL en móvil táctil, respeta `prefers-reduced-motion`, limita la densidad de partículas y permite usar el sitio sin esas librerías.
+## Transparencia
 
-**No se instala React**: React Bits aporta patrones visuales que se reproducen en Vanilla JS/CSS sin introducir hidratación o bundles pesados. **Remotion** corresponde a la producción de videos exportables, no es una dependencia runtime de una web estática. Ningún video Remotion se afirma como producido aquí. **Kiyowalski** no se añadió porque no se identificó una biblioteca verificable con ese nombre.
+- Ningún dato de facturación, ROAS, costo por lead, testimonio o porcentaje de crecimiento se inventa.
+- Una tienda con carrito y pasarela de pago se presenta como un servicio configurable, no como una integración predeterminada en esta landing.
+- Los mensajes de chat y gráficas de dashboards son ilustraciones, no conversaciones reales ni reportes operativos.
+- El formulario no envía datos automáticamente: abre WhatsApp para que la persona decida enviarlos.
 
-## Flujo del visitante
+## Pruebas
 
-1. Entiende la oferta de valor al ingresar.
-2. Ve soluciones agrupadas por dolores reales.
-3. Puede abrir sitios reales y evaluar el trabajo visual. Se distinguen sitios publicados, I+D y ejemplos ilustrativos.
-4. Selecciona una necesidad o servicio, revisa la propuesta y hace contacto.
-5. El formulario solo genera un mensaje de WhatsApp para que el visitante lo confirme. No hay base de datos, cobro ni envío automático desde esta web.
+`node scripts/qa-commercial.mjs` desde la raíz del repositorio, después de instalar Playwright y Chromium, ejecuta pruebas de selección, accesibilidad operativa, integridad JavaScript y overflow en 1440, 1280, 820, 390 y 320 píxeles. Se publican capturas como artefactos de GitHub Actions.
 
-## Control de calidad
+## Pendiente para una versión posterior
 
-- JavaScript validado con `node --check`.
-- Comprobados enlaces internos, selectores, tarjetas y desbordes horizontales en 390, 768 y 1440 px con Chromium local usando recursos visuales sustitutos. Se probaron filtros, selector y menú móvil.
-- El workflow de GitHub Pages ahora comprueba después de desplegar que la ruta comercial sirve HTML, CSS premium y JS de animación.
-- Todo se despliega mediante el workflow ya existente, activado en cada push a `main`.
-
-## Pendientes conscientes
-
-- Reemplazar algunas maquetas ilustrativas por campañas, posts e imágenes reales autorizadas, con capturas alojadas en el repositorio.
-- Validar los enlaces de sitios externos y el flujo final de WhatsApp en iOS/Android con conexión real.
-- Incorporar políticas de privacidad / aviso según cómo se habilite analítica y qué datos se recojan, antes de agregar Meta Pixel o GA4.
-- Configurar dominio comercial definitivo, Google Search Console y medición de conversiones cuando estén disponibles las cuentas y accesos.
-- Construir con Remotion un reel de presentación **solo cuando exista un guion y assets finales**; exportar MP4/WebM optimizados y mostrar poster/preload controlado, evitando reproducir un motor de render en el navegador del usuario.
-
-## Desarrollo local
-
-```bash
-python -m http.server 8000
-# Abrir http://localhost:8000/
-```
-
-Este directorio es independiente del portafolio original; no requiere scripts de compilación para servir el sitio.
+Material gráfico real adicional para cada servicio, un pequeño paquete de videos profesionales optimizados (producibles con Remotion), medición real de conversiones con consentimiento y una integración de CRM si es requerida por el negocio.
