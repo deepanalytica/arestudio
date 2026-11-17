@@ -30,10 +30,17 @@ try{
   await page.waitForTimeout(220);
   const info=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,heading:document.querySelector('h1')?.textContent||'',kits:document.querySelectorAll('.offer-card').length,resources:document.querySelectorAll('.resource').length,articles:document.querySelectorAll('.article-card').length}));
   if(info.scroll>width+2){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(el=>({el,rect:el.getBoundingClientRect()})).filter(x=>x.rect.width>0&&x.rect.right>innerWidth+2&&getComputedStyle(x.el).position!=='fixed').slice(0,12).map(x=>({tag:x.el.tagName,klass:typeof x.el.className==='string'?x.el.className.slice(0,60):'',right:Math.round(x.rect.right)})));problems.push(`${label}: horizontal overflow ${info.scroll}>${width} ${JSON.stringify(offenders)}`);}
-  check(info.heading.includes('clientes'),`${label}: hero does not explain client goal`);
+  check(info.heading.toLowerCase().includes('encuentren')&&info.heading.toLowerCase().includes('elijan'),`${label}: editorial hero lost the promise to clients`);
   check(info.kits===3,`${label}: expected 3 service kits, found ${info.kits}`);
   check(info.resources===3,`${label}: expected 3 free resources, found ${info.resources}`);
   check(info.articles===3,`${label}: expected 3 useful articles, found ${info.articles}`);
+  check((await page.locator('.art-editorial').count())===8,`${label}: missing full-screen editorial scenes`);
+  check((await page.locator('.art-logo-tile img').count())===12,`${label}: expected 12 authentic ARCHIVO logo vectors`);
+  check((await page.locator('.art-campaign-photo img').count())===6,`${label}: missing original campaign montage`);
+  check((await page.locator('.art-fall-logo img').count())===5,`${label}: platform logos must be five real SVG assets`);
+  check((await page.locator('.art-full-bleed-rail img').count())===5,`${label}: visual rail missing original campaigns`);
+  check((await page.locator('.art-intro-mark img').getAttribute('src'))==='../brand/assets/mark.svg',`${label}: AR official mark missing`);
+
   await page.locator('[data-situation="ventas"]').click();
   check((await page.locator('#quick-result').innerText()).includes('tráfico'),`${label}: choice did not explain priorities`);
   check((await page.locator('#quick-cta').getAttribute('href'))==='#kit-ventas',`${label}: choice did not link to correct kit`);
@@ -41,8 +48,10 @@ try{
   check((await page.locator('#lead-interest').inputValue())==='Conseguir más consultas o reservas',`${label}: selected offer did not populate contact context`);
   if(width<=920){await page.locator('#nav-toggle').click();check((await page.locator('#nav-toggle').getAttribute('aria-expanded'))==='true',`${label}: mobile menu did not open`);await page.locator('#mobile-menu a').first().click();check((await page.locator('#nav-toggle').getAttribute('aria-expanded'))==='false',`${label}: mobile menu did not close`);}
   await page.locator('.faq-items summary').first().click();check(await page.locator('.faq-items details').first().evaluate(x=>x.open),`${label}: FAQ does not open`);
-  for(const img of await page.locator('.work-image img,.need-scene img').all()){
-   await img.scrollIntoViewIfNeeded();await img.evaluate(async e=>e.decode().catch(()=>null));
+  for(const img of await page.locator('.work-image img,.need-scene img,.art-intro-picture img,.art-logo-tile img,.art-campaign-photo img,.art-fall-logo img,.art-mockup-canvas img,.art-fortia-gallery img,.art-full-bleed-rail img').all()){
+   // Respect deliberate mobile art direction: some rail photos are hidden at small widths.
+   if(!(await img.isVisible())) continue;
+   await img.scrollIntoViewIfNeeded({timeout:5000});await img.evaluate(async e=>e.decode().catch(()=>null));
    const src=await img.getAttribute('src'),n=await img.evaluate(e=>e.naturalWidth);
    check(n>0,`${label}: real image failed to load: ${src}`);
   }
@@ -52,10 +61,29 @@ try{
   if(label==='desktop'||label==='mobile'){
    for(const sect of ['kits','recursos','articulos']){await page.locator(`#${sect}`).scrollIntoViewIfNeeded();await page.waitForTimeout(100);await page.screenshot({path:`${output}/${label}-${sect}.png`,animations:'disabled'});}
   }
+  if(label==='desktop'||label==='mobile'){
+   for(const [id,shot] of [['art-pantalla-archivo','mockup-archivo'],['art-identidades','identidades'],['art-campanas','campanas'],['art-canales','canales'],['art-fortia','mockup-fortia']]){
+    await page.locator('#'+id).scrollIntoViewIfNeeded();
+    await page.waitForTimeout(260);
+    await page.screenshot({path:`${output}/${label}-${shot}.png`,animations:'disabled'});
+   }
+  }
   if(label==='mobile'){await page.goto(base,{waitUntil:'domcontentloaded'});await page.screenshot({path:`${output}/mobile-full.png`,fullPage:true,animations:'disabled'});}
   console.log(`QA V5 ${label}: hero=${info.heading.slice(0,46)} kits=${info.kits} resources=${info.resources} articles=${info.articles} overflow=${info.scroll-width}`);
   await page.close();
  }
+ // Acceleration runs only without reduced motion; verify the five icons move on scroll.
+ const motion=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'no-preference'});
+ await motion.goto(base,{waitUntil:'domcontentloaded'});
+ await motion.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';const e=document.querySelector('#art-canales');window.scrollTo({top:e.offsetTop-innerHeight,behavior:'instant'});});
+ await motion.waitForTimeout(180);
+ const firstY=await motion.locator('.art-fall-logo').first().evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m42);
+ await motion.evaluate(()=>{const e=document.querySelector('#art-canales');window.scrollTo({top:e.offsetTop+e.offsetHeight*.3,behavior:'instant'});});
+ await motion.waitForTimeout(180);
+ const laterY=await motion.locator('.art-fall-logo').first().evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m42);
+ console.log('SCROLL_GRAVITY',JSON.stringify({firstY,laterY,scroll:await motion.evaluate(()=>scrollY),reduced:await motion.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches)}));
+ check(laterY>firstY+50,'animated channel logo did not fall as scroll progressed');
+ await motion.close();
  const diagnostic=await browser.newPage({viewport:{width:390,height:844}});await diagnostic.goto(`${base}herramientas/diagnostico/`);
  for(const [n,v] of [['sector','local'],['pain','discover'],['presence','none'],['capacity','time']])await diagnostic.locator(`input[name="${n}"][value="${v}"]`).check();
  await diagnostic.locator('#diagnostic button[type="submit"]').click();
