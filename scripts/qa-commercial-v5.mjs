@@ -75,12 +75,13 @@ try{
  // Acceleration runs only without reduced motion; verify the five icons move on scroll.
  const motion=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'no-preference'});
  await motion.goto(base,{waitUntil:'domcontentloaded'});
- await motion.evaluate(()=>{const e=document.querySelector('#art-canales');window.scrollTo(0,e.offsetTop-innerHeight);});
- await motion.waitForTimeout(110);
+ await motion.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';const e=document.querySelector('#art-canales');window.scrollTo({top:e.offsetTop-innerHeight,behavior:'instant'});});
+ await motion.waitForTimeout(180);
  const firstY=await motion.locator('.art-fall-logo').first().evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m42);
- await motion.evaluate(()=>{const e=document.querySelector('#art-canales');window.scrollTo(0,e.offsetTop+e.offsetHeight*.3);});
- await motion.waitForTimeout(110);
+ await motion.evaluate(()=>{const e=document.querySelector('#art-canales');window.scrollTo({top:e.offsetTop+e.offsetHeight*.3,behavior:'instant'});});
+ await motion.waitForTimeout(180);
  const laterY=await motion.locator('.art-fall-logo').first().evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m42);
+ console.log('SCROLL_GRAVITY',JSON.stringify({firstY,laterY,scroll:await motion.evaluate(()=>scrollY),reduced:await motion.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches)}));
  check(laterY>firstY+50,'animated channel logo did not fall as scroll progressed');
  await motion.close();
  const diagnostic=await browser.newPage({viewport:{width:390,height:844}});await diagnostic.goto(`${base}herramientas/diagnostico/`);
