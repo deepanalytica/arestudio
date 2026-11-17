@@ -36,6 +36,13 @@
   $$('.mobile-nav a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
   window.addEventListener('resize', () => { if (window.innerWidth > 820) setMenu(false); });
+  // Evitar que el atajo flotante tape los campos cuando el usuario está contactando.
+  const floating = $('.floating-contact');
+  if (floating && $('#contacto') && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      floating.classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, { threshold: 0.02 }).observe($('#contacto'));
+  }
   const year = $('#year'); if (year) year.textContent = String(new Date().getFullYear());
   form?.addEventListener('submit', e => {
     e.preventDefault();

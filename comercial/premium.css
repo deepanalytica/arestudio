@@ -206,3 +206,5 @@ body {background:var(--paper);color:var(--ink);overflow-x:clip}
 @media(prefers-reduced-motion:reduce){.hero-showcase:hover .showcase-browser,.hero-showcase:hover .showcase-social,.project:hover,.format-card:hover,.need-card:hover,.service-card:hover,.offers-grid article:hover{transform:none}.orbital-canvas{display:none}}
 .page-rail{position:fixed;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#295dff,#a681f4 75%,#e6ff87);transform-origin:left center;transform:scaleX(0);z-index:201;pointer-events:none}
 @media(hover:hover){.need-card:before,.service-card:before,.format-card:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity .4s;background:radial-gradient(270px circle at var(--px,50%) var(--py,50%),#99b9ff26,transparent 72%)}.need-card:hover:before,.service-card:not(.service-card-feature):hover:before,.format-card:hover:before{opacity:1}.need-card > *,.service-card > *{position:relative;z-index:1}}
+
+.floating-contact.is-hidden{opacity:0;pointer-events:none;transform:translateY(22px)}
