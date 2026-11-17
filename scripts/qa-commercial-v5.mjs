@@ -31,6 +31,9 @@ try{
   const info=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,heading:document.querySelector('h1')?.textContent||'',kits:document.querySelectorAll('.offer-card').length,resources:document.querySelectorAll('.resource').length,articles:document.querySelectorAll('.article-card').length}));
   if(info.scroll>width+2){const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(el=>({el,rect:el.getBoundingClientRect()})).filter(x=>x.rect.width>0&&x.rect.right>innerWidth+2&&getComputedStyle(x.el).position!=='fixed').slice(0,12).map(x=>({tag:x.el.tagName,klass:typeof x.el.className==='string'?x.el.className.slice(0,60):'',right:Math.round(x.rect.right)})));problems.push(`${label}: horizontal overflow ${info.scroll}>${width} ${JSON.stringify(offenders)}`);}
   check(info.heading.toLowerCase().includes('encuentren')&&info.heading.toLowerCase().includes('elijan'),`${label}: editorial hero lost the promise to clients`);
+  const titleOverflow=await page.locator('.art-intro-title span').evaluateAll(nodes=>nodes.map(el=>({word:el.textContent?.trim(),extra:Math.round(el.scrollWidth-el.clientWidth)})).filter(x=>x.extra>3));
+  check(titleOverflow.length===0,`${label}: editorial headline clipped: ${JSON.stringify(titleOverflow)}`);
+
   check(info.kits===3,`${label}: expected 3 service kits, found ${info.kits}`);
   check(info.resources===3,`${label}: expected 3 free resources, found ${info.resources}`);
   check(info.articles===3,`${label}: expected 3 useful articles, found ${info.articles}`);
