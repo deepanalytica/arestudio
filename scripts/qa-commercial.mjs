@@ -25,6 +25,13 @@ for (const size of cases) {
   const count=await serviceButtons.count();
   if(count!==8) problems.push(`${size.label}: expected 8 service cards, found ${count}`);
   await page.locator('.solution-tile[data-service="tienda"]').click();
+  // TASTE_SERVICE_PROOF: the physical site screenshot must decode, not just a CSS placeholder.
+  await page.locator('#stage-visual img').first().waitFor({state:'visible',timeout:5000});
+  const proofImages=await page.locator('#stage-visual img').evaluateAll(async nodes => {
+    await Promise.all(nodes.map(el=>el.decode().catch(()=>null)));
+    return nodes.map(el=>({alt:el.alt,loaded:el.naturalWidth>0}));
+  });
+  if(proofImages.length<2 || proofImages.some(img=>!img.loaded)) problems.push(`${size.label}: commercial service preview images unavailable: ${JSON.stringify(proofImages)}`);
   const selected=await page.locator('.solution-tile[data-service="tienda"]').getAttribute('aria-pressed');
   const stage=await page.locator('#stage-title').innerText();
   if(selected!=='true'||!stage.includes('carrito')) problems.push(`${size.label}: service selector did not update the preview (${stage})`);
