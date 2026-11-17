@@ -29,7 +29,7 @@ jobs:
       - name: Test desktop, tablet and mobile UI
         run: node tests/browser-qa.mjs
       - name: Test commercial service mockups and navigation
-        run: node scripts/qa-commercial.mjs
+        run: node scripts/qa-commercial-v5.mjs
       - name: Upload audit screenshots
         if: always()
         uses: actions/upload-artifact@v4
@@ -37,5 +37,5 @@ jobs:
           name: ar-studio-visual-qa
           path: |
             artifacts/
-            qa-output/comercial/*.png
+            qa-output/comercial-v5/*.png
           if-no-files-found: ignore

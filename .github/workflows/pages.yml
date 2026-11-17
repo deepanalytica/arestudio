@@ -30,13 +30,13 @@ jobs:
       - name: Capture live evidence from public products
         run: node scripts/capture-public-evidence.mjs
       - name: QA AR Estudio Comercial
-        run: node scripts/qa-commercial.mjs
+        run: node scripts/qa-commercial-v5.mjs
       - name: Save commercial screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: qa-comercial-${{ github.run_number }}
-          path: qa-output/comercial/*.png
+          path: qa-output/comercial-v5/*.png
           if-no-files-found: ignore
           retention-days: 7
       - name: Remove QA capture files from published site
@@ -81,10 +81,12 @@ jobs:
           base="https://deepanalytica.github.io/arestudio/comercial"
           for attempt in $(seq 1 12); do
             html=$(curl --fail --silent --show-error --location --max-time 15 "$base/?qa=${GITHUB_SHA}" || true)
-            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/experience.css?qa=${GITHUB_SHA}" || true)
-            script=$(curl --fail --silent --show-error --location --max-time 15 "$base/experience.js?qa=${GITHUB_SHA}" || true)
-            if [[ "$html" == *'class="solution-tile'* && "$html" == *'id="journey-canvas"'* && "$html" == *'id="lead-form"'* && "$css" == *'.solution-grid'* && "$script" == *'function selectService'* ]]; then
-              echo "Commercial landing live: service selector, journey, form, design system and JavaScript"
+            css=$(curl --fail --silent --show-error --location --max-time 15 "$base/v5.css?qa=${GITHUB_SHA}" || true)
+            script=$(curl --fail --silent --show-error --location --max-time 15 "$base/v5.js?qa=${GITHUB_SHA}" || true)
+            article=$(curl --fail --silent --show-error --location --max-time 15 "$base/articulos/abrir-cafeteria-conseguir-clientes/?qa=${GITHUB_SHA}" || true)
+            toolkit=$(curl --fail --silent --show-error --location --max-time 15 "$base/herramientas/calculadora/?qa=${GITHUB_SHA}" || true)
+            if [[ "$html" == *'id="quick-title"'* && "$html" == *'id="kits"'* && "$html" == *'id="recursos"'* && "$html" == *'id="lead-form"'* && "$css" == *'.offers-grid'* && "$script" == *'const choices='* && "$article" == *'BlogPosting'* && "$toolkit" == *'calc-form'* ]]; then
+              echo "Commercial V5 live: offers, resources, articles, calculator and contact form"
               exit 0
             fi
             echo "Waiting for commercial Pages propagation ($attempt/12)"
