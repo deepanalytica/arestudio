@@ -1,0 +1,34 @@
+name: AR Estudio · Comercial V4 Preview QA
+on:
+  push:
+    branches: [strategy/comercial-necesidades-v4]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar catálogo y tokens existentes
+        run: npm run check
+      - name: Playwright / Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Capturar evidencia pública para el prototipo
+        run: node scripts/capture-public-evidence.mjs
+      - name: Probar experiencia de venta y capturas móviles
+        run: node scripts/qa-commercial-v4.mjs
+      - name: Guardar capturas QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ar-estudio-v4-preview
+          path: qa-output/comercial-v4/*.png
+          if-no-files-found: warn
+          retention-days: 14
