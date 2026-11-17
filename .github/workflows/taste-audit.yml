@@ -1,12 +1,5 @@
 name: Taste Skill · Auditoría AR Estudio
 on:
-  push:
-    branches: [review/taste-skill-ar-comercial]
-    paths:
-      - .github/workflows/taste-audit.yml
-      - scripts/install-taste-skill.sh
-      - scripts/taste-audit-runner.mjs
-      - comercial/**
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +28,10 @@ jobs:
           fi
       - name: Instalar Taste Skill para Codex en el workspace
         run: bash scripts/install-taste-skill.sh
+      - name: Preparar capturas públicas antes de auditar
+        run: |
+          npm install --no-save playwright
+          node scripts/capture-public-evidence.mjs
       - name: Ejecución real de Taste Skill sobre AR Estudio
         run: node scripts/taste-audit-runner.mjs
       - name: Guardar reportes y evidencia
