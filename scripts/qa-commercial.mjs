@@ -31,6 +31,21 @@ for (const size of cases) {
   await page.locator('.journey-step[data-step="2"]').click();
   const story=await page.locator('#journey-caption').innerText();
   if(!story.includes('compra')) problems.push(`${size.label}: story selector did not change the chapter`);
+
+  const showroomCount=await page.locator('.showroom-card').count();
+  if(showroomCount!==20) problems.push(`${size.label}: expected 20 showroom cards, got ${showroomCount}`);
+  await page.locator('[data-gallery-filter="comercio"]').click();
+  const commerceVisible=await page.locator('.showroom-card:visible').count();
+  if(commerceVisible!==4) problems.push(`${size.label}: showroom commerce filter returned ${commerceVisible}, expected 4`);
+  await page.locator('[data-gallery-filter="todos"]').click();
+  await page.locator('#showroom-more').click();
+  const allVisible=await page.locator('.showroom-card:visible').count();
+  if(allVisible!==20) problems.push(`${size.label}: expand gallery returned ${allVisible}, expected 20`);
+  await page.locator('.showroom-card').first().locator('[data-gallery-open]').click();
+  const dialogOpen=await page.locator('#showroom-dialog').evaluate(el=>el.open);
+  if(!dialogOpen) problems.push(`${size.label}: gallery preview dialog did not open`);
+  await page.locator('[data-dialog-close]').click();
+  if(await page.locator('#showroom-dialog').evaluate(el=>el.open)) problems.push(`${size.label}: gallery dialog did not close`);
   await page.locator('.solution-tile[data-service="redes"]').click();
   const info=await page.evaluate(() => ({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,heroHeight:Math.ceil(document.querySelector('.hero-hub').getBoundingClientRect().height)}));
   if(info.scrollWidth>info.width+2) problems.push(`${size.label}: horizontal overflow ${info.scrollWidth} > ${info.width}`);
@@ -42,6 +57,9 @@ for (const size of cases) {
   await page.waitForTimeout(75);
   await page.screenshot({path:`${target}/${size.label}.png`,fullPage:false,animations:'disabled'});
   if(size.label==='mobile') await page.screenshot({path:`${target}/mobile-full.png`,fullPage:true,animations:'disabled'});
+  await page.locator('#showroom-title').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(160);
+  await page.screenshot({path:`${target}/showroom-${size.label}.png`,fullPage:false,animations:'disabled'});
   console.log(`${size.label}: cards=${count} stage=${stage.slice(0,36)} hero=${info.heroHeight}px overflow=${info.scrollWidth-info.width}px`);
   await page.close();
 }

@@ -27,6 +27,8 @@ jobs:
         run: npm install --no-save playwright
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Capture live evidence from public products
+        run: node scripts/capture-public-evidence.mjs
       - name: QA AR Estudio Comercial
         run: node scripts/qa-commercial.mjs
       - name: Save commercial screenshots
@@ -37,8 +39,6 @@ jobs:
           path: qa-output/comercial/*.png
           if-no-files-found: ignore
           retention-days: 7
-      - name: Capture live evidence from public products
-        run: node scripts/capture-public-evidence.mjs
       - name: Remove QA capture files from published site
         run: rm -rf qa-output
       - name: Remove build-only dependencies

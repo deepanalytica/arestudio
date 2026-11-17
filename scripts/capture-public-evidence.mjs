@@ -12,8 +12,13 @@ const targets=[
   {id:'sin-humo',url:'https://deepanalytica.github.io/archivo-tienda/portafolio/proyectos/sin-humo/',type:'Lector de obra'},
   {id:'wal',url:'https://wal.cl/',type:'Sitio comercial'},
   {id:'inverse-reality-lab',url:'https://deepanalytica.github.io/inverse-reality-lab/lab.html',type:'Laboratorio de investigación'},
-  {id:'el-puente',url:'https://deepanalytica.github.io/inverse-reality-lab/el-puente/',type:'Publicación navegable'}
+  {id:'el-puente',url:'https://deepanalytica.github.io/inverse-reality-lab/el-puente/',type:'Publicación navegable'},  {id:'fortia',url:'https://fortia.cl/',type:'Tienda online publicada'},
+  {id:'fortia-batana',url:'https://fortia.cl/products/aceite-capilar-disaar-batana-oil-60-ml',type:'Página de producto publicada'},
+  {id:'deepanalytica-site',url:'https://deepanalytica.cl/',type:'Sitio comercial publicado'},
+  {id:'ar-brand',url:'https://deepanalytica.github.io/arestudio/brand/',type:'Identidad y sistema de diseño publicados'},
+  {id:'ar-comercial',url:'https://deepanalytica.github.io/arestudio/comercial/',type:'Sitio comercial AR Estudio publicado'},
 ];
+const mobileIds=new Set(['archivo','fortia','fortia-batana','wal','visual-art-ai','deepanalytica-site','conv-os','radar-conv-os','ar-brand','ar-comercial']);
 await mkdir('assets/proof',{recursive:true});
 await mkdir('artifacts',{recursive:true});
 const results=[];
@@ -56,6 +61,15 @@ try{
       const out='assets/proof/'+t.id+'.jpg';
       await page.screenshot({path:out,type:'jpeg',quality:76,fullPage:false,animations:'disabled',timeout:12000});
       record.file=out;record.status='captured';
+      if(mobileIds.has(t.id)){
+        try{
+          await page.setViewportSize({width:390,height:844});
+          await page.waitForTimeout(450);
+          const mobileOut='assets/proof/'+t.id+'-mobile.jpg';
+          await page.screenshot({path:mobileOut,type:'jpeg',quality:77,fullPage:false,animations:'disabled',timeout:12000});
+          record.mobileFile=mobileOut;
+        }catch(mobileError){record.mobileWarning=String(mobileError.message||mobileError).slice(0,160);}
+      }
       console.log('CAPTURED '+t.id+' HTTP '+record.http+' '+out+' '+details.title.slice(0,85));
     }catch(e){record.error=String(e.message||e).slice(0,180);console.log('FALLBACK '+t.id+' '+record.error)}
     finally{await page.close()}
