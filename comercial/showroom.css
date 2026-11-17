@@ -57,3 +57,6 @@
 @media(max-width:800px){.showroom-heading{grid-template-columns:1fr;gap:15px}.showroom-heading h2{font-size:clamp(40px,8vw,70px)}.showroom-card[data-large="true"] .showroom-media,.showroom-media{height:250px}.showroom-info{padding:19px}.showroom-info h3{font-size:24px}.showroom-ribbon{align-items:flex-start}}
 @media(max-width:640px){.showroom{padding:66px 0 76px}.showroom-grid{gap:15px}.showroom-card,.showroom-card[data-large="true"]{grid-column:span 12}.showroom-card[data-large="true"] .showroom-media,.showroom-media{height:275px}.showroom-heading h2{font-size:clamp(39px,10.4vw,55px)}.showroom-heading p{font-size:14px}.showroom-ribbon{padding:14px}.showroom-filter{font-size:11px;padding:10px 14px}.showroom-info{padding:21px}.showroom-dialog{width:96vw;max-height:91dvh}.showroom-dialog-image{padding:11px}.showroom-dialog-desc{flex-direction:column;align-items:stretch;padding:17px}.showroom-dialog-action{justify-content:center}}
 @media(prefers-reduced-motion:reduce){.showroom-card,.showroom-browser,.showroom-device,.showroom-editorial-image,.showroom-filter,.showroom-more{transition:none!important}}
+/* Image fallbacks remain visible if an external capture has not propagated yet. */
+.showroom-browser-viewport .showroom-fallback{z-index:0}
+.showroom-browser-viewport img{position:relative;z-index:1}

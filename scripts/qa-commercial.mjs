@@ -44,7 +44,7 @@ for (const size of cases) {
   await page.locator('.showroom-card').first().locator('[data-gallery-open]').click();
   const dialogOpen=await page.locator('#showroom-dialog').evaluate(el=>el.open);
   if(!dialogOpen) problems.push(`${size.label}: gallery preview dialog did not open`);
-  await page.locator('[data-dialog-close]').click();
+  if(dialogOpen) await page.locator('[data-dialog-close]').click();
   if(await page.locator('#showroom-dialog').evaluate(el=>el.open)) problems.push(`${size.label}: gallery dialog did not close`);
   await page.locator('.solution-tile[data-service="redes"]').click();
   const info=await page.evaluate(() => ({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,heroHeight:Math.ceil(document.querySelector('.hero-hub').getBoundingClientRect().height)}));

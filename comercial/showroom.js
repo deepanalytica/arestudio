@@ -1,7 +1,7 @@
 /* AR Estudio · Showroom 3.0: gallery filters, progressive reveal and accessible previews. */
 (() => {
   'use strict';
-  const section = document.querySelector('#showroom');
+  const section = document.querySelector('#trabajos.showroom');
   if (!section) return;
   const cards = Array.from(section.querySelectorAll('.showroom-card'));
   const filters = Array.from(section.querySelectorAll('[data-gallery-filter]'));
@@ -80,6 +80,6 @@
   // Only animate when available; no content depends on GSAP or ScrollTrigger.
   if (!reduced && window.gsap && window.ScrollTrigger) {
     window.gsap.registerPlugin(window.ScrollTrigger);
-    window.gsap.fromTo('.showroom-heading', {opacity:0,y:34}, {opacity:1,y:0,duration:.75,ease:'power2.out',clearProps:'all',scrollTrigger:{trigger:'#showroom',start:'top 90%',once:true}});
+    window.gsap.fromTo('.showroom-heading', {opacity:0,y:34}, {opacity:1,y:0,duration:.75,ease:'power2.out',clearProps:'all',scrollTrigger:{trigger:'#trabajos',start:'top 90%',once:true}});
   }
 })();
