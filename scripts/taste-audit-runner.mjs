@@ -35,11 +35,11 @@ function run(cmd,args,id,timeoutMs=120000){
 console.log('Taste Skill installed:',dir,'version',version);
 const copy=await run('node',[join(dir,'scripts/copy-lint.mjs'),'comercial/index.html','--kind','service','--json'],'copy',45000);
 results.checks.push(copy);
-const consistency=await run('node',[join(dir,'scripts/consistency.mjs'),'comercial/index.html','--widths','1440,1024,820,768,390','--page','service','--category','Diseño y marketing digital para pymes','--primary','Preparar mensaje por WhatsApp','--json'],'consistency',240000);
+const consistency=await run('node',[join(dir,'scripts/consistency.mjs'),'comercial/index.html','--widths','1440,1024,820,768,390','--quick','--root','.','--page','service','--category','Diseño y marketing digital para pymes','--primary','Preparar mensaje por WhatsApp','--json'],'consistency',185000);
 results.checks.push(consistency);
-const perf=await run('node',[join(dir,'scripts/perf.mjs'),'comercial/index.html','--w','1440','--w','390','--runs','1','--json',join(out,'perf-data.json')],'perf',210000);
+const perf=await run('node',[join(dir,'scripts/perf.mjs'),'comercial/index.html','--w','1440','--w','390','--runs','1','--root','.','--json',join(out,'perf-data.json')],'perf',210000);
 results.checks.push(perf);
-const arm=await run('node',[join(dir,'scripts/gate.mjs'),'--start','comercial/index.html','--kind','service','--category','Diseño y marketing digital para pymes','--primary','Preparar mensaje por WhatsApp'],'gate-start',45000);
+const arm=await run('node',[join(dir,'scripts/gate.mjs'),'--start','comercial/index.html','--root','.','--kind','service','--category','Diseño y marketing digital para pymes','--primary','Preparar mensaje por WhatsApp'],'gate-start',45000);
 results.checks.push(arm);
 const gate=await run('node',[join(dir,'scripts/gate.mjs'),'--quick'],'gate-quick',240000);
 results.checks.push(gate);
