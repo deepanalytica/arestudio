@@ -26,7 +26,11 @@ for(const [name,width,height] of [['desktop',1440,900],['laptop',1024,800],['tab
  await page.goto(base,{waitUntil:'domcontentloaded',timeout:30000});
  await page.waitForTimeout(350);
  const info=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,heroHeading:document.querySelector('h1')?.innerText,heroImgs:[...document.querySelectorAll('.hero-stage img')].map(x=>({src:x.getAttribute('src'),loaded:x.naturalWidth>0})),bodyText:document.body.innerText.length}));
- if(info.scroll>width+2)problems.push(`${name}: overflow ${info.scroll}>${width}`);
+ if(info.scroll>width+2){
+   const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(el=>({el,box:el.getBoundingClientRect()})).filter(x=>x.box.right>innerWidth+2 && x.box.width>0 && getComputedStyle(x.el).display!=='none').map(x=>({tag:x.el.tagName,cls:typeof x.el.className==='string'?x.el.className.slice(0,90):'',text:x.el.innerText?.slice(0,35)||'',right:Math.round(x.box.right),left:Math.round(x.box.left)})).slice(0,25));
+   console.log('OVERFLOW DEBUG',name,JSON.stringify(offenders));
+   problems.push(`${name}: overflow ${info.scroll}>${width}`);
+  }
  if(!/encuentren/i.test(info.heroHeading||''))problems.push(`${name}: hero copy missing`);
  if(info.heroImgs.some(x=>!x.loaded))problems.push(`${name}: missing actual hero image ${JSON.stringify(info.heroImgs)}`);
  if(await page.locator('[role="tab"]').count()!==3)problems.push(`${name}: scenario tabs missing`);
