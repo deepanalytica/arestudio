@@ -281,3 +281,11 @@ html.art-motion-ready .art-reveal.art-revealed{opacity:1;transform:translateY(0)
  .art-editorial [data-parallax],.art-editorial [data-fall]{transform:none!important}
  html.art-motion-ready .art-reveal{opacity:1!important;transform:none!important}
 }
+
+/* Editorial headline: preserve entire words even at 320 px. */
+@media (max-width:350px){
+ .art-intro-grid{width:91%}
+ .art-intro-title{font-size:40px;letter-spacing:-.097em}
+ .art-intro-copy{font-size:14px;line-height:1.44}
+ .art-intro-picture:after{background:linear-gradient(180deg,#101729 0%,#101729df 12%,#101729b8 29%,#10172968 70%,#10172944 100%),linear-gradient(90deg,#10172994,transparent 78%)}
+}
