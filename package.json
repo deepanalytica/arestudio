@@ -9,6 +9,8 @@
     "check": "node --check app.js && node --check data.js && node --check casos/case.js && node --test tests/catalog.test.js tests/brand-contract.test.js && npm run brand:check && npm run design:check",
     "brand:tokens": "node brand/tools/build-tokens.mjs",
     "brand:check": "node brand/tools/build-tokens.mjs --check && node --check brand/lab.js",
-    "design:check": "node scripts/design-preflight.mjs"
+    "design:check": "node scripts/design-preflight.mjs",
+    "taste:install": "bash scripts/install-taste-skill.sh",
+    "taste:audit": "node scripts/taste-audit-runner.mjs"
   }
 }
