@@ -75,7 +75,7 @@ try{
  const home=await browser.newPage();await home.goto(base);const schema=await home.locator('script[type="application/ld+json"]').innerText();try{const j=JSON.parse(schema);check(j['@graph']?.some(x=>x['@type']==='ProfessionalService'),'homepage missing business schema')}catch{problems.push('homepage invalid JSON-LD')}
  await home.close();
  for(const route of ['descargas/kit-arranque-negocio.pdf','descargas/checklist-conversion-tienda.pdf','descargas/calendario-30-dias.csv','descargas/plantilla-oferta-servicios.txt']){
-  const resp=await fetch(base+route);check(resp.status===200,`download missing: ${route}`);check(Number(resp.headers.get('content-length')||'0')>700,`download empty: ${route}`);
+  const resp=await fetch(base+route);check(resp.status===200,`download missing: ${route}`);const body=await resp.arrayBuffer();check(body.byteLength>700,`download empty: ${route}`);
  }
  for(const route of ['sitemap.xml','robots.txt','llms.txt']){const res=await fetch(origin+route);check(res.status===200,`SEO file missing: ${route}`)}
 }finally{await browser.close();await new Promise(r=>server.close(r));}
