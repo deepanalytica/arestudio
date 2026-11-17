@@ -49,7 +49,17 @@
       `Necesito ayuda con: ${v('#lead-service')}`,
       `Mi proyecto: ${v('#lead-goal')}`,
       v('#lead-budget') && `Presupuesto estimado: ${v('#lead-budget')}`,
-      v('#lead-location') && `Ciudad: ${v('#lead-location')}`
+      v('#lead-location') && `Ciudad: ${v('#lead-location')}`,
+      ...(() => {
+        // Mantener atribución básica de campañas sin cookies ni almacenamiento.
+        const query = new URLSearchParams(window.location.search);
+        return ['utm_source','utm_medium','utm_campaign','utm_content']
+          .map(key => {
+            const raw = query.get(key);
+            const clean = raw?.replace(/[\r\n\t]/g, ' ').trim().slice(0, 72);
+            return clean ? `${key}: ${clean}` : null;
+          }).filter(Boolean);
+      })()
     ].filter(Boolean).join('\n');
     // Navegación directa para evitar bloqueos de ventanas emergentes. El usuario confirma el envío en WhatsApp.
     window.location.href = 'https://wa.me/56958039450?text=' + encodeURIComponent(message);
