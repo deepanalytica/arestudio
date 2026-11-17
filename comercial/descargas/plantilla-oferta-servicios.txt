@@ -1,0 +1,38 @@
+AR ESTUDIO · PLANTILLA EDITABLE DE OFERTA
+
+OBJETIVO
+Ayudar al cliente a entender qué compra y qué puede hacer después.
+
+1. TIPO DE CLIENTE AL QUE AYUDO
+[Ejemplo: negocios locales que están abriendo]
+
+2. PROBLEMA REAL QUE QUIERE RESOLVER
+[Ejemplo: que la gente del barrio conozca su dirección y su oferta]
+
+3. QUÉ ENTREGO EXACTAMENTE
+- [Entregable 1]
+- [Entregable 2]
+- [Entregable 3]
+
+4. QUÉ NO ESTÁ INCLUIDO
+[Define límites para evitar falsas expectativas]
+
+5. PLAZO / MODALIDAD
+[Completa con datos verdaderos antes de publicar]
+
+6. PRECIO / CONDICIONES
+[Completa solo con valores confirmados; no inventes descuentos]
+
+7. QUÉ TIENE QUE HACER EL CLIENTE AHORA
+[Acción: consultar disponibilidad / pedir propuesta / comprar]
+
+FÓRMULA BREVE
+«Ayudamos a [cliente concreto] a [necesidad concreta] con [entregable útil]. Puedes [acción] por [canal].»
+
+REVISIÓN ANTES DE PUBLICAR
+[ ] Se entiende qué vendes
+[ ] No prometes resultados que no puedes probar
+[ ] Hay una próxima acción
+[ ] El enlace y los datos funcionan
+
+https://deepanalytica.github.io/arestudio/comercial/

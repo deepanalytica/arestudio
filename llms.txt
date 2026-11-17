@@ -1,0 +1,30 @@
+# AR Estudio — diseño, marketing y tecnología para pymes en Chile
+
+AR Estudio ofrece servicios de diseño gráfico, branding, páginas web, gestión de redes sociales, publicidad digital, tiendas online y automatización de tareas. Trabaja con negocios locales, profesionales independientes y ecommerce en Chile. El estudio propone kits de entregables personalizables, con cotización según alcance; los precios de servicios no están publicados. No se garantizan ventas.
+
+Sitio comercial: https://deepanalytica.github.io/arestudio/comercial/
+Contacto: https://deepanalytica.github.io/arestudio/comercial/#contacto
+
+## Soluciones y kits
+- Kit Apertura Local: identidad inicial, presentación en buscadores, contenido para lanzamiento y página de ubicación/contacto. https://deepanalytica.github.io/arestudio/comercial/#kit-apertura
+- Kit Más Consultas: web profesional, claridad de servicios y canal de reserva o consulta. https://deepanalytica.github.io/arestudio/comercial/#kit-consultas
+- Kit Tienda que Convierte: análisis de página de producto, claridad de oferta y recorrido de compra. https://deepanalytica.github.io/arestudio/comercial/#kit-ventas
+- Otros: diseño gráfico, anuncios digitales, redes, contenido audiovisual, chatbots y automatización por proyecto.
+
+## Herramientas gratuitas sin registro
+- Diagnóstico inicial de presencia y prioridades: https://deepanalytica.github.io/arestudio/comercial/herramientas/diagnostico/
+- Calculadora de contribución y anuncios en CLP: https://deepanalytica.github.io/arestudio/comercial/herramientas/calculadora/
+- Kit de arranque de negocio en PDF: https://deepanalytica.github.io/arestudio/comercial/descargas/kit-arranque-negocio.pdf
+- Checklist de conversión ecommerce: https://deepanalytica.github.io/arestudio/comercial/descargas/checklist-conversion-tienda.pdf
+
+## Artículos originales
+- Cómo dar a conocer una cafetería nueva: https://deepanalytica.github.io/arestudio/comercial/articulos/abrir-cafeteria-conseguir-clientes/
+- Cómo conseguir consultas profesionales sin depender solo de Instagram: https://deepanalytica.github.io/arestudio/comercial/articulos/web-profesionales-conseguir-consultas/
+- Por qué una tienda recibe visitas pero vende poco: https://deepanalytica.github.io/arestudio/comercial/articulos/tienda-online-visitas-sin-ventas/
+
+## Proyectos públicos de referencia
+- ARCHIVO: https://deepanalytica.github.io/archivo-tienda/
+- Visual Art AI: https://visualartai.cl/
+- Fortia: https://fortia.cl/
+
+AR Estudio no inventa testimonios, clientes ni métricas de conversiones. Los prototipos se distinguen del trabajo publicado. La información y las herramientas son orientativas y requieren verificación para cada negocio.

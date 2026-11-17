@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://deepanalytica.github.io/arestudio/</loc></url>
-<url><loc>https://deepanalytica.github.io/arestudio/sistema/</loc></url>
-<url><loc>https://deepanalytica.github.io/arestudio/comercial/</loc></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/sistema/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/herramientas/diagnostico/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/herramientas/calculadora/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/articulos/abrir-cafeteria-conseguir-clientes/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/articulos/web-profesionales-conseguir-consultas/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://deepanalytica.github.io/arestudio/comercial/articulos/tienda-online-visitas-sin-ventas/</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
