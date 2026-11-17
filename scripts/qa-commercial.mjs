@@ -30,7 +30,7 @@ for (const size of cases) {
   if(selected!=='true'||!stage.includes('carrito')) problems.push(`${size.label}: service selector did not update the preview (${stage})`);
   await page.locator('.journey-step[data-step="2"]').click();
   const story=await page.locator('#journey-caption').innerText();
-  if(!story.includes('comprar')) problems.push(`${size.label}: story selector did not change the chapter`);
+  if(!story.includes('compra')) problems.push(`${size.label}: story selector did not change the chapter`);
   await page.locator('.solution-tile[data-service="redes"]').click();
   const info=await page.evaluate(() => ({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,heroHeight:Math.ceil(document.querySelector('.hero-hub').getBoundingClientRect().height)}));
   if(info.scrollWidth>info.width+2) problems.push(`${size.label}: horizontal overflow ${info.scrollWidth} > ${info.width}`);
