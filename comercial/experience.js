@@ -139,7 +139,7 @@
     try{const c=document.createElement('canvas');supportsWebGL=!!(c.getContext('webgl2',{failIfMajorPerformanceCaveat:true})||c.getContext('webgl',{failIfMajorPerformanceCaveat:true}));}catch(_){supportsWebGL=false;}
     if(supportsWebGL){
       const start=()=>import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js').then(T=>{
-        const renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:false,powerPreference:'low-power'});
+        const renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:false,powerPreference:'low-power'});canvas.hidden=false;
         renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.35));
         const scene=new T.Scene(),camera=new T.PerspectiveCamera(42,1,.1,100);camera.position.set(0,0,13);
         const group=new T.Group();scene.add(group);

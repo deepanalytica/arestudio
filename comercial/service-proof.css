@@ -28,3 +28,14 @@
 .proof-preview.proof-data .proof-label{background:#f0ecff;color:#4835a2}
 @media(max-width:850px){.proof-preview{min-height:165px}.proof-browser{height:160px}.proof-collage{height:155px}.proof-collage figure{height:131px}.proof-collage figure:nth-child(2){height:150px}.proof-phone{right:2%}}
 @media(prefers-reduced-motion:reduce){.proof-browser{transition:none;transform:none}.proof-collage figure{transform:none}.proof-phone{transform:none}}
+
+/* Accessibility and mobile conversion: action remains reachable on small screens. */
+.hero-mobile-cta{display:none}
+.stage-three[hidden]{display:none!important}
+.hero-status{color:#3e506e}
+@media(max-width:850px){
+  .hero-mobile-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;min-height:52px;padding:13px 18px;border-radius:14px;background:var(--ar-action,#245bff);color:#fff;font-weight:800;box-shadow:0 14px 28px #245bff30;transition:transform .2s,box-shadow .2s}
+  .hero-mobile-cta .ico{height:18px;width:18px}
+  .hero-mobile-cta:active{transform:translateY(1px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-mobile-cta{transition:none}}
