@@ -35,8 +35,11 @@ for (const size of cases) {
   const info=await page.evaluate(() => ({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,heroHeight:Math.ceil(document.querySelector('.hero-hub').getBoundingClientRect().height)}));
   if(info.scrollWidth>info.width+2) problems.push(`${size.label}: horizontal overflow ${info.scrollWidth} > ${info.width}`);
   if(errors.length) problems.push(`${size.label}: JS errors: ${errors.join(' | ')}`);
-  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0,0); });
-  await page.waitForTimeout(100);
+  // Reload before screenshots: focus on a clicked tile can otherwise scroll the viewport.
+  await page.goto(source, {waitUntil:'domcontentloaded'});
+  await page.waitForTimeout(550);
+  await page.evaluate(() => { document.activeElement?.blur(); document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0,0); });
+  await page.waitForTimeout(75);
   await page.screenshot({path:`${target}/${size.label}.png`,fullPage:false,animations:'disabled'});
   if(size.label==='mobile') await page.screenshot({path:`${target}/mobile-full.png`,fullPage:true,animations:'disabled'});
   console.log(`${size.label}: cards=${count} stage=${stage.slice(0,36)} hero=${info.heroHeight}px overflow=${info.scrollWidth-info.width}px`);
