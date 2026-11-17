@@ -49,7 +49,9 @@ try{
   if(width<=920){await page.locator('#nav-toggle').click();check((await page.locator('#nav-toggle').getAttribute('aria-expanded'))==='true',`${label}: mobile menu did not open`);await page.locator('#mobile-menu a').first().click();check((await page.locator('#nav-toggle').getAttribute('aria-expanded'))==='false',`${label}: mobile menu did not close`);}
   await page.locator('.faq-items summary').first().click();check(await page.locator('.faq-items details').first().evaluate(x=>x.open),`${label}: FAQ does not open`);
   for(const img of await page.locator('.work-image img,.need-scene img,.art-intro-picture img,.art-logo-tile img,.art-campaign-photo img,.art-fall-logo img,.art-mockup-canvas img,.art-fortia-gallery img,.art-full-bleed-rail img').all()){
-   await img.scrollIntoViewIfNeeded();await img.evaluate(async e=>e.decode().catch(()=>null));
+   // Respect deliberate mobile art direction: some rail photos are hidden at small widths.
+   if(!(await img.isVisible())) continue;
+   await img.scrollIntoViewIfNeeded({timeout:5000});await img.evaluate(async e=>e.decode().catch(()=>null));
    const src=await img.getAttribute('src'),n=await img.evaluate(e=>e.naturalWidth);
    check(n>0,`${label}: real image failed to load: ${src}`);
   }
