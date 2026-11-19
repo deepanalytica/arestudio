@@ -32,3 +32,11 @@
 .contact-left,.contact-grid .lead-form{min-width:0}
 @media(max-width:850px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:345px){.contact-grid .lead-form>*{min-width:0}}
+/* V4 · Enlace discreto al laboratorio dimensional. No altera el flujo principal. */
+.blueprint-feature{padding:clamp(64px,7vw,108px) 0;background:#edf3ff;border-top:1px solid #d9e5fd;border-bottom:1px solid #d9e5fd}
+.blueprint-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center;gap:clamp(30px,6vw,90px)}
+.blueprint-copy h2{font:900 clamp(44px,5.8vw,79px)/1.02 var(--display);letter-spacing:-.06em;margin:15px 0 25px}.blueprint-copy h2 em{font-style:normal;color:var(--electric)}.blueprint-copy p{font-size:17px;line-height:1.7;max-width:590px;color:#53617b;margin:0 0 24px}.blueprint-link{display:inline-flex;min-height:50px;align-items:center;gap:20px;border-bottom:2px solid var(--electric);font-size:14px;font-weight:800;color:#15399b}.blueprint-link:hover{color:var(--violet)}.blueprint-link span{font-size:20px}
+.blueprint-preview{background:#fff;box-shadow:0 30px 65px #1627471c;border:1px solid #d1daea;border-radius:17px;padding:25px;color:#222;max-width:570px;width:100%}
+.blueprint-folio{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:600 9px var(--mono);letter-spacing:.07em;color:#666}.blueprint-wire{position:relative;border:2px solid #333;border-radius:14px;margin:42px 35px;padding:32px 24px 25px;display:grid;gap:14px}.blueprint-bracket{font:500 10px var(--mono);color:#777;margin-bottom:4px}.blueprint-title-slot,.blueprint-meta-slot{border:1px dashed #666;background:#f4f4f4;padding:19px 14px;font:500 12px var(--mono);color:#444}.blueprint-meta-slot{padding:11px 14px;font-size:10px}.blueprint-dim{position:absolute;font:700 11px var(--mono)}.blueprint-dim-h{top:-26px;left:44%;}.blueprint-dim-v{left:-29px;top:46%}
+@media(max-width:850px){.blueprint-inner{grid-template-columns:minmax(0,1fr)}.blueprint-copy p{font-size:15px}.blueprint-preview{max-width:620px}.blueprint-feature{padding:68px 0}}
+@media(max-width:345px){.blueprint-preview{padding:16px}.blueprint-wire{margin:36px 22px;padding:24px 16px}.blueprint-link{font-size:12px}}
