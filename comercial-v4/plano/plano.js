@@ -34,7 +34,7 @@
     const sy=(r)=>Y+(r.top-d.y)*scale;
     const sw=(r)=>r.width*scale;
     const sh=(r)=>r.height*scale;
-    let g='<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#444"/></marker><pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8"><path d="M0,8 L8,0" stroke="#ddd" stroke-width="1"/></pattern></defs>';
+    let g='<title id="sheet-title">Plano dimensional de la tarjeta de situaciones</title><desc id="sheet-desc">Vista en planta y capas con cotas medidas en el navegador para el ancho elegido.</desc><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#444"/></marker><pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8"><path d="M0,8 L8,0" stroke="#ddd" stroke-width="1"/></pattern></defs>';
     g+='<rect x="1" y="1" width="1348" height="773" rx="9" fill="#fff" stroke="#222"/>';
     g+=svgText(46,50,'01 / NOTAS GENERALES','value');
     g+=svgLine(46,66,325,66,'line');
