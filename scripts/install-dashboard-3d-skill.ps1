@@ -5,8 +5,8 @@ $ErrorActionPreference = 'Stop'
 $version = (node --version)
 if (-not $version) { throw 'Node.js no disponible. Instala Node.js >= 22.20.' }
 $parts = $version.TrimStart('v').Split('.')
-if ([int]$parts[0] -lt 22 -or ([int]$parts[0] -eq 22 -and [int]$parts[1] -eq 20 -and [int]$parts[2] -lt 0)) {
-  Write-Warning "Verifica requisito del autor: Node.js >=22.20 (actual: $version)."
+if ([int]$parts[0] -lt 22 -or ([int]$parts[0] -eq 22 -and [int]$parts[1] -lt 20)) {
+  throw "La skill requiere Node.js 22.20 o superior (actual: $version)."
 }
 Write-Host "Instalando annderson8/dashboard-3d para $Agent en este proyecto..."
 & npx skills add annderson8/dashboard-3d -a $Agent
