@@ -1,0 +1,6 @@
+id;nombre;valor;unidad;estado;descripcion;accion
+captacion;Captación;340;contactos;normal;Personas interesadas que llegan desde anuncios y contenido.;Comparar consultas útiles con gasto de adquisición.
+diagnostico;Diagnóstico;92;solicitudes;normal;Solicitudes revisadas para distinguir necesidades y prioridades.;Priorizar conversaciones con posibilidades de avanzar.
+produccion;Producción;31;entregables;normal;Piezas de diseño y contenido listas para aprobación.;Redistribuir capacidad antes de acumular revisiones.
+activacion;Activación;11;campañas;normal;Campañas ilustrativas habilitadas después de validación.;Comprobar seguimiento y configuración antes de lanzar.
+medicion;Medición;5.8;% conversión;normal;Tasa simulada de conversión del recorrido comercial.;Revisar calidad del tráfico y pérdidas del embudo.
