@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F5FAFF">
+<meta name="description" content="AR Estudio · Laboratorio de visualización de procesos en 3D. Demostración interactiva con indicadores completamente simulados.">
+<meta name="robots" content="noindex,follow">
+<title>Laboratorio 3D · Un negocio visto como sistema | AR Estudio</title>
+<link rel="icon" type="image/svg+xml" href="../../brand/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#panel">Saltar a los indicadores</a>
+<header class="topbar">
+ <a class="brand" href="../../" aria-label="AR Estudio, volver al portafolio"><img src="../../brand/assets/mark.svg" alt="" width="48" height="44"><span>ESTUDIO<span class="brand-division">/ LABORATORIO</span></span></a>
+ <div class="top-actions"><span class="issue">EXPERIMENTO 001 / 2026</span><a class="back" href="../../">Volver al portafolio <span aria-hidden="true">↗</span></a></div>
+</header>
+<main>
+<section class="intro" aria-labelledby="headline">
+ <div class="intro-main"><p class="overline"><span class="pulse" aria-hidden="true"></span> AR/ DATA EXPERIENCES · PROTOTIPO INTERACTIVO</p>
+ <h1 id="headline">Tu negocio.<br><em>Desde otra dimensión.</em></h1>
+ <p class="lede">Cinco etapas. Un mismo recorrido. Selecciona cada estación y mira cómo cambian las decisiones cuando aparecen cuellos de botella.</p></div>
+ <aside class="intro-note"><b>NO ES UN CLIENTE REAL</b><p>Esta experiencia utiliza cifras ficticias para demostrar una forma de observar operaciones y tomar decisiones. No se conecta a sistemas empresariales.</p></aside>
+</section>
+<section class="experience" aria-labelledby="demo-title">
+ <div class="experience-heading"><div><p class="overline">01 / CENTRO DE OPERACIONES</p><h2 id="demo-title">El viaje de un proyecto comercial</h2></div>
+ <div class="controls" role="group" aria-label="Escenario de la simulación"><button class="switch active" type="button" data-scenario="base" aria-pressed="true">Operación estable</button><button class="switch" type="button" data-scenario="estres" aria-pressed="false">Bajo presión</button></div></div>
+ <div class="telemetry" id="telemetry" aria-label="Indicadores de la simulación">
+  <div class="metric"><span>ETAPAS</span><strong>05</strong><small>flujo completo</small></div>
+  <div class="metric"><span>ESTACIONES EN ALERTA</span><strong id="alert-count">—</strong><small>señales a revisar</small></div>
+  <div class="metric"><span>RECORRIDO</span><strong id="flow-status">—</strong><small>estado de la simulación</small></div>
+  <div class="metric"><span>FUENTE</span><strong>CSV</strong><small>editable / solo en navegador</small></div>
+ </div>
+ <div class="workbench">
+  <div class="stage">
+   <div class="stage-head"><span>AR/ <b>WORLD VIEW</b></span><span class="stage-live"><i></i> ENTORNO SIMULADO</span></div>
+   <div class="canvas-wrap" id="canvas-wrap"><canvas id="scene" aria-label="Maqueta interactiva en 3D de las cinco etapas del negocio" role="img"></canvas><div class="stage-fallback" id="stage-fallback" hidden>La visualización 3D no está disponible en este navegador. Puedes explorar todas las estaciones con los botones inferiores.</div></div>
+   <div class="stage-foot"><span>ARRASTRA PARA GIRAR · DESLIZA PARA ACERCAR · SELECCIONA UNA ESTACIÓN</span><button class="reset-camera" id="reset-camera" type="button">Restablecer vista <span aria-hidden="true">↺</span></button></div>
+   <div class="station-buttons" role="group" aria-label="Seleccionar etapa del recorrido">
+    <button type="button" data-station="captacion" class="station-button active" aria-pressed="true"><b>01</b> Captación</button>
+    <button type="button" data-station="diagnostico" class="station-button" aria-pressed="false"><b>02</b> Diagnóstico</button>
+    <button type="button" data-station="produccion" class="station-button" aria-pressed="false"><b>03</b> Producción</button>
+    <button type="button" data-station="activacion" class="station-button" aria-pressed="false"><b>04</b> Activación</button>
+    <button type="button" data-station="medicion" class="station-button" aria-pressed="false"><b>05</b> Medición</button>
+   </div>
+  </div>
+  <aside class="inspector" id="panel" aria-live="polite" aria-atomic="true">
+    <p class="panel-top">INSPECTOR / <span id="station-number">01</span></p>
+    <div class="panel-state" id="panel-state">OPERACIÓN NORMAL</div>
+    <h3 id="station-name">Captación</h3>
+    <div class="big-number"><span id="station-value">—</span><small id="station-unit">—</small></div>
+    <div class="bar"><span id="bar-fill"></span></div>
+    <p class="panel-description" id="station-description">Selecciona una etapa para revisar sus datos.</p>
+    <div class="decision"><span>DECISIÓN QUE AYUDA A TOMAR</span><p id="station-action">—</p></div>
+    <div class="panel-bottom"><span>ORIGEN DEL DATO</span><b id="station-source">Simulación CSV</b></div>
+  </aside>
+ </div>
+ <div class="dataset">
+  <div><p class="overline">02 / EXPERIMENTA</p><h2>No necesitas entregar tus datos.</h2><p>Puedes importar un CSV de siete columnas directamente en tu navegador. No se envía a ningún servidor. Los valores desaparecen al recargar.</p></div>
+  <div class="data-actions"><label class="upload" for="csv-input">Probar mi CSV <span aria-hidden="true">↗</span></label><input id="csv-input" type="file" accept=".csv,text/csv"><a href="datos/base.csv" download="ar-estudio-demo-3d.csv" class="download">Descargar CSV de ejemplo ↓</a><p id="file-status" role="status">Escenario de demostración cargado.</p></div>
+ </div>
+</section>
+<section class="closing">
+ <span class="overline">03 / DE LA VISUALIZACIÓN A LA DECISIÓN</span>
+ <div class="closing-grid"><h2>Un dashboard no sirve si nadie sabe <em>qué hacer después.</em></h2><div><p>La escena 3D es el punto de entrada. El valor está en conectar datos confiables, definir umbrales relevantes y permitir que alguien detecte un problema antes de que cueste dinero.</p><a href="../../comercial/#contacto" class="cta">Conversemos sobre tu operación <span aria-hidden="true">↗</span></a><p class="method">CONCEPTO · DATOS DE EJEMPLO · FRONTEND THREE.JS · MARCA AR ESTUDIO</p></div></div>
+</section>
+</main>
+<footer><img src="../../brand/assets/mark.svg" alt="" width="32" height="30"><span>AR ESTUDIO / PROTOTIPO DE LABORATORIO</span><a href="../../">PORTAFOLIO ↗</a></footer>
+</body></html>
