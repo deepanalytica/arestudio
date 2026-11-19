@@ -165,14 +165,15 @@ async function iniciarMundo(){
    }
  };
  sync3D();let ultimo=0;
- gl.setAnimationLoop(tiempo=>{
+ const renderLoop=tiempo=>{
    const segundos=tiempo*.001,delta=Math.min((tiempo-ultimo)*.001,.06);ultimo=tiempo;
    if(!PREFIERE_MENOS_MOVIMIENTO&&!document.hidden){
     for(const a of animados){if(datos.get(a.id)?.estado!=='parada'){if(a.rotor)a.rotor.rotation.z+=delta*.32;a.halo.rotation.z+=delta*.06}}
     for(const e of particulas){const detenido=[...datos.values()].some(d=>d.estado==='parada');if(!detenido)e.punto.position.x=e.inicio+(segundos*.45+e.i*.27)%1.35}
    }
    orbit.update();gl.render(escena,camara);
- });
+ };
+ gl.setAnimationLoop(renderLoop);
  document.addEventListener('visibilitychange',()=>{if(document.hidden)gl.setAnimationLoop(null);else gl.setAnimationLoop(renderLoop)});
  }catch(error){
   console.warn('AR 3D: modo accesible sin WebGL',error);
