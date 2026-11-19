@@ -1,0 +1,18 @@
+/* Teaser aislado para prototipo 3D: conserva identidad y jerarquía del portafolio. */
+.ar3d-teaser{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.55fr);gap:clamp(25px,5vw,75px);align-items:center;margin-top:clamp(48px,7vw,105px);margin-bottom:clamp(48px,7vw,105px);padding:clamp(25px,5vw,70px)!important;background:#101729;color:#f5faff;border-radius:18px;overflow:hidden;isolation:isolate}
+.ar3d-teaser:before{content:"";position:absolute;inset:auto -8% -120% 28%;height:200%;background:radial-gradient(ellipse,#245bff4a 0,transparent 62%);z-index:-1;pointer-events:none}
+.ar3d-teaser .ar3d-kicker{display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.15em;color:#b5c6ee;margin:0 0 18px}
+.ar3d-teaser h2{margin:0;font:900 clamp(32px,4.2vw,62px)/1.04 'Archivo',Arial,sans-serif;letter-spacing:-.065em;max-width:700px}
+.ar3d-teaser h2 em{font-style:normal;color:#a4b8ff}
+.ar3d-teaser p{color:#c1cee7;font-size:clamp(14px,1.2vw,17px);max-width:550px;line-height:1.6;margin:21px 0 0}
+.ar3d-teaser .ar3d-link{display:inline-flex;justify-content:space-between;gap:30px;align-items:center;background:#efff38;color:#101729;text-decoration:none;padding:17px 20px;font:700 13px 'DM Sans',sans-serif;max-width:330px;margin-top:27px;border-radius:5px}
+.ar3d-teaser .ar3d-link:hover{background:white}.ar3d-teaser .ar3d-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.ar3d-art{height:300px;position:relative;display:flex;align-items:center;justify-content:center;perspective:700px}
+.ar3d-cube{width:170px;height:170px;position:relative;transform-style:preserve-3d;transform:rotateX(-27deg) rotateY(36deg);animation:ar3dspin 16s ease-in-out infinite alternate}
+.ar3d-face{position:absolute;inset:0;background:linear-gradient(135deg,#245bffc9,#6236ff5c);border:1px solid #86a7ff;box-shadow:inset 0 0 30px #aac2ff60;backdrop-filter:blur(2px)}
+.ar3d-face:nth-child(1){transform:translateZ(85px)}.ar3d-face:nth-child(2){transform:rotateY(90deg) translateZ(85px)}.ar3d-face:nth-child(3){transform:rotateY(180deg) translateZ(85px)}.ar3d-face:nth-child(4){transform:rotateY(-90deg) translateZ(85px)}.ar3d-face:nth-child(5){transform:rotateX(90deg) translateZ(85px)}.ar3d-face:nth-child(6){transform:rotateX(-90deg) translateZ(85px)}
+.ar3d-chip{position:absolute;top:12px;right:0;padding:8px 11px;border:1px solid #839aca;background:#111e39;color:#f5faff;font:10px 'IBM Plex Mono',monospace;border-radius:4px;z-index:3}
+.ar3d-teaser small{display:block;color:#97a8c8;font:10px 'IBM Plex Mono',monospace;letter-spacing:.05em;margin-top:20px}
+@keyframes ar3dspin{from{transform:rotateX(-27deg) rotateY(36deg)}to{transform:rotateX(-20deg) rotateY(118deg)}}
+@media(max-width:750px){.ar3d-teaser{grid-template-columns:1fr;gap:2px}.ar3d-art{height:180px;order:-1}.ar3d-cube{width:106px;height:106px}.ar3d-face:nth-child(1){transform:translateZ(53px)}.ar3d-face:nth-child(2){transform:rotateY(90deg) translateZ(53px)}.ar3d-face:nth-child(3){transform:rotateY(180deg) translateZ(53px)}.ar3d-face:nth-child(4){transform:rotateY(-90deg) translateZ(53px)}.ar3d-face:nth-child(5){transform:rotateX(90deg) translateZ(53px)}.ar3d-face:nth-child(6){transform:rotateX(-90deg) translateZ(53px)}.ar3d-chip{right:5px}.ar3d-teaser h2{font-size:clamp(32px,8vw,43px)}}
+@media(prefers-reduced-motion:reduce){.ar3d-cube{animation:none}}

@@ -30,6 +30,8 @@ jobs:
         run: node tests/browser-qa.mjs
       - name: Test commercial service mockups and navigation
         run: node scripts/qa-commercial-v5.mjs
+      - name: Test interactive 3D laboratory and demo CSV
+        run: node scripts/qa-dashboard-3d.mjs
       - name: Upload audit screenshots
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,6 @@
+id;nombre;valor;unidad;estado;descripcion;accion
+captacion;Captación;460;contactos;atencion;La demanda creció y el equipo tarda más en responder.;Reducir demora de respuesta y separar contactos útiles.
+diagnostico;Diagnóstico;41;solicitudes;atencion;Más consultas de las que se pueden evaluar con calidad.;Priorizar diagnósticos de mayor urgencia y capacidad.
+produccion;Producción;52;entregables;parada;El volumen de piezas supera la capacidad del equipo y el flujo se detiene.;Pausar nuevas solicitudes y resolver el bloqueo antes de prometer entregas.
+activacion;Activación;7;campañas;atencion;Los lanzamientos se retrasan porque faltan materiales revisados.;Desbloquear producción y revisar dependencias antes de activar.
+medicion;Medición;2.1;% conversión;atencion;La conversión ilustrativa cayó respecto al escenario estable.;Examinar la caída por etapa antes de aumentar inversión.
