@@ -48,6 +48,41 @@ for(const [name,width,height] of [['desktop',1440,900],['laptop',1024,800],['tab
  await page.locator('#situaciones').scrollIntoViewIfNeeded();await page.screenshot({path:`${dir}/${name}-situations.png`,animations:'disabled'});
  await page.locator('#evidencia').scrollIntoViewIfNeeded();await page.screenshot({path:`${dir}/${name}-work.png`,animations:'disabled'});
  if(name==='mobile')await page.screenshot({path:`${dir}/mobile-full.png`,fullPage:true,animations:'disabled'});
+
+ // The opt-in dimensional lab must measure the REAL V4 component at each breakpoint.
+ const labErrors=[];
+ page.on('pageerror',e=>labErrors.push(e.message));
+ await page.goto(base+'plano/',{waitUntil:'domcontentloaded',timeout:30000});
+ try{
+   await page.waitForFunction(()=>document.querySelector('#sheet')?.dataset.measured==='true',null,{timeout:20000});
+   const lab=await page.evaluate(()=>{
+     const card=document.querySelector('#source').contentDocument.getElementById('tab-local');
+     return {pageWidth:document.documentElement.scrollWidth,realWidth:card.getBoundingClientRect().width,
+       displayedWidth:parseFloat(document.querySelector('#metrics tr td:last-child')?.textContent||'NaN'),
+       rows:document.querySelectorAll('#metrics tr').length,
+       state:document.querySelector('#measure-state')?.textContent||''};
+   });
+   if(lab.pageWidth>width+2)problems.push(name+': dimensional lab horizontal overflow '+lab.pageWidth+'>'+width);
+   if(lab.rows<8)problems.push(name+': dimensional measurements missing');
+   if(Math.abs(lab.realWidth-lab.displayedWidth)>.11)problems.push(name+': displayed dimension differs from DOM');
+   if(!lab.state.includes('Medido: 390 px'))problems.push(name+': default measurement not ready');
+   if(name==='desktop'){
+     for(const selected of [768,1440,390]){
+       await page.locator('[data-width="'+selected+'"]').click();
+       await page.waitForFunction(w=>document.querySelector('#measure-state')?.textContent?.includes('Medido: '+w+' px'),selected,{timeout:15000});
+       const synced=await page.evaluate(w=>{
+         const measured=Number(document.querySelector('#source').contentDocument.documentElement.clientWidth);
+         const control=document.querySelector('[data-width="'+w+'"]');
+         return measured===w&&control.getAttribute('aria-pressed')==='true';
+       },selected);
+       if(!synced)problems.push('desktop: dimensional viewport mismatch '+selected);
+     }
+   }
+   if(name==='desktop'||name==='mobile'||name==='small-mobile'){
+     await page.locator('.drawing').screenshot({path:dir+'/'+name+'-plano.png',animations:'disabled'});
+   }
+ }catch(e){problems.push(name+': dimensional lab failed '+e.message)}
+ if(labErrors.length)problems.push(name+': dimensional lab JS errors '+labErrors.join(' | '));
  console.log('QA V4',name,JSON.stringify({overflow:info.scroll-width,heroImgs:info.heroImgs.map(x=>x.loaded),errors:errors.length}));
  await page.close();
 }
