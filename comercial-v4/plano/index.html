@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Plano técnico interactivo medido directamente del selector de necesidades de AR Estudio.">
+<title>Plano dimensional · AR Estudio</title>
+<link rel="icon" href="../../brand/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="plano.css"><script defer src="plano.js"></script>
+</head>
+<body>
+<a class="skip" href="#plano">Saltar al plano</a>
+<header class="top"><a class="brand" href="../"><strong>AR<span>/</span></strong><span>ESTUDIO<small>LABORATORIO DE DISEÑO</small></span></a><a class="back" href="../#metodo">Volver al portafolio ↗</a></header>
+<main>
+<section class="intro"><p class="eyebrow">AR ESTUDIO / LABORATORIO 001</p><h1>Diseñar también<br>es <em>medir.</em></h1><div class="lead-grid"><p>Una de las tarjetas de esta misma web, convertida en un plano técnico. No es un mockup: sus dimensiones se miden cuando el navegador dibuja el componente real.</p><p class="lead-note">El diseño debe poder explicarse, corregirse y mantenerse. Esta demostración muestra cómo trabajamos la interfaz, no resultados de ventas.</p></div></section>
+<section class="drawing" id="plano" aria-labelledby="drawing-title">
+<div class="drawing-header"><div><p class="eyebrow">DIMENSIONAL DRAWING / CSS COMPUTADO</p><h2 id="drawing-title">Anatomía de una decisión.</h2><p>Tarjeta «Estoy abriendo un negocio». Cambia el ancho para observar su geometría.</p></div><div class="view-control" role="group" aria-label="Ancho de viewport"><button type="button" data-width="390" aria-pressed="true">Móvil <small>390 px</small></button><button type="button" data-width="768" aria-pressed="false">Tablet <small>768 px</small></button><button type="button" data-width="1440" aria-pressed="false">Escritorio <small>1440 px</small></button></div></div>
+<div class="dwg-title"><div><small>PLANO DE COMPONENTE</small><strong>UI-SELECTOR-001</strong><span>ANATOMÍA DE TARJETA / TEXTO REPRESENTADO POR SLOTS</span></div><div><small>UNIDADES</small><strong>px CSS</strong></div><div><small>ESCALA</small><strong>Esquema</strong></div><div><small>FUENTE</small><strong>DOM / CSS</strong></div><div><small>REV.</small><strong>01</strong></div></div>
+<div class="sheet-scroller" tabindex="0" aria-label="Plano técnico ancho; desplazar horizontalmente para inspeccionar"><svg id="sheet" role="img" viewBox="0 0 1350 775" xmlns="http://www.w3.org/2000/svg" data-measured="false" aria-labelledby="sheet-title sheet-desc"><title id="sheet-title">Plano de la tarjeta de necesidades</title><desc id="sheet-desc">Vista en planta, capas, cotas y variables calculadas desde el componente real.</desc><rect x="1" y="1" width="1348" height="773" rx="9" fill="#fff" stroke="#222"/><text x="50" y="90">Midiendo componente…</text></svg></div>
+<div class="sheet-footer"><span>HOJA 01 / GEOMETRÍA DEL COMPONENTE REAL</span><span id="measure-state" role="status" aria-live="polite">Cargando medidas…</span></div>
+</section>
+<section class="readout"><div><p class="eyebrow">MEDICIÓN VERIFICABLE</p><h2>Del píxel<br>a la decisión.</h2><p>Se utilizan <code>getBoundingClientRect()</code> y <code>getComputedStyle()</code>. Los valores no disponibles se indican como TBD, nunca se inventan.</p></div><div><table><caption>Cotas medidas para el ancho seleccionado</caption><thead><tr><th>Código</th><th>Variable</th><th>Medida</th></tr></thead><tbody id="metrics"><tr><td>—</td><td>Esperando renderizado</td><td>TBD</td></tr></tbody></table><p class="source-note">Fuente: <a href="../#situaciones">selector real de la versión comercial V4</a>. Las mediciones son en píxeles CSS, no indicadores comerciales.</p></div></section>
+<section class="closing"><div><p class="eyebrow">PRIMERO CRITERIO. LUEGO HERRAMIENTAS.</p><h2>No se trata de dibujar más líneas.<br>Se trata de diseñar mejor.</h2></div><a href="../#contacto">Cuéntame qué necesita tu negocio ↗</a></section>
+</main>
+<footer><span>AR/ ESTUDIO · DEMOSTRACIÓN TÉCNICA</span><a href="../">Volver a la versión comercial</a></footer>
+<div class="measure-host" aria-hidden="true"><iframe title="Fuente invisible de medidas" id="source" src="../index.html" tabindex="-1"></iframe></div>
+</body></html>
